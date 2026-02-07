@@ -63,6 +63,16 @@ class HF_Email_Provision_Failed extends \WC_Email {
 		$tags               = HF_Merge_Tags::get_service_tags( $service_id );
 		$this->placeholders = array_merge( $this->placeholders, $tags );
 
+		/**
+		 * Filter the recipient for the provision failed email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $recipient  Email recipient address.
+		 * @param int    $service_id Service post ID.
+		 */
+		$this->recipient = apply_filters( 'hostforge_email_provision_failed_recipient', $this->get_recipient(), $service_id );
+
 		if ( $this->is_enabled() && $this->get_recipient() ) {
 			$this->send(
 				$this->get_recipient(),
@@ -82,18 +92,30 @@ class HF_Email_Provision_Failed extends \WC_Email {
 	public function get_content_html(): string {
 		$tags = HF_Merge_Tags::get_service_tags( $this->service_id );
 
+		$email_data = array(
+			'email_heading' => HF_Merge_Tags::process( $this->get_heading(), $tags ),
+			'email'         => $this,
+			'service_id'    => $this->service_id,
+			'domain'        => ! empty( $tags['{service_domain}'] ) ? $tags['{service_domain}'] : '',
+			'error_message' => $this->error_message,
+			'server_name'   => ! empty( $tags['{server_name}'] ) ? $tags['{server_name}'] : '',
+			'panel_type'    => ! empty( $tags['{panel_type}'] ) ? $tags['{panel_type}'] : '',
+			'admin_url'     => admin_url( 'admin.php?page=hostforge-services&action=view&id=' . $this->service_id ),
+		);
+
+		/**
+		 * Filter email template data before rendering the provision failed email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $email_data Template data key-value pairs.
+		 * @param int   $service_id Service post ID.
+		 */
+		$email_data = apply_filters( 'hostforge_email_provision_failed_data', $email_data, $this->service_id );
+
 		return wc_get_template_html(
 			$this->template_html,
-			array(
-				'email_heading' => HF_Merge_Tags::process( $this->get_heading(), $tags ),
-				'email'         => $this,
-				'service_id'    => $this->service_id,
-				'domain'        => ! empty( $tags['{service_domain}'] ) ? $tags['{service_domain}'] : '',
-				'error_message' => $this->error_message,
-				'server_name'   => ! empty( $tags['{server_name}'] ) ? $tags['{server_name}'] : '',
-				'panel_type'    => ! empty( $tags['{panel_type}'] ) ? $tags['{panel_type}'] : '',
-				'admin_url'     => admin_url( 'admin.php?page=hostforge-services&action=view&id=' . $this->service_id ),
-			),
+			$email_data,
 			'',
 			$this->template_base
 		);

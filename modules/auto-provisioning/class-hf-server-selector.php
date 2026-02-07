@@ -58,6 +58,20 @@ class HF_Server_Selector {
 			);
 		}
 
+		/**
+		 * Filter the query args used to find available servers.
+		 *
+		 * Allows modification of the WP_Query arguments for server
+		 * selection, e.g. to add custom meta queries or change ordering.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array       $args         WP_Query arguments.
+		 * @param \WC_Product $product      Product instance.
+		 * @param string      $server_group Server group slug.
+		 */
+		$args = apply_filters( 'hostforge_server_selector_query', $args, $product, $server_group );
+
 		$servers = get_posts( $args );
 
 		if ( empty( $servers ) ) {
@@ -72,8 +86,34 @@ class HF_Server_Selector {
 			$max_accounts     = absint( get_post_meta( $server_id, '_hf_max_accounts', true ) );
 			$current_accounts = absint( get_post_meta( $server_id, '_hf_current_accounts', true ) );
 
-			// Skip servers at capacity (0 = unlimited).
+			// Check capacity: skip servers at capacity (0 = unlimited).
+			$has_capacity = true;
 			if ( $max_accounts > 0 && $current_accounts >= $max_accounts ) {
+				$has_capacity = false;
+			}
+
+			/**
+			 * Filter whether a server has capacity for a new account.
+			 *
+			 * Allows overriding the default capacity check to implement
+			 * custom capacity logic (e.g. based on CPU, RAM, or custom limits).
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param bool $has_capacity     Whether the server has capacity.
+			 * @param int  $server_id        Server post ID.
+			 * @param int  $max_accounts     Maximum accounts configured.
+			 * @param int  $current_accounts Current number of accounts.
+			 */
+			$has_capacity = apply_filters(
+				'hostforge_server_capacity_check',
+				$has_capacity,
+				$server_id,
+				$max_accounts,
+				$current_accounts
+			);
+
+			if ( ! $has_capacity ) {
 				continue;
 			}
 

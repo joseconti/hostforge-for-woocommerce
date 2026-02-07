@@ -127,6 +127,16 @@ class HF_Module_Manager {
 		$module->init();
 		$this->loaded[ $module_id ] = $module;
 
+		/**
+		 * Fires after a module has been loaded and initialized.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string                    $module_id The module identifier.
+		 * @param Abstracts\HF_Module       $module    The loaded module instance.
+		 */
+		do_action( 'hostforge_module_loaded', $module_id, $module );
+
 		return true;
 	}
 
@@ -155,6 +165,19 @@ class HF_Module_Manager {
 				return false;
 			}
 		}
+
+		/**
+		 * Fires before a module is activated.
+		 *
+		 * Allows third-party code to perform setup tasks or validation
+		 * before a module is activated.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $module_id  The module identifier.
+		 * @param string $class_name The fully-qualified module class name.
+		 */
+		do_action( 'hostforge_before_module_activate', $module_id, $class_name );
 
 		$active = $this->get_active_module_ids();
 
@@ -190,6 +213,18 @@ class HF_Module_Manager {
 			return false;
 		}
 
+		/**
+		 * Fires before a module is deactivated.
+		 *
+		 * Allows third-party code to perform cleanup tasks or prevent
+		 * deactivation side-effects before a module is deactivated.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $module_id The module identifier.
+		 */
+		do_action( 'hostforge_before_module_deactivate', $module_id );
+
 		// Deactivate dependent modules first.
 		foreach ( $this->get_dependent_modules( $module_id ) as $dep_module_id ) {
 			$this->deactivate_module( $dep_module_id );
@@ -221,7 +256,19 @@ class HF_Module_Manager {
 	 */
 	public function get_active_module_ids(): array {
 		$active = get_option( self::OPTION_NAME, array() );
-		return is_array( $active ) ? $active : array();
+		$active = is_array( $active ) ? $active : array();
+
+		/**
+		 * Filters the list of active module IDs.
+		 *
+		 * Allows third-party code to programmatically enable or disable modules
+		 * without changing the database option.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $active Array of active module identifier strings.
+		 */
+		return apply_filters( 'hostforge_active_module_ids', $active );
 	}
 
 	/**

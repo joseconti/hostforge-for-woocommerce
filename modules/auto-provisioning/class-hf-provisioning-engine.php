@@ -269,13 +269,17 @@ class HF_Provisioning_Engine {
 		}
 
 		// Add to provisioning queue.
-		$this->enqueue_action( $service_id, 'provision', array(
-			'username' => $username,
-			'password' => $password,
-			'domain'   => $domain,
-			'package'  => $package,
-			'email'    => $order->get_billing_email(),
-		) );
+		$this->enqueue_action(
+			$service_id,
+			'provision',
+			array(
+				'username' => $username,
+				'password' => $password,
+				'domain'   => $domain,
+				'package'  => $package,
+				'email'    => $order->get_billing_email(),
+			)
+		);
 
 		/**
 		 * Fires before a service is provisioned.
@@ -334,17 +338,37 @@ class HF_Provisioning_Engine {
 		 * @param array $params   Provision parameters.
 		 * @param int   $order_id WooCommerce order ID.
 		 */
-		$params = apply_filters( 'hostforge_provision_params', array(
-			'domain'   => $domain,
-			'username' => $username,
-			'password' => $password,
-			'plan'     => $package,
-			'email'    => $email,
-		), $order_id );
+		$params = apply_filters(
+			'hostforge_provision_params',
+			array(
+				'domain'   => $domain,
+				'username' => $username,
+				'password' => $password,
+				'plan'     => $package,
+				'email'    => $email,
+			),
+			$order_id
+		);
 
 		$result = $provider->create_account( $params );
 
 		if ( $result['success'] ) {
+			$account_data = isset( $result['data'] ) ? $result['data'] : array();
+
+			/**
+			 * Filter account data returned from the panel provider after creation.
+			 *
+			 * Allows modification or enrichment of the account data
+			 * (e.g. adding custom fields) before the provisioned action fires.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $account_data Account data returned by the provider.
+			 * @param int   $service_id   Service post ID.
+			 * @param int   $server_id    Server post ID.
+			 */
+			$account_data = apply_filters( 'hostforge_provision_account_data', $account_data, $service_id, $server_id );
+
 			update_post_meta( $service_id, '_hf_status', 'active' );
 			update_post_meta( $service_id, '_hf_provisioned_at', current_time( 'mysql' ) );
 
@@ -362,10 +386,47 @@ class HF_Provisioning_Engine {
 			/**
 			 * Fires after a service is successfully provisioned.
 			 *
-			 * @param int   $service_id  Service post ID.
+			 * @since 1.0.0
+			 *
+			 * @param int   $service_id   Service post ID.
 			 * @param array $account_data Account data from the provider.
 			 */
-			do_action( 'hostforge_after_provision', $service_id, $result['data'] ?? array() );
+			do_action( 'hostforge_after_provision', $service_id, $account_data );
+
+			/**
+			 * Filter the welcome email data sent to the customer after provisioning.
+			 *
+			 * Allows modification of the data passed to the welcome email,
+			 * e.g. to add nameservers, extra instructions, or custom links.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $email_data {
+			 *     Welcome email data.
+			 *
+			 *     @type int    $service_id   Service post ID.
+			 *     @type string $domain       Domain name.
+			 *     @type string $username     Panel username.
+			 *     @type string $password     Panel password (plain text).
+			 *     @type string $package      Hosting package name.
+			 *     @type int    $server_id    Server post ID.
+			 *     @type array  $account_data Account data from provider.
+			 * }
+			 * @param int   $order_id   WooCommerce order ID.
+			 */
+			apply_filters(
+				'hostforge_service_welcome_email_data',
+				array(
+					'service_id'   => $service_id,
+					'domain'       => $domain,
+					'username'     => $username,
+					'password'     => $password,
+					'package'      => $package,
+					'server_id'    => $server_id,
+					'account_data' => $account_data,
+				),
+				$order_id
+			);
 		} else {
 			$this->handle_failure( $service_id, 'provision', $result['message'] ?? 'Unknown error.' );
 		}
@@ -410,7 +471,13 @@ class HF_Provisioning_Engine {
 
 			$this->log_info( 'Service suspended.', array( 'service_id' => $service_id ) );
 
-			/** @see hostforge_after_suspend */
+			/**
+			 * Fires after a service is suspended on the server.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param int $service_id Service post ID.
+			 */
 			do_action( 'hostforge_after_suspend', $service_id );
 		} else {
 			$this->handle_failure( $service_id, 'suspend', $result['message'] ?? 'Unknown error.' );
@@ -440,7 +507,13 @@ class HF_Provisioning_Engine {
 
 		$username = get_post_meta( $service_id, '_hf_panel_username', true );
 
-		/** @see hostforge_before_unsuspend */
+		/**
+		 * Fires before a service is unsuspended on the server.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int $service_id Service post ID.
+		 */
 		do_action( 'hostforge_before_unsuspend', $service_id );
 
 		$result = $provider->unsuspend_account( $username );
@@ -451,7 +524,13 @@ class HF_Provisioning_Engine {
 
 			$this->log_info( 'Service unsuspended.', array( 'service_id' => $service_id ) );
 
-			/** @see hostforge_after_unsuspend */
+			/**
+			 * Fires after a service is unsuspended on the server.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param int $service_id Service post ID.
+			 */
 			do_action( 'hostforge_after_unsuspend', $service_id );
 		} else {
 			$this->handle_failure( $service_id, 'unsuspend', $result['message'] ?? 'Unknown error.' );
@@ -481,7 +560,13 @@ class HF_Provisioning_Engine {
 
 		$username = get_post_meta( $service_id, '_hf_panel_username', true );
 
-		/** @see hostforge_before_terminate */
+		/**
+		 * Fires before a service is terminated on the server.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int $service_id Service post ID.
+		 */
 		do_action( 'hostforge_before_terminate', $service_id );
 
 		$result = $provider->terminate_account( $username );
@@ -492,7 +577,13 @@ class HF_Provisioning_Engine {
 
 			$this->log_info( 'Service terminated.', array( 'service_id' => $service_id ) );
 
-			/** @see hostforge_after_terminate */
+			/**
+			 * Fires after a service is terminated on the server.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param int $service_id Service post ID.
+			 */
 			do_action( 'hostforge_after_terminate', $service_id );
 		} else {
 			$this->handle_failure( $service_id, 'terminate', $result['message'] ?? 'Unknown error.' );
@@ -520,6 +611,36 @@ class HF_Provisioning_Engine {
 		if ( empty( $new_package ) ) {
 			return;
 		}
+
+		/**
+		 * Filter the change package parameters before execution.
+		 *
+		 * Allows modification of the username and package name
+		 * before the package change is sent to the panel provider.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $params {
+		 *     Package change parameters.
+		 *
+		 *     @type string $username    Panel username.
+		 *     @type string $new_package New package/plan name.
+		 * }
+		 * @param int   $service_id Service post ID.
+		 * @param int   $server_id  Server post ID.
+		 */
+		$change_params = apply_filters(
+			'hostforge_change_package_params',
+			array(
+				'username'    => $username,
+				'new_package' => $new_package,
+			),
+			$service_id,
+			$server_id
+		);
+
+		$username    = $change_params['username'];
+		$new_package = $change_params['new_package'];
 
 		$result = $provider->change_package( $username, $new_package );
 
@@ -750,10 +871,13 @@ class HF_Provisioning_Engine {
 		}
 
 		if ( ! $entry ) {
-			$this->log_error( 'Failed to create queue entry for retry.', array(
-				'service_id' => $service_id,
-				'action'     => $action,
-			) );
+			$this->log_error(
+				'Failed to create queue entry for retry.',
+				array(
+					'service_id' => $service_id,
+					'action'     => $action,
+				)
+			);
 			return;
 		}
 

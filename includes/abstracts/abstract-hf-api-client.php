@@ -105,7 +105,7 @@ abstract class HF_API_Client {
 			);
 		}
 
-		$code = wp_remote_retrieve_response_code( $response );
+		$code     = wp_remote_retrieve_response_code( $response );
 		$body_raw = wp_remote_retrieve_body( $response );
 
 		$data = json_decode( $body_raw, true );

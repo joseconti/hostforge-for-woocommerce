@@ -61,7 +61,7 @@ spl_autoload_register(
 		}
 
 		// Core namespaces.
-		$parts     = explode( '\\', $relative );
+		$parts      = explode( '\\', $relative );
 		$class_name = end( $parts );
 		$sub_path   = '';
 
@@ -102,9 +102,9 @@ spl_autoload_register(
 function hostforge_class_to_file( string $class_name ): string {
 	// Determine file prefix based on naming pattern.
 	$prefixes = array(
-		'abstract' => 'abstract-',
+		'abstract'  => 'abstract-',
 		'interface' => 'interface-',
-		'trait'    => 'trait-',
+		'trait'     => 'trait-',
 	);
 
 	$file_prefix = 'class-';

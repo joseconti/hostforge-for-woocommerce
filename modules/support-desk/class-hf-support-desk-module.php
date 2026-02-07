@@ -401,26 +401,36 @@ class HF_Support_Desk_Module extends HF_Module {
 		$now          = current_time( 'timestamp' ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 
 		// Find tickets that should be closed (inactive > auto_close_days).
-		$tickets_to_close = get_posts(
-			array(
-				'post_type'      => 'hf_ticket',
-				'post_status'    => 'publish',
-				'posts_per_page' => 50,
-				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-					array(
-						'key'     => '_hf_status',
-						'value'   => array( 'open', 'customer_reply', 'staff_reply', 'in_progress' ),
-						'compare' => 'IN',
-					),
-					array(
-						'key'     => '_hf_last_reply_at',
-						'value'   => gmdate( 'Y-m-d H:i:s', $now - ( $auto_close_days * DAY_IN_SECONDS ) ),
-						'compare' => '<',
-						'type'    => 'DATETIME',
-					),
+		$auto_close_args = array(
+			'post_type'      => 'hf_ticket',
+			'post_status'    => 'publish',
+			'posts_per_page' => 50,
+			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					'key'     => '_hf_status',
+					'value'   => array( 'open', 'customer_reply', 'staff_reply', 'in_progress' ),
+					'compare' => 'IN',
 				),
-			)
+				array(
+					'key'     => '_hf_last_reply_at',
+					'value'   => gmdate( 'Y-m-d H:i:s', $now - ( $auto_close_days * DAY_IN_SECONDS ) ),
+					'compare' => '<',
+					'type'    => 'DATETIME',
+				),
+			),
 		);
+
+		/**
+		 * Filters the query arguments for finding tickets eligible for auto-close.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $auto_close_args WP_Query arguments.
+		 * @param int   $auto_close_days Number of inactive days before auto-close.
+		 */
+		$auto_close_args = apply_filters( 'hostforge_auto_close_query', $auto_close_args, $auto_close_days );
+
+		$tickets_to_close = get_posts( $auto_close_args );
 
 		foreach ( $tickets_to_close as $ticket ) {
 			update_post_meta( $ticket->ID, '_hf_status', 'closed' );
@@ -596,6 +606,18 @@ class HF_Support_Desk_Module extends HF_Module {
 			return;
 		}
 
+		/**
+		 * Fires after an IMAP email has been parsed, before processing as ticket/reply.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string    $subject The email subject.
+		 * @param string    $body    The email body.
+		 * @param string    $from    The sender email address.
+		 * @param \WP_User  $user    The matched WordPress user.
+		 */
+		do_action( 'hostforge_imap_email_parsed', $subject, $body, $from, $user );
+
 		// Check if this is a reply to existing ticket (subject contains #TICKET_ID).
 		if ( preg_match( '/#(\d+)/', $subject, $matches ) ) {
 			$ticket_id = absint( $matches[1] );
@@ -656,14 +678,26 @@ class HF_Support_Desk_Module extends HF_Module {
 			return false;
 		}
 
+		/**
+		 * Filters the reply content before saving to the database.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $content   The reply content.
+		 * @param int    $ticket_id The ticket post ID.
+		 * @param int    $user_id   The user ID posting the reply.
+		 * @param bool   $is_staff  Whether this is a staff reply.
+		 */
+		$content = apply_filters( 'hostforge_ticket_reply_content', $content, $ticket_id, $user_id, $is_staff );
+
 		$comment_data = array(
-			'comment_post_ID' => $ticket_id,
-			'comment_content' => $content,
-			'comment_type'    => 'hf_ticket_reply',
-			'user_id'         => $user_id,
-			'comment_author'  => $user->display_name,
+			'comment_post_ID'      => $ticket_id,
+			'comment_content'      => $content,
+			'comment_type'         => 'hf_ticket_reply',
+			'user_id'              => $user_id,
+			'comment_author'       => $user->display_name,
 			'comment_author_email' => $user->user_email,
-			'comment_approved' => 1,
+			'comment_approved'     => 1,
 		);
 
 		$comment_id = wp_insert_comment( $comment_data );
@@ -729,7 +763,7 @@ class HF_Support_Desk_Module extends HF_Module {
 				$type_not_in = array( $type_not_in );
 			}
 
-			$type_not_in[] = 'hf_ticket_reply';
+			$type_not_in[]                     = 'hf_ticket_reply';
 			$query->query_vars['type__not_in'] = $type_not_in;
 		}
 	}
@@ -886,15 +920,15 @@ class HF_Support_Desk_Module extends HF_Module {
 	 */
 	public static function get_ticket_meta_keys(): array {
 		return array(
-			'_hf_department'       => 'Department term ID',
-			'_hf_priority'         => 'critical, high, medium, low',
-			'_hf_status'           => 'open, customer_reply, staff_reply, in_progress, closed',
-			'_hf_assigned_to'      => 'Staff user ID',
-			'_hf_related_service'  => 'Related hf_service post ID',
-			'_hf_client_user_id'   => 'Customer user ID',
-			'_hf_last_reply_at'    => 'DateTime of last reply',
-			'_hf_last_reply_by'    => 'User ID of last replier',
-			'_hf_flagged'          => 'Whether ticket is flagged',
+			'_hf_department'        => 'Department term ID',
+			'_hf_priority'          => 'critical, high, medium, low',
+			'_hf_status'            => 'open, customer_reply, staff_reply, in_progress, closed',
+			'_hf_assigned_to'       => 'Staff user ID',
+			'_hf_related_service'   => 'Related hf_service post ID',
+			'_hf_client_user_id'    => 'Customer user ID',
+			'_hf_last_reply_at'     => 'DateTime of last reply',
+			'_hf_last_reply_by'     => 'User ID of last replier',
+			'_hf_flagged'           => 'Whether ticket is flagged',
 			'_hf_auto_close_warned' => 'Whether auto-close warning was sent',
 		);
 	}
@@ -905,13 +939,22 @@ class HF_Support_Desk_Module extends HF_Module {
 	 * @return array<string, string>
 	 */
 	public static function get_statuses(): array {
-		return array(
+		$statuses = array(
 			'open'           => __( 'Open', 'hostforge' ),
 			'customer_reply' => __( 'Customer Reply', 'hostforge' ),
 			'staff_reply'    => __( 'Staff Reply', 'hostforge' ),
 			'in_progress'    => __( 'In Progress', 'hostforge' ),
 			'closed'         => __( 'Closed', 'hostforge' ),
 		);
+
+		/**
+		 * Filters the available ticket statuses.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array<string, string> $statuses Status slug => label pairs.
+		 */
+		return apply_filters( 'hostforge_ticket_statuses', $statuses );
 	}
 
 	/**
@@ -920,12 +963,21 @@ class HF_Support_Desk_Module extends HF_Module {
 	 * @return array<string, string>
 	 */
 	public static function get_priorities(): array {
-		return array(
+		$priorities = array(
 			'low'      => __( 'Low', 'hostforge' ),
 			'medium'   => __( 'Medium', 'hostforge' ),
 			'high'     => __( 'High', 'hostforge' ),
 			'critical' => __( 'Critical', 'hostforge' ),
 		);
+
+		/**
+		 * Filters the available ticket priorities.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array<string, string> $priorities Priority slug => label pairs.
+		 */
+		return apply_filters( 'hostforge_ticket_priorities', $priorities );
 	}
 
 	/**
@@ -959,6 +1011,48 @@ class HF_Support_Desk_Module extends HF_Module {
 	}
 
 	/**
+	 * Get KB article data for rendering, with filter applied.
+	 *
+	 * @param int $article_id KB article post ID.
+	 * @return array<string, mixed> Article data array.
+	 */
+	public static function get_kb_article_data( int $article_id ): array {
+		$article = get_post( $article_id );
+
+		if ( ! $article || 'hf_kb_article' !== $article->post_type ) {
+			return array();
+		}
+
+		$categories = wp_get_object_terms( $article_id, 'hf_kb_category' );
+		if ( is_wp_error( $categories ) ) {
+			$categories = array();
+		}
+
+		$data = array(
+			'id'               => $article->ID,
+			'title'            => $article->post_title,
+			'content'          => $article->post_content,
+			'excerpt'          => wp_trim_words( $article->post_content, 30, '...' ),
+			'categories'       => $categories,
+			'visibility'       => get_post_meta( $article_id, '_hf_visibility', true ),
+			'helpful_yes'      => absint( get_post_meta( $article_id, '_hf_helpful_yes', true ) ),
+			'helpful_no'       => absint( get_post_meta( $article_id, '_hf_helpful_no', true ) ),
+			'related_articles' => get_post_meta( $article_id, '_hf_related_articles', true ),
+			'url'              => get_permalink( $article_id ),
+		);
+
+		/**
+		 * Filters KB article data before rendering.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array    $data    Article data array.
+		 * @param \WP_Post $article The KB article post object.
+		 */
+		return apply_filters( 'hostforge_kb_article_data', $data, $article );
+	}
+
+	/**
 	 * Process merge tags in canned response content.
 	 *
 	 * @param string $content   Content with merge tags.
@@ -974,13 +1068,13 @@ class HF_Support_Desk_Module extends HF_Module {
 		$domain     = $service_id ? get_post_meta( $service_id, '_hf_domain', true ) : '';
 
 		$replacements = array(
-			'{customer_name}'    => $user ? $user->display_name : '',
-			'{customer_email}'   => $user ? $user->user_email : '',
-			'{ticket_id}'        => (string) $ticket_id,
-			'{ticket_subject}'   => $ticket ? $ticket->post_title : '',
-			'{service_domain}'   => $domain,
-			'{site_name}'        => get_bloginfo( 'name' ),
-			'{site_url}'         => home_url(),
+			'{customer_name}'  => $user ? $user->display_name : '',
+			'{customer_email}' => $user ? $user->user_email : '',
+			'{ticket_id}'      => (string) $ticket_id,
+			'{ticket_subject}' => $ticket ? $ticket->post_title : '',
+			'{service_domain}' => $domain,
+			'{site_name}'      => get_bloginfo( 'name' ),
+			'{site_url}'       => home_url(),
 		);
 
 		/**

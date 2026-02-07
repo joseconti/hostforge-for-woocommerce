@@ -58,7 +58,18 @@ class HF_Email_Service_Unsuspended extends \WC_Email {
 			return;
 		}
 
-		$this->recipient    = $user->user_email;
+		$this->recipient = $user->user_email;
+
+		/**
+		 * Filter the recipient for the service unsuspended email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $recipient  Email recipient address.
+		 * @param int    $service_id Service post ID.
+		 */
+		$this->recipient = apply_filters( 'hostforge_email_service_unsuspended_recipient', $this->recipient, $service_id );
+
 		$tags               = HF_Merge_Tags::get_service_tags( $service_id );
 		$this->placeholders = array_merge( $this->placeholders, $tags );
 
@@ -83,15 +94,27 @@ class HF_Email_Service_Unsuspended extends \WC_Email {
 		$user_id = (int) get_post_meta( $this->service_id, '_hf_user_id', true );
 		$user    = get_userdata( $user_id );
 
+		$email_data = array(
+			'email_heading' => $this->get_heading(),
+			'email'         => $this,
+			'customer_name' => $user ? $user->display_name : '',
+			'domain'        => ! empty( $tags['{service_domain}'] ) ? $tags['{service_domain}'] : '',
+			'panel_url'     => ! empty( $tags['{panel_url}'] ) ? $tags['{panel_url}'] : '',
+		);
+
+		/**
+		 * Filter email template data before rendering the service unsuspended email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $email_data Template data key-value pairs.
+		 * @param int   $service_id Service post ID.
+		 */
+		$email_data = apply_filters( 'hostforge_email_service_unsuspended_data', $email_data, $this->service_id );
+
 		return wc_get_template_html(
 			$this->template_html,
-			array(
-				'email_heading' => $this->get_heading(),
-				'email'         => $this,
-				'customer_name' => $user ? $user->display_name : '',
-				'domain'        => ! empty( $tags['{service_domain}'] ) ? $tags['{service_domain}'] : '',
-				'panel_url'     => ! empty( $tags['{panel_url}'] ) ? $tags['{panel_url}'] : '',
-			),
+			$email_data,
 			'',
 			$this->template_base
 		);

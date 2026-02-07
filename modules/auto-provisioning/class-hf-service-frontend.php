@@ -159,13 +159,13 @@ class HF_Service_Frontend {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'hf_service_frontend_nonce' ),
 				'i18n'    => array(
-					'loading'              => __( 'Loading...', 'hostforge' ),
-					'confirmCancel'        => __( 'Are you sure you want to request cancellation of this service?', 'hostforge' ),
-					'cancelSuccess'        => __( 'Cancellation request submitted. Our team will review it shortly.', 'hostforge' ),
-					'passwordChanged'      => __( 'Password changed successfully!', 'hostforge' ),
-					'passwordMinLength'    => __( 'Password must be at least 8 characters.', 'hostforge' ),
-					'upgradeSuccess'       => __( 'Upgrade/downgrade request submitted.', 'hostforge' ),
-					'error'                => __( 'An error occurred. Please try again.', 'hostforge' ),
+					'loading'           => __( 'Loading...', 'hostforge' ),
+					'confirmCancel'     => __( 'Are you sure you want to request cancellation of this service?', 'hostforge' ),
+					'cancelSuccess'     => __( 'Cancellation request submitted. Our team will review it shortly.', 'hostforge' ),
+					'passwordChanged'   => __( 'Password changed successfully!', 'hostforge' ),
+					'passwordMinLength' => __( 'Password must be at least 8 characters.', 'hostforge' ),
+					'upgradeSuccess'    => __( 'Upgrade/downgrade request submitted.', 'hostforge' ),
+					'error'             => __( 'An error occurred. Please try again.', 'hostforge' ),
 				),
 			)
 		);
@@ -179,21 +179,34 @@ class HF_Service_Frontend {
 	private function render_service_list(): void {
 		$user_id = get_current_user_id();
 
-		$services = get_posts(
-			array(
-				'post_type'      => 'hf_service',
-				'post_status'    => 'publish',
-				'posts_per_page' => -1,
-				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-					array(
-						'key'   => '_hf_user_id',
-						'value' => $user_id,
-					),
+		$query_args = array(
+			'post_type'      => 'hf_service',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					'key'   => '_hf_user_id',
+					'value' => $user_id,
 				),
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-			)
+			),
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 		);
+
+		/**
+		 * Filter the query args for listing user services on the frontend.
+		 *
+		 * Allows modification of the WP_Query arguments used to
+		 * fetch services in the My Account hosting-services page.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $query_args WP_Query arguments.
+		 * @param int   $user_id   Current user ID.
+		 */
+		$query_args = apply_filters( 'hostforge_service_list_query', $query_args, $user_id );
+
+		$services = get_posts( $query_args );
 
 		$template = hf_locate_template( 'frontend/service-list.php' );
 		if ( $template ) {
@@ -228,7 +241,49 @@ class HF_Service_Frontend {
 			$meta[ $key ] = get_post_meta( $service_id, $key, true );
 		}
 
-		$product = $meta['_hf_product_id'] ? wc_get_product( absint( $meta['_hf_product_id'] ) ) : null;
+		$product = ! empty( $meta['_hf_product_id'] ) ? wc_get_product( absint( $meta['_hf_product_id'] ) ) : null;
+
+		/**
+		 * Filter service data before rendering the frontend detail page.
+		 *
+		 * Allows modification or enrichment of the service meta values
+		 * passed to the service-detail template.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array    $meta       Service meta values.
+		 * @param int      $service_id Service post ID.
+		 * @param \WP_Post $service    Service post object.
+		 */
+		$meta = apply_filters( 'hostforge_service_detail_data', $meta, $service_id, $service );
+
+		// Determine available actions for this service.
+		$status          = ! empty( $meta['_hf_status'] ) ? $meta['_hf_status'] : 'pending';
+		$service_actions = array();
+
+		if ( 'active' === $status ) {
+			$service_actions = array(
+				'sso'      => __( 'Login to Panel', 'hostforge' ),
+				'password' => __( 'Change Password', 'hostforge' ),
+				'upgrade'  => __( 'Upgrade/Downgrade', 'hostforge' ),
+				'cancel'   => __( 'Request Cancellation', 'hostforge' ),
+			);
+		}
+
+		/**
+		 * Filter the available service actions on the frontend detail page.
+		 *
+		 * Allows adding, removing, or modifying the action buttons
+		 * shown to the customer on their service detail page.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $service_actions Associative array of action_slug => label.
+		 * @param int    $service_id      Service post ID.
+		 * @param string $status          Current service status.
+		 * @param array  $meta            Service meta values.
+		 */
+		$service_actions = apply_filters( 'hostforge_service_actions', $service_actions, $service_id, $status, $meta );
 
 		$template = hf_locate_template( 'frontend/service-detail.php' );
 		if ( $template ) {
@@ -270,7 +325,22 @@ class HF_Service_Frontend {
 		$result = $provider->get_sso_url( $username );
 
 		if ( $result['success'] ) {
-			wp_send_json_success( array( 'url' => $result['url'] ) );
+			/**
+			 * Filter the SSO URL before returning it to the frontend.
+			 *
+			 * Allows modification of the panel login URL, e.g. to append
+			 * tracking parameters or redirect through a proxy.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param string $url        SSO URL from the panel provider.
+			 * @param int    $service_id Service post ID.
+			 * @param string $username   Panel username.
+			 * @param int    $user_id    WordPress user ID.
+			 */
+			$sso_url = apply_filters( 'hostforge_service_sso_url', $result['url'], $service_id, $username, $user_id );
+
+			wp_send_json_success( array( 'url' => $sso_url ) );
 		} else {
 			wp_send_json_error( array( 'message' => __( 'Could not generate SSO URL.', 'hostforge' ) ) );
 		}

@@ -138,12 +138,23 @@ class HF_REST_Reports_Controller extends HF_REST_Controller {
 		$revenue = $data->get_revenue_data( $start_date, $end_date );
 		$mrr     = $data->get_mrr();
 
-		return rest_ensure_response(
-			array(
-				'data' => $revenue,
-				'mrr'  => $mrr,
-			)
+		$response_data = array(
+			'data' => $revenue,
+			'mrr'  => $mrr,
 		);
+
+		/**
+		 * Filter the REST API report response data.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array            $response_data Response data array.
+		 * @param string           $endpoint      The report endpoint: 'revenue', 'customers', 'services', 'tickets', 'domains', or 'servers'.
+		 * @param \WP_REST_Request $request       The original request object.
+		 */
+		$response_data = apply_filters( 'hostforge_rest_report_response', $response_data, 'revenue', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 
 	/**
@@ -158,9 +169,13 @@ class HF_REST_Reports_Controller extends HF_REST_Controller {
 		$start_date = gmdate( 'Y-m-d', strtotime( sprintf( '-%d months', $months ) ) );
 		$end_date   = gmdate( 'Y-m-d' );
 
-		$customers = $data->get_customer_growth( $start_date, $end_date );
+		$customers     = $data->get_customer_growth( $start_date, $end_date );
+		$response_data = array( 'data' => $customers );
 
-		return rest_ensure_response( array( 'data' => $customers ) );
+		/** This filter is documented in this file, get_revenue method. */
+		$response_data = apply_filters( 'hostforge_rest_report_response', $response_data, 'customers', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 
 	/**
@@ -170,9 +185,13 @@ class HF_REST_Reports_Controller extends HF_REST_Controller {
 	 * @return \WP_REST_Response
 	 */
 	public function get_services( \WP_REST_Request $request ): \WP_REST_Response {
-		$data = new HF_Report_Data();
+		$data          = new HF_Report_Data();
+		$response_data = array( 'data' => $data->get_services_by_status() );
 
-		return rest_ensure_response( array( 'data' => $data->get_services_by_status() ) );
+		/** This filter is documented in this file, get_revenue method. */
+		$response_data = apply_filters( 'hostforge_rest_report_response', $response_data, 'services', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 
 	/**
@@ -182,9 +201,13 @@ class HF_REST_Reports_Controller extends HF_REST_Controller {
 	 * @return \WP_REST_Response
 	 */
 	public function get_tickets( \WP_REST_Request $request ): \WP_REST_Response {
-		$data = new HF_Report_Data();
+		$data          = new HF_Report_Data();
+		$response_data = array( 'data' => $data->get_ticket_metrics() );
 
-		return rest_ensure_response( array( 'data' => $data->get_ticket_metrics() ) );
+		/** This filter is documented in this file, get_revenue method. */
+		$response_data = apply_filters( 'hostforge_rest_report_response', $response_data, 'tickets', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 
 	/**
@@ -194,9 +217,13 @@ class HF_REST_Reports_Controller extends HF_REST_Controller {
 	 * @return \WP_REST_Response
 	 */
 	public function get_domains( \WP_REST_Request $request ): \WP_REST_Response {
-		$data = new HF_Report_Data();
+		$data          = new HF_Report_Data();
+		$response_data = array( 'data' => $data->get_domain_stats() );
 
-		return rest_ensure_response( array( 'data' => $data->get_domain_stats() ) );
+		/** This filter is documented in this file, get_revenue method. */
+		$response_data = apply_filters( 'hostforge_rest_report_response', $response_data, 'domains', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 
 	/**
@@ -206,8 +233,12 @@ class HF_REST_Reports_Controller extends HF_REST_Controller {
 	 * @return \WP_REST_Response
 	 */
 	public function get_servers( \WP_REST_Request $request ): \WP_REST_Response {
-		$data = new HF_Report_Data();
+		$data          = new HF_Report_Data();
+		$response_data = array( 'data' => $data->get_server_capacity() );
 
-		return rest_ensure_response( array( 'data' => $data->get_server_capacity() ) );
+		/** This filter is documented in this file, get_revenue method. */
+		$response_data = apply_filters( 'hostforge_rest_report_response', $response_data, 'servers', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 }

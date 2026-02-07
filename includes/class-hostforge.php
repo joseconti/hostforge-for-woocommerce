@@ -75,6 +75,15 @@ final class HostForge {
 	 * @return void
 	 */
 	public function init(): void {
+		/**
+		 * Fires before HostForge begins initialization.
+		 *
+		 * Use this hook to run code before any HostForge components are loaded.
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'hostforge_before_init' );
+
 		$this->load_helpers();
 		$this->load_textdomain();
 		$this->init_product_types();
@@ -87,6 +96,8 @@ final class HostForge {
 
 		/**
 		 * Fires after HostForge has fully initialized.
+		 *
+		 * @since 1.0.0
 		 */
 		do_action( 'hostforge_loaded' );
 	}
@@ -99,6 +110,15 @@ final class HostForge {
 	private function load_helpers(): void {
 		require_once HOSTFORGE_PLUGIN_DIR . 'includes/helpers/hf-formatting-functions.php';
 		require_once HOSTFORGE_PLUGIN_DIR . 'includes/helpers/hf-template-functions.php';
+
+		/**
+		 * Fires after HostForge helper function files have been loaded.
+		 *
+		 * Use this hook to load additional helper files or override helper functions.
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'hostforge_helpers_loaded' );
 	}
 
 	/**
@@ -129,6 +149,16 @@ final class HostForge {
 		Products\HF_Checkout_Fields::init();
 		Products\HF_Order_Meta_Handler::init();
 		Products\HF_Product_Addons::init();
+
+		/**
+		 * Fires after all HostForge product types and related components are initialized.
+		 *
+		 * Use this hook to register additional product type integrations or
+		 * modify product type behavior after all types are loaded.
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'hostforge_product_types_initialized' );
 	}
 
 	/**
@@ -140,6 +170,18 @@ final class HostForge {
 		$this->module_manager = new HF_Module_Manager();
 		$this->module_manager->register_core_modules();
 		$this->module_manager->load_active_modules();
+
+		/**
+		 * Fires after all active modules have been loaded.
+		 *
+		 * Use this hook to interact with loaded modules or perform actions
+		 * that depend on module availability.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param HF_Module_Manager $module_manager The module manager instance.
+		 */
+		do_action( 'hostforge_modules_loaded', $this->module_manager );
 	}
 
 	/**

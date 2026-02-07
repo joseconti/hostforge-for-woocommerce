@@ -40,7 +40,7 @@ class HF_REST_Service_Controller extends HF_REST_Controller {
 					'callback'            => array( $this, 'get_items' ),
 					'permission_callback' => array( $this, 'check_admin_permission' ),
 					'args'                => array(
-						'status' => array(
+						'status'   => array(
 							'type'              => 'string',
 							'sanitize_callback' => 'sanitize_text_field',
 						),
@@ -49,7 +49,7 @@ class HF_REST_Service_Controller extends HF_REST_Controller {
 							'default'           => 20,
 							'sanitize_callback' => 'absint',
 						),
-						'page' => array(
+						'page'     => array(
 							'type'              => 'integer',
 							'default'           => 1,
 							'sanitize_callback' => 'absint',
@@ -87,7 +87,7 @@ class HF_REST_Service_Controller extends HF_REST_Controller {
 					'callback'            => array( $this, 'perform_action' ),
 					'permission_callback' => array( $this, 'check_admin_permission' ),
 					'args'                => array(
-						'id' => array(
+						'id'     => array(
 							'type'              => 'integer',
 							'required'          => true,
 							'sanitize_callback' => 'absint',
@@ -203,7 +203,12 @@ class HF_REST_Service_Controller extends HF_REST_Controller {
 	 * @return array
 	 */
 	private function prepare_service( \WP_Post $post ): array {
-		return array(
+		$provisioned_at = get_post_meta( $post->ID, '_hf_provisioned_at', true );
+		$suspended_at   = get_post_meta( $post->ID, '_hf_suspended_at', true );
+		$terminated_at  = get_post_meta( $post->ID, '_hf_terminated_at', true );
+		$next_due_date  = get_post_meta( $post->ID, '_hf_next_due_date', true );
+
+		$data = array(
 			'id'              => $post->ID,
 			'domain'          => get_post_meta( $post->ID, '_hf_domain', true ),
 			'status'          => get_post_meta( $post->ID, '_hf_status', true ),
@@ -215,11 +220,24 @@ class HF_REST_Service_Controller extends HF_REST_Controller {
 			'subscription_id' => absint( get_post_meta( $post->ID, '_hf_subscription_id', true ) ),
 			'user_id'         => absint( get_post_meta( $post->ID, '_hf_user_id', true ) ),
 			'product_id'      => absint( get_post_meta( $post->ID, '_hf_product_id', true ) ),
-			'provisioned_at'  => get_post_meta( $post->ID, '_hf_provisioned_at', true ) ?: null,
-			'suspended_at'    => get_post_meta( $post->ID, '_hf_suspended_at', true ) ?: null,
-			'terminated_at'   => get_post_meta( $post->ID, '_hf_terminated_at', true ) ?: null,
-			'next_due_date'   => get_post_meta( $post->ID, '_hf_next_due_date', true ) ?: null,
+			'provisioned_at'  => ! empty( $provisioned_at ) ? $provisioned_at : null,
+			'suspended_at'    => ! empty( $suspended_at ) ? $suspended_at : null,
+			'terminated_at'   => ! empty( $terminated_at ) ? $terminated_at : null,
+			'next_due_date'   => ! empty( $next_due_date ) ? $next_due_date : null,
 			'created_at'      => $post->post_date,
 		);
+
+		/**
+		 * Filter the service REST response data.
+		 *
+		 * Allows modification of the data returned for each service
+		 * in REST API responses, e.g. to add custom fields.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array    $data Service data array.
+		 * @param \WP_Post $post Service post object.
+		 */
+		return apply_filters( 'hostforge_rest_service_response', $data, $post );
 	}
 }

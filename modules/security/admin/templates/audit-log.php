@@ -104,7 +104,7 @@ $object_types = array(
 						<?php
 						$user_display = '—';
 						if ( ! empty( $entry->user_id ) ) {
-							$user = get_userdata( (int) $entry->user_id );
+							$user         = get_userdata( (int) $entry->user_id );
 							$user_display = $user ? $user->display_name : sprintf( '#%d', $entry->user_id );
 						}
 						?>

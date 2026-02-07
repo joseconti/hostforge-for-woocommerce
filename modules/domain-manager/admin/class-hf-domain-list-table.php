@@ -73,10 +73,10 @@ class HF_Domain_List_Table extends \WP_List_Table {
 	 * @return array
 	 */
 	protected function get_views(): array {
-		$statuses    = HF_Domain_Manager_Module::get_statuses();
-		$current     = sanitize_text_field( wp_unslash( $_GET['status'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$base_url    = admin_url( 'admin.php?page=hostforge-domains' );
-		$views       = array();
+		$statuses = HF_Domain_Manager_Module::get_statuses();
+		$current  = sanitize_text_field( wp_unslash( $_GET['status'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$base_url = admin_url( 'admin.php?page=hostforge-domains' );
+		$views    = array();
 
 		// Count all.
 		$total = $this->count_domains();
@@ -240,7 +240,7 @@ class HF_Domain_List_Table extends \WP_List_Table {
 		);
 
 		if ( $order_id ) {
-			$order_url         = admin_url( 'post.php?post=' . $order_id . '&action=edit' );
+			$order_url        = admin_url( 'post.php?post=' . $order_id . '&action=edit' );
 			$actions['order'] = sprintf(
 				'<a href="%s">%s #%d</a>',
 				esc_url( $order_url ),

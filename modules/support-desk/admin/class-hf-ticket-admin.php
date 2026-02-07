@@ -108,25 +108,25 @@ class HF_Ticket_Admin {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'hf_ticket_nonce' ),
 				'i18n'    => array(
-					'saving'              => __( 'Saving...', 'hostforge' ),
-					'saved'               => __( 'Saved successfully.', 'hostforge' ),
-					'sending'             => __( 'Sending reply...', 'hostforge' ),
-					'sent'                => __( 'Reply sent.', 'hostforge' ),
-					'updating'            => __( 'Updating...', 'hostforge' ),
-					'updated'             => __( 'Updated successfully.', 'hostforge' ),
-					'deleting'            => __( 'Deleting...', 'hostforge' ),
-					'deleted'             => __( 'Deleted successfully.', 'hostforge' ),
-					'confirmDelete'       => __( 'Are you sure you want to delete this item? This cannot be undone.', 'hostforge' ),
-					'confirmClose'        => __( 'Are you sure you want to close this ticket?', 'hostforge' ),
-					'error'               => __( 'An error occurred.', 'hostforge' ),
-					'replyRequired'       => __( 'Please enter a reply.', 'hostforge' ),
-					'subjectRequired'     => __( 'Please enter a subject.', 'hostforge' ),
-					'contentRequired'     => __( 'Please enter content.', 'hostforge' ),
-					'titleRequired'       => __( 'Please enter a title.', 'hostforge' ),
-					'departmentRequired'  => __( 'Please enter a department name.', 'hostforge' ),
-					'searchPlaceholder'   => __( 'Search knowledge base...', 'hostforge' ),
-					'noResults'           => __( 'No articles found.', 'hostforge' ),
-					'uploading'           => __( 'Uploading...', 'hostforge' ),
+					'saving'             => __( 'Saving...', 'hostforge' ),
+					'saved'              => __( 'Saved successfully.', 'hostforge' ),
+					'sending'            => __( 'Sending reply...', 'hostforge' ),
+					'sent'               => __( 'Reply sent.', 'hostforge' ),
+					'updating'           => __( 'Updating...', 'hostforge' ),
+					'updated'            => __( 'Updated successfully.', 'hostforge' ),
+					'deleting'           => __( 'Deleting...', 'hostforge' ),
+					'deleted'            => __( 'Deleted successfully.', 'hostforge' ),
+					'confirmDelete'      => __( 'Are you sure you want to delete this item? This cannot be undone.', 'hostforge' ),
+					'confirmClose'       => __( 'Are you sure you want to close this ticket?', 'hostforge' ),
+					'error'              => __( 'An error occurred.', 'hostforge' ),
+					'replyRequired'      => __( 'Please enter a reply.', 'hostforge' ),
+					'subjectRequired'    => __( 'Please enter a subject.', 'hostforge' ),
+					'contentRequired'    => __( 'Please enter content.', 'hostforge' ),
+					'titleRequired'      => __( 'Please enter a title.', 'hostforge' ),
+					'departmentRequired' => __( 'Please enter a department name.', 'hostforge' ),
+					'searchPlaceholder'  => __( 'Search knowledge base...', 'hostforge' ),
+					'noResults'          => __( 'No articles found.', 'hostforge' ),
+					'uploading'          => __( 'Uploading...', 'hostforge' ),
 				),
 			)
 		);
@@ -218,6 +218,18 @@ class HF_Ticket_Admin {
 	 * @return void
 	 */
 	private function render_ticket_list(): void {
+		/**
+		 * Filters the admin ticket list table columns.
+		 *
+		 * Use this to add or remove columns from the ticket list table.
+		 * This filter fires before the list table is prepared.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $columns Associative array of column slug => label.
+		 */
+		add_filter( 'hostforge_ticket_admin_columns', array( $this, 'get_default_ticket_columns' ), 5 );
+
 		$list_table = new HF_Ticket_List_Table();
 		$list_table->prepare_items();
 
@@ -225,6 +237,16 @@ class HF_Ticket_Admin {
 		if ( file_exists( $template ) ) {
 			include $template;
 		}
+	}
+
+	/**
+	 * Get default ticket admin columns for the filter.
+	 *
+	 * @param array $columns Current columns.
+	 * @return array
+	 */
+	public function get_default_ticket_columns( array $columns ): array {
+		return $columns;
 	}
 
 	/**
@@ -597,13 +619,31 @@ class HF_Ticket_Admin {
 			}
 		}
 
+		$reply_data = array(
+			'ticket_id'      => $ticket_id,
+			'user_id'        => get_current_user_id(),
+			'content'        => $content,
+			'is_private'     => $is_private,
+			'is_staff'       => true,
+			'attachment_ids' => $attachment_ids,
+		);
+
+		/**
+		 * Filters staff reply data before saving to the database.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $reply_data Reply data array with keys: ticket_id, user_id, content, is_private, is_staff, attachment_ids.
+		 */
+		$reply_data = apply_filters( 'hostforge_ticket_admin_reply_data', $reply_data );
+
 		$comment_id = $this->module->add_reply(
-			$ticket_id,
-			get_current_user_id(),
-			$content,
-			$is_private,
-			true, // is_staff.
-			$attachment_ids
+			$reply_data['ticket_id'],
+			$reply_data['user_id'],
+			$reply_data['content'],
+			$reply_data['is_private'],
+			$reply_data['is_staff'],
+			$reply_data['attachment_ids']
 		);
 
 		if ( ! $comment_id ) {
@@ -611,7 +651,7 @@ class HF_Ticket_Admin {
 		}
 
 		// Build reply HTML for live update.
-		$user = wp_get_current_user();
+		$user       = wp_get_current_user();
 		$reply_html = $this->build_reply_html( $comment_id, $user, $content, $is_private, $attachment_ids );
 
 		wp_send_json_success(
@@ -900,7 +940,7 @@ class HF_Ticket_Admin {
 
 		if ( $article_id > 0 ) {
 			$post_data['ID'] = $article_id;
-			$result = wp_update_post( $post_data, true );
+			$result          = wp_update_post( $post_data, true );
 		} else {
 			$result = wp_insert_post( $post_data, true );
 		}
@@ -992,6 +1032,17 @@ class HF_Ticket_Admin {
 			wp_send_json_error( array( 'message' => __( 'Response content is required.', 'hostforge' ) ) );
 		}
 
+		/**
+		 * Filters the canned response content before saving.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $content     The canned response content.
+		 * @param string $title       The canned response title.
+		 * @param int    $response_id The response post ID (0 for new).
+		 */
+		$content = apply_filters( 'hostforge_canned_response_content', $content, $title, $response_id );
+
 		$post_data = array(
 			'post_type'    => 'hf_canned_response',
 			'post_title'   => $title,
@@ -1002,7 +1053,7 @@ class HF_Ticket_Admin {
 
 		if ( $response_id > 0 ) {
 			$post_data['ID'] = $response_id;
-			$result = wp_update_post( $post_data, true );
+			$result          = wp_update_post( $post_data, true );
 		} else {
 			$result = wp_insert_post( $post_data, true );
 		}
@@ -1112,6 +1163,10 @@ class HF_Ticket_Admin {
 	public function ajax_kb_search(): void {
 		check_ajax_referer( 'hf_kb_search_nonce', 'nonce' );
 
+		if ( ! current_user_can( 'manage_hostforge_tickets' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Permission denied.', 'hostforge' ) ) );
+		}
+
 		$keyword = isset( $_POST['keyword'] ) ? sanitize_text_field( wp_unslash( $_POST['keyword'] ) ) : '';
 
 		if ( empty( $keyword ) ) {
@@ -1149,6 +1204,16 @@ class HF_Ticket_Admin {
 				'url'     => get_permalink( $article->ID ),
 			);
 		}
+
+		/**
+		 * Filters the KB search results before returning.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $results Array of search result arrays (id, title, excerpt, url).
+		 * @param string $keyword The search keyword.
+		 */
+		$results = apply_filters( 'hostforge_kb_search_results', $results, $keyword );
 
 		wp_send_json_success(
 			array(

@@ -74,9 +74,19 @@ class HF_Email_Ticket_Reply_Staff extends \WC_Email {
 		$tags               = HF_Merge_Tags::get_ticket_tags( $ticket_id );
 		$this->placeholders = array_merge( $this->placeholders, $tags );
 
+		/**
+		 * Filter the recipient for the ticket reply staff email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $recipient Email recipient address (comma-separated).
+		 * @param int    $ticket_id Ticket post ID.
+		 */
+		$recipient_string = apply_filters( 'hostforge_email_ticket_reply_staff_recipient', implode( ',', $recipients ), $ticket_id );
+
 		if ( $this->is_enabled() ) {
 			$this->send(
-				implode( ',', $recipients ),
+				$recipient_string,
 				$this->get_subject(),
 				$this->get_content(),
 				$this->get_headers(),
@@ -94,18 +104,30 @@ class HF_Email_Ticket_Reply_Staff extends \WC_Email {
 		$tags  = HF_Merge_Tags::get_ticket_tags( $this->ticket_id );
 		$reply = get_comment( $this->reply_id );
 
+		$email_data = array(
+			'email_heading'  => HF_Merge_Tags::process( $this->get_heading(), $tags ),
+			'email'          => $this,
+			'ticket_id'      => $this->ticket_id,
+			'customer_name'  => ! empty( $tags['{customer_name}'] ) ? $tags['{customer_name}'] : '',
+			'reply_content'  => $reply ? $reply->comment_content : '',
+			'reply_author'   => $reply ? $reply->comment_author : '',
+			'ticket_url'     => admin_url( 'admin.php?page=hostforge-tickets&action=view&id=' . $this->ticket_id ),
+			'ticket_subject' => ! empty( $tags['{ticket_subject}'] ) ? $tags['{ticket_subject}'] : '',
+		);
+
+		/**
+		 * Filter email template data before rendering the ticket reply staff email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $email_data Template data key-value pairs.
+		 * @param int   $ticket_id  Ticket post ID.
+		 */
+		$email_data = apply_filters( 'hostforge_email_ticket_reply_staff_data', $email_data, $this->ticket_id );
+
 		return wc_get_template_html(
 			$this->template_html,
-			array(
-				'email_heading'  => HF_Merge_Tags::process( $this->get_heading(), $tags ),
-				'email'          => $this,
-				'ticket_id'      => $this->ticket_id,
-				'customer_name'  => ! empty( $tags['{customer_name}'] ) ? $tags['{customer_name}'] : '',
-				'reply_content'  => $reply ? $reply->comment_content : '',
-				'reply_author'   => $reply ? $reply->comment_author : '',
-				'ticket_url'     => admin_url( 'admin.php?page=hostforge-tickets&action=view&id=' . $this->ticket_id ),
-				'ticket_subject' => ! empty( $tags['{ticket_subject}'] ) ? $tags['{ticket_subject}'] : '',
-			),
+			$email_data,
 			'',
 			$this->template_base
 		);

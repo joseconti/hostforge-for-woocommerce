@@ -13,15 +13,15 @@ $tabs = array(
 	'registrar'   => __( 'Registrar Settings', 'hostforge' ),
 );
 
-$api_user       = get_option( 'hf_namecheap_api_user', '' );
-$username       = get_option( 'hf_namecheap_username', '' );
-$client_ip      = get_option( 'hf_namecheap_client_ip', '' );
-$sandbox        = get_option( 'hf_namecheap_sandbox', 'no' );
-$has_api_key    = ! empty( get_option( 'hf_namecheap_api_key', '' ) );
-$auto_register  = get_option( 'hf_domain_auto_register', 'yes' );
-$renew_days     = get_option( 'hf_domain_auto_renew_days', 14 );
-$reminder_days  = get_option( 'hf_domain_expiry_reminder_days', '30,14,7,1' );
-$default_ns     = get_option( 'hf_domain_default_nameservers', '' );
+$api_user      = get_option( 'hf_namecheap_api_user', '' );
+$username      = get_option( 'hf_namecheap_username', '' );
+$client_ip     = get_option( 'hf_namecheap_client_ip', '' );
+$sandbox       = get_option( 'hf_namecheap_sandbox', 'no' );
+$has_api_key   = ! empty( get_option( 'hf_namecheap_api_key', '' ) );
+$auto_register = get_option( 'hf_domain_auto_register', 'yes' );
+$renew_days    = get_option( 'hf_domain_auto_renew_days', 14 );
+$reminder_days = get_option( 'hf_domain_expiry_reminder_days', '30,14,7,1' );
+$default_ns    = get_option( 'hf_domain_default_nameservers', '' );
 ?>
 
 <div class="wrap">
@@ -30,7 +30,7 @@ $default_ns     = get_option( 'hf_domain_default_nameservers', '' );
 	<nav class="nav-tab-wrapper">
 		<?php foreach ( $tabs as $slug => $label ) : ?>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=hostforge-domains&tab=' . $slug ) ); ?>"
-			   class="nav-tab <?php echo 'registrar' === $slug ? 'nav-tab-active' : ''; ?>">
+				class="nav-tab <?php echo 'registrar' === $slug ? 'nav-tab-active' : ''; ?>">
 				<?php echo esc_html( $label ); ?>
 			</a>
 		<?php endforeach; ?>
@@ -53,7 +53,7 @@ $default_ns     = get_option( 'hf_domain_default_nameservers', '' );
 						<tr>
 							<th><label for="hf-api-key"><?php esc_html_e( 'API Key', 'hostforge' ); ?></label></th>
 							<td>
-								<input type="password" id="hf-api-key" name="api_key" class="regular-text" value="<?php echo $has_api_key ? '********' : ''; ?>" />
+								<input type="password" id="hf-api-key" name="api_key" class="regular-text" value="<?php echo esc_attr( $has_api_key ? '********' : '' ); ?>" />
 								<p class="description"><?php esc_html_e( 'Leave as ******** to keep the current key.', 'hostforge' ); ?></p>
 							</td>
 						</tr>

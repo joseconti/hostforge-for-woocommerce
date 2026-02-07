@@ -40,7 +40,7 @@ class HF_Report_Data {
 		);
 
 		if ( $table_exists ) {
-			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 			$results = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT
@@ -61,164 +61,243 @@ class HF_Report_Data {
 			$results = array();
 		}
 
-		return ! empty( $results ) ? $results : array();
+		$data = ! empty( $results ) ? $results : array();
+
+		/**
+		 * Filter revenue data before returning.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $data       Revenue data rows with month, revenue, order_count.
+		 * @param string $start_date Start date (Y-m-d).
+		 * @param string $end_date   End date (Y-m-d).
+		 */
+		return apply_filters( 'hostforge_report_revenue_data', $data, $start_date, $end_date );
 	}
 
 	/**
 	 * Get Monthly Recurring Revenue estimate.
 	 *
+	 * Uses a single JOIN query instead of per-service lookups
+	 * and caches the result in a transient for 1 hour.
+	 *
 	 * @return float
 	 */
 	public function get_mrr(): float {
-		$active_services = get_posts(
-			array(
-				'post_type'      => 'hf_service',
-				'post_status'    => 'publish',
-				'meta_key'       => '_hf_status',
-				'meta_value'     => 'active',
-				'posts_per_page' => -1,
-				'fields'         => 'ids',
-			)
-		);
+		$cached = get_transient( 'hf_report_mrr' );
 
-		$mrr = 0;
-
-		foreach ( $active_services as $service_id ) {
-			$product_id = (int) get_post_meta( $service_id, '_hf_product_id', true );
-			$product    = wc_get_product( $product_id );
-
-			if ( ! $product ) {
-				continue;
-			}
-
-			$price = (float) $product->get_price();
-
-			if ( $price > 0 ) {
-				$mrr += $price;
-			}
+		if ( false !== $cached ) {
+			return (float) $cached;
 		}
 
-		return round( $mrr, 2 );
+		global $wpdb;
+
+		// Single query: join services → product_id meta → postmeta for price.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$mrr = (float) $wpdb->get_var(
+			"SELECT COALESCE(SUM(CAST(price_meta.meta_value AS DECIMAL(10,2))), 0)
+			FROM {$wpdb->posts} p
+			INNER JOIN {$wpdb->postmeta} status_meta
+				ON p.ID = status_meta.post_id
+				AND status_meta.meta_key = '_hf_status'
+				AND status_meta.meta_value = 'active'
+			INNER JOIN {$wpdb->postmeta} product_meta
+				ON p.ID = product_meta.post_id
+				AND product_meta.meta_key = '_hf_product_id'
+			INNER JOIN {$wpdb->postmeta} price_meta
+				ON product_meta.meta_value = price_meta.post_id
+				AND price_meta.meta_key = '_price'
+			WHERE p.post_type = 'hf_service'
+			AND p.post_status = 'publish'"
+		);
+
+		$mrr = round( $mrr, 2 );
+
+		/**
+		 * Filter the Monthly Recurring Revenue value before returning.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param float $mrr Calculated MRR value.
+		 */
+		$mrr = (float) apply_filters( 'hostforge_report_mrr', $mrr );
+
+		set_transient( 'hf_report_mrr', $mrr, HOUR_IN_SECONDS );
+
+		return $mrr;
 	}
 
 	/**
 	 * Get services count by status.
 	 *
+	 * Uses a single GROUP BY query instead of one query per status.
+	 *
 	 * @return array
 	 */
 	public function get_services_by_status(): array {
-		$statuses = array( 'active', 'pending', 'suspended', 'terminated', 'cancelled' );
-		$result   = array();
+		global $wpdb;
 
-		foreach ( $statuses as $status ) {
-			$count = count(
-				get_posts(
-					array(
-						'post_type'      => 'hf_service',
-						'post_status'    => 'publish',
-						'meta_key'       => '_hf_status',
-						'meta_value'     => $status,
-						'posts_per_page' => -1,
-						'fields'         => 'ids',
-					)
-				)
-			);
+		$defaults = array(
+			'active'     => 0,
+			'pending'    => 0,
+			'suspended'  => 0,
+			'terminated' => 0,
+			'cancelled'  => 0,
+		);
 
-			$result[ $status ] = $count;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$rows = $wpdb->get_results(
+			"SELECT pm.meta_value AS status, COUNT(*) AS total
+			FROM {$wpdb->posts} p
+			INNER JOIN {$wpdb->postmeta} pm
+				ON p.ID = pm.post_id AND pm.meta_key = '_hf_status'
+			WHERE p.post_type = 'hf_service'
+			AND p.post_status = 'publish'
+			GROUP BY pm.meta_value"
+		);
+
+		$result = $defaults;
+
+		if ( ! empty( $rows ) ) {
+			foreach ( $rows as $row ) {
+				if ( isset( $result[ $row->status ] ) ) {
+					$result[ $row->status ] = (int) $row->total;
+				}
+			}
 		}
 
-		return $result;
+		/**
+		 * Filter services by status data before returning.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $result Associative array of status => count.
+		 */
+		return apply_filters( 'hostforge_report_services_data', $result );
 	}
 
 	/**
 	 * Get support ticket metrics.
 	 *
+	 * Uses single GROUP BY query for status counts and a single
+	 * JOIN query for average resolution time.
+	 *
 	 * @return array
 	 */
 	public function get_ticket_metrics(): array {
-		$statuses = array( 'open', 'customer_reply', 'staff_reply', 'in_progress', 'closed' );
-		$by_status = array();
+		global $wpdb;
 
-		foreach ( $statuses as $status ) {
-			$count = count(
-				get_posts(
-					array(
-						'post_type'      => 'hf_ticket',
-						'post_status'    => 'publish',
-						'meta_key'       => '_hf_status',
-						'meta_value'     => $status,
-						'posts_per_page' => -1,
-						'fields'         => 'ids',
-					)
-				)
-			);
-
-			$by_status[ $status ] = $count;
-		}
-
-		// Average resolution time (closed tickets in last 30 days).
-		$closed_tickets = get_posts(
-			array(
-				'post_type'      => 'hf_ticket',
-				'post_status'    => 'publish',
-				'meta_key'       => '_hf_status',
-				'meta_value'     => 'closed',
-				'posts_per_page' => 50,
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-				'fields'         => 'ids',
-			)
+		$defaults = array(
+			'open'           => 0,
+			'customer_reply' => 0,
+			'staff_reply'    => 0,
+			'in_progress'    => 0,
+			'closed'         => 0,
 		);
 
-		$total_hours = 0;
-		$count       = 0;
+		// Single query for all status counts.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$rows = $wpdb->get_results(
+			"SELECT pm.meta_value AS status, COUNT(*) AS total
+			FROM {$wpdb->posts} p
+			INNER JOIN {$wpdb->postmeta} pm
+				ON p.ID = pm.post_id AND pm.meta_key = '_hf_status'
+			WHERE p.post_type = 'hf_ticket'
+			AND p.post_status = 'publish'
+			GROUP BY pm.meta_value"
+		);
 
-		foreach ( $closed_tickets as $ticket_id ) {
-			$created = get_the_date( 'U', $ticket_id );
-			$closed  = get_post_meta( $ticket_id, '_hf_closed_at', true );
+		$by_status = $defaults;
 
-			if ( ! empty( $closed ) ) {
-				$diff         = abs( strtotime( $closed ) - (int) $created );
-				$total_hours += $diff / HOUR_IN_SECONDS;
-				++$count;
+		if ( ! empty( $rows ) ) {
+			foreach ( $rows as $row ) {
+				if ( isset( $by_status[ $row->status ] ) ) {
+					$by_status[ $row->status ] = (int) $row->total;
+				}
 			}
 		}
 
-		$avg_resolution = $count > 0 ? round( $total_hours / $count, 1 ) : 0;
+		// Average resolution time with a single JOIN query.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$avg_result = $wpdb->get_row(
+			"SELECT
+				AVG(ABS(TIMESTAMPDIFF(SECOND, p.post_date_gmt, closed_meta.meta_value))) / 3600 AS avg_hours,
+				COUNT(*) AS total
+			FROM {$wpdb->posts} p
+			INNER JOIN {$wpdb->postmeta} status_meta
+				ON p.ID = status_meta.post_id
+				AND status_meta.meta_key = '_hf_status'
+				AND status_meta.meta_value = 'closed'
+			INNER JOIN {$wpdb->postmeta} closed_meta
+				ON p.ID = closed_meta.post_id
+				AND closed_meta.meta_key = '_hf_closed_at'
+				AND closed_meta.meta_value != ''
+			WHERE p.post_type = 'hf_ticket'
+			AND p.post_status = 'publish'
+			ORDER BY p.post_date DESC
+			LIMIT 50"
+		);
 
-		return array(
+		$avg_resolution = ( $avg_result && $avg_result->total > 0 )
+			? round( (float) $avg_result->avg_hours, 1 )
+			: 0;
+
+		$metrics = array(
 			'by_status'      => $by_status,
 			'avg_resolution' => $avg_resolution,
-			'total_open'     => array_sum( array_intersect_key( $by_status, array_flip( array( 'open', 'customer_reply', 'in_progress' ) ) ) ),
+			'total_open'     => $by_status['open'] + $by_status['customer_reply'] + $by_status['in_progress'],
 		);
+
+		/**
+		 * Filter ticket metrics data before returning.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $metrics Ticket metrics including by_status, avg_resolution, total_open.
+		 */
+		return apply_filters( 'hostforge_report_ticket_metrics', $metrics );
 	}
 
 	/**
 	 * Get domain statistics.
 	 *
+	 * Uses single GROUP BY query for status counts.
+	 *
 	 * @return array
 	 */
 	public function get_domain_stats(): array {
-		$statuses = array( 'active', 'pending', 'expired', 'transferred' );
-		$result   = array();
+		global $wpdb;
 
-		foreach ( $statuses as $status ) {
-			$result[ $status ] = count(
-				get_posts(
-					array(
-						'post_type'      => 'hf_domain',
-						'post_status'    => 'publish',
-						'meta_key'       => '_hf_status',
-						'meta_value'     => $status,
-						'posts_per_page' => -1,
-						'fields'         => 'ids',
-					)
-				)
-			);
+		$defaults = array(
+			'active'      => 0,
+			'pending'     => 0,
+			'expired'     => 0,
+			'transferred' => 0,
+		);
+
+		// Single query for all status counts.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$rows = $wpdb->get_results(
+			"SELECT pm.meta_value AS status, COUNT(*) AS total
+			FROM {$wpdb->posts} p
+			INNER JOIN {$wpdb->postmeta} pm
+				ON p.ID = pm.post_id AND pm.meta_key = '_hf_status'
+			WHERE p.post_type = 'hf_domain'
+			AND p.post_status = 'publish'
+			GROUP BY pm.meta_value"
+		);
+
+		$result = $defaults;
+
+		if ( ! empty( $rows ) ) {
+			foreach ( $rows as $row ) {
+				if ( isset( $result[ $row->status ] ) ) {
+					$result[ $row->status ] = (int) $row->total;
+				}
+			}
 		}
 
 		// Expiring in next 30 days.
-		global $wpdb;
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$expiring = (int) $wpdb->get_var(
 			$wpdb->prepare(
@@ -235,41 +314,69 @@ class HF_Report_Data {
 
 		$result['expiring_soon'] = $expiring;
 
-		return $result;
+		/**
+		 * Filter domain statistics data before returning.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $result Domain stats including status counts and expiring_soon.
+		 */
+		return apply_filters( 'hostforge_report_domain_stats', $result );
 	}
 
 	/**
 	 * Get server capacity data.
 	 *
+	 * Uses a single query with JOINs to fetch all server data
+	 * instead of per-server meta lookups.
+	 *
 	 * @return array
 	 */
 	public function get_server_capacity(): array {
-		$servers = get_posts(
-			array(
-				'post_type'      => 'hf_server',
-				'post_status'    => 'publish',
-				'posts_per_page' => -1,
-				'fields'         => 'ids',
-			)
+		global $wpdb;
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$rows = $wpdb->get_results(
+			"SELECT
+				p.ID AS id,
+				p.post_title AS name,
+				COALESCE(max_meta.meta_value, 0) AS max_accounts,
+				COALESCE(cur_meta.meta_value, 0) AS current_accounts
+			FROM {$wpdb->posts} p
+			LEFT JOIN {$wpdb->postmeta} max_meta
+				ON p.ID = max_meta.post_id AND max_meta.meta_key = '_hf_max_accounts'
+			LEFT JOIN {$wpdb->postmeta} cur_meta
+				ON p.ID = cur_meta.post_id AND cur_meta.meta_key = '_hf_current_accounts'
+			WHERE p.post_type = 'hf_server'
+			AND p.post_status = 'publish'
+			ORDER BY p.post_title ASC"
 		);
 
 		$data = array();
 
-		foreach ( $servers as $server_id ) {
-			$name     = get_the_title( $server_id );
-			$max      = (int) get_post_meta( $server_id, '_hf_max_accounts', true );
-			$current  = (int) get_post_meta( $server_id, '_hf_current_accounts', true );
+		if ( ! empty( $rows ) ) {
+			foreach ( $rows as $row ) {
+				$max     = (int) $row->max_accounts;
+				$current = (int) $row->current_accounts;
 
-			$data[] = array(
-				'id'       => $server_id,
-				'name'     => $name,
-				'max'      => $max,
-				'current'  => $current,
-				'usage'    => $max > 0 ? round( ( $current / $max ) * 100, 1 ) : 0,
-			);
+				$data[] = array(
+					'id'      => (int) $row->id,
+					'name'    => $row->name,
+					'max'     => $max,
+					'current' => $current,
+					'usage'   => $max > 0 ? round( ( $current / $max ) * 100, 1 ) : 0,
+				);
+			}
 		}
 
-		return $data;
+		/**
+		 * Filter server capacity data before returning.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $data Array of server capacity arrays with id, name, max, current, usage.
+		 */
+		return apply_filters( 'hostforge_report_server_capacity', $data );
 	}
 
 	/**

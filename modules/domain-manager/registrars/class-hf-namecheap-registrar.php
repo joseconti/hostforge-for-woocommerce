@@ -155,10 +155,10 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 
 			if ( isset( $xml->CommandResponse->DomainCheckResult ) ) {
 				foreach ( $xml->CommandResponse->DomainCheckResult as $check ) {
-					$attrs  = $check->attributes();
-					$name   = (string) ( $attrs['Domain'] ?? '' );
-					$avail  = 'true' === (string) ( $attrs['Available'] ?? 'false' );
-					$prem   = 'true' === (string) ( $attrs['IsPremiumName'] ?? 'false' );
+					$attrs = $check->attributes();
+					$name  = (string) ( $attrs['Domain'] ?? '' );
+					$avail = 'true' === (string) ( $attrs['Available'] ?? 'false' );
+					$prem  = 'true' === (string) ( $attrs['IsPremiumName'] ?? 'false' );
 
 					$results[ $name ] = array(
 						'available' => $avail,
@@ -195,10 +195,10 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		list( $sld, $tld ) = $this->split_domain( $domain );
 
 		$api_params = array(
-			'DomainName'              => $domain,
-			'Years'                   => $period,
-			'AddFreeWhoisguard'       => 'yes',
-			'WGEnabled'               => 'yes',
+			'DomainName'        => $domain,
+			'Years'             => $period,
+			'AddFreeWhoisguard' => 'yes',
+			'WGEnabled'         => 'yes',
 		);
 
 		// Add nameservers.
@@ -213,6 +213,20 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 			$api_params = array_merge( $api_params, $this->build_contact_params( $contact, $type ) );
 		}
 
+		/**
+		 * Filters the Namecheap domain registration API parameters.
+		 *
+		 * Allows modification of registration parameters before they are sent
+		 * to the Namecheap API (e.g. adding premium DNS, custom nameservers).
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $api_params The Namecheap API parameters for domain creation.
+		 * @param string $domain     The domain name being registered.
+		 * @param array  $params     The original registration parameters.
+		 */
+		$api_params = apply_filters( 'hostforge_namecheap_register_params', $api_params, $domain, $params );
+
 		$result = $this->namecheap_api( 'namecheap.domains.create', $api_params );
 
 		if ( ! $result['success'] ) {
@@ -223,7 +237,7 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 			);
 		}
 
-		$xml = $result['data'];
+		$xml  = $result['data'];
 		$data = array();
 
 		if ( isset( $xml->CommandResponse->DomainCreateResult ) ) {
@@ -238,7 +252,10 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 
 		$this->log_info(
 			'Domain registered via Namecheap.',
-			array( 'domain' => $domain, 'data' => $data )
+			array(
+				'domain' => $domain,
+				'data'   => $data,
+			)
 		);
 
 		return array(
@@ -385,6 +402,18 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 	public function set_nameservers( string $domain, array $nameservers ): array {
 		list( $sld, $tld ) = $this->split_domain( $domain );
 
+		/**
+		 * Filters the nameservers before setting them via the Namecheap API.
+		 *
+		 * Allows modification of the nameserver list before it is applied to a domain.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array<string> $nameservers The nameservers to set.
+		 * @param string        $domain      The domain name.
+		 */
+		$nameservers = apply_filters( 'hostforge_namecheap_nameservers', $nameservers, $domain );
+
 		$api_params = array(
 			'SLD'         => $sld,
 			'TLD'         => $tld,
@@ -450,8 +479,8 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		$result = $this->namecheap_api(
 			'namecheap.domains.setRegistrarLock',
 			array(
-				'DomainName'  => $domain,
-				'LockAction'  => $lock ? 'LOCK' : 'UNLOCK',
+				'DomainName' => $domain,
+				'LockAction' => $lock ? 'LOCK' : 'UNLOCK',
 			)
 		);
 
@@ -522,19 +551,19 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		if ( isset( $xml->CommandResponse->DomainContactsResult ) ) {
 			foreach ( array( 'Registrant', 'Tech', 'Admin', 'AuxBilling' ) as $type ) {
 				if ( isset( $xml->CommandResponse->DomainContactsResult->$type ) ) {
-					$contact = $xml->CommandResponse->DomainContactsResult->$type;
+					$contact                      = $xml->CommandResponse->DomainContactsResult->$type;
 					$whois[ strtolower( $type ) ] = array(
-						'first_name'       => (string) ( $contact->FirstName ?? '' ),
-						'last_name'        => (string) ( $contact->LastName ?? '' ),
-						'organization'     => (string) ( $contact->OrganizationName ?? '' ),
-						'address1'         => (string) ( $contact->Address1 ?? '' ),
-						'address2'         => (string) ( $contact->Address2 ?? '' ),
-						'city'             => (string) ( $contact->City ?? '' ),
-						'state'            => (string) ( $contact->StateProvince ?? '' ),
-						'postal_code'      => (string) ( $contact->PostalCode ?? '' ),
-						'country'          => (string) ( $contact->Country ?? '' ),
-						'phone'            => (string) ( $contact->Phone ?? '' ),
-						'email'            => (string) ( $contact->EmailAddress ?? '' ),
+						'first_name'   => (string) ( $contact->FirstName ?? '' ),
+						'last_name'    => (string) ( $contact->LastName ?? '' ),
+						'organization' => (string) ( $contact->OrganizationName ?? '' ),
+						'address1'     => (string) ( $contact->Address1 ?? '' ),
+						'address2'     => (string) ( $contact->Address2 ?? '' ),
+						'city'         => (string) ( $contact->City ?? '' ),
+						'state'        => (string) ( $contact->StateProvince ?? '' ),
+						'postal_code'  => (string) ( $contact->PostalCode ?? '' ),
+						'country'      => (string) ( $contact->Country ?? '' ),
+						'phone'        => (string) ( $contact->Phone ?? '' ),
+						'email'        => (string) ( $contact->EmailAddress ?? '' ),
 					);
 				}
 			}
@@ -776,7 +805,7 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		);
 
 		foreach ( $records as $i => $record ) {
-			$n = $i + 1;
+			$n                              = $i + 1;
 			$api_params[ "HostName{$n}" ]   = $record['host'] ?? '@';
 			$api_params[ "RecordType{$n}" ] = $record['type'] ?? 'A';
 			$api_params[ "Address{$n}" ]    = $record['value'] ?? '';
@@ -811,11 +840,11 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 	 */
 	private function namecheap_api( string $command, array $params = array() ): array {
 		$default_params = array(
-			'ApiUser'    => $this->api_user,
-			'ApiKey'     => $this->api_key,
-			'UserName'   => $this->username,
-			'ClientIp'   => $this->client_ip,
-			'Command'    => $command,
+			'ApiUser'  => $this->api_user,
+			'ApiKey'   => $this->api_key,
+			'UserName' => $this->username,
+			'ClientIp' => $this->client_ip,
+			'Command'  => $command,
 		);
 
 		$query_params = array_merge( $default_params, $params );
@@ -903,11 +932,26 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 			);
 		}
 
-		return array(
+		$api_result = array(
 			'success' => true,
 			'data'    => $xml,
 			'error'   => '',
 		);
+
+		/**
+		 * Filters the Namecheap API response before it is returned.
+		 *
+		 * Allows inspection or modification of any successful Namecheap API response.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $api_result The API result array with success, data (SimpleXMLElement), error keys.
+		 * @param string $command    The Namecheap API command that was called.
+		 * @param array  $params     The parameters sent to the API (excluding credentials).
+		 */
+		$api_result = apply_filters( 'hostforge_namecheap_api_response', $api_result, $command, $params );
+
+		return $api_result;
 	}
 
 	/**

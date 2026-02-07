@@ -36,11 +36,11 @@ class HF_Merge_Tags {
 	 */
 	public function register_default_tags( array $tags, string $context ): array {
 		// Global tags.
-		$tags['{site_name}']  = get_bloginfo( 'name' );
-		$tags['{site_url}']   = home_url();
+		$tags['{site_name}']   = get_bloginfo( 'name' );
+		$tags['{site_url}']    = home_url();
 		$tags['{admin_email}'] = get_option( 'admin_email' );
 
-		$company_name = get_option( 'hf_company_name', '' );
+		$company_name           = get_option( 'hf_company_name', '' );
 		$tags['{company_name}'] = ! empty( $company_name ) ? $company_name : get_bloginfo( 'name' );
 
 		return $tags;
@@ -56,6 +56,19 @@ class HF_Merge_Tags {
 	public static function process( string $content, array $tags ): string {
 		if ( empty( $tags ) ) {
 			return $content;
+		}
+
+		foreach ( $tags as $tag => $value ) {
+			/**
+			 * Filter an individual merge tag value before replacement.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param string $value   The replacement value for the tag.
+			 * @param string $tag     The merge tag key (e.g. '{customer_name}').
+			 * @param string $content The full content string being processed.
+			 */
+			$tags[ $tag ] = apply_filters( 'hostforge_merge_tag_value', $value, $tag, $content );
 		}
 
 		return str_replace(
@@ -78,13 +91,13 @@ class HF_Merge_Tags {
 		$user_id = (int) get_post_meta( $service_id, '_hf_user_id', true );
 		$user    = get_userdata( $user_id );
 
-		$tags['{customer_name}']  = $user ? $user->display_name : '';
-		$tags['{customer_email}'] = $user ? $user->user_email : '';
-		$tags['{service_id}']     = (string) $service_id;
-		$tags['{service_domain}'] = get_post_meta( $service_id, '_hf_domain', true );
+		$tags['{customer_name}']    = $user ? $user->display_name : '';
+		$tags['{customer_email}']   = $user ? $user->user_email : '';
+		$tags['{service_id}']       = (string) $service_id;
+		$tags['{service_domain}']   = get_post_meta( $service_id, '_hf_domain', true );
 		$tags['{service_username}'] = get_post_meta( $service_id, '_hf_panel_username', true );
-		$tags['{service_status}'] = get_post_meta( $service_id, '_hf_status', true );
-		$tags['{panel_type}']     = get_post_meta( $service_id, '_hf_panel_type', true );
+		$tags['{service_status}']   = get_post_meta( $service_id, '_hf_status', true );
+		$tags['{panel_type}']       = get_post_meta( $service_id, '_hf_panel_type', true );
 
 		// Server info.
 		$server_id = (int) get_post_meta( $service_id, '_hf_server_id', true );
@@ -102,8 +115,8 @@ class HF_Merge_Tags {
 				}
 			}
 
-			$tags['{panel_url}']    = $panel_url;
-			$tags['{server_name}']  = get_the_title( $server_id );
+			$tags['{panel_url}']       = $panel_url;
+			$tags['{server_name}']     = get_the_title( $server_id );
 			$tags['{server_hostname}'] = ! empty( $hostname ) ? $hostname : '';
 		}
 
@@ -148,7 +161,7 @@ class HF_Merge_Tags {
 		$tags['{ticket_priority}'] = get_post_meta( $ticket_id, '_hf_priority', true );
 
 		// Department.
-		$departments = wp_get_object_terms( $ticket_id, 'hf_department', array( 'fields' => 'names' ) );
+		$departments                 = wp_get_object_terms( $ticket_id, 'hf_department', array( 'fields' => 'names' ) );
 		$tags['{ticket_department}'] = ! is_wp_error( $departments ) && ! empty( $departments ) ? $departments[0] : '';
 
 		// Ticket URL for customer.
@@ -177,13 +190,13 @@ class HF_Merge_Tags {
 		$user_id = (int) get_post_meta( $domain_id, '_hf_user_id', true );
 		$user    = get_userdata( $user_id );
 
-		$tags['{customer_name}']    = $user ? $user->display_name : '';
-		$tags['{customer_email}']   = $user ? $user->user_email : '';
-		$tags['{domain_id}']        = (string) $domain_id;
-		$tags['{domain_name}']      = get_post_meta( $domain_id, '_hf_domain_name', true );
-		$tags['{domain_status}']    = get_post_meta( $domain_id, '_hf_status', true );
-		$tags['{domain_registrar}'] = get_post_meta( $domain_id, '_hf_registrar', true );
-		$tags['{domain_expiry}']    = get_post_meta( $domain_id, '_hf_expiry_date', true );
+		$tags['{customer_name}']     = $user ? $user->display_name : '';
+		$tags['{customer_email}']    = $user ? $user->user_email : '';
+		$tags['{domain_id}']         = (string) $domain_id;
+		$tags['{domain_name}']       = get_post_meta( $domain_id, '_hf_domain_name', true );
+		$tags['{domain_status}']     = get_post_meta( $domain_id, '_hf_status', true );
+		$tags['{domain_registrar}']  = get_post_meta( $domain_id, '_hf_registrar', true );
+		$tags['{domain_expiry}']     = get_post_meta( $domain_id, '_hf_expiry_date', true );
 		$tags['{domain_auto_renew}'] = 'yes' === get_post_meta( $domain_id, '_hf_auto_renew', true )
 			? __( 'Enabled', 'hostforge' )
 			: __( 'Disabled', 'hostforge' );
@@ -209,17 +222,17 @@ class HF_Merge_Tags {
 	 */
 	public static function get_available_tags(): array {
 		return array(
-			__( 'Global', 'hostforge' ) => array(
-				'{site_name}'     => __( 'Site name', 'hostforge' ),
-				'{site_url}'      => __( 'Site URL', 'hostforge' ),
-				'{company_name}'  => __( 'Company name', 'hostforge' ),
-				'{admin_email}'   => __( 'Admin email', 'hostforge' ),
+			__( 'Global', 'hostforge' )   => array(
+				'{site_name}'    => __( 'Site name', 'hostforge' ),
+				'{site_url}'     => __( 'Site URL', 'hostforge' ),
+				'{company_name}' => __( 'Company name', 'hostforge' ),
+				'{admin_email}'  => __( 'Admin email', 'hostforge' ),
 			),
 			__( 'Customer', 'hostforge' ) => array(
 				'{customer_name}'  => __( 'Customer display name', 'hostforge' ),
 				'{customer_email}' => __( 'Customer email', 'hostforge' ),
 			),
-			__( 'Service', 'hostforge' ) => array(
+			__( 'Service', 'hostforge' )  => array(
 				'{service_id}'       => __( 'Service ID', 'hostforge' ),
 				'{service_domain}'   => __( 'Service domain', 'hostforge' ),
 				'{service_username}' => __( 'Panel username', 'hostforge' ),
@@ -230,7 +243,7 @@ class HF_Merge_Tags {
 				'{panel_url}'        => __( 'Panel URL', 'hostforge' ),
 				'{server_name}'      => __( 'Server name', 'hostforge' ),
 			),
-			__( 'Ticket', 'hostforge' ) => array(
+			__( 'Ticket', 'hostforge' )   => array(
 				'{ticket_id}'         => __( 'Ticket ID', 'hostforge' ),
 				'{ticket_subject}'    => __( 'Ticket subject', 'hostforge' ),
 				'{ticket_status}'     => __( 'Ticket status', 'hostforge' ),
@@ -238,7 +251,7 @@ class HF_Merge_Tags {
 				'{ticket_department}' => __( 'Ticket department', 'hostforge' ),
 				'{ticket_url}'        => __( 'Ticket URL', 'hostforge' ),
 			),
-			__( 'Domain', 'hostforge' ) => array(
+			__( 'Domain', 'hostforge' )   => array(
 				'{domain_name}'       => __( 'Domain name', 'hostforge' ),
 				'{domain_status}'     => __( 'Domain status', 'hostforge' ),
 				'{domain_registrar}'  => __( 'Registrar', 'hostforge' ),

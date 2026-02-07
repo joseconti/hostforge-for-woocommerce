@@ -70,7 +70,17 @@ class HF_Email_Service_Welcome extends \WC_Email {
 
 		$this->recipient = $user->user_email;
 
-		$tags          = HF_Merge_Tags::get_service_tags( $service_id, $data );
+		/**
+		 * Filter the recipient for the service welcome email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $recipient  Email recipient address.
+		 * @param int    $service_id Service post ID.
+		 */
+		$this->recipient = apply_filters( 'hostforge_email_service_welcome_recipient', $this->recipient, $service_id );
+
+		$tags               = HF_Merge_Tags::get_service_tags( $service_id, $data );
 		$this->placeholders = array_merge( $this->placeholders, $tags );
 
 		if ( $this->is_enabled() && $this->get_recipient() ) {
@@ -90,23 +100,35 @@ class HF_Email_Service_Welcome extends \WC_Email {
 	 * @return string
 	 */
 	public function get_content_html(): string {
-		$tags = HF_Merge_Tags::get_service_tags( $this->service_id, $this->account_data );
+		$tags    = HF_Merge_Tags::get_service_tags( $this->service_id, $this->account_data );
 		$user_id = (int) get_post_meta( $this->service_id, '_hf_user_id', true );
 		$user    = get_userdata( $user_id );
 
+		$email_data = array(
+			'email_heading' => $this->get_heading(),
+			'email'         => $this,
+			'customer_name' => $user ? $user->display_name : '',
+			'domain'        => ! empty( $tags['{service_domain}'] ) ? $tags['{service_domain}'] : '',
+			'username'      => ! empty( $tags['{service_username}'] ) ? $tags['{service_username}'] : '',
+			'password'      => ! empty( $this->account_data['password'] ) ? $this->account_data['password'] : '',
+			'panel_type'    => ! empty( $tags['{panel_type}'] ) ? $tags['{panel_type}'] : '',
+			'panel_url'     => ! empty( $tags['{panel_url}'] ) ? $tags['{panel_url}'] : '',
+			'package'       => ! empty( $this->account_data['package'] ) ? $this->account_data['package'] : '',
+		);
+
+		/**
+		 * Filter email template data before rendering the service welcome email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $email_data Template data key-value pairs.
+		 * @param int   $service_id Service post ID.
+		 */
+		$email_data = apply_filters( 'hostforge_email_service_welcome_data', $email_data, $this->service_id );
+
 		return wc_get_template_html(
 			$this->template_html,
-			array(
-				'email_heading' => $this->get_heading(),
-				'email'         => $this,
-				'customer_name' => $user ? $user->display_name : '',
-				'domain'        => ! empty( $tags['{service_domain}'] ) ? $tags['{service_domain}'] : '',
-				'username'      => ! empty( $tags['{service_username}'] ) ? $tags['{service_username}'] : '',
-				'password'      => ! empty( $this->account_data['password'] ) ? $this->account_data['password'] : '',
-				'panel_type'    => ! empty( $tags['{panel_type}'] ) ? $tags['{panel_type}'] : '',
-				'panel_url'     => ! empty( $tags['{panel_url}'] ) ? $tags['{panel_url}'] : '',
-				'package'       => ! empty( $this->account_data['package'] ) ? $this->account_data['package'] : '',
-			),
+			$email_data,
 			'',
 			$this->template_base
 		);

@@ -333,6 +333,22 @@ class HF_Domain_Manager_Module extends HF_Module {
 			return $this->registrar_instance;
 		}
 
+		$available_registrars = array(
+			'namecheap' => __( 'Namecheap', 'hostforge' ),
+		);
+
+		/**
+		 * Filters the list of available registrar providers.
+		 *
+		 * Use this to add custom registrar integrations. The returned array
+		 * should map registrar ID => display name.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array<string, string> $available_registrars Registrar ID => label pairs.
+		 */
+		$available_registrars = apply_filters( 'hostforge_registrars', $available_registrars );
+
 		$registrar = null;
 
 		switch ( $registrar_id ) {
@@ -400,6 +416,15 @@ class HF_Domain_Manager_Module extends HF_Module {
 	public function run_expiry_check(): void {
 		$reminder_days = array_map( 'absint', explode( ',', get_option( 'hf_domain_expiry_reminder_days', '30,14,7,1' ) ) );
 
+		/**
+		 * Filters the days-before-expiry intervals for domain reminder emails.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array<int> $reminder_days Array of day counts (e.g. [30, 14, 7, 1]).
+		 */
+		$reminder_days = apply_filters( 'hostforge_domain_expiry_reminder_days', $reminder_days );
+
 		$domains = get_posts(
 			array(
 				'post_type'      => 'hf_domain',
@@ -423,8 +448,8 @@ class HF_Domain_Manager_Module extends HF_Module {
 				continue;
 			}
 
-			$expiry_time     = strtotime( $expiry_date );
-			$days_remaining  = (int) ceil( ( $expiry_time - $now ) / DAY_IN_SECONDS );
+			$expiry_time    = strtotime( $expiry_date );
+			$days_remaining = (int) ceil( ( $expiry_time - $now ) / DAY_IN_SECONDS );
 
 			// Mark as expired if past expiry.
 			if ( $days_remaining <= 0 ) {
@@ -828,12 +853,21 @@ class HF_Domain_Manager_Module extends HF_Module {
 	 * @return array<string, string>
 	 */
 	public static function get_statuses(): array {
-		return array(
+		$statuses = array(
 			'pending'          => __( 'Pending', 'hostforge' ),
 			'active'           => __( 'Active', 'hostforge' ),
 			'expired'          => __( 'Expired', 'hostforge' ),
 			'transferred_away' => __( 'Transferred Away', 'hostforge' ),
 			'cancelled'        => __( 'Cancelled', 'hostforge' ),
 		);
+
+		/**
+		 * Filters the available domain statuses.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array<string, string> $statuses Status slug => label pairs.
+		 */
+		return apply_filters( 'hostforge_domain_statuses', $statuses );
 	}
 }

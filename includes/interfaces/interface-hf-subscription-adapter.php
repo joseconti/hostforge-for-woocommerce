@@ -2,7 +2,7 @@
 /**
  * Subscription Adapter Interface.
  *
- * Contract for subscription plugin adapters (WCS, YITH, Advanced Subs).
+ * Contract for subscription plugin adapters (WCS, YITH, Advanced Subs, SUMO).
  *
  * @package HostForge\Interfaces
  */

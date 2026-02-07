@@ -67,7 +67,18 @@ class HF_Email_Domain_Registered extends \WC_Email {
 			return;
 		}
 
-		$this->recipient    = $user->user_email;
+		$this->recipient = $user->user_email;
+
+		/**
+		 * Filter the recipient for the domain registered email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $recipient Email recipient address.
+		 * @param int    $domain_id Domain post ID.
+		 */
+		$this->recipient = apply_filters( 'hostforge_email_domain_registered_recipient', $this->recipient, $domain_id );
+
 		$tags               = HF_Merge_Tags::get_domain_tags( $domain_id );
 		$this->placeholders = array_merge( $this->placeholders, $tags );
 
@@ -92,18 +103,30 @@ class HF_Email_Domain_Registered extends \WC_Email {
 		$user_id = (int) get_post_meta( $this->domain_id, '_hf_user_id', true );
 		$user    = get_userdata( $user_id );
 
+		$email_data = array(
+			'email_heading' => HF_Merge_Tags::process( $this->get_heading(), $tags ),
+			'email'         => $this,
+			'customer_name' => $user ? $user->display_name : '',
+			'domain_name'   => $this->domain_name,
+			'domain_expiry' => ! empty( $tags['{domain_expiry}'] ) ? $tags['{domain_expiry}'] : '',
+			'nameservers'   => get_post_meta( $this->domain_id, '_hf_nameservers', true ),
+			'registrar'     => ! empty( $tags['{domain_registrar}'] ) ? $tags['{domain_registrar}'] : '',
+			'domain_url'    => ! empty( $tags['{domain_url}'] ) ? $tags['{domain_url}'] : '',
+		);
+
+		/**
+		 * Filter email template data before rendering the domain registered email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $email_data Template data key-value pairs.
+		 * @param int   $domain_id  Domain post ID.
+		 */
+		$email_data = apply_filters( 'hostforge_email_domain_registered_data', $email_data, $this->domain_id );
+
 		return wc_get_template_html(
 			$this->template_html,
-			array(
-				'email_heading'  => HF_Merge_Tags::process( $this->get_heading(), $tags ),
-				'email'          => $this,
-				'customer_name'  => $user ? $user->display_name : '',
-				'domain_name'    => $this->domain_name,
-				'domain_expiry'  => ! empty( $tags['{domain_expiry}'] ) ? $tags['{domain_expiry}'] : '',
-				'nameservers'    => get_post_meta( $this->domain_id, '_hf_nameservers', true ),
-				'registrar'      => ! empty( $tags['{domain_registrar}'] ) ? $tags['{domain_registrar}'] : '',
-				'domain_url'     => ! empty( $tags['{domain_url}'] ) ? $tags['{domain_url}'] : '',
-			),
+			$email_data,
 			'',
 			$this->template_base
 		);

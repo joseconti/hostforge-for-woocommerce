@@ -74,10 +74,10 @@ class HF_Ticket_List_Table extends \WP_List_Table {
 	 */
 	public function get_bulk_actions(): array {
 		return array(
-			'close'             => __( 'Close', 'hostforge' ),
-			'priority_high'     => __( 'Change Priority: High', 'hostforge' ),
-			'priority_medium'   => __( 'Change Priority: Medium', 'hostforge' ),
-			'priority_low'      => __( 'Change Priority: Low', 'hostforge' ),
+			'close'           => __( 'Close', 'hostforge' ),
+			'priority_high'   => __( 'Change Priority: High', 'hostforge' ),
+			'priority_medium' => __( 'Change Priority: Medium', 'hostforge' ),
+			'priority_low'    => __( 'Change Priority: Low', 'hostforge' ),
 		);
 	}
 

@@ -91,19 +91,33 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return array
 	 */
 	public function register_email_classes( array $email_classes ): array {
-		$email_classes['HF_Email_Service_Welcome']     = new Emails\HF_Email_Service_Welcome();
-		$email_classes['HF_Email_Service_Suspended']    = new Emails\HF_Email_Service_Suspended();
-		$email_classes['HF_Email_Service_Unsuspended']  = new Emails\HF_Email_Service_Unsuspended();
-		$email_classes['HF_Email_Service_Terminated']   = new Emails\HF_Email_Service_Terminated();
-		$email_classes['HF_Email_Ticket_New_Staff']     = new Emails\HF_Email_Ticket_New_Staff();
-		$email_classes['HF_Email_Ticket_Reply_Customer'] = new Emails\HF_Email_Ticket_Reply_Customer();
-		$email_classes['HF_Email_Ticket_Reply_Staff']   = new Emails\HF_Email_Ticket_Reply_Staff();
-		$email_classes['HF_Email_Ticket_Closed']        = new Emails\HF_Email_Ticket_Closed();
-		$email_classes['HF_Email_Domain_Registered']    = new Emails\HF_Email_Domain_Registered();
-		$email_classes['HF_Email_Domain_Expiry']        = new Emails\HF_Email_Domain_Expiry();
-		$email_classes['HF_Email_Provision_Failed']     = new Emails\HF_Email_Provision_Failed();
+		$hf_emails = array(
+			'HF_Email_Service_Welcome'       => new Emails\HF_Email_Service_Welcome(),
+			'HF_Email_Service_Suspended'     => new Emails\HF_Email_Service_Suspended(),
+			'HF_Email_Service_Unsuspended'   => new Emails\HF_Email_Service_Unsuspended(),
+			'HF_Email_Service_Terminated'    => new Emails\HF_Email_Service_Terminated(),
+			'HF_Email_Ticket_New_Staff'      => new Emails\HF_Email_Ticket_New_Staff(),
+			'HF_Email_Ticket_Reply_Customer' => new Emails\HF_Email_Ticket_Reply_Customer(),
+			'HF_Email_Ticket_Reply_Staff'    => new Emails\HF_Email_Ticket_Reply_Staff(),
+			'HF_Email_Ticket_Closed'         => new Emails\HF_Email_Ticket_Closed(),
+			'HF_Email_Domain_Registered'     => new Emails\HF_Email_Domain_Registered(),
+			'HF_Email_Domain_Expiry'         => new Emails\HF_Email_Domain_Expiry(),
+			'HF_Email_Provision_Failed'      => new Emails\HF_Email_Provision_Failed(),
+		);
 
-		return $email_classes;
+		/**
+		 * Filter the array of HostForge WC_Email classes before registering.
+		 *
+		 * Allows third-party code to add, remove or replace email
+		 * notification classes.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $hf_emails Associative array of class key => WC_Email instance.
+		 */
+		$hf_emails = apply_filters( 'hostforge_notification_emails', $hf_emails );
+
+		return array_merge( $email_classes, $hf_emails );
 	}
 
 	/**
@@ -114,6 +128,20 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_service_welcome( int $service_id, array $data ): void {
+		/**
+		 * Filter whether a specific HostForge notification should be sent.
+		 *
+		 * Return false to prevent the email from being triggered.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param bool   $enabled  Whether the notification is enabled.
+		 * @param string $email_id The WC_Email ID (e.g. 'hf_service_welcome').
+		 */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_service_welcome' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 
@@ -129,6 +157,11 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_service_suspended( int $service_id ): void {
+		/** This filter is documented in this file, trigger_service_welcome method. */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_service_suspended' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 
@@ -144,6 +177,11 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_service_unsuspended( int $service_id ): void {
+		/** This filter is documented in this file, trigger_service_welcome method. */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_service_unsuspended' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 
@@ -159,6 +197,11 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_service_terminated( int $service_id ): void {
+		/** This filter is documented in this file, trigger_service_welcome method. */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_service_terminated' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 
@@ -175,6 +218,11 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_provision_failed( int $service_id, string $error ): void {
+		/** This filter is documented in this file, trigger_service_welcome method. */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_provision_failed' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 
@@ -191,6 +239,11 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_ticket_new( int $ticket_id, int $user_id ): void {
+		/** This filter is documented in this file, trigger_service_welcome method. */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_ticket_new_staff' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 
@@ -212,11 +265,17 @@ class HF_Notifications_Module extends HF_Module {
 		$emails = $mailer->get_emails();
 
 		if ( $is_staff && isset( $emails['HF_Email_Ticket_Reply_Customer'] ) ) {
-			$emails['HF_Email_Ticket_Reply_Customer']->trigger( $ticket_id, $reply_id );
+			/** This filter is documented in this file, trigger_service_welcome method. */
+			if ( apply_filters( 'hostforge_notification_enabled', true, 'hf_ticket_reply_customer' ) ) {
+				$emails['HF_Email_Ticket_Reply_Customer']->trigger( $ticket_id, $reply_id );
+			}
 		}
 
 		if ( ! $is_staff && isset( $emails['HF_Email_Ticket_Reply_Staff'] ) ) {
-			$emails['HF_Email_Ticket_Reply_Staff']->trigger( $ticket_id, $reply_id );
+			/** This filter is documented in this file, trigger_service_welcome method. */
+			if ( apply_filters( 'hostforge_notification_enabled', true, 'hf_ticket_reply_staff' ) ) {
+				$emails['HF_Email_Ticket_Reply_Staff']->trigger( $ticket_id, $reply_id );
+			}
 		}
 	}
 
@@ -227,6 +286,11 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_ticket_closed( int $ticket_id ): void {
+		/** This filter is documented in this file, trigger_service_welcome method. */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_ticket_closed' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 
@@ -243,6 +307,11 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_domain_registered( int $domain_id, string $domain_name ): void {
+		/** This filter is documented in this file, trigger_service_welcome method. */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_domain_registered' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 
@@ -259,6 +328,11 @@ class HF_Notifications_Module extends HF_Module {
 	 * @return void
 	 */
 	public function trigger_domain_expiry( int $domain_id, string $domain_name ): void {
+		/** This filter is documented in this file, trigger_service_welcome method. */
+		if ( ! apply_filters( 'hostforge_notification_enabled', true, 'hf_domain_expiry' ) ) {
+			return;
+		}
+
 		$mailer = WC()->mailer();
 		$emails = $mailer->get_emails();
 

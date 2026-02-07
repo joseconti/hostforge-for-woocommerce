@@ -80,6 +80,28 @@ class HF_Domain_Checkout {
 
 		$nonce = wp_create_nonce( 'hf_domain_search_nonce' );
 
+		$checkout_fields = array(
+			'register' => array(
+				'label' => __( 'Register a new domain', 'hostforge' ),
+			),
+			'transfer' => array(
+				'label' => __( 'Transfer an existing domain', 'hostforge' ),
+			),
+			'existing' => array(
+				'label' => __( 'I already have a domain', 'hostforge' ),
+			),
+		);
+
+		/**
+		 * Filters the domain checkout form fields configuration.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array         $checkout_fields Domain action fields with labels.
+		 * @param \WC_Checkout  $checkout        The WooCommerce checkout instance.
+		 */
+		$checkout_fields = apply_filters( 'hostforge_domain_checkout_fields', $checkout_fields, $checkout );
+
 		?>
 		<div id="hf-domain-checkout" class="hf-domain-checkout">
 			<h3><?php esc_html_e( 'Domain Configuration', 'hostforge' ); ?></h3>
@@ -237,6 +259,21 @@ class HF_Domain_Checkout {
 		if ( ! empty( $domain ) && ! preg_match( '/^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\.[a-zA-Z]{2,}$/', $domain ) ) {
 			wc_add_notice( __( 'Please enter a valid domain name.', 'hostforge' ), 'error' );
 		}
+
+		$is_valid = true;
+
+		/**
+		 * Filters the domain checkout validation result.
+		 *
+		 * Return false to fail validation. Add notices via wc_add_notice() for error messages.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param bool   $is_valid Whether the validation passed so far.
+		 * @param string $action   The domain action (register, transfer, existing).
+		 * @param string $domain   The domain name entered.
+		 */
+		apply_filters( 'hostforge_domain_checkout_validation', $is_valid, $action, $domain );
 	}
 
 	/**

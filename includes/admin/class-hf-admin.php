@@ -104,6 +104,16 @@ class HF_Admin {
 				);
 			}
 		}
+
+		/**
+		 * Fires after all HostForge admin menus have been registered.
+		 *
+		 * Use this hook to add custom submenu pages under the HostForge menu
+		 * or modify the admin menu structure.
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'hostforge_admin_menus_registered' );
 	}
 
 	/**
@@ -148,6 +158,18 @@ class HF_Admin {
 				),
 			)
 		);
+
+		/**
+		 * Fires after HostForge admin assets have been enqueued.
+		 *
+		 * Use this hook to enqueue additional styles or scripts on
+		 * HostForge admin pages.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $hook_suffix The current admin page hook suffix.
+		 */
+		do_action( 'hostforge_admin_assets', $hook_suffix );
 	}
 
 	/**
@@ -169,6 +191,23 @@ class HF_Admin {
 		if ( ! current_user_can( 'manage_hostforge' ) ) {
 			wp_die( esc_html__( 'You do not have permission to access this page.', 'hostforge' ) );
 		}
+
+		/**
+		 * Filters the dashboard data passed to the admin dashboard template.
+		 *
+		 * Allows modules and third-party code to inject additional data
+		 * (widgets, statistics, notices) into the dashboard view.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $dashboard_data {
+		 *     Dashboard data array.
+		 *
+		 *     @type array $widgets    Optional custom widgets to display.
+		 *     @type array $notices    Optional admin notices.
+		 * }
+		 */
+		$dashboard_data = apply_filters( 'hostforge_admin_dashboard_data', array() );
 
 		$template = HOSTFORGE_PLUGIN_DIR . 'templates/admin/dashboard.php';
 		if ( file_exists( $template ) ) {

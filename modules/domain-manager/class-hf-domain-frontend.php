@@ -116,22 +116,32 @@ class HF_Domain_Frontend {
 			return;
 		}
 
-		$domains = get_posts(
-			array(
-				'post_type'      => 'hf_domain',
-				'post_status'    => 'publish',
-				'posts_per_page' => 50,
-				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-					array(
-						'key'   => '_hf_user_id',
-						'value' => $user_id,
-						'type'  => 'NUMERIC',
-					),
+		$query_args = array(
+			'post_type'      => 'hf_domain',
+			'post_status'    => 'publish',
+			'posts_per_page' => 50,
+			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					'key'   => '_hf_user_id',
+					'value' => $user_id,
+					'type'  => 'NUMERIC',
 				),
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-			)
+			),
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 		);
+
+		/**
+		 * Filters the query arguments for listing user domains on the frontend.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $query_args WP_Query arguments.
+		 * @param int   $user_id    The current user ID.
+		 */
+		$query_args = apply_filters( 'hostforge_domain_list_query', $query_args, $user_id );
+
+		$domains = get_posts( $query_args );
 
 		$template = hf_locate_template( 'frontend/domain-list.php' );
 		if ( $template ) {
@@ -173,6 +183,46 @@ class HF_Domain_Frontend {
 				$domain_id
 			)
 		);
+
+		$detail_data = array(
+			'domain'      => $domain,
+			'meta'        => $meta,
+			'nameservers' => $nameservers,
+			'dns_records' => $dns_records,
+		);
+
+		/**
+		 * Filters domain detail data before rendering on the frontend.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $detail_data Domain detail data (domain, meta, nameservers, dns_records).
+		 * @param int   $domain_id   The domain post ID.
+		 */
+		$detail_data = apply_filters( 'hostforge_domain_detail_data', $detail_data, $domain_id );
+
+		$domain      = $detail_data['domain'];
+		$meta        = $detail_data['meta'];
+		$nameservers = $detail_data['nameservers'];
+		$dns_records = $detail_data['dns_records'];
+
+		$domain_actions = array(
+			'auto_renew'  => __( 'Toggle Auto-Renew', 'hostforge' ),
+			'nameservers' => __( 'Manage Nameservers', 'hostforge' ),
+			'dns'         => __( 'Manage DNS Records', 'hostforge' ),
+			'epp_code'    => __( 'Request EPP Code', 'hostforge' ),
+		);
+
+		/**
+		 * Filters the available domain actions on the frontend detail page.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $domain_actions Action slug => label pairs.
+		 * @param int   $domain_id      The domain post ID.
+		 * @param array $meta           Domain meta data.
+		 */
+		$domain_actions = apply_filters( 'hostforge_domain_actions', $domain_actions, $domain_id, $meta );
 
 		$template = hf_locate_template( 'frontend/domain-detail.php' );
 		if ( $template ) {
@@ -369,6 +419,17 @@ class HF_Domain_Frontend {
 			'ttl'      => absint( $_POST['ttl'] ?? 3600 ),
 			'priority' => absint( $_POST['priority'] ?? 0 ),
 		);
+
+		/**
+		 * Filters DNS record data before saving via the frontend.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $record_data DNS record data (type, host, value, ttl, priority).
+		 * @param int    $domain_id   The domain post ID.
+		 * @param int    $record_id   The record ID (0 for new records).
+		 */
+		$record_data = apply_filters( 'hostforge_dns_record_data', $record_data, $domain_id, $record_id );
 
 		if ( $record_id ) {
 			$result = $registrar->update_dns_record( $domain_name, $record_id, $record_data );

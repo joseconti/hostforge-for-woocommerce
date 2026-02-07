@@ -7,14 +7,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$export_nonce = wp_create_nonce( 'hf_csv_export' );
+$export_nonce  = wp_create_nonce( 'hf_csv_export' );
 $data_provider = new \HostForge\Modules\Reports\HF_Report_Data();
 
-$mrr              = $data_provider->get_mrr();
-$services_status  = $data_provider->get_services_by_status();
-$ticket_metrics   = $data_provider->get_ticket_metrics();
-$domain_stats     = $data_provider->get_domain_stats();
-$server_capacity  = $data_provider->get_server_capacity();
+$mrr             = $data_provider->get_mrr();
+$services_status = $data_provider->get_services_by_status();
+$ticket_metrics  = $data_provider->get_ticket_metrics();
+$domain_stats    = $data_provider->get_domain_stats();
+$server_capacity = $data_provider->get_server_capacity();
 ?>
 <div class="wrap hf-wrap hf-reports-page">
 	<h1><?php esc_html_e( 'Reports', 'hostforge' ); ?></h1>

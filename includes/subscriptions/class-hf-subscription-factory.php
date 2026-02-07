@@ -75,6 +75,7 @@ class HF_Subscription_Factory {
 			'HostForge\\Subscriptions\\HF_WCS_Adapter',
 			'HostForge\\Subscriptions\\HF_YITH_Adapter',
 			'HostForge\\Subscriptions\\HF_Advanced_Subs_Adapter',
+			'HostForge\\Subscriptions\\HF_SUMO_Adapter',
 		);
 
 		/**

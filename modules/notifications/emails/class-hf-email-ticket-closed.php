@@ -58,7 +58,18 @@ class HF_Email_Ticket_Closed extends \WC_Email {
 			return;
 		}
 
-		$this->recipient    = $user->user_email;
+		$this->recipient = $user->user_email;
+
+		/**
+		 * Filter the recipient for the ticket closed email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $recipient Email recipient address.
+		 * @param int    $ticket_id Ticket post ID.
+		 */
+		$this->recipient = apply_filters( 'hostforge_email_ticket_closed_recipient', $this->recipient, $ticket_id );
+
 		$tags               = HF_Merge_Tags::get_ticket_tags( $ticket_id );
 		$this->placeholders = array_merge( $this->placeholders, $tags );
 
@@ -83,16 +94,28 @@ class HF_Email_Ticket_Closed extends \WC_Email {
 		$user_id = (int) get_post_meta( $this->ticket_id, '_hf_client_user_id', true );
 		$user    = get_userdata( $user_id );
 
+		$email_data = array(
+			'email_heading'  => HF_Merge_Tags::process( $this->get_heading(), $tags ),
+			'email'          => $this,
+			'ticket_id'      => $this->ticket_id,
+			'customer_name'  => $user ? $user->display_name : '',
+			'ticket_subject' => ! empty( $tags['{ticket_subject}'] ) ? $tags['{ticket_subject}'] : '',
+			'ticket_url'     => ! empty( $tags['{ticket_url}'] ) ? $tags['{ticket_url}'] : '',
+		);
+
+		/**
+		 * Filter email template data before rendering the ticket closed email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $email_data Template data key-value pairs.
+		 * @param int   $ticket_id  Ticket post ID.
+		 */
+		$email_data = apply_filters( 'hostforge_email_ticket_closed_data', $email_data, $this->ticket_id );
+
 		return wc_get_template_html(
 			$this->template_html,
-			array(
-				'email_heading'  => HF_Merge_Tags::process( $this->get_heading(), $tags ),
-				'email'          => $this,
-				'ticket_id'      => $this->ticket_id,
-				'customer_name'  => $user ? $user->display_name : '',
-				'ticket_subject' => ! empty( $tags['{ticket_subject}'] ) ? $tags['{ticket_subject}'] : '',
-				'ticket_url'     => ! empty( $tags['{ticket_url}'] ) ? $tags['{ticket_url}'] : '',
-			),
+			$email_data,
 			'',
 			$this->template_base
 		);

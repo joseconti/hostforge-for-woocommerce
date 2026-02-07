@@ -132,6 +132,25 @@ class HF_Reports_Module extends HF_Module {
 		}
 
 		$export_type = sanitize_text_field( wp_unslash( $_GET['hf_export'] ) );
+
+		$valid_types = array( 'revenue', 'services', 'tickets', 'domains', 'servers' );
+
+		/**
+		 * Filter the available report/export types.
+		 *
+		 * Allows third-party code to register additional export types
+		 * that the CSV exporter and reports system will recognize.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $valid_types List of valid export type slugs.
+		 */
+		$valid_types = apply_filters( 'hostforge_report_types', $valid_types );
+
+		if ( ! in_array( $export_type, $valid_types, true ) ) {
+			return;
+		}
+
 		$data_provider = new HF_Report_Data();
 
 		$csv_exporter = new HF_CSV_Exporter( $data_provider );

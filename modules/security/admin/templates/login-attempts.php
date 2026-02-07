@@ -15,8 +15,8 @@ $table = $wpdb->prefix . 'hf_login_attempts';
 $page_num = ! empty( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 $filter_status = ! empty( $_GET['status'] ) ? sanitize_text_field( wp_unslash( $_GET['status'] ) ) : '';
-$per_page = 30;
-$offset   = ( $page_num - 1 ) * $per_page;
+$per_page      = 30;
+$offset        = ( $page_num - 1 ) * $per_page;
 
 $where  = '1=1';
 $values = array();
@@ -28,7 +28,7 @@ if ( ! empty( $filter_status ) && in_array( $filter_status, array( 'success', 'f
 
 if ( ! empty( $values ) ) {
 	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-	$total = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$table} WHERE {$where}", $values ) );
+	$total        = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$table} WHERE {$where}", $values ) );
 	$query_values = array_merge( $values, array( $per_page, $offset ) );
 	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 	$items = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$table} WHERE {$where} ORDER BY created_at DESC LIMIT %d OFFSET %d", $query_values ) );

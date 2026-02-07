@@ -25,6 +25,25 @@ class HF_Encryption {
 	private const CIPHER = 'aes-256-cbc';
 
 	/**
+	 * Get the cipher method, allowing filtering.
+	 *
+	 * @return string The OpenSSL cipher method.
+	 */
+	private static function get_cipher(): string {
+		/**
+		 * Filters the OpenSSL cipher method used for encryption.
+		 *
+		 * Allows overriding the default AES-256-CBC cipher. The value
+		 * must be a valid OpenSSL cipher method string.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $cipher The OpenSSL cipher method. Default 'aes-256-cbc'.
+		 */
+		return apply_filters( 'hostforge_encryption_method', self::CIPHER );
+	}
+
+	/**
 	 * Encrypt a value.
 	 *
 	 * @param string $value Plain text value.
@@ -35,10 +54,11 @@ class HF_Encryption {
 			return '';
 		}
 
+		$cipher    = self::get_cipher();
 		$key       = self::get_key();
-		$iv_length = openssl_cipher_iv_length( self::CIPHER );
+		$iv_length = openssl_cipher_iv_length( $cipher );
 		$iv        = openssl_random_pseudo_bytes( $iv_length );
-		$encrypted = openssl_encrypt( $value, self::CIPHER, $key, OPENSSL_RAW_DATA, $iv );
+		$encrypted = openssl_encrypt( $value, $cipher, $key, OPENSSL_RAW_DATA, $iv );
 
 		if ( false === $encrypted ) {
 			return '';
@@ -60,7 +80,8 @@ class HF_Encryption {
 			return '';
 		}
 
-		$key = self::get_key();
+		$cipher = self::get_cipher();
+		$key    = self::get_key();
 		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 		$data = base64_decode( $value, true );
 
@@ -68,7 +89,7 @@ class HF_Encryption {
 			return '';
 		}
 
-		$iv_length = openssl_cipher_iv_length( self::CIPHER );
+		$iv_length = openssl_cipher_iv_length( $cipher );
 
 		if ( strlen( $data ) <= $iv_length ) {
 			return '';
@@ -76,7 +97,7 @@ class HF_Encryption {
 
 		$iv        = substr( $data, 0, $iv_length );
 		$encrypted = substr( $data, $iv_length );
-		$decrypted = openssl_decrypt( $encrypted, self::CIPHER, $key, OPENSSL_RAW_DATA, $iv );
+		$decrypted = openssl_decrypt( $encrypted, $cipher, $key, OPENSSL_RAW_DATA, $iv );
 
 		return false !== $decrypted ? $decrypted : '';
 	}

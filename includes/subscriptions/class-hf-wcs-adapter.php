@@ -165,7 +165,7 @@ class HF_WCS_Adapter implements HF_Subscription_Adapter {
 
 		$subscriptions = wcs_get_subscriptions(
 			array(
-				'customer_id'         => $user_id,
+				'customer_id'            => $user_id,
 				'subscriptions_per_page' => -1,
 			)
 		);

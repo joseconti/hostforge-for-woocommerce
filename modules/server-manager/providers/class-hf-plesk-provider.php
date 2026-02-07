@@ -175,11 +175,27 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 
 		$success = $code >= 200 && $code < 300;
 
-		return array(
+		$result = array(
 			'success' => $success,
 			'data'    => $xml_data,
 			'code'    => $code,
 		);
+
+		/**
+		 * Filter the raw Plesk XML API response.
+		 *
+		 * Allows inspection or modification of any Plesk XML API response
+		 * before it is processed by the calling method.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $result    Response array with keys: success, data, code.
+		 * @param string $xml       XML request body that was sent.
+		 * @param int    $server_id Server post ID.
+		 */
+		$result = apply_filters( 'hostforge_plesk_api_response', $result, $xml, $this->server_id );
+
+		return $result;
 	}
 
 	/**
@@ -443,6 +459,23 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 	 * @return array{success: bool, message: string}
 	 */
 	public function suspend_account( string $username, string $reason = '' ): array {
+		$params = array(
+			'username' => $username,
+			'reason'   => $reason,
+			'status'   => 16,
+		);
+
+		/**
+		 * Filter the Plesk suspend account parameters.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $params    Parameters for suspension including username and status code.
+		 * @param string $username  Account username being suspended.
+		 * @param int    $server_id Server post ID.
+		 */
+		$params = apply_filters( 'hostforge_plesk_suspend_params', $params, $username, $this->server_id );
+
 		$xml = sprintf(
 			'<?xml version="1.0" encoding="UTF-8"?>
 			<packet>
@@ -453,13 +486,14 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 						</filter>
 						<values>
 							<gen_setup>
-								<status>16</status>
+								<status>%d</status>
 							</gen_setup>
 						</values>
 					</set>
 				</webspace>
 			</packet>',
-			esc_attr( $username )
+			esc_attr( $params['username'] ),
+			absint( $params['status'] )
 		);
 
 		$result = $this->xml_request( $xml );
@@ -486,6 +520,22 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 	 * @return array{success: bool, message: string}
 	 */
 	public function unsuspend_account( string $username ): array {
+		$params = array(
+			'username' => $username,
+			'status'   => 0,
+		);
+
+		/**
+		 * Filter the Plesk unsuspend account parameters.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $params    Parameters for unsuspension including username and status code.
+		 * @param string $username  Account username being unsuspended.
+		 * @param int    $server_id Server post ID.
+		 */
+		$params = apply_filters( 'hostforge_plesk_unsuspend_params', $params, $username, $this->server_id );
+
 		$xml = sprintf(
 			'<?xml version="1.0" encoding="UTF-8"?>
 			<packet>
@@ -496,13 +546,14 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 						</filter>
 						<values>
 							<gen_setup>
-								<status>0</status>
+								<status>%d</status>
 							</gen_setup>
 						</values>
 					</set>
 				</webspace>
 			</packet>',
-			esc_attr( $username )
+			esc_attr( $params['username'] ),
+			absint( $params['status'] )
 		);
 
 		$result = $this->xml_request( $xml );
@@ -529,6 +580,21 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 	 * @return array{success: bool, message: string}
 	 */
 	public function terminate_account( string $username ): array {
+		$params = array(
+			'username' => $username,
+		);
+
+		/**
+		 * Filter the Plesk terminate account parameters.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $params    Parameters for termination.
+		 * @param string $username  Account username being terminated.
+		 * @param int    $server_id Server post ID.
+		 */
+		$params = apply_filters( 'hostforge_plesk_terminate_params', $params, $username, $this->server_id );
+
 		$xml = sprintf(
 			'<?xml version="1.0" encoding="UTF-8"?>
 			<packet>
@@ -540,7 +606,7 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 					</del>
 				</webspace>
 			</packet>',
-			esc_attr( $username )
+			esc_attr( $params['username'] )
 		);
 
 		$result = $this->xml_request( $xml );
@@ -622,6 +688,23 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 	 * @return array{success: bool, message: string}
 	 */
 	public function change_package( string $username, string $plan ): array {
+		$params = array(
+			'username' => $username,
+			'plan'     => $plan,
+		);
+
+		/**
+		 * Filter the Plesk change package parameters.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $params    Parameters for package change.
+		 * @param string $username  Account username.
+		 * @param string $plan      New plan/package name.
+		 * @param int    $server_id Server post ID.
+		 */
+		$params = apply_filters( 'hostforge_plesk_change_package_params', $params, $username, $plan, $this->server_id );
+
 		$xml = sprintf(
 			'<?xml version="1.0" encoding="UTF-8"?>
 			<packet>
@@ -634,8 +717,8 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 					</switch-subscription>
 				</webspace>
 			</packet>',
-			esc_attr( $username ),
-			esc_attr( $plan )
+			esc_attr( $params['username'] ),
+			esc_attr( $params['plan'] )
 		);
 
 		$result = $this->xml_request( $xml );

@@ -21,7 +21,7 @@ $tabs = array(
 	<nav class="nav-tab-wrapper">
 		<?php foreach ( $tabs as $slug => $label ) : ?>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=hostforge-domains&tab=' . $slug ) ); ?>"
-			   class="nav-tab <?php echo 'tld-pricing' === $slug ? 'nav-tab-active' : ''; ?>">
+				class="nav-tab <?php echo 'tld-pricing' === $slug ? 'nav-tab-active' : ''; ?>">
 				<?php echo esc_html( $label ); ?>
 			</a>
 		<?php endforeach; ?>

@@ -76,15 +76,15 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 	 * @param int $server_id Server post ID.
 	 */
 	public function __construct( int $server_id ) {
-		$this->server_id   = $server_id;
-		$this->hostname    = get_post_meta( $server_id, '_hf_hostname', true );
-		$this->port        = (int) ( get_post_meta( $server_id, '_hf_port', true ) ?: 2087 );
-		$this->auth_method = get_post_meta( $server_id, '_hf_auth_method', true ) ?: 'token';
-		$this->api_token   = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_api_token', true ) );
+		$this->server_id    = $server_id;
+		$this->hostname     = get_post_meta( $server_id, '_hf_hostname', true );
+		$this->port         = (int) ( get_post_meta( $server_id, '_hf_port', true ) ?: 2087 );
+		$this->auth_method  = get_post_meta( $server_id, '_hf_auth_method', true ) ?: 'token';
+		$this->api_token    = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_api_token', true ) );
 		$this->whm_username = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_username', true ) );
 		$this->whm_password = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_password', true ) );
-		$this->base_url    = sprintf( 'https://%s:%d', $this->hostname, $this->port );
-		$this->timeout     = 30;
+		$this->base_url     = sprintf( 'https://%s:%d', $this->hostname, $this->port );
+		$this->timeout      = 30;
 	}
 
 	/**
@@ -125,10 +125,27 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 
 		if ( ! empty( $params ) ) {
 			$endpoint = add_query_arg( $params, $this->base_url . $endpoint );
-			return $this->request( 'GET', $endpoint );
+			$result   = $this->request( 'GET', $endpoint );
+		} else {
+			$result = $this->get( $endpoint );
 		}
 
-		return $this->get( $endpoint );
+		/**
+		 * Filter the raw cPanel/WHM API response.
+		 *
+		 * Allows inspection or modification of any WHM API response
+		 * before it is processed by the calling method.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $result    Response array with keys: success, data, code.
+		 * @param string $function  WHM API function name.
+		 * @param array  $params    API parameters sent with the request.
+		 * @param int    $server_id Server post ID.
+		 */
+		$result = apply_filters( 'hostforge_cpanel_api_response', $result, $function, $params, $this->server_id );
+
+		return $result;
 	}
 
 	/**
@@ -246,6 +263,17 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 			$params['reason'] = $reason;
 		}
 
+		/**
+		 * Filter the cPanel suspend account parameters.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $params    WHM API parameters for suspension.
+		 * @param string $username  Account username being suspended.
+		 * @param int    $server_id Server post ID.
+		 */
+		$params = apply_filters( 'hostforge_cpanel_suspend_params', $params, $username, $this->server_id );
+
 		$result = $this->whm_api( 'suspendacct', $params );
 
 		if ( ! $result['success'] ) {
@@ -270,7 +298,20 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 	 * @return array{success: bool, message: string}
 	 */
 	public function unsuspend_account( string $username ): array {
-		$result = $this->whm_api( 'unsuspendacct', array( 'user' => $username ) );
+		$params = array( 'user' => $username );
+
+		/**
+		 * Filter the cPanel unsuspend account parameters.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $params    WHM API parameters for unsuspension.
+		 * @param string $username  Account username being unsuspended.
+		 * @param int    $server_id Server post ID.
+		 */
+		$params = apply_filters( 'hostforge_cpanel_unsuspend_params', $params, $username, $this->server_id );
+
+		$result = $this->whm_api( 'unsuspendacct', $params );
 
 		if ( ! $result['success'] ) {
 			return array(
@@ -294,7 +335,20 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 	 * @return array{success: bool, message: string}
 	 */
 	public function terminate_account( string $username ): array {
-		$result = $this->whm_api( 'removeacct', array( 'user' => $username ) );
+		$params = array( 'user' => $username );
+
+		/**
+		 * Filter the cPanel terminate account parameters.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $params    WHM API parameters for termination.
+		 * @param string $username  Account username being terminated.
+		 * @param int    $server_id Server post ID.
+		 */
+		$params = apply_filters( 'hostforge_cpanel_terminate_params', $params, $username, $this->server_id );
+
+		$result = $this->whm_api( 'removeacct', $params );
 
 		if ( ! $result['success'] ) {
 			return array(
@@ -354,13 +408,24 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 	 * @return array{success: bool, message: string}
 	 */
 	public function change_package( string $username, string $plan ): array {
-		$result = $this->whm_api(
-			'changepackage',
-			array(
-				'user' => $username,
-				'pkg'  => $plan,
-			)
+		$params = array(
+			'user' => $username,
+			'pkg'  => $plan,
 		);
+
+		/**
+		 * Filter the cPanel change package parameters.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $params    WHM API parameters for package change.
+		 * @param string $username  Account username.
+		 * @param string $plan      New plan/package name.
+		 * @param int    $server_id Server post ID.
+		 */
+		$params = apply_filters( 'hostforge_cpanel_change_package_params', $params, $username, $plan, $this->server_id );
+
+		$result = $this->whm_api( 'changepackage', $params );
 
 		if ( ! $result['success'] ) {
 			return array(
@@ -456,16 +521,16 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 		if ( is_array( $result['data'] ) && isset( $result['data']['acct'][0] ) ) {
 			$acct    = $result['data']['acct'][0];
 			$account = array(
-				'domain'       => $acct['domain'] ?? '',
-				'disk_used'    => $acct['diskused'] ?? '0',
-				'disk_limit'   => $acct['disklimit'] ?? 'unlimited',
-				'bandwidth'    => $acct['bwused'] ?? '0',
-				'bw_limit'     => $acct['bwlimit'] ?? 'unlimited',
-				'plan'         => $acct['plan'] ?? '',
-				'status'       => $acct['suspended'] ?? false ? 'suspended' : 'active',
-				'ip'           => $acct['ip'] ?? '',
-				'email'        => $acct['email'] ?? '',
-				'start_date'   => $acct['startdate'] ?? '',
+				'domain'     => $acct['domain'] ?? '',
+				'disk_used'  => $acct['diskused'] ?? '0',
+				'disk_limit' => $acct['disklimit'] ?? 'unlimited',
+				'bandwidth'  => $acct['bwused'] ?? '0',
+				'bw_limit'   => $acct['bwlimit'] ?? 'unlimited',
+				'plan'       => $acct['plan'] ?? '',
+				'status'     => $acct['suspended'] ?? false ? 'suspended' : 'active',
+				'ip'         => $acct['ip'] ?? '',
+				'email'      => $acct['email'] ?? '',
+				'start_date' => $acct['startdate'] ?? '',
 			);
 		}
 
@@ -490,7 +555,7 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 		);
 
 		if ( $result['success'] && is_array( $result['data'] ) ) {
-			$data = $result['data']['data'] ?? $result['data'];
+			$data             = $result['data']['data'] ?? $result['data'];
 			$stats['load_1']  = $data['one'] ?? '';
 			$stats['load_5']  = $data['five'] ?? '';
 			$stats['load_15'] = $data['fifteen'] ?? '';

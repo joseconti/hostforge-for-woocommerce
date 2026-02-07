@@ -39,16 +39,28 @@ class HF_Server_List_Table extends \WP_List_Table {
 	 * @return array
 	 */
 	public function get_columns(): array {
-		return array(
-			'cb'               => '<input type="checkbox" />',
-			'name'             => __( 'Server Name', 'hostforge' ),
-			'hostname'         => __( 'Hostname', 'hostforge' ),
-			'panel_type'       => __( 'Panel', 'hostforge' ),
-			'server_group'     => __( 'Group', 'hostforge' ),
-			'accounts'         => __( 'Accounts', 'hostforge' ),
-			'status'           => __( 'Status', 'hostforge' ),
-			'last_check'       => __( 'Last Check', 'hostforge' ),
+		$columns = array(
+			'cb'           => '<input type="checkbox" />',
+			'name'         => __( 'Server Name', 'hostforge' ),
+			'hostname'     => __( 'Hostname', 'hostforge' ),
+			'panel_type'   => __( 'Panel', 'hostforge' ),
+			'server_group' => __( 'Group', 'hostforge' ),
+			'accounts'     => __( 'Accounts', 'hostforge' ),
+			'status'       => __( 'Status', 'hostforge' ),
+			'last_check'   => __( 'Last Check', 'hostforge' ),
 		);
+
+		/**
+		 * Filter the server list table columns.
+		 *
+		 * Allows adding, removing, or reordering columns
+		 * in the admin server list table.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $columns Associative array of column_slug => column_label.
+		 */
+		return apply_filters( 'hostforge_server_admin_columns', $columns );
 	}
 
 	/**
@@ -320,7 +332,7 @@ class HF_Server_List_Table extends \WP_List_Table {
 		);
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$current_group  = isset( $_GET['server_group'] ) ? absint( $_GET['server_group'] ) : 0;
+		$current_group = isset( $_GET['server_group'] ) ? absint( $_GET['server_group'] ) : 0;
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$current_status = isset( $_GET['server_status'] ) ? sanitize_text_field( wp_unslash( $_GET['server_status'] ) ) : '';
 

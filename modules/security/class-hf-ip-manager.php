@@ -67,12 +67,25 @@ class HF_IP_Manager {
 
 		// Check settings-based blocklist.
 		if ( $this->is_ip_in_list( $ip, 'ip_blocklist' ) ) {
+			/**
+			 * Fires when an IP is denied access (from settings blocklist or DB).
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param string $ip     The blocked IP address.
+			 * @param string $source Source of the block: 'settings_blocklist' or 'database'.
+			 */
+			do_action( 'hostforge_ip_access_denied', $ip, 'settings_blocklist' );
+
 			$this->block_request();
 			return;
 		}
 
 		// Check database blocklist.
 		if ( $this->is_ip_blocked_in_db( $ip ) ) {
+			/** This action is documented above. */
+			do_action( 'hostforge_ip_access_denied', $ip, 'database' );
+
 			$this->block_request();
 			return;
 		}
@@ -219,6 +232,34 @@ class HF_IP_Manager {
 
 		$ips = array_map( 'trim', explode( "\n", $list ) );
 		$ips = array_filter( $ips );
+
+		if ( 'ip_allowlist' === $list_key ) {
+			/**
+			 * Filter the IP allowlist before checking.
+			 *
+			 * Allows third-party code to modify the list of allowed IPs
+			 * at runtime (e.g. to add dynamic entries from an external source).
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array  $ips The allowlist IP/CIDR entries.
+			 * @param string $ip  The visitor IP being checked.
+			 */
+			$ips = apply_filters( 'hostforge_ip_allowlist', $ips, $ip );
+		} else {
+			/**
+			 * Filter the IP blocklist before checking.
+			 *
+			 * Allows third-party code to modify the list of blocked IPs
+			 * at runtime (e.g. to merge in an external blocklist).
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array  $ips The blocklist IP/CIDR entries.
+			 * @param string $ip  The visitor IP being checked.
+			 */
+			$ips = apply_filters( 'hostforge_ip_blocklist', $ips, $ip );
+		}
 
 		foreach ( $ips as $entry ) {
 			// Exact match.

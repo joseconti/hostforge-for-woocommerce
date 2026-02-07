@@ -191,6 +191,19 @@ class HF_REST_Domain_Controller extends HF_REST_Controller {
 			$domains[] = $this->prepare_domain( $post );
 		}
 
+		/**
+		 * Filters the REST API domain list response data.
+		 *
+		 * Allows modification of domain data before it is returned
+		 * in the REST API response.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array            $domains The array of prepared domain data.
+		 * @param \WP_REST_Request $request The REST request object.
+		 */
+		$domains = apply_filters( 'hostforge_rest_domain_response', $domains, $request );
+
 		return new \WP_REST_Response(
 			array(
 				'domains' => $domains,

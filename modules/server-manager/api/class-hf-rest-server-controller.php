@@ -182,6 +182,19 @@ class HF_REST_Server_Controller extends HF_REST_Controller {
 			);
 		}
 
+		/**
+		 * Filter the query args for the REST servers listing.
+		 *
+		 * Allows modification of the WP_Query arguments used
+		 * to fetch servers in the REST API.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array            $args    WP_Query arguments.
+		 * @param \WP_REST_Request $request REST request object.
+		 */
+		$args = apply_filters( 'hostforge_rest_server_query_args', $args, $request );
+
 		$query   = new \WP_Query( $args );
 		$servers = array();
 
@@ -300,9 +313,10 @@ class HF_REST_Server_Controller extends HF_REST_Controller {
 	 * @return array
 	 */
 	private function prepare_server_data( \WP_Post $post ): array {
-		$groups = wp_get_object_terms( $post->ID, 'hf_server_group', array( 'fields' => 'names' ) );
+		$groups      = wp_get_object_terms( $post->ID, 'hf_server_group', array( 'fields' => 'names' ) );
+		$status_meta = get_post_meta( $post->ID, '_hf_status', true );
 
-		return array(
+		$data = array(
 			'id'               => $post->ID,
 			'name'             => $post->post_title,
 			'panel_type'       => get_post_meta( $post->ID, '_hf_panel_type', true ),
@@ -311,9 +325,22 @@ class HF_REST_Server_Controller extends HF_REST_Controller {
 			'auth_method'      => get_post_meta( $post->ID, '_hf_auth_method', true ),
 			'max_accounts'     => (int) get_post_meta( $post->ID, '_hf_max_accounts', true ),
 			'current_accounts' => (int) get_post_meta( $post->ID, '_hf_current_accounts', true ),
-			'status'           => get_post_meta( $post->ID, '_hf_status', true ) ?: 'unknown',
+			'status'           => ! empty( $status_meta ) ? $status_meta : 'unknown',
 			'last_check'       => get_post_meta( $post->ID, '_hf_last_check', true ),
 			'server_groups'    => is_wp_error( $groups ) ? array() : $groups,
 		);
+
+		/**
+		 * Filter the server REST response data.
+		 *
+		 * Allows modification of the data returned for each server
+		 * in REST API responses, e.g. to add custom fields.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array    $data Server data array.
+		 * @param \WP_Post $post Server post object.
+		 */
+		return apply_filters( 'hostforge_rest_server_response', $data, $post );
 	}
 }

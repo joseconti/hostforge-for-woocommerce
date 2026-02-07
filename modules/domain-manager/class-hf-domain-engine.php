@@ -139,7 +139,7 @@ class HF_Domain_Engine {
 		}
 
 		// Default nameservers.
-		$default_ns = get_option( 'hf_domain_default_nameservers', '' );
+		$default_ns  = get_option( 'hf_domain_default_nameservers', '' );
 		$nameservers = array_filter( array_map( 'trim', explode( "\n", $default_ns ) ) );
 
 		// Registration years from product meta.
@@ -148,18 +148,30 @@ class HF_Domain_Engine {
 
 		// Set all meta.
 		$meta = array(
-			'_hf_domain_name'     => strtolower( $domain_name ),
-			'_hf_registrar_id'    => get_option( 'hf_active_registrar', 'namecheap' ),
-			'_hf_user_id'         => $order->get_customer_id(),
-			'_hf_order_id'        => $order->get_id(),
-			'_hf_product_id'      => $product->get_id(),
-			'_hf_status'          => 'pending',
-			'_hf_auto_renew'      => 'yes',
-			'_hf_locked'          => 'no',
-			'_hf_id_protection'   => 'yes',
-			'_hf_nameservers'     => wp_json_encode( $nameservers ),
-			'_hf_type'            => $domain_action,
+			'_hf_domain_name'   => strtolower( $domain_name ),
+			'_hf_registrar_id'  => get_option( 'hf_active_registrar', 'namecheap' ),
+			'_hf_user_id'       => $order->get_customer_id(),
+			'_hf_order_id'      => $order->get_id(),
+			'_hf_product_id'    => $product->get_id(),
+			'_hf_status'        => 'pending',
+			'_hf_auto_renew'    => 'yes',
+			'_hf_locked'        => 'no',
+			'_hf_id_protection' => 'yes',
+			'_hf_nameservers'   => wp_json_encode( $nameservers ),
+			'_hf_type'          => $domain_action,
 		);
+
+		/**
+		 * Filters the data extracted from a WooCommerce order for domain creation.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array       $meta          Domain meta key => value pairs.
+		 * @param \WC_Order   $order         The WooCommerce order.
+		 * @param \WC_Product $product       The domain product.
+		 * @param string      $domain_action The domain action (registration, transfer, existing).
+		 */
+		$meta = apply_filters( 'hostforge_domain_order_data', $meta, $order, $product, $domain_action );
 
 		foreach ( $meta as $key => $value ) {
 			update_post_meta( $domain_id, $key, $value );
@@ -244,14 +256,24 @@ class HF_Domain_Engine {
 		$raw_yrs    = $product ? absint( $product->get_meta( '_hf_registration_years' ) ) : 0;
 		$years      = $raw_yrs > 0 ? $raw_yrs : 1;
 
-		$result = $registrar->register_domain(
-			array(
-				'domain'      => $domain_name,
-				'period'      => $years,
-				'nameservers' => $nameservers,
-				'contact'     => $contact,
-			)
+		$register_params = array(
+			'domain'      => $domain_name,
+			'period'      => $years,
+			'nameservers' => $nameservers,
+			'contact'     => $contact,
 		);
+
+		/**
+		 * Filters domain registration parameters before sending to the registrar API.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $register_params Registration parameters (domain, period, nameservers, contact).
+		 * @param int   $domain_id       The domain post ID.
+		 */
+		$register_params = apply_filters( 'hostforge_domain_register_params', $register_params, $domain_id );
+
+		$result = $registrar->register_domain( $register_params );
 
 		if ( $result['success'] ) {
 			$now = current_time( 'mysql' );
@@ -323,13 +345,23 @@ class HF_Domain_Engine {
 
 		$contact = $this->get_contact_from_order( $order_id );
 
-		$result = $registrar->transfer_domain(
-			array(
-				'domain'   => $domain_name,
-				'epp_code' => $epp_code,
-				'contact'  => $contact,
-			)
+		$transfer_params = array(
+			'domain'   => $domain_name,
+			'epp_code' => $epp_code,
+			'contact'  => $contact,
 		);
+
+		/**
+		 * Filters domain transfer parameters before sending to the registrar API.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $transfer_params Transfer parameters (domain, epp_code, contact).
+		 * @param int   $domain_id       The domain post ID.
+		 */
+		$transfer_params = apply_filters( 'hostforge_domain_transfer_params', $transfer_params, $domain_id );
+
+		$result = $registrar->transfer_domain( $transfer_params );
 
 		if ( $result['success'] ) {
 			update_post_meta( $domain_id, '_hf_status', 'pending' );
@@ -387,7 +419,22 @@ class HF_Domain_Engine {
 			return;
 		}
 
-		$result = $registrar->renew_domain( $domain_name, 1 );
+		$renew_params = array(
+			'domain' => $domain_name,
+			'period' => 1,
+		);
+
+		/**
+		 * Filters domain renewal parameters before sending to the registrar API.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $renew_params Renewal parameters (domain, period).
+		 * @param int   $domain_id    The domain post ID.
+		 */
+		$renew_params = apply_filters( 'hostforge_domain_renew_params', $renew_params, $domain_id );
+
+		$result = $registrar->renew_domain( $renew_params['domain'], $renew_params['period'] );
 
 		if ( $result['success'] ) {
 			// Extend expiry by 1 year.

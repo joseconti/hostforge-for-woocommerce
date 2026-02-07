@@ -200,6 +200,18 @@ class HF_Server_Manager_Module extends HF_Module {
 			'show_in_rest'      => false,
 		);
 
+		/**
+		 * Filter the server groups taxonomy registration arguments.
+		 *
+		 * Allows modification of the hf_server_group taxonomy args
+		 * before it is registered with WordPress.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $args Taxonomy registration arguments.
+		 */
+		$args = apply_filters( 'hostforge_server_groups', $args );
+
 		register_taxonomy( 'hf_server_group', 'hf_server', $args );
 	}
 
@@ -256,6 +268,19 @@ class HF_Server_Manager_Module extends HF_Module {
 				// Cache server stats.
 				$stats = $provider->get_server_stats();
 				if ( $stats['success'] ) {
+					/**
+					 * Filter the server health check data before saving to cache.
+					 *
+					 * Allows modification or enrichment of server stats data
+					 * before it is persisted as post meta.
+					 *
+					 * @since 1.0.0
+					 *
+					 * @param array $data      Server stats data array.
+					 * @param int   $server_id The server post ID.
+					 */
+					$stats['data'] = apply_filters( 'hostforge_server_health_data', $stats['data'], $server_id );
+
 					update_post_meta( $server_id, '_hf_server_stats_cache', $stats['data'] );
 					update_post_meta( $server_id, '_hf_server_stats_cache_time', time() );
 				}
@@ -299,14 +324,33 @@ class HF_Server_Manager_Module extends HF_Module {
 	public function get_provider( int $server_id ): ?\HostForge\Interfaces\HF_Panel_Provider {
 		$panel_type = get_post_meta( $server_id, '_hf_panel_type', true );
 
-		switch ( $panel_type ) {
-			case 'cpanel':
-				return new Providers\HF_CPanel_Provider( $server_id );
-			case 'plesk':
-				return new Providers\HF_Plesk_Provider( $server_id );
-			default:
-				return null;
+		/**
+		 * Filter the available panel provider classes.
+		 *
+		 * Allows third-party plugins to register additional panel providers
+		 * (e.g., DirectAdmin, ISPConfig) by mapping a panel type slug
+		 * to a fully-qualified class name implementing HF_Panel_Provider.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $providers Associative array of panel_type => class_name.
+		 */
+		$providers = apply_filters(
+			'hostforge_panel_providers',
+			array(
+				'cpanel' => Providers\HF_CPanel_Provider::class,
+				'plesk'  => Providers\HF_Plesk_Provider::class,
+			)
+		);
+
+		if ( isset( $providers[ $panel_type ] ) ) {
+			$class = $providers[ $panel_type ];
+			if ( class_exists( $class ) ) {
+				return new $class( $server_id );
+			}
 		}
+
+		return null;
 	}
 
 	/**
@@ -409,24 +453,24 @@ class HF_Server_Manager_Module extends HF_Module {
 	 */
 	public static function get_server_meta_keys(): array {
 		return array(
-			'_hf_panel_type'          => 'cpanel or plesk',
-			'_hf_hostname'            => 'Server hostname or IP',
-			'_hf_port'                => 'API port (2087 for cPanel, 8443 for Plesk)',
-			'_hf_protocol'            => 'https',
-			'_hf_auth_method'         => 'token or password',
-			'_hf_api_token'           => 'API token (encrypted)',
-			'_hf_username'            => 'Admin username (encrypted)',
-			'_hf_password'            => 'Admin password (encrypted)',
-			'_hf_max_accounts'        => 'Maximum accounts allowed',
-			'_hf_current_accounts'    => 'Current number of accounts',
-			'_hf_status'              => 'active, error, or unknown',
-			'_hf_last_check'          => 'Last health check timestamp',
-			'_hf_packages_cache'      => 'Cached packages list',
-			'_hf_packages_cache_time' => 'Packages cache timestamp',
+			'_hf_panel_type'              => 'cpanel or plesk',
+			'_hf_hostname'                => 'Server hostname or IP',
+			'_hf_port'                    => 'API port (2087 for cPanel, 8443 for Plesk)',
+			'_hf_protocol'                => 'https',
+			'_hf_auth_method'             => 'token or password',
+			'_hf_api_token'               => 'API token (encrypted)',
+			'_hf_username'                => 'Admin username (encrypted)',
+			'_hf_password'                => 'Admin password (encrypted)',
+			'_hf_max_accounts'            => 'Maximum accounts allowed',
+			'_hf_current_accounts'        => 'Current number of accounts',
+			'_hf_status'                  => 'active, error, or unknown',
+			'_hf_last_check'              => 'Last health check timestamp',
+			'_hf_packages_cache'          => 'Cached packages list',
+			'_hf_packages_cache_time'     => 'Packages cache timestamp',
 			'_hf_server_stats_cache'      => 'Cached server stats',
 			'_hf_server_stats_cache_time' => 'Stats cache timestamp',
-			'_hf_nameservers'         => 'Server nameservers (serialized array)',
-			'_hf_notes'               => 'Admin notes',
+			'_hf_nameservers'             => 'Server nameservers (serialized array)',
+			'_hf_notes'                   => 'Admin notes',
 		);
 	}
 }

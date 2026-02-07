@@ -115,7 +115,7 @@ $whois_data    = ! empty( $whois_decoded ) ? $whois_decoded : array();
 				<h2><?php esc_html_e( 'WHOIS Contact', 'hostforge' ); ?></h2>
 				<table class="hf-info-table">
 					<?php
-					$registrant = $whois_data['registrant'];
+					$registrant   = $whois_data['registrant'];
 					$whois_fields = array(
 						'first_name'   => __( 'First Name', 'hostforge' ),
 						'last_name'    => __( 'Last Name', 'hostforge' ),
@@ -130,12 +130,12 @@ $whois_data    = ! empty( $whois_decoded ) ? $whois_decoded : array();
 					);
 					foreach ( $whois_fields as $key => $label ) :
 						if ( ! empty( $registrant[ $key ] ) ) :
-					?>
+							?>
 						<tr>
 							<th><?php echo esc_html( $label ); ?></th>
 							<td><?php echo esc_html( $registrant[ $key ] ); ?></td>
 						</tr>
-					<?php
+							<?php
 						endif;
 					endforeach;
 					?>
@@ -260,7 +260,7 @@ $whois_data    = ! empty( $whois_decoded ) ? $whois_decoded : array();
 								<?php
 								$user = get_userdata( absint( $meta['_hf_user_id'] ) );
 								if ( $user ) :
-								?>
+									?>
 									<a href="<?php echo esc_url( admin_url( 'user-edit.php?user_id=' . absint( $meta['_hf_user_id'] ) ) ); ?>">
 										<?php echo esc_html( $user->display_name ); ?>
 									</a>

@@ -40,6 +40,14 @@ This document is your master development guide for **HostForge for WooCommerce**
 9. **HPOS Compatibility**: Declare compatibility. Use `$order->get_meta()` / `$order->update_meta_data()` for order data.
 10. **WooCommerce Blocks Checkout**: Ensure compatibility with block-based checkout.
 11. **No Billing/Invoicing**: HostForge does NOT handle invoicing, billing PDFs, tax calculation, late fees, credit wallets, or quotes. European billing regulations vary by country and change constantly. Each user installs their own billing plugin (Autonomos Premium, FacturaScripts Sync, etc.). HostForge creates WooCommerce orders/subscriptions; the billing plugin handles the rest.
+12. **Hooks Everywhere (MANDATORY)**: The plugin MUST be extremely flexible and extensible. Add `do_action()` and `apply_filters()` hooks at every meaningful point so developers can customize practically anything. This includes:
+    - **Before and after every major operation**: provisioning, suspension, termination, domain registration, ticket creation, server connection, etc.
+    - **Data modification points**: use `apply_filters()` before saving/returning data so developers can modify values (e.g., usernames, passwords, email content, template data, API parameters, server selection criteria).
+    - **Template rendering**: filter template paths, template variables, and output.
+    - **Admin screens**: filter columns, tabs, form fields, settings fields, list table queries.
+    - **REST API**: filter response data, query parameters, permission checks.
+    - **Validation**: filter validation rules, error messages, capability requirements.
+    - **All hook names MUST use `hostforge_` prefix** and follow the pattern `hostforge_{module}_{action}` (e.g., `hostforge_provisioning_before_create_account`, `hostforge_ticket_reply_data`).
 
 ### 0.2 Progress Tracking System
 
@@ -653,27 +661,28 @@ For every PHP file verify:
 
 | ID | Task | Status |
 |----|------|--------|
-| 8.1 | Security: escape all output | `PENDING` |
-| 8.2 | Security: sanitize all input | `PENDING` |
-| 8.3 | Security: nonces on all forms | `PENDING` |
-| 8.4 | Security: capability checks | `PENDING` |
-| 8.5 | Security: $wpdb->prepare() everywhere | `PENDING` |
-| 8.6 | Security: defined('ABSPATH') all files | `PENDING` |
-| 8.7 | Security: REST permission callbacks | `PENDING` |
-| 8.8 | Performance: no N+1, caching | `PENDING` |
-| 8.9 | Performance: conditional assets | `PENDING` |
-| 8.10 | Performance: DB indexes | `PENDING` |
+| 8.1 | Security: escape all output | `DONE` |
+| 8.2 | Security: sanitize all input | `DONE` |
+| 8.3 | Security: nonces on all forms | `DONE` |
+| 8.4 | Security: capability checks | `DONE` |
+| 8.5 | Security: $wpdb->prepare() everywhere | `DONE` |
+| 8.6 | Security: defined('ABSPATH') all files | `DONE` |
+| 8.7 | Security: REST permission callbacks | `DONE` |
+| 8.8 | Performance: no N+1, caching | `DONE` |
+| 8.9 | Performance: conditional assets | `DONE` |
+| 8.10 | Performance: DB indexes | `DONE` |
 | 8.11 | PHPCS zero errors | `PENDING` |
 | 8.12 | Test: PHP 8.0-8.3 | `PENDING` |
 | 8.13 | Test: HPOS | `PENDING` |
 | 8.14 | Test: Block checkout | `PENDING` |
-| 8.15 | SUMO Subscriptions adapter (HF_SUMO_Adapter) | `PENDING` |
+| 8.15 | SUMO Subscriptions adapter (HF_SUMO_Adapter) | `DONE` |
 | 8.16 | Test: All 4 subscription adapters (WCS, YITH, Advanced Subs, SUMO) | `PENDING` |
 | 8.17 | PHPDoc complete | `PENDING` |
-| 8.18 | README.md + CHANGELOG.md | `PENDING` |
-| 8.19 | Hooks reference document | `PENDING` |
-| 8.20 | Developer guide | `PENDING` |
-| 8.21 | hostforge.pot generated | `PENDING` |
+| 8.18 | README.md + CHANGELOG.md | `DONE` |
+| 8.19 | Hooks reference document | `DONE` |
+| 8.20 | Developer guide | `DONE` |
+| 8.21 | hostforge.pot generated | `DONE` |
+| 8.22 | Add do_action/apply_filters hooks everywhere for maximum extensibility | `DONE` |
 
 ---
 

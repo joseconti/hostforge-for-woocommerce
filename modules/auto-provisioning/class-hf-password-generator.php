@@ -84,7 +84,7 @@ class HF_Password_Generator {
 		$shuffled = array();
 
 		while ( ! empty( $chars ) ) {
-			$index     = random_int( 0, count( $chars ) - 1 );
+			$index      = random_int( 0, count( $chars ) - 1 );
 			$shuffled[] = $chars[ $index ];
 			array_splice( $chars, $index, 1 );
 		}

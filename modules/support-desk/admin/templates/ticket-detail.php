@@ -98,8 +98,8 @@ if ( is_wp_error( $all_departments ) ) {
 				<?php if ( ! empty( $replies ) ) : ?>
 					<?php foreach ( $replies as $reply ) : ?>
 						<?php
-						$is_private = get_comment_meta( $reply->comment_ID, '_hf_is_private_note', true );
-						$is_staff   = get_comment_meta( $reply->comment_ID, '_hf_is_staff_reply', true );
+						$is_private  = get_comment_meta( $reply->comment_ID, '_hf_is_private_note', true );
+						$is_staff    = get_comment_meta( $reply->comment_ID, '_hf_is_staff_reply', true );
 						$attachments = get_comment_meta( $reply->comment_ID, '_hf_attachments', true );
 
 						$reply_class = 'hf-reply';

@@ -163,13 +163,24 @@ class HF_REST_Security_Controller extends HF_REST_Controller {
 			$total = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
 		}
 
-		return rest_ensure_response(
-			array(
-				'items' => ! empty( $items ) ? $items : array(),
-				'total' => $total,
-				'pages' => ceil( $total / $per_page ),
-			)
+		$response_data = array(
+			'items' => ! empty( $items ) ? $items : array(),
+			'total' => $total,
+			'pages' => ceil( $total / $per_page ),
 		);
+
+		/**
+		 * Filter the REST API security response data.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array            $response_data Response data array.
+		 * @param string           $endpoint      The security endpoint: 'login-attempts', 'ip-blocks', or 'audit-log'.
+		 * @param \WP_REST_Request $request        The original request object.
+		 */
+		$response_data = apply_filters( 'hostforge_rest_security_response', $response_data, 'login-attempts', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 
 	/**
@@ -186,11 +197,14 @@ class HF_REST_Security_Controller extends HF_REST_Controller {
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$items = $wpdb->get_results( "SELECT * FROM {$table} ORDER BY created_at DESC" );
 
-		return rest_ensure_response(
-			array(
-				'items' => ! empty( $items ) ? $items : array(),
-			)
+		$response_data = array(
+			'items' => ! empty( $items ) ? $items : array(),
 		);
+
+		/** This filter is documented in this file, get_login_attempts method. */
+		$response_data = apply_filters( 'hostforge_rest_security_response', $response_data, 'ip-blocks', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 
 	/**
@@ -279,12 +293,15 @@ class HF_REST_Security_Controller extends HF_REST_Controller {
 			$total = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
 		}
 
-		return rest_ensure_response(
-			array(
-				'items' => ! empty( $items ) ? $items : array(),
-				'total' => $total,
-				'pages' => ceil( $total / $per_page ),
-			)
+		$response_data = array(
+			'items' => ! empty( $items ) ? $items : array(),
+			'total' => $total,
+			'pages' => ceil( $total / $per_page ),
 		);
+
+		/** This filter is documented in this file, get_login_attempts method. */
+		$response_data = apply_filters( 'hostforge_rest_security_response', $response_data, 'audit-log', $request );
+
+		return rest_ensure_response( $response_data );
 	}
 }

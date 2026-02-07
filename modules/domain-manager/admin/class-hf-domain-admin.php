@@ -101,16 +101,16 @@ class HF_Domain_Admin {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'hf_domain_admin_nonce' ),
 				'i18n'    => array(
-					'confirmDelete'  => __( 'Are you sure you want to delete this record?', 'hostforge' ),
-					'confirmRenew'   => __( 'Are you sure you want to renew this domain?', 'hostforge' ),
-					'saving'         => __( 'Saving...', 'hostforge' ),
-					'saved'          => __( 'Saved successfully.', 'hostforge' ),
-					'syncing'        => __( 'Syncing...', 'hostforge' ),
-					'synced'         => __( 'Synced successfully.', 'hostforge' ),
-					'testing'        => __( 'Testing...', 'hostforge' ),
-					'error'          => __( 'An error occurred.', 'hostforge' ),
-					'importing'      => __( 'Importing...', 'hostforge' ),
-					'imported'       => __( 'TLD pricing imported successfully.', 'hostforge' ),
+					'confirmDelete' => __( 'Are you sure you want to delete this record?', 'hostforge' ),
+					'confirmRenew'  => __( 'Are you sure you want to renew this domain?', 'hostforge' ),
+					'saving'        => __( 'Saving...', 'hostforge' ),
+					'saved'         => __( 'Saved successfully.', 'hostforge' ),
+					'syncing'       => __( 'Syncing...', 'hostforge' ),
+					'synced'        => __( 'Synced successfully.', 'hostforge' ),
+					'testing'       => __( 'Testing...', 'hostforge' ),
+					'error'         => __( 'An error occurred.', 'hostforge' ),
+					'importing'     => __( 'Importing...', 'hostforge' ),
+					'imported'      => __( 'TLD pricing imported successfully.', 'hostforge' ),
 				),
 			)
 		);
@@ -147,6 +147,9 @@ class HF_Domain_Admin {
 	 * @return void
 	 */
 	private function render_domain_list(): void {
+		// Register column filter so plugins can modify domain list table columns.
+		add_filter( 'hostforge_domain_admin_columns', array( $this, 'get_default_domain_columns' ) );
+
 		$list_table = new HF_Domain_List_Table();
 		$list_table->prepare_items();
 
@@ -154,6 +157,33 @@ class HF_Domain_Admin {
 		if ( file_exists( $template ) ) {
 			include $template;
 		}
+	}
+
+	/**
+	 * Get the default domain admin list table columns.
+	 *
+	 * This method is used as the base callback for the hostforge_domain_admin_columns filter,
+	 * allowing plugins to modify, add or remove columns from the domain list table.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $columns Current columns (may be modified by earlier filters).
+	 * @return array
+	 */
+	public function get_default_domain_columns( array $columns ): array {
+		if ( empty( $columns ) ) {
+			$columns = array(
+				'cb'         => '<input type="checkbox" />',
+				'domain'     => __( 'Domain', 'hostforge' ),
+				'customer'   => __( 'Customer', 'hostforge' ),
+				'registrar'  => __( 'Registrar', 'hostforge' ),
+				'status'     => __( 'Status', 'hostforge' ),
+				'expiry'     => __( 'Expiry Date', 'hostforge' ),
+				'auto_renew' => __( 'Auto-Renew', 'hostforge' ),
+				'created'    => __( 'Created', 'hostforge' ),
+			);
+		}
+		return $columns;
 	}
 
 	/**
@@ -599,16 +629,16 @@ class HF_Domain_Admin {
 			$wpdb->insert(
 				$wpdb->prefix . 'hf_dns_records',
 				array(
-					'domain_id'          => $domain_id,
-					'record_type'        => sanitize_text_field( $record['type'] ?? 'A' ),
-					'host'               => sanitize_text_field( $record['host'] ?? '@' ),
-					'value'              => sanitize_text_field( $record['value'] ?? '' ),
-					'ttl'                => absint( $record['ttl'] ?? 3600 ),
-					'priority'           => absint( $record['priority'] ?? 0 ),
+					'domain_id'           => $domain_id,
+					'record_type'         => sanitize_text_field( $record['type'] ?? 'A' ),
+					'host'                => sanitize_text_field( $record['host'] ?? '@' ),
+					'value'               => sanitize_text_field( $record['value'] ?? '' ),
+					'ttl'                 => absint( $record['ttl'] ?? 3600 ),
+					'priority'            => absint( $record['priority'] ?? 0 ),
 					'registrar_record_id' => sanitize_text_field( $record['id'] ?? '' ),
-					'synced_at'          => $now,
-					'created_at'         => $now,
-					'updated_at'         => $now,
+					'synced_at'           => $now,
+					'created_at'          => $now,
+					'updated_at'          => $now,
 				),
 				array( '%d', '%s', '%s', '%s', '%d', '%d', '%s', '%s', '%s', '%s' )
 			);
@@ -655,6 +685,19 @@ class HF_Domain_Admin {
 			'is_active'      => $is_active,
 			'updated_at'     => current_time( 'mysql' ),
 		);
+
+		/**
+		 * Filters the TLD pricing data before saving to the database.
+		 *
+		 * Allows modification of TLD pricing fields (prices, currency, active state)
+		 * before they are stored.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $data The TLD pricing data to save.
+		 * @param int    $id   The existing record ID (0 for new records).
+		 */
+		$data = apply_filters( 'hostforge_tld_pricing_data', $data, $id );
 
 		$format = array( '%s', '%s', '%f', '%f', '%f', '%s', '%d', '%s' );
 
@@ -724,16 +767,56 @@ class HF_Domain_Admin {
 		// For now, provide a set of common TLDs with default pricing.
 		// Future: fetch from registrar API (namecheap.users.getPricing).
 		$common_tlds = array(
-			'com'  => array( 'register' => 10.98, 'renew' => 12.98, 'transfer' => 10.98 ),
-			'net'  => array( 'register' => 12.98, 'renew' => 14.98, 'transfer' => 12.98 ),
-			'org'  => array( 'register' => 11.98, 'renew' => 14.98, 'transfer' => 11.98 ),
-			'info' => array( 'register' => 4.98,  'renew' => 18.98, 'transfer' => 12.98 ),
-			'biz'  => array( 'register' => 5.98,  'renew' => 15.98, 'transfer' => 12.98 ),
-			'io'   => array( 'register' => 32.98, 'renew' => 32.98, 'transfer' => 32.98 ),
-			'co'   => array( 'register' => 12.98, 'renew' => 28.98, 'transfer' => 12.98 ),
-			'dev'  => array( 'register' => 14.98, 'renew' => 14.98, 'transfer' => 14.98 ),
-			'app'  => array( 'register' => 16.98, 'renew' => 16.98, 'transfer' => 16.98 ),
-			'xyz'  => array( 'register' => 1.98,  'renew' => 12.98, 'transfer' => 9.98 ),
+			'com'  => array(
+				'register' => 10.98,
+				'renew'    => 12.98,
+				'transfer' => 10.98,
+			),
+			'net'  => array(
+				'register' => 12.98,
+				'renew'    => 14.98,
+				'transfer' => 12.98,
+			),
+			'org'  => array(
+				'register' => 11.98,
+				'renew'    => 14.98,
+				'transfer' => 11.98,
+			),
+			'info' => array(
+				'register' => 4.98,
+				'renew'    => 18.98,
+				'transfer' => 12.98,
+			),
+			'biz'  => array(
+				'register' => 5.98,
+				'renew'    => 15.98,
+				'transfer' => 12.98,
+			),
+			'io'   => array(
+				'register' => 32.98,
+				'renew'    => 32.98,
+				'transfer' => 32.98,
+			),
+			'co'   => array(
+				'register' => 12.98,
+				'renew'    => 28.98,
+				'transfer' => 12.98,
+			),
+			'dev'  => array(
+				'register' => 14.98,
+				'renew'    => 14.98,
+				'transfer' => 14.98,
+			),
+			'app'  => array(
+				'register' => 16.98,
+				'renew'    => 16.98,
+				'transfer' => 16.98,
+			),
+			'xyz'  => array(
+				'register' => 1.98,
+				'renew'    => 12.98,
+				'transfer' => 9.98,
+			),
 		);
 
 		global $wpdb;
@@ -799,15 +882,15 @@ class HF_Domain_Admin {
 		}
 
 		$settings = array(
-			'hf_active_registrar'             => sanitize_text_field( wp_unslash( $_POST['active_registrar'] ?? 'namecheap' ) ),
-			'hf_namecheap_api_user'           => sanitize_text_field( wp_unslash( $_POST['api_user'] ?? '' ) ),
-			'hf_namecheap_username'           => sanitize_text_field( wp_unslash( $_POST['username'] ?? '' ) ),
-			'hf_namecheap_client_ip'          => sanitize_text_field( wp_unslash( $_POST['client_ip'] ?? '' ) ),
-			'hf_namecheap_sandbox'            => sanitize_text_field( wp_unslash( $_POST['sandbox'] ?? 'no' ) ),
-			'hf_domain_auto_register'         => sanitize_text_field( wp_unslash( $_POST['auto_register'] ?? 'yes' ) ),
-			'hf_domain_auto_renew_days'       => absint( $_POST['auto_renew_days'] ?? 14 ),
-			'hf_domain_expiry_reminder_days'  => sanitize_text_field( wp_unslash( $_POST['expiry_reminder_days'] ?? '30,14,7,1' ) ),
-			'hf_domain_default_nameservers'   => sanitize_textarea_field( wp_unslash( $_POST['default_nameservers'] ?? '' ) ),
+			'hf_active_registrar'            => sanitize_text_field( wp_unslash( $_POST['active_registrar'] ?? 'namecheap' ) ),
+			'hf_namecheap_api_user'          => sanitize_text_field( wp_unslash( $_POST['api_user'] ?? '' ) ),
+			'hf_namecheap_username'          => sanitize_text_field( wp_unslash( $_POST['username'] ?? '' ) ),
+			'hf_namecheap_client_ip'         => sanitize_text_field( wp_unslash( $_POST['client_ip'] ?? '' ) ),
+			'hf_namecheap_sandbox'           => sanitize_text_field( wp_unslash( $_POST['sandbox'] ?? 'no' ) ),
+			'hf_domain_auto_register'        => sanitize_text_field( wp_unslash( $_POST['auto_register'] ?? 'yes' ) ),
+			'hf_domain_auto_renew_days'      => absint( $_POST['auto_renew_days'] ?? 14 ),
+			'hf_domain_expiry_reminder_days' => sanitize_text_field( wp_unslash( $_POST['expiry_reminder_days'] ?? '30,14,7,1' ) ),
+			'hf_domain_default_nameservers'  => sanitize_textarea_field( wp_unslash( $_POST['default_nameservers'] ?? '' ) ),
 		);
 
 		foreach ( $settings as $key => $value ) {

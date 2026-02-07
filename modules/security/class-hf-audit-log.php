@@ -46,39 +46,108 @@ class HF_Audit_Log {
 			return;
 		}
 
+		$events = array(
+			'user_login',
+			'user_logout',
+			'login_failed',
+			'user_registered',
+			'user_deleted',
+			'role_changed',
+			'module_activated',
+			'module_deactivated',
+			'service_provisioned',
+			'service_suspended',
+			'service_unsuspended',
+			'service_terminated',
+			'ticket_created',
+			'ticket_closed',
+			'domain_registered',
+			'domain_transferred',
+			'setting_changed',
+			'order_status_changed',
+		);
+
+		/**
+		 * Filter the list of auditable event types.
+		 *
+		 * Allows third-party code to add or remove event types
+		 * that should be tracked in the audit log.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $events List of event type identifiers.
+		 */
+		$events = apply_filters( 'hostforge_audit_log_events', $events );
+
 		// Authentication events.
-		add_action( 'wp_login', array( $this, 'log_login' ), 10, 2 );
-		add_action( 'wp_logout', array( $this, 'log_logout' ) );
-		add_action( 'wp_login_failed', array( $this, 'log_login_failed' ) );
+		if ( in_array( 'user_login', $events, true ) ) {
+			add_action( 'wp_login', array( $this, 'log_login' ), 10, 2 );
+		}
+		if ( in_array( 'user_logout', $events, true ) ) {
+			add_action( 'wp_logout', array( $this, 'log_logout' ) );
+		}
+		if ( in_array( 'login_failed', $events, true ) ) {
+			add_action( 'wp_login_failed', array( $this, 'log_login_failed' ) );
+		}
 
 		// User events.
-		add_action( 'user_register', array( $this, 'log_user_register' ) );
-		add_action( 'delete_user', array( $this, 'log_user_delete' ) );
-		add_action( 'set_user_role', array( $this, 'log_role_change' ), 10, 3 );
+		if ( in_array( 'user_registered', $events, true ) ) {
+			add_action( 'user_register', array( $this, 'log_user_register' ) );
+		}
+		if ( in_array( 'user_deleted', $events, true ) ) {
+			add_action( 'delete_user', array( $this, 'log_user_delete' ) );
+		}
+		if ( in_array( 'role_changed', $events, true ) ) {
+			add_action( 'set_user_role', array( $this, 'log_role_change' ), 10, 3 );
+		}
 
 		// Module events.
-		add_action( 'hostforge_module_activated', array( $this, 'log_module_activated' ) );
-		add_action( 'hostforge_module_deactivated', array( $this, 'log_module_deactivated' ) );
+		if ( in_array( 'module_activated', $events, true ) ) {
+			add_action( 'hostforge_module_activated', array( $this, 'log_module_activated' ) );
+		}
+		if ( in_array( 'module_deactivated', $events, true ) ) {
+			add_action( 'hostforge_module_deactivated', array( $this, 'log_module_deactivated' ) );
+		}
 
 		// Service lifecycle.
-		add_action( 'hostforge_after_provision', array( $this, 'log_service_provisioned' ), 10, 2 );
-		add_action( 'hostforge_after_suspend', array( $this, 'log_service_suspended' ) );
-		add_action( 'hostforge_after_unsuspend', array( $this, 'log_service_unsuspended' ) );
-		add_action( 'hostforge_after_terminate', array( $this, 'log_service_terminated' ) );
+		if ( in_array( 'service_provisioned', $events, true ) ) {
+			add_action( 'hostforge_after_provision', array( $this, 'log_service_provisioned' ), 10, 2 );
+		}
+		if ( in_array( 'service_suspended', $events, true ) ) {
+			add_action( 'hostforge_after_suspend', array( $this, 'log_service_suspended' ) );
+		}
+		if ( in_array( 'service_unsuspended', $events, true ) ) {
+			add_action( 'hostforge_after_unsuspend', array( $this, 'log_service_unsuspended' ) );
+		}
+		if ( in_array( 'service_terminated', $events, true ) ) {
+			add_action( 'hostforge_after_terminate', array( $this, 'log_service_terminated' ) );
+		}
 
 		// Ticket events.
-		add_action( 'hostforge_ticket_created', array( $this, 'log_ticket_created' ), 10, 2 );
-		add_action( 'hostforge_ticket_closed', array( $this, 'log_ticket_closed' ) );
+		if ( in_array( 'ticket_created', $events, true ) ) {
+			add_action( 'hostforge_ticket_created', array( $this, 'log_ticket_created' ), 10, 2 );
+		}
+		if ( in_array( 'ticket_closed', $events, true ) ) {
+			add_action( 'hostforge_ticket_closed', array( $this, 'log_ticket_closed' ) );
+		}
 
 		// Domain events.
-		add_action( 'hostforge_domain_registered', array( $this, 'log_domain_registered' ), 10, 2 );
-		add_action( 'hostforge_domain_transferred', array( $this, 'log_domain_transferred' ), 10, 2 );
+		if ( in_array( 'domain_registered', $events, true ) ) {
+			add_action( 'hostforge_domain_registered', array( $this, 'log_domain_registered' ), 10, 2 );
+		}
+		if ( in_array( 'domain_transferred', $events, true ) ) {
+			add_action( 'hostforge_domain_transferred', array( $this, 'log_domain_transferred' ), 10, 2 );
+		}
 
 		// Settings changes.
-		add_action( 'update_option', array( $this, 'log_option_update' ), 10, 3 );
+		if ( in_array( 'setting_changed', $events, true ) ) {
+			add_action( 'update_option', array( $this, 'log_option_update' ), 10, 3 );
+		}
 
 		// WooCommerce order events.
-		add_action( 'woocommerce_order_status_changed', array( $this, 'log_order_status_change' ), 10, 3 );
+		if ( in_array( 'order_status_changed', $events, true ) ) {
+			add_action( 'woocommerce_order_status_changed', array( $this, 'log_order_status_change' ), 10, 3 );
+		}
 	}
 
 	/**
@@ -423,18 +492,47 @@ class HF_Audit_Log {
 			}
 		}
 
+		$entry = array(
+			'user_id'     => $user_id,
+			'action'      => $action,
+			'object_type' => $object_type,
+			'object_id'   => $object_id,
+			'details'     => $details,
+			'ip_address'  => $ip,
+			'created_at'  => current_time( 'mysql', true ),
+		);
+
+		/**
+		 * Filter audit log entry data before saving.
+		 *
+		 * Allows third-party code to modify or enrich the audit log
+		 * entry before it is inserted into the database. Return an
+		 * empty array to prevent the entry from being saved.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $entry {
+		 *     Audit log entry data.
+		 *
+		 *     @type int    $user_id     User ID (0 for system).
+		 *     @type string $action      Action identifier.
+		 *     @type string $object_type Object type (user, service, ticket, etc.).
+		 *     @type int    $object_id   Object ID.
+		 *     @type string $details     Human-readable description.
+		 *     @type string $ip_address  Visitor IP address.
+		 *     @type string $created_at  MySQL datetime string.
+		 * }
+		 */
+		$entry = apply_filters( 'hostforge_audit_log_entry', $entry );
+
+		if ( empty( $entry ) ) {
+			return;
+		}
+
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 		$wpdb->insert(
 			$table,
-			array(
-				'user_id'     => $user_id,
-				'action'      => $action,
-				'object_type' => $object_type,
-				'object_id'   => $object_id,
-				'details'     => $details,
-				'ip_address'  => $ip,
-				'created_at'  => current_time( 'mysql', true ),
-			),
+			$entry,
 			array( '%d', '%s', '%s', '%d', '%s', '%s', '%s' )
 		);
 	}
@@ -497,7 +595,7 @@ class HF_Audit_Log {
 		// Get items.
 		$query = "SELECT * FROM {$table} WHERE {$where_sql} ORDER BY created_at DESC LIMIT %d OFFSET %d";
 
-		$query_values   = array_merge( $values, array( (int) $args['per_page'], $offset ) );
+		$query_values = array_merge( $values, array( (int) $args['per_page'], $offset ) );
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$items = $wpdb->get_results( $wpdb->prepare( $query, $query_values ) );

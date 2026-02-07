@@ -99,8 +99,8 @@ class HF_Log_Viewer {
 		$offset = ( max( 1, $args['page'] ) - 1 ) * $args['per_page'];
 
 		// Get items.
-		$all_values   = array_merge( $values, array( $args['per_page'], $offset ) );
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$all_values = array_merge( $values, array( $args['per_page'], $offset ) );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
 		$items = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT * FROM {$wpdb->prefix}hf_logs WHERE {$where_sql} ORDER BY {$orderby} {$order} LIMIT %d OFFSET %d",
@@ -109,7 +109,7 @@ class HF_Log_Viewer {
 		);
 
 		return array(
-			'items' => $items ?: array(),
+			'items' => ! empty( $items ) ? $items : array(),
 			'total' => $total,
 			'pages' => $pages,
 		);
@@ -126,7 +126,7 @@ class HF_Log_Viewer {
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.DirectQuery
 		$results = $wpdb->get_col( "SELECT DISTINCT module FROM {$wpdb->prefix}hf_logs ORDER BY module ASC" );
 
-		return $results ?: array();
+		return ! empty( $results ) ? $results : array();
 	}
 
 	/**
@@ -138,6 +138,18 @@ class HF_Log_Viewer {
 		global $wpdb;
 
 		$retention_days = (int) get_option( 'hf_log_retention_days', 30 );
+
+		/**
+		 * Filters the number of days to retain log entries before pruning.
+		 *
+		 * Allows overriding the log retention period configured in settings.
+		 * Return 0 or a negative number to disable automatic pruning.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int $retention_days Number of days to retain logs.
+		 */
+		$retention_days = (int) apply_filters( 'hostforge_log_retention_days', $retention_days );
 
 		if ( $retention_days < 1 ) {
 			return 0;

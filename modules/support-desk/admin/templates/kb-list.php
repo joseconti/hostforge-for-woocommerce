@@ -45,7 +45,7 @@ defined( 'ABSPATH' ) || exit;
 						'logged_in'      => __( 'Logged In', 'hostforge' ),
 						'customers_only' => __( 'Customers Only', 'hostforge' ),
 					);
-					$visibility_label = $visibility_labels[ $visibility ] ?? ucfirst( $visibility );
+					$visibility_label  = $visibility_labels[ $visibility ] ?? ucfirst( $visibility );
 					?>
 					<tr data-article-id="<?php echo esc_attr( $article->ID ); ?>">
 						<td>
@@ -87,7 +87,7 @@ defined( 'ABSPATH' ) || exit;
 								'draft'   => __( 'Draft', 'hostforge' ),
 								'pending' => __( 'Pending', 'hostforge' ),
 							);
-							$post_status_label = $post_status_labels[ $article->post_status ] ?? ucfirst( $article->post_status );
+							$post_status_label  = $post_status_labels[ $article->post_status ] ?? ucfirst( $article->post_status );
 							?>
 							<span class="hf-badge hf-badge--<?php echo esc_attr( $article->post_status ); ?>">
 								<?php echo esc_html( $post_status_label ); ?>

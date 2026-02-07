@@ -1,0 +1,5196 @@
+# Copyright (C) 2026 Jose Conti
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: HostForge for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/joseconti/hostforge-for-woocommerce/issues\n"
+"Last-Translator: Jose Conti <jose@joseconti.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-02-07T15:45:40+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: hostforge\n"
+
+#. Plugin Name of the plugin
+msgid "HostForge for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://joseconti.com/hostforge"
+msgstr ""
+
+#. Description of the plugin
+msgid "Modular hosting management platform for WooCommerce. Sell shared hosting, reseller, VPS, dedicated servers, domains, SSL and software licenses with automatic provisioning via cPanel and Plesk."
+msgstr ""
+
+#. Author of the plugin
+msgid "Jose Conti"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://joseconti.com"
+msgstr ""
+
+#. translators: 1: required PHP version, 2: current PHP version
+#: hostforge-for-woocommerce.php:95
+msgid "HostForge for WooCommerce requires PHP %1$s or higher. You are running PHP %2$s."
+msgstr ""
+
+#. translators: %s: required WordPress version
+#: hostforge-for-woocommerce.php:110
+msgid "HostForge for WooCommerce requires WordPress %s or higher."
+msgstr ""
+
+#: hostforge-for-woocommerce.php:124
+msgid "HostForge for WooCommerce requires WooCommerce to be installed and active."
+msgstr ""
+
+#. translators: %s: required WooCommerce version
+#: hostforge-for-woocommerce.php:136
+msgid "HostForge for WooCommerce requires WooCommerce %s or higher."
+msgstr ""
+
+#: hostforge-for-woocommerce.php:152
+#: includes/admin/class-hf-admin.php:60
+#: includes/admin/class-hf-admin.php:61
+#: modules/security/admin/class-hf-security-admin.php:126
+#: modules/support-desk/admin/templates/kb-edit.php:91
+#: templates/admin/dashboard.php:61
+msgid "Settings"
+msgstr ""
+
+#: includes/abstracts/abstract-hf-rest-controller.php:37
+msgid "You do not have permission to access this resource."
+msgstr ""
+
+#: includes/abstracts/abstract-hf-rest-controller.php:54
+msgid "You must be logged in to access this resource."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:38
+#: includes/admin/class-hf-admin.php:39
+msgid "HostForge"
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:50
+#: includes/admin/class-hf-admin.php:51
+msgid "Dashboard"
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:70
+#: includes/admin/class-hf-admin.php:71
+msgid "Modules"
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:80
+#: includes/admin/class-hf-admin.php:81
+msgid "Logs"
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:154
+msgid "Are you sure you want to deactivate this module?"
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:155
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:90
+#: modules/domain-manager/admin/class-hf-domain-admin.php:106
+#: modules/domain-manager/class-hf-domain-frontend.php:283
+#: modules/server-manager/admin/class-hf-server-admin.php:92
+#: modules/support-desk/admin/class-hf-ticket-admin.php:111
+msgid "Saving..."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:156
+msgid "Saved"
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:157
+#: modules/auto-provisioning/class-hf-service-frontend.php:168
+#: modules/domain-manager/class-hf-domain-checkout.php:360
+#: modules/support-desk/class-hf-ticket-frontend.php:123
+msgid "An error occurred. Please try again."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:192
+#: includes/admin/class-hf-admin.php:225
+#: includes/admin/class-hf-admin.php:241
+#: includes/admin/class-hf-admin.php:257
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:104
+#: modules/reports/admin/class-hf-reports-admin.php:129
+#: modules/security/admin/class-hf-security-admin.php:119
+#: modules/server-manager/admin/class-hf-server-admin.php:112
+#: modules/support-desk/admin/class-hf-ticket-admin.php:144
+#: modules/support-desk/admin/class-hf-ticket-admin.php:188
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:275
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:243
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:292
+#: modules/domain-manager/admin/class-hf-domain-admin.php:275
+#: modules/domain-manager/admin/class-hf-domain-admin.php:324
+#: modules/domain-manager/admin/class-hf-domain-admin.php:361
+#: modules/domain-manager/admin/class-hf-domain-admin.php:397
+#: modules/domain-manager/admin/class-hf-domain-admin.php:427
+#: modules/domain-manager/admin/class-hf-domain-admin.php:454
+#: modules/domain-manager/admin/class-hf-domain-admin.php:488
+#: modules/domain-manager/admin/class-hf-domain-admin.php:542
+#: modules/domain-manager/admin/class-hf-domain-admin.php:578
+#: modules/domain-manager/admin/class-hf-domain-admin.php:657
+#: modules/domain-manager/admin/class-hf-domain-admin.php:734
+#: modules/domain-manager/admin/class-hf-domain-admin.php:764
+#: modules/domain-manager/admin/class-hf-domain-admin.php:841
+#: modules/domain-manager/admin/class-hf-domain-admin.php:878
+#: modules/domain-manager/class-hf-domain-frontend.php:304
+#: modules/domain-manager/class-hf-domain-frontend.php:331
+#: modules/domain-manager/class-hf-domain-frontend.php:373
+#: modules/domain-manager/class-hf-domain-frontend.php:401
+#: modules/domain-manager/class-hf-domain-frontend.php:459
+#: modules/domain-manager/class-hf-domain-frontend.php:494
+#: modules/reports/class-hf-reports-module.php:131
+#: modules/security/admin/class-hf-security-admin.php:157
+#: modules/security/admin/class-hf-security-admin.php:196
+#: modules/security/admin/class-hf-security-admin.php:225
+#: modules/server-manager/admin/class-hf-server-admin.php:276
+#: modules/server-manager/admin/class-hf-server-admin.php:370
+#: modules/server-manager/admin/class-hf-server-admin.php:415
+#: modules/server-manager/admin/class-hf-server-admin.php:546
+#: modules/support-desk/admin/class-hf-ticket-admin.php:478
+#: modules/support-desk/admin/class-hf-ticket-admin.php:554
+#: modules/support-desk/admin/class-hf-ticket-admin.php:722
+#: modules/support-desk/admin/class-hf-ticket-admin.php:773
+#: modules/support-desk/admin/class-hf-ticket-admin.php:819
+#: modules/support-desk/admin/class-hf-ticket-admin.php:874
+#: modules/support-desk/admin/class-hf-ticket-admin.php:909
+#: modules/support-desk/admin/class-hf-ticket-admin.php:987
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1020
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1082
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1167
+msgid "Permission denied."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:282
+msgid "Invalid module ID."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:297
+msgid "Module activated."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:298
+msgid "Module deactivated."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:306
+msgid "Could not activate module. Check dependencies."
+msgstr ""
+
+#: includes/admin/class-hf-admin.php:307
+msgid "Could not deactivate module."
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:45
+msgid "Company Information"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:50
+msgid "Company Name"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:51
+msgid "Support Email"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:52
+#: modules/domain-manager/admin/templates/domain-detail.php:124
+msgid "Phone"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:53
+#: modules/domain-manager/admin/templates/domain-detail.php:125
+msgid "Address"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:58
+msgid "General Settings"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:63
+#: templates/admin/dashboard.php:40
+msgid "Debug Mode"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:63
+msgid "Enable debug logging"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:64
+msgid "Delete Data on Uninstall"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:64
+msgid "Remove all HostForge data when the plugin is uninstalled"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:65
+msgid "Log Retention (days)"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:70
+msgid "License"
+msgstr ""
+
+#: includes/admin/class-hf-settings.php:75
+msgid "License Key"
+msgstr ""
+
+#. translators: 1: required PHP version, 2: current PHP version
+#: includes/class-hf-dependency-checker.php:30
+msgid "PHP %1$s or higher is required. Current version: %2$s."
+msgstr ""
+
+#. translators: %s: required WordPress version
+#: includes/class-hf-dependency-checker.php:39
+msgid "WordPress %s or higher is required."
+msgstr ""
+
+#: includes/class-hf-dependency-checker.php:45
+msgid "WooCommerce must be installed and active."
+msgstr ""
+
+#. translators: %s: required WooCommerce version
+#: includes/class-hf-dependency-checker.php:49
+msgid "WooCommerce %s or higher is required."
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:49
+#: includes/products/class-hf-order-meta-handler.php:227
+msgid "Service Configuration"
+msgstr ""
+
+#. translators: %s: field label
+#: includes/products/class-hf-checkout-fields.php:138
+msgid "%s is a required field."
+msgstr ""
+
+#. translators: %s: field label
+#: includes/products/class-hf-checkout-fields.php:182
+msgid "%s must be a valid domain name."
+msgstr ""
+
+#. translators: %s: field label
+#: includes/products/class-hf-checkout-fields.php:189
+msgid "%s must be a valid hostname."
+msgstr ""
+
+#. translators: %s: field label
+#: includes/products/class-hf-checkout-fields.php:196
+msgid "%s must be a valid IPv4 address."
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:308
+#: includes/products/class-hf-checkout-fields.php:360
+#: includes/products/class-hf-order-meta-handler.php:203
+#: modules/domain-manager/admin/templates/domain-detail.php:41
+#: templates/emails/domain-registered.php:52
+msgid "Domain Name"
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:322
+#: includes/products/class-hf-order-meta-handler.php:201
+#: modules/server-manager/admin/class-hf-server-list-table.php:45
+#: modules/server-manager/admin/templates/server-monitor.php:38
+#: modules/server-manager/admin/templates/server-monitor.php:97
+msgid "Hostname"
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:333
+msgid "Root Password"
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:341
+msgid "Select an OS"
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:348
+#: includes/products/class-hf-order-meta-handler.php:202
+msgid "Operating System"
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:372
+msgid "Domain for SSL"
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:383
+msgid "CSR (Certificate Signing Request)"
+msgstr ""
+
+#: includes/products/class-hf-checkout-fields.php:395
+msgid "Server IP Address"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:139
+msgid "Service Type"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:140
+#: includes/products/class-hf-product-data-tabs.php:108
+#: includes/products/class-hf-product-data-tabs.php:456
+#: modules/server-manager/admin/templates/server-form.php:96
+#: modules/server-manager/class-hf-server-manager-module.php:182
+msgid "Server Group"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:141
+msgid "Hosting Plan"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:142
+#: includes/products/class-hf-product-data-tabs.php:131
+msgid "Disk Space (MB)"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:143
+#: includes/products/class-hf-product-data-tabs.php:142
+msgid "Bandwidth (MB)"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:144
+#: includes/products/class-hf-product-data-tabs.php:153
+msgid "Email Accounts"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:145
+#: includes/products/class-hf-product-data-tabs.php:162
+msgid "Databases"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:146
+#: includes/products/class-hf-product-data-tabs.php:306
+msgid "CPU Cores"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:147
+#: includes/products/class-hf-product-data-tabs.php:315
+msgid "RAM (MB)"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:148
+msgid "Disk (GB)"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:149
+#: includes/products/class-hf-product-data-tabs.php:333
+msgid "Disk Type"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:150
+#: includes/products/class-hf-product-data-tabs.php:345
+msgid "Bandwidth (GB)"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:151
+#: includes/products/class-hf-product-data-tabs.php:361
+msgid "IPv4 Addresses"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:152
+#: modules/server-manager/admin/templates/server-form.php:86
+msgid "Max Accounts"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:153
+msgid "Reseller Plan"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:154
+#: includes/products/class-hf-product-data-tabs.php:384
+msgid "Processor"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:155
+#: includes/products/class-hf-product-data-tabs.php:409
+msgid "Datacenter"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:156
+#: includes/products/class-hf-product-data-tabs.php:490
+#: modules/domain-manager/admin/class-hf-domain-admin.php:179
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:48
+#: modules/domain-manager/admin/templates/domain-detail.php:45
+#: modules/notifications/class-hf-merge-tags.php:257
+#: templates/emails/domain-registered.php:60
+msgid "Registrar"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:157
+msgid "Registration Years"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:158
+#: includes/products/class-hf-product-data-tabs.php:561
+msgid "SSL Type"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:159
+#: includes/products/class-hf-product-data-tabs.php:574
+msgid "SSL Brand"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:160
+#: includes/products/class-hf-product-data-tabs.php:581
+msgid "Validity (months)"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:161
+#: includes/products/class-hf-product-data-tabs.php:650
+msgid "License Type"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:162
+#: includes/products/class-hf-product-data-tabs.php:659
+msgid "License Provider"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:163
+#: includes/products/class-hf-product-data-tabs.php:690
+msgid "Max Activations"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:164
+#: includes/products/class-hf-product-data-tabs.php:269
+#: includes/products/class-hf-product-data-tabs.php:465
+msgid "Setup Fee"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:200
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:44
+#: modules/auto-provisioning/admin/templates/service-detail.php:43
+#: modules/domain-manager/admin/class-hf-domain-admin.php:177
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:46
+#: modules/domain-manager/class-hf-domain-manager-module.php:178
+#: modules/notifications/class-hf-merge-tags.php:254
+#: modules/security/admin/templates/audit-log.php:38
+#: templates/emails/provision-failed.php:30
+#: templates/emails/service-welcome.php:39
+#: templates/frontend/domain-list.php:26
+#: templates/frontend/domain-list.php:43
+#: templates/frontend/service-detail.php:34
+#: templates/frontend/service-list.php:21
+#: templates/frontend/service-list.php:38
+msgid "Domain"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:204
+msgid "SSL Domain"
+msgstr ""
+
+#: includes/products/class-hf-order-meta-handler.php:205
+msgid "Server IP"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:62
+msgid "Add-ons"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:85
+msgid "Product Add-ons"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:86
+msgid "Optional extras customers can add to their order."
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:101
+msgid "Add New Add-on"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:153
+#: modules/support-desk/admin/templates/departments.php:32
+#: modules/support-desk/admin/templates/departments.php:72
+msgid "Name"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:158
+#: modules/support-desk/admin/templates/canned-responses.php:70
+#: modules/support-desk/admin/templates/departments.php:41
+#: modules/support-desk/admin/templates/departments.php:73
+msgid "Description"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:163
+msgid "Price"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:168
+msgid "Pricing Type"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:170
+msgid "One-time"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:171
+msgid "Recurring"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:175
+msgid "Remove"
+msgstr ""
+
+#: includes/products/class-hf-product-addons.php:253
+msgid "Optional Add-ons"
+msgstr ""
+
+#. translators: %s: price
+#: includes/products/class-hf-product-addons.php:259
+msgid "/ billing cycle"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:39
+msgid "Hosting Settings"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:46
+msgid "Server Settings"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:53
+#: modules/domain-manager/admin/templates/registrar-settings.php:102
+msgid "Domain Settings"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:60
+msgid "SSL Settings"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:67
+msgid "License Settings"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:103
+msgid "Server Assignment"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:109
+msgid "Server group for auto-assignment."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:117
+msgid "Hosting Plan / Package"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:118
+msgid "Package name on the panel server."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:126
+msgid "Resource Limits"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:134
+#: includes/products/class-hf-product-data-tabs.php:145
+#: includes/products/class-hf-product-data-tabs.php:348
+msgid "0 = unlimited."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:171
+msgid "Subdomains"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:180
+msgid "Parked Domains"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:189
+msgid "Addon Domains"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:198
+msgid "Reseller Settings"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:203
+msgid "Max cPanel Accounts"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:212
+msgid "Aggregate Disk (MB)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:221
+msgid "Aggregate Bandwidth (MB)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:230
+msgid "Reseller Plan Name"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:231
+msgid "Reseller plan on the server."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:239
+msgid "WHM Access"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:240
+msgid "Enable WHM access for reseller."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:247
+msgid "Checkout Options"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:252
+#: includes/products/class-hf-product-data-tabs.php:608
+msgid "Require Domain"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:253
+msgid "Customer must provide a domain at checkout."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:260
+msgid "Auto Username"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:261
+msgid "Generate username from domain automatically."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:278
+msgid "Trial Days"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:281
+msgid "0 = no trial."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:301
+msgid "Hardware Specifications"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:324
+msgid "Disk Space (GB)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:335
+msgid "SSD"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:336
+msgid "NVMe"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:337
+msgid "HDD"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:356
+msgid "Network"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:370
+msgid "IPv6 Addresses"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:379
+msgid "Dedicated Hardware"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:385
+msgid "e.g. Intel Xeon E-2288G"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:393
+msgid "RAID Configuration"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:400
+msgid "Uplink Speed"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:401
+msgid "e.g. 1Gbps, 10Gbps"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:416
+msgid "IPMI/KVM Access"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:417
+msgid "Include remote management access."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:424
+msgid "OS & Provisioning"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:429
+msgid "Available OS"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:430
+msgid "One OS per line (e.g. Ubuntu 22.04, CentOS 9, Debian 12)."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:439
+msgid "Require Hostname"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:440
+msgid "Customer must provide hostname at checkout."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:448
+msgid "Require Root Password"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:449
+msgid "Customer sets root password at checkout."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:457
+msgid "For auto-assignment."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:491
+msgid "Registrar module to use for this product."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:499
+msgid "Registration Period (years)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:509
+msgid "Allowed TLDs"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:510
+msgid "One TLD per line (e.g. .com, .net, .org). Leave empty for all."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:519
+msgid "Auto-Renew Default"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:520
+msgid "Enable auto-renewal by default."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:528
+msgid "Allow Transfer"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:529
+msgid "Allow domain transfer option at checkout."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:537
+msgid "ID Protection"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:538
+msgid "WHOIS privacy available."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:563
+msgid "Domain Validated (DV)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:564
+msgid "Organization Validated (OV)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:565
+msgid "Extended Validation (EV)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:566
+msgid "Wildcard"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:591
+msgid "Multi-Domain (SAN)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:592
+msgid "Support multiple domains."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:599
+msgid "Max SAN Domains"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:609
+msgid "Domain required at checkout."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:617
+msgid "Require CSR"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:618
+msgid "Customer must provide CSR at checkout."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:625
+msgid "Warranty (USD)"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:651
+msgid "e.g. cpanel, plesk, litespeed, cloudlinux"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:666
+msgid "Require Server IP"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:667
+msgid "Customer must provide server IP at checkout."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:675
+msgid "Auto-Generate Key"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:676
+msgid "Generate license key automatically."
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:683
+msgid "Key Prefix"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:700
+msgid "Allow IP Change"
+msgstr ""
+
+#: includes/products/class-hf-product-data-tabs.php:701
+msgid "Customer can change server IP."
+msgstr ""
+
+#. translators: %d: user ID
+#: includes/subscriptions/class-hf-sumo-adapter.php:64
+msgid "Subscription #%d"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:84
+msgid "Are you sure you want to suspend this service?"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:85
+msgid "Are you sure you want to reactivate this service?"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:86
+msgid "Are you sure you want to TERMINATE this service? This cannot be undone."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:87
+msgid "Processing..."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:88
+msgid "Action completed successfully."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:89
+#: modules/domain-manager/admin/class-hf-domain-admin.php:111
+#: modules/domain-manager/class-hf-domain-frontend.php:285
+#: modules/security/admin/class-hf-security-admin.php:105
+#: modules/server-manager/admin/class-hf-server-admin.php:97
+#: modules/support-desk/admin/class-hf-ticket-admin.php:121
+msgid "An error occurred."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:91
+#: modules/security/admin/class-hf-security-admin.php:102
+#: modules/security/admin/class-hf-security-admin.php:184
+msgid "Settings saved."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:145
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:255
+#: modules/auto-provisioning/api/class-hf-rest-service-controller.php:158
+#: modules/auto-provisioning/api/class-hf-rest-service-controller.php:176
+#: modules/auto-provisioning/class-hf-service-frontend.php:228
+msgid "Service not found."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:250
+msgid "Invalid service ID."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:261
+msgid "Invalid action."
+msgstr ""
+
+#. translators: %s: action name
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:276
+msgid "%s action enqueued. It will be processed shortly."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-admin.php:305
+msgid "Settings saved successfully."
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:45
+#: modules/auto-provisioning/admin/templates/service-detail.php:90
+#: modules/domain-manager/admin/class-hf-domain-admin.php:178
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:47
+#: modules/domain-manager/admin/templates/domain-detail.php:258
+#: modules/notifications/class-hf-merge-tags.php:231
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:45
+#: modules/support-desk/admin/templates/ticket-detail.php:85
+#: modules/support-desk/admin/templates/ticket-detail.php:122
+#: modules/support-desk/admin/templates/ticket-detail.php:209
+#: templates/emails/ticket-new-staff.php:38
+msgid "Customer"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:46
+#: modules/auto-provisioning/admin/templates/service-detail.php:123
+#: templates/frontend/service-list.php:22
+#: templates/frontend/service-list.php:41
+msgid "Product"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:47
+#: modules/auto-provisioning/admin/templates/service-detail.php:135
+#: modules/reports/admin/templates/reports-dashboard.php:128
+#: modules/server-manager/class-hf-server-manager-module.php:133
+#: templates/emails/provision-failed.php:36
+msgid "Server"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:48
+#: modules/auto-provisioning/admin/templates/service-detail.php:47
+#: modules/auto-provisioning/admin/templates/service-detail.php:202
+#: modules/domain-manager/admin/class-hf-domain-admin.php:180
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:49
+#: modules/security/admin/templates/login-attempts.php:93
+#: modules/server-manager/admin/class-hf-server-list-table.php:49
+#: modules/server-manager/admin/templates/server-form.php:222
+#: modules/server-manager/admin/templates/server-form.php:225
+#: modules/server-manager/admin/templates/server-monitor.php:55
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:48
+#: modules/support-desk/admin/templates/kb-edit.php:96
+#: modules/support-desk/admin/templates/kb-list.php:29
+#: modules/support-desk/admin/templates/ticket-detail.php:229
+#: templates/frontend/domain-list.php:27
+#: templates/frontend/domain-list.php:46
+#: templates/frontend/service-detail.php:38
+#: templates/frontend/service-list.php:23
+#: templates/frontend/service-list.php:44
+#: templates/frontend/ticket-list.php:33
+#: templates/frontend/ticket-list.php:89
+msgid "Status"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:49
+#: modules/domain-manager/admin/class-hf-domain-admin.php:183
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:52
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:51
+#: modules/support-desk/admin/templates/kb-edit.php:158
+#: modules/support-desk/admin/templates/ticket-detail.php:327
+#: templates/frontend/ticket-list.php:35
+#: templates/frontend/ticket-list.php:101
+msgid "Created"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:85
+msgid "Suspend"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:86
+msgid "Unsuspend"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:108
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:88
+#: modules/security/admin/templates/login-attempts.php:61
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:102
+msgid "All"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:135
+msgid "Cancellation Requests"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:248
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:238
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:258
+msgid "View Details"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:257
+#: modules/auto-provisioning/admin/templates/service-detail.php:102
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:247
+#: modules/domain-manager/admin/templates/domain-detail.php:248
+#: modules/security/admin/templates/audit-log.php:39
+msgid "Order"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:281
+#: modules/auto-provisioning/admin/templates/service-detail.php:97
+#: modules/server-manager/admin/class-hf-server-list-table.php:356
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:290
+#: modules/support-desk/admin/templates/ticket-detail.php:81
+msgid "Unknown"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:302
+#: modules/auto-provisioning/admin/templates/service-detail.php:130
+msgid "Deleted"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:323
+#: modules/auto-provisioning/admin/templates/service-detail.php:109
+#: modules/auto-provisioning/admin/templates/service-detail.php:118
+#: modules/auto-provisioning/admin/templates/service-detail.php:142
+#: modules/server-manager/admin/class-hf-server-list-table.php:253
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:310
+#: modules/support-desk/admin/templates/kb-list.php:63
+#: modules/support-desk/admin/templates/ticket-detail.php:266
+msgid "None"
+msgstr ""
+
+#: modules/auto-provisioning/admin/class-hf-service-list-table.php:416
+msgid "No services found. Services are created automatically when hosting orders are completed."
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:12
+#: modules/auto-provisioning/admin/templates/service-list.php:14
+msgid "Automation Settings"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:14
+msgid "Back to Services"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:24
+msgid "Provision on Processing"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:29
+msgid "Start provisioning when order status is \"Processing\" (instead of waiting for \"Completed\")"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:32
+msgid "Enable this if you want to provision accounts immediately on payment, without waiting for manual order completion."
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:38
+msgid "Auto-Suspend Grace Period"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:42
+#: modules/auto-provisioning/admin/templates/automation-settings.php:54
+#: modules/security/admin/templates/security-settings.php:180
+msgid "days"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:44
+msgid "Number of days after subscription expiry before auto-suspending the service. Set to 0 to disable."
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:50
+msgid "Auto-Terminate After Suspension"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:56
+msgid "Number of days a service stays suspended before being terminated. Set to 0 to disable."
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:62
+msgid "Generated Password Length"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:66
+msgid "characters"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:68
+msgid "Length of auto-generated panel passwords. Minimum 12, maximum 32."
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/automation-settings.php:76
+#: modules/domain-manager/admin/templates/registrar-settings.php:87
+#: modules/security/admin/templates/security-settings.php:187
+msgid "Save Settings"
+msgstr ""
+
+#. translators: %s: domain name
+#: modules/auto-provisioning/admin/templates/service-detail.php:25
+msgid "Service: %s"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:31
+msgid "Back to List"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:40
+#: templates/frontend/service-detail.php:31
+msgid "Service Information"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:51
+msgid "Panel Username"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:55
+#: modules/server-manager/admin/templates/server-form.php:53
+#: modules/server-manager/admin/templates/server-monitor.php:42
+msgid "Panel Type"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:59
+msgid "Package"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:63
+msgid "Provisioned"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:68
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:554
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:596
+#: modules/reports/admin/class-hf-reports-admin.php:112
+msgid "Suspended"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:74
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:597
+#: modules/reports/admin/class-hf-reports-admin.php:113
+msgid "Terminated"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:79
+#: templates/frontend/service-detail.php:53
+msgid "Next Due Date"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:87
+#: modules/domain-manager/admin/templates/domain-detail.php:244
+msgid "Related Information"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:114
+msgid "Subscription"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:152
+msgid "Cancellation Request"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:155
+msgid "Requested At"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:159
+#: modules/security/admin/templates/ip-blocks.php:60
+msgid "Reason"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:168
+msgid "Manual Actions"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:172
+msgid "Suspend Service"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:178
+msgid "Reactivate Service"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:184
+msgid "Terminate Service"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:189
+msgid "No actions available for terminated or cancelled services."
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:196
+msgid "Provisioning History"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:201
+#: modules/security/admin/templates/audit-log.php:96
+msgid "Action"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:203
+msgid "Attempts"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:204
+#: modules/server-manager/admin/class-hf-server-list-table.php:355
+#: templates/emails/provision-failed.php:47
+msgid "Error"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:205
+msgid "Scheduled"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:206
+msgid "Completed"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-detail.php:223
+msgid "No provisioning history found."
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-list.php:12
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:469
+#: modules/auto-provisioning/class-hf-service-frontend.php:83
+#: modules/auto-provisioning/class-hf-service-frontend.php:105
+msgid "Hosting Services"
+msgstr ""
+
+#: modules/auto-provisioning/admin/templates/service-list.php:23
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:166
+msgid "Search Services"
+msgstr ""
+
+#. translators: %s: action name
+#: modules/auto-provisioning/api/class-hf-rest-service-controller.php:191
+msgid "%s action enqueued."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:43
+msgid "Auto Provisioning"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:52
+msgid "Automatically provision, suspend and terminate hosting accounts based on WooCommerce orders and subscriptions."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:159
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:169
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:452
+msgid "Services"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:160
+#: modules/notifications/class-hf-merge-tags.php:235
+#: modules/security/admin/templates/audit-log.php:36
+msgid "Service"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:161
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:162
+msgid "Add New Service"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:163
+msgid "Edit Service"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:164
+msgid "New Service"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:165
+msgid "View Service"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:167
+msgid "No services found."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:168
+msgid "No services found in Trash."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:493
+msgid "Services Overview"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:542
+msgid "Total Services"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:546
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:595
+#: modules/domain-manager/admin/templates/tld-pricing.php:51
+#: modules/domain-manager/admin/templates/tld-pricing.php:125
+#: modules/domain-manager/class-hf-domain-manager-module.php:703
+#: modules/domain-manager/class-hf-domain-manager-module.php:858
+#: modules/reports/admin/class-hf-reports-admin.php:110
+#: modules/server-manager/admin/class-hf-server-list-table.php:354
+#: templates/admin/modules.php:43
+msgid "Active"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:550
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:594
+#: modules/domain-manager/class-hf-domain-manager-module.php:857
+#: modules/reports/admin/class-hf-reports-admin.php:111
+#: modules/support-desk/admin/templates/kb-list.php:88
+msgid "Pending"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-auto-provisioning-module.php:598
+#: modules/domain-manager/class-hf-domain-manager-module.php:861
+#: modules/reports/admin/class-hf-reports-admin.php:114
+msgid "Cancelled"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-provisioning-engine.php:466
+msgid "Subscription expired or on hold."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:108
+msgid "Service Details"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:162
+#: modules/reports/admin/class-hf-reports-admin.php:108
+#: modules/support-desk/class-hf-ticket-frontend.php:117
+msgid "Loading..."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:163
+msgid "Are you sure you want to request cancellation of this service?"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:164
+#: modules/auto-provisioning/class-hf-service-frontend.php:427
+msgid "Cancellation request submitted. Our team will review it shortly."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:165
+msgid "Password changed successfully!"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:166
+#: modules/auto-provisioning/class-hf-service-frontend.php:366
+msgid "Password must be at least 8 characters."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:167
+msgid "Upgrade/downgrade request submitted."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:235
+msgid "You do not have access to this service."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:266
+msgid "Login to Panel"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:267
+#: templates/frontend/service-detail.php:73
+#: templates/frontend/service-detail.php:81
+msgid "Change Password"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:268
+msgid "Upgrade/Downgrade"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:269
+#: templates/frontend/service-detail.php:139
+#: templates/frontend/service-detail.php:152
+msgid "Request Cancellation"
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:306
+#: modules/auto-provisioning/class-hf-service-frontend.php:362
+#: modules/auto-provisioning/class-hf-service-frontend.php:409
+#: modules/auto-provisioning/class-hf-service-frontend.php:444
+#: modules/auto-provisioning/class-hf-service-frontend.php:483
+msgid "Access denied."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:316
+#: modules/auto-provisioning/class-hf-service-frontend.php:376
+#: modules/auto-provisioning/class-hf-service-frontend.php:501
+msgid "Server module not available."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:322
+#: modules/auto-provisioning/class-hf-service-frontend.php:382
+#: modules/auto-provisioning/class-hf-service-frontend.php:507
+msgid "Server provider not available."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:345
+msgid "Could not generate SSO URL."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:390
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:399
+#: modules/server-manager/providers/class-hf-plesk-provider.php:679
+msgid "Password changed successfully."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:392
+msgid "Could not change password."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:415
+msgid "This service is already terminated or cancelled."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:420
+msgid "A cancellation request is already pending."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:448
+msgid "Please select a package."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:454
+msgid "Only active services can be upgraded or downgraded."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:467
+msgid "Package change request submitted. It will be processed shortly."
+msgstr ""
+
+#: modules/auto-provisioning/class-hf-service-frontend.php:516
+msgid "Could not fetch usage data."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:104
+#: modules/domain-manager/class-hf-domain-frontend.php:286
+msgid "Are you sure you want to delete this record?"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:105
+msgid "Are you sure you want to renew this domain?"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:107
+#: modules/domain-manager/class-hf-domain-frontend.php:284
+#: modules/support-desk/admin/class-hf-ticket-admin.php:112
+msgid "Saved successfully."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:108
+msgid "Syncing..."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:109
+msgid "Synced successfully."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:110
+msgid "Testing..."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:112
+msgid "Importing..."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:113
+msgid "TLD pricing imported successfully."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:181
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:50
+#: modules/domain-manager/admin/templates/domain-detail.php:53
+#: templates/emails/domain-registered.php:76
+#: templates/frontend/domain-detail.php:44
+msgid "Expiry Date"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:182
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:51
+#: modules/domain-manager/admin/templates/domain-detail.php:57
+#: templates/frontend/domain-detail.php:48
+#: templates/frontend/domain-list.php:29
+#: templates/frontend/domain-list.php:60
+msgid "Auto-Renew"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:199
+#: modules/domain-manager/admin/class-hf-domain-admin.php:282
+#: modules/domain-manager/admin/class-hf-domain-admin.php:333
+#: modules/domain-manager/admin/class-hf-domain-admin.php:369
+#: modules/domain-manager/admin/class-hf-domain-admin.php:404
+#: modules/domain-manager/admin/class-hf-domain-admin.php:433
+#: modules/domain-manager/admin/class-hf-domain-admin.php:461
+#: modules/domain-manager/admin/class-hf-domain-admin.php:585
+msgid "Invalid domain."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:205
+#: modules/domain-manager/api/class-hf-rest-domain-controller.php:228
+#: modules/domain-manager/api/class-hf-rest-domain-controller.php:306
+#: modules/domain-manager/class-hf-domain-frontend.php:162
+msgid "Domain not found."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:288
+#: modules/domain-manager/admin/class-hf-domain-admin.php:339
+#: modules/domain-manager/admin/class-hf-domain-admin.php:375
+#: modules/domain-manager/admin/class-hf-domain-admin.php:467
+#: modules/domain-manager/admin/class-hf-domain-admin.php:507
+#: modules/domain-manager/admin/class-hf-domain-admin.php:556
+#: modules/domain-manager/admin/class-hf-domain-admin.php:591
+#: modules/domain-manager/admin/class-hf-domain-admin.php:884
+#: modules/domain-manager/api/class-hf-rest-domain-controller.php:314
+#: modules/domain-manager/api/class-hf-rest-domain-controller.php:352
+#: modules/domain-manager/class-hf-domain-engine.php:242
+#: modules/domain-manager/class-hf-domain-engine.php:342
+#: modules/domain-manager/class-hf-domain-frontend.php:348
+#: modules/domain-manager/class-hf-domain-frontend.php:412
+#: modules/domain-manager/class-hf-domain-frontend.php:470
+#: modules/domain-manager/class-hf-domain-frontend.php:504
+#: modules/domain-manager/class-hf-domain-search.php:178
+msgid "No registrar configured."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:312
+msgid "Domain synced successfully."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:412
+#: modules/domain-manager/class-hf-domain-frontend.php:313
+msgid "Auto-renewal enabled."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:413
+#: modules/domain-manager/class-hf-domain-frontend.php:314
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:785
+msgid "Auto-renewal disabled."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:442
+#: modules/domain-manager/api/class-hf-rest-domain-controller.php:267
+msgid "Domain renewal queued."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:475
+#: modules/domain-manager/class-hf-domain-frontend.php:512
+msgid "Failed to retrieve EPP code."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:500
+msgid "Invalid record data."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:550
+msgid "Invalid request."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:596
+msgid "DNS records synced."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:672
+msgid "TLD is required."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:722
+msgid "TLD pricing saved."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:742
+msgid "Invalid TLD."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:752
+msgid "TLD pricing deleted."
+msgstr ""
+
+#. translators: %d: number of TLDs imported
+#: modules/domain-manager/admin/class-hf-domain-admin.php:825
+msgid "%d TLD(s) imported."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:866
+msgid "Registrar settings saved."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:891
+msgid "Connection successful! Registrar API is working."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-admin.php:893
+msgid "Connection failed. Please check your credentials."
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:142
+#: modules/domain-manager/admin/templates/domain-detail.php:228
+msgid "Sync with Registrar"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:143
+msgid "Enable Auto-Renew"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:144
+msgid "Disable Auto-Renew"
+msgstr ""
+
+#. translators: %d: number of days
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:343
+msgid "%d days remaining"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:358
+#: modules/domain-manager/admin/templates/tld-pricing.php:66
+#: templates/frontend/domain-list.php:63
+#: templates/frontend/kb-single.php:86
+msgid "Yes"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:361
+#: modules/domain-manager/admin/templates/tld-pricing.php:68
+#: templates/frontend/domain-list.php:65
+#: templates/frontend/kb-single.php:89
+msgid "No"
+msgstr ""
+
+#: modules/domain-manager/admin/class-hf-domain-list-table.php:386
+#: modules/domain-manager/class-hf-domain-manager-module.php:185
+msgid "No domains found."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:38
+msgid "Domain Information"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:49
+#: templates/emails/domain-registered.php:68
+#: templates/frontend/domain-detail.php:40
+msgid "Registration Date"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:70
+msgid "Transfer Lock"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:83
+msgid "Last Synced"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:91
+#: modules/server-manager/admin/templates/server-form.php:117
+#: templates/emails/domain-registered.php:85
+#: templates/frontend/domain-detail.php:66
+msgid "Nameservers"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:95
+#: templates/frontend/domain-detail.php:70
+msgid "NS%d"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:100
+#: templates/frontend/domain-detail.php:75
+msgid "ns%d.example.com"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:106
+#: templates/frontend/domain-detail.php:81
+msgid "Save Nameservers"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:115
+msgid "WHOIS Contact"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:120
+msgid "First Name"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:121
+msgid "Last Name"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:122
+msgid "Organization"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:123
+msgid "Email"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:126
+msgid "City"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:127
+msgid "State"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:128
+msgid "Postal Code"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:129
+msgid "Country"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:154
+#: templates/frontend/domain-detail.php:90
+msgid "DNS Records"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:156
+msgid "Sync"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:163
+#: modules/domain-manager/admin/templates/domain-detail.php:284
+#: modules/security/admin/templates/audit-log.php:97
+#: modules/security/admin/templates/ip-blocks.php:59
+#: templates/frontend/domain-detail.php:96
+#: templates/frontend/domain-detail.php:106
+msgid "Type"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:164
+#: templates/frontend/domain-detail.php:97
+#: templates/frontend/domain-detail.php:107
+msgid "Host"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:165
+#: modules/domain-manager/admin/templates/domain-detail.php:213
+#: templates/frontend/domain-detail.php:98
+#: templates/frontend/domain-detail.php:108
+#: templates/frontend/domain-detail.php:137
+msgid "Value"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:166
+#: templates/frontend/domain-detail.php:99
+#: templates/frontend/domain-detail.php:109
+msgid "TTL"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:167
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:47
+#: modules/support-desk/admin/templates/ticket-detail.php:246
+#: modules/support-desk/admin/templates/ticket-new.php:52
+#: templates/emails/ticket-new-staff.php:55
+#: templates/frontend/ticket-list.php:32
+#: templates/frontend/ticket-list.php:84
+msgid "Priority"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:168
+#: modules/domain-manager/admin/templates/domain-detail.php:225
+#: modules/domain-manager/admin/templates/tld-pricing.php:52
+#: modules/security/admin/templates/ip-blocks.php:63
+#: modules/support-desk/admin/templates/canned-responses.php:118
+#: modules/support-desk/admin/templates/departments.php:75
+#: modules/support-desk/admin/templates/kb-list.php:31
+#: templates/frontend/domain-detail.php:100
+#: templates/frontend/domain-detail.php:110
+#: templates/frontend/domain-list.php:30
+#: templates/frontend/domain-list.php:69
+#: templates/frontend/service-list.php:25
+#: templates/frontend/service-list.php:56
+msgid "Actions"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:182
+#: modules/domain-manager/admin/templates/tld-pricing.php:80
+#: modules/server-manager/admin/class-hf-server-list-table.php:198
+#: modules/support-desk/admin/templates/canned-responses.php:135
+#: modules/support-desk/admin/templates/departments.php:89
+#: modules/support-desk/admin/templates/kb-list.php:101
+msgid "Edit"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:185
+#: modules/domain-manager/admin/templates/tld-pricing.php:83
+#: modules/server-manager/admin/class-hf-server-list-table.php:87
+#: modules/server-manager/admin/class-hf-server-list-table.php:208
+#: modules/support-desk/admin/templates/canned-responses.php:139
+#: modules/support-desk/admin/templates/departments.php:93
+#: modules/support-desk/admin/templates/kb-list.php:105
+#: templates/frontend/domain-detail.php:114
+msgid "Delete"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:192
+msgid "No DNS records found. Click Sync to fetch from registrar."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:200
+msgid "Add DNS Record"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:217
+#: templates/frontend/domain-detail.php:127
+msgid "Add Record"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:231
+msgid "Get EPP Code"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:235
+msgid "Renew Domain"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-detail.php:275
+msgid "Linked Service"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-list.php:12
+#: modules/domain-manager/admin/templates/registrar-settings.php:11
+#: modules/domain-manager/admin/templates/tld-pricing.php:12
+#: modules/domain-manager/class-hf-domain-manager-module.php:177
+#: modules/domain-manager/class-hf-domain-manager-module.php:187
+#: modules/domain-manager/class-hf-domain-manager-module.php:587
+#: modules/reports/admin/templates/reports-dashboard.php:105
+msgid "Domains"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-list.php:13
+#: modules/domain-manager/admin/templates/registrar-settings.php:12
+#: modules/domain-manager/admin/templates/tld-pricing.php:13
+#: modules/domain-manager/admin/templates/tld-pricing.php:32
+msgid "TLD Pricing"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-list.php:14
+#: modules/domain-manager/admin/templates/registrar-settings.php:13
+#: modules/domain-manager/admin/templates/tld-pricing.php:14
+msgid "Registrar Settings"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-list.php:21
+#: modules/domain-manager/admin/templates/registrar-settings.php:28
+#: modules/domain-manager/admin/templates/tld-pricing.php:19
+#: modules/domain-manager/class-hf-domain-manager-module.php:51
+msgid "Domain Manager"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/domain-list.php:35
+#: modules/domain-manager/class-hf-domain-manager-module.php:184
+msgid "Search Domains"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:43
+msgid "Namecheap API Settings"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:48
+msgid "API User"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:54
+msgid "API Key"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:57
+msgid "Leave as ******** to keep the current key."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:61
+#: modules/security/admin/templates/login-attempts.php:92
+#: modules/server-manager/admin/templates/server-form.php:168
+#: templates/emails/service-welcome.php:43
+#: templates/frontend/service-detail.php:42
+msgid "Username"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:64
+msgid "Leave empty to use API User as username."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:68
+msgid "Client IP"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:71
+msgid "Server IP address whitelisted in Namecheap API settings."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:75
+msgid "Sandbox Mode"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:79
+msgid "Enable sandbox/test mode"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:90
+#: modules/server-manager/admin/templates/server-form.php:190
+msgid "Test Connection"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:107
+msgid "Auto-Register"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:111
+msgid "Automatically register/transfer domains when orders are completed"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:116
+msgid "Auto-Renew Days"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:119
+msgid "Days before expiry to trigger auto-renewal."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:123
+msgid "Expiry Reminders"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:126
+msgid "Comma-separated days before expiry to send reminders (e.g. 30,14,7,1)."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:130
+msgid "Default Nameservers"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/registrar-settings.php:133
+msgid "One nameserver per line. Used for new domain registrations."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:35
+msgid "Import Common TLDs"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:38
+#: modules/domain-manager/admin/templates/tld-pricing.php:100
+msgid "Add TLD"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:46
+#: modules/domain-manager/admin/templates/tld-pricing.php:103
+msgid "TLD"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:47
+#: modules/domain-manager/admin/templates/tld-pricing.php:107
+msgid "Register Price"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:48
+#: modules/domain-manager/admin/templates/tld-pricing.php:111
+msgid "Renew Price"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:49
+#: modules/domain-manager/admin/templates/tld-pricing.php:115
+msgid "Transfer Price"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:50
+#: modules/domain-manager/admin/templates/tld-pricing.php:119
+msgid "Currency"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:90
+msgid "No TLD pricing configured. Click \"Import Common TLDs\" to get started."
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:129
+msgid "Save"
+msgstr ""
+
+#: modules/domain-manager/admin/templates/tld-pricing.php:130
+#: modules/support-desk/admin/templates/canned-responses.php:55
+#: modules/support-desk/admin/templates/departments.php:55
+msgid "Cancel"
+msgstr ""
+
+#: modules/domain-manager/api/class-hf-rest-domain-controller.php:249
+msgid "Domain sync queued."
+msgstr ""
+
+#: modules/domain-manager/api/class-hf-rest-domain-controller.php:344
+#: modules/domain-manager/class-hf-domain-search.php:162
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:190
+msgid "Domain name is required."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:85
+#: modules/domain-manager/class-hf-domain-checkout.php:117
+msgid "Register a new domain"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:88
+#: modules/domain-manager/class-hf-domain-checkout.php:123
+msgid "Transfer an existing domain"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:91
+#: modules/domain-manager/class-hf-domain-checkout.php:129
+msgid "I already have a domain"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:107
+msgid "Domain Configuration"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:111
+msgid "What would you like to do with your domain?"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:138
+msgid "Search for a domain"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:143
+msgid "Enter your desired domain name..."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:150
+#: templates/frontend/kb-archive.php:86
+msgid "Search"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:165
+msgid "Domain to transfer"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:176
+msgid "EPP / Authorization Code"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:179
+msgid "Enter the EPP code from your current registrar"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:192
+msgid "Your domain name"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:220
+msgid "Please select a domain action."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:230
+msgid "Please search and select a domain to register."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:240
+msgid "Please enter the domain name to transfer."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:244
+msgid "EPP / Authorization code is required for domain transfers."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:252
+msgid "Please enter your domain name."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:260
+msgid "Please enter a valid domain name."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:352
+msgid "Searching..."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:353
+msgid "Available"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:354
+msgid "Unavailable"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:355
+msgid "Premium"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:356
+msgid "Select"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:357
+msgid "Selected"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:358
+msgid "/year"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-checkout.php:359
+msgid "No domains found. Try a different keyword."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-engine.php:234
+msgid "Missing domain name."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-engine.php:306
+msgid "Registration failed."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-engine.php:334
+msgid "Missing domain name or EPP code."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-engine.php:386
+msgid "Transfer failed."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-frontend.php:66
+#: modules/domain-manager/class-hf-domain-frontend.php:85
+#: modules/domain-manager/class-hf-domain-manager-module.php:604
+msgid "My Domains"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-frontend.php:210
+msgid "Toggle Auto-Renew"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-frontend.php:211
+msgid "Manage Nameservers"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-frontend.php:212
+msgid "Manage DNS Records"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-frontend.php:213
+#: templates/frontend/domain-detail.php:154
+msgid "Request EPP Code"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-frontend.php:342
+msgid "Module not active."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:60
+msgid "Domain registration, transfers, renewals, DNS and WHOIS management through registrar APIs."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:179
+#: modules/domain-manager/class-hf-domain-manager-module.php:180
+msgid "Add New Domain"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:181
+msgid "Edit Domain"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:182
+msgid "New Domain"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:183
+msgid "View Domain"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:186
+msgid "No domains found in Trash."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:337
+msgid "Namecheap"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:628
+msgid "Domains Overview"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:699
+msgid "Total Domains"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:707
+msgid "Expiring Soon"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:711
+#: modules/domain-manager/class-hf-domain-manager-module.php:859
+msgid "Expired"
+msgstr ""
+
+#. translators: %s: domain name
+#: modules/domain-manager/class-hf-domain-manager-module.php:749
+msgid "Domain Registered: %s"
+msgstr ""
+
+#. translators: %s: domain name
+#: modules/domain-manager/class-hf-domain-manager-module.php:756
+msgid "[%1$s] Domain Registered: %2$s"
+msgstr ""
+
+#. translators: 1: domain name, 2: number of days
+#: modules/domain-manager/class-hf-domain-manager-module.php:798
+msgid "Domain Expiring: %1$s (%2$d days)"
+msgstr ""
+
+#. translators: 1: site name, 2: domain name, 3: days
+#: modules/domain-manager/class-hf-domain-manager-module.php:806
+msgid "[%1$s] Domain %2$s expires in %3$d days"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-manager-module.php:860
+msgid "Transferred Away"
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-search.php:63
+msgid "Too many search requests. Please wait a moment."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-search.php:74
+msgid "Please enter a domain name to search."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-search.php:118
+msgid "No registrar configured. Please configure a registrar in settings."
+msgstr ""
+
+#: modules/domain-manager/class-hf-domain-search.php:170
+msgid "Invalid domain name format."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:235
+msgid "Domain registration failed."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:260
+msgid "Domain registered successfully."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:279
+msgid "Domain name and EPP code are required for transfer."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:294
+msgid "Domain transfer initiation failed."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:305
+msgid "Domain transfer initiated. This may take 5-7 days to complete."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:330
+msgid "Domain renewal failed."
+msgstr ""
+
+#. translators: 1: domain name, 2: number of years
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:346
+msgid "Domain %1$s renewed for %2$d year(s)."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:425
+msgid "Failed to set nameservers."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:431
+msgid "Nameservers updated successfully."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:487
+msgid "Failed to update lock status."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:494
+msgid "Domain locked successfully."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:495
+msgid "Domain unlocked successfully."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:522
+msgid "The EPP code has been emailed to the domain registrant email address."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:596
+msgid "Failed to update WHOIS information."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:602
+msgid "WHOIS information updated successfully."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:669
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:701
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:742
+msgid "Failed to fetch existing DNS records."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:720
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:756
+msgid "DNS record not found."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:772
+msgid "Auto-renewal enabled. HostForge will automatically renew this domain before expiry."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:821
+msgid "Failed to update DNS records."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:827
+msgid "DNS records updated successfully."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:891
+msgid "Namecheap API returned HTTP %d."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:903
+msgid "Failed to parse Namecheap API response."
+msgstr ""
+
+#: modules/domain-manager/registrars/class-hf-namecheap-registrar.php:910
+msgid "Namecheap API error."
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:201
+#: templates/admin/dashboard.php:44
+msgid "Enabled"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:202
+#: templates/admin/dashboard.php:46
+msgid "Disabled"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:225
+msgid "Global"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:226
+msgid "Site name"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:227
+msgid "Site URL"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:228
+msgid "Company name"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:229
+msgid "Admin email"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:232
+#: modules/support-desk/admin/templates/canned-responses.php:76
+msgid "Customer display name"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:233
+msgid "Customer email"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:236
+#: templates/emails/provision-failed.php:25
+msgid "Service ID"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:237
+msgid "Service domain"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:238
+msgid "Panel username"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:239
+msgid "Panel password"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:240
+msgid "Hosting package"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:241
+msgid "Service status"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:242
+msgid "Panel type"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:243
+msgid "Panel URL"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:244
+msgid "Server name"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:246
+#: modules/security/admin/templates/audit-log.php:37
+#: modules/support-desk/class-hf-support-desk-module.php:155
+#: templates/emails/ticket-new-staff.php:25
+msgid "Ticket"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:247
+msgid "Ticket ID"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:248
+msgid "Ticket subject"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:249
+msgid "Ticket status"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:250
+msgid "Ticket priority"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:251
+msgid "Ticket department"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:252
+msgid "Ticket URL"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:255
+msgid "Domain name"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:256
+msgid "Domain status"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:258
+msgid "Expiry date"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:259
+msgid "Auto-renew status"
+msgstr ""
+
+#: modules/notifications/class-hf-merge-tags.php:260
+msgid "Domain management URL"
+msgstr ""
+
+#: modules/notifications/class-hf-notifications-module.php:40
+msgid "Notifications"
+msgstr ""
+
+#: modules/notifications/class-hf-notifications-module.php:49
+msgid "Transactional email notifications for services, tickets, domains and provisioning events."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-domain-expiry.php:40
+msgid "Domain Expiry Reminder"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-domain-expiry.php:41
+msgid "Sent when a domain is approaching its expiry date."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-domain-expiry.php:42
+msgid "Domain {domain_name} Expiring Soon"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-domain-expiry.php:43
+msgid "[{site_title}] Domain expiring: {domain_name}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-domain-registered.php:40
+msgid "Domain Registered"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-domain-registered.php:41
+msgid "Sent when a domain is successfully registered."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-domain-registered.php:42
+msgid "Domain {domain_name} Registered"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-domain-registered.php:43
+msgid "[{site_title}] Domain registered: {domain_name}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-provision-failed.php:40
+msgid "Provisioning Failed (Admin)"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-provision-failed.php:41
+msgid "Sent to admin when hosting service provisioning fails."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-provision-failed.php:42
+msgid "Provisioning Failed for Service #{service_id}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-provision-failed.php:43
+msgid "[{site_title}] Provisioning failed: {service_domain}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-provision-failed.php:142
+#: modules/notifications/emails/class-hf-email-ticket-new-staff.php:136
+#: modules/notifications/emails/class-hf-email-ticket-reply-staff.php:154
+msgid "Recipient(s)"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-provision-failed.php:144
+#: modules/notifications/emails/class-hf-email-ticket-new-staff.php:138
+#: modules/notifications/emails/class-hf-email-ticket-reply-staff.php:156
+msgid "Enter recipients (comma separated) for this email."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-suspended.php:33
+msgid "Service Suspended"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-suspended.php:34
+msgid "Sent when a hosting service is suspended."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-suspended.php:35
+msgid "Your Hosting Service Has Been Suspended"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-suspended.php:36
+msgid "[{site_title}] Service suspended: {service_domain}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-terminated.php:33
+msgid "Service Terminated"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-terminated.php:34
+msgid "Sent when a hosting service is terminated and data removed."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-terminated.php:35
+msgid "Your Hosting Service Has Been Terminated"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-terminated.php:36
+msgid "[{site_title}] Service terminated: {service_domain}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-unsuspended.php:33
+msgid "Service Reactivated"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-unsuspended.php:34
+msgid "Sent when a suspended hosting service is reactivated."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-unsuspended.php:35
+msgid "Your Hosting Service Has Been Reactivated"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-unsuspended.php:36
+msgid "[{site_title}] Service reactivated: {service_domain}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-welcome.php:41
+msgid "Service Welcome"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-welcome.php:42
+msgid "Sent when a hosting service is provisioned with login credentials."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-welcome.php:43
+msgid "Your Hosting Account is Ready!"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-service-welcome.php:44
+msgid "[{site_title}] Your hosting account for {service_domain} is ready"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-closed.php:33
+msgid "Ticket Closed"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-closed.php:34
+msgid "Sent to customer when their support ticket is closed."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-closed.php:35
+msgid "Ticket #{ticket_id} Closed"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-closed.php:36
+msgid "[{site_title}] Ticket closed: {ticket_subject}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-new-staff.php:33
+msgid "New Support Ticket (Staff)"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-new-staff.php:34
+msgid "Sent to admin when a new support ticket is submitted."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-new-staff.php:35
+msgid "New Support Ticket #{ticket_id}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-new-staff.php:36
+msgid "[{site_title}] New ticket: {ticket_subject}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-reply-customer.php:40
+msgid "Ticket Reply (to Customer)"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-reply-customer.php:41
+msgid "Sent to customer when staff replies to their support ticket."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-reply-customer.php:42
+msgid "Reply to Your Ticket #{ticket_id}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-reply-customer.php:43
+msgid "[{site_title}] Reply to: {ticket_subject}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-reply-staff.php:40
+msgid "Ticket Reply (to Staff)"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-reply-staff.php:41
+msgid "Sent to admin when a customer replies to a support ticket."
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-reply-staff.php:42
+msgid "Customer Reply on Ticket #{ticket_id}"
+msgstr ""
+
+#: modules/notifications/emails/class-hf-email-ticket-reply-staff.php:43
+msgid "[{site_title}] Customer reply: {ticket_subject}"
+msgstr ""
+
+#: modules/reports/admin/class-hf-reports-admin.php:55
+#: modules/reports/admin/class-hf-reports-admin.php:56
+#: modules/reports/admin/templates/reports-dashboard.php:20
+#: modules/reports/class-hf-reports-module.php:40
+#: modules/reports/class-hf-reports-module.php:98
+msgid "Reports"
+msgstr ""
+
+#: modules/reports/admin/class-hf-reports-admin.php:105
+msgid "Revenue"
+msgstr ""
+
+#: modules/reports/admin/class-hf-reports-admin.php:106
+msgid "Orders"
+msgstr ""
+
+#: modules/reports/admin/class-hf-reports-admin.php:107
+msgid "New Customers"
+msgstr ""
+
+#: modules/reports/admin/class-hf-reports-admin.php:109
+msgid "Failed to load data."
+msgstr ""
+
+#: modules/reports/admin/class-hf-reports-admin.php:115
+#: modules/support-desk/class-hf-support-desk-module.php:943
+msgid "Open"
+msgstr ""
+
+#: modules/reports/admin/class-hf-reports-admin.php:116
+#: modules/support-desk/class-hf-support-desk-module.php:910
+#: modules/support-desk/class-hf-support-desk-module.php:947
+msgid "Closed"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:25
+msgid "Est. MRR"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:29
+msgid "Active Services"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:33
+#: modules/support-desk/class-hf-support-desk-module.php:902
+msgid "Open Tickets"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:37
+msgid "Active Domains"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:46
+msgid "Revenue (12 months)"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:48
+#: modules/reports/admin/templates/reports-dashboard.php:72
+#: modules/reports/admin/templates/reports-dashboard.php:84
+#: modules/reports/admin/templates/reports-dashboard.php:107
+#: modules/reports/admin/templates/reports-dashboard.php:122
+msgid "Export CSV"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:58
+msgid "Customer Growth"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:70
+msgid "Services by Status"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:82
+#: modules/support-desk/class-hf-support-desk-module.php:829
+#: modules/support-desk/class-hf-support-desk-module.php:853
+#: modules/support-desk/class-hf-ticket-frontend.php:74
+msgid "Support Tickets"
+msgstr ""
+
+#. translators: %s: average hours
+#: modules/reports/admin/templates/reports-dashboard.php:95
+msgid "Avg. resolution time: %s hours"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:120
+msgid "Server Capacity"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:129
+#: modules/server-manager/admin/class-hf-server-list-table.php:48
+#: modules/server-manager/admin/templates/server-form.php:229
+#: modules/server-manager/admin/templates/server-monitor.php:59
+msgid "Accounts"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:130
+msgid "Capacity"
+msgstr ""
+
+#: modules/reports/admin/templates/reports-dashboard.php:131
+msgid "Usage"
+msgstr ""
+
+#: modules/reports/class-hf-reports-module.php:49
+msgid "Revenue reports, service metrics, support statistics and CSV export with Chart.js dashboards."
+msgstr ""
+
+#: modules/reports/class-hf-reports-module.php:127
+msgid "Invalid nonce."
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:61
+#: modules/security/admin/class-hf-security-admin.php:62
+#: modules/security/admin/templates/audit-log.php:44
+#: modules/security/admin/templates/ip-blocks.php:20
+#: modules/security/admin/templates/login-attempts.php:45
+#: modules/security/admin/templates/security-settings.php:13
+#: modules/security/class-hf-security-module.php:42
+#: modules/security/class-hf-security-module.php:185
+#: modules/security/class-hf-security-module.php:256
+msgid "Security"
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:103
+#: modules/security/admin/class-hf-security-admin.php:210
+msgid "IP blocked."
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:104
+#: modules/security/admin/class-hf-security-admin.php:238
+msgid "IP unblocked."
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:106
+msgid "Are you sure you want to unblock this IP?"
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:127
+msgid "IP Blocks"
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:128
+msgid "Login Attempts"
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:129
+#: modules/security/admin/templates/security-settings.php:161
+msgid "Audit Log"
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:203
+#: modules/security/admin/class-hf-security-admin.php:231
+#: modules/security/api/class-hf-rest-security-controller.php:221
+msgid "Invalid IP address."
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:212
+msgid "Failed to block IP."
+msgstr ""
+
+#: modules/security/admin/class-hf-security-admin.php:240
+msgid "Failed to unblock IP."
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:33
+msgid "All Types"
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:34
+#: modules/security/admin/templates/audit-log.php:95
+msgid "User"
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:35
+#: templates/admin/logs.php:94
+msgid "Module"
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:40
+msgid "Setting"
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:70
+msgid "Search..."
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:72
+#: modules/server-manager/admin/class-hf-server-list-table.php:359
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:484
+#: templates/admin/logs.php:84
+msgid "Filter"
+msgstr ""
+
+#. translators: %s: number of items
+#: modules/security/admin/templates/audit-log.php:80
+#: modules/security/admin/templates/login-attempts.php:77
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: modules/security/admin/templates/audit-log.php:89
+msgid "No audit log entries."
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:94
+#: modules/security/admin/templates/login-attempts.php:94
+#: modules/support-desk/admin/templates/kb-list.php:30
+#: templates/admin/logs.php:92
+msgid "Date"
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:98
+msgid "Details"
+msgstr ""
+
+#: modules/security/admin/templates/audit-log.php:99
+#: modules/security/admin/templates/ip-blocks.php:58
+#: modules/security/admin/templates/login-attempts.php:91
+msgid "IP Address"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:33
+msgid "Block an IP Address"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:36
+msgid "IP address"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:39
+msgid "Reason (optional)"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:42
+msgid "Block IP"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:50
+#: modules/security/class-hf-security-module.php:238
+msgid "Blocked IPs"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:53
+msgid "No blocked IPs."
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:61
+msgid "Expires"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:62
+msgid "Blocked At"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:72
+#: modules/server-manager/admin/templates/server-form.php:80
+msgid "Auto"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:74
+msgid "Manual"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:81
+msgid "Never (permanent)"
+msgstr ""
+
+#: modules/security/admin/templates/ip-blocks.php:91
+msgid "Unblock"
+msgstr ""
+
+#: modules/security/admin/templates/login-attempts.php:65
+#: modules/security/admin/templates/login-attempts.php:106
+msgid "Failed"
+msgstr ""
+
+#: modules/security/admin/templates/login-attempts.php:69
+msgid "Successful"
+msgstr ""
+
+#: modules/security/admin/templates/login-attempts.php:86
+msgid "No login attempts recorded."
+msgstr ""
+
+#: modules/security/admin/templates/login-attempts.php:104
+msgid "Success"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:26
+msgid "Brute Force Protection"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:30
+msgid "Max Failed Attempts"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:36
+msgid "Number of failed login attempts before blocking the IP."
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:41
+msgid "Lockout Duration"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:48
+msgid "Minutes"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:49
+msgid "Hours"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:55
+msgid "IP Allowlist"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:59
+msgid "One IP per line. These IPs will never be blocked. Supports CIDR notation (e.g. 192.168.1.0/24)."
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:64
+msgid "IP Blocklist"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:68
+msgid "One IP per line. These IPs will always be blocked. Supports CIDR notation."
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:73
+msgid "Fraud Detection"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:76
+msgid "Enable Fraud Detection"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:80
+msgid "Check orders for fraud signals at checkout."
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:86
+msgid "Blocked Countries"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:92
+msgid "Comma-separated ISO country codes (e.g. XX,YY). Orders from these billing countries will be blocked."
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:97
+msgid "Blocked Email Patterns"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:101
+msgid "One pattern per line. Use @domain.com to block an email provider, or full email for exact match."
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:106
+msgid "CAPTCHA"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:109
+msgid "Enable CAPTCHA"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:113
+msgid "Add CAPTCHA to selected forms."
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:119
+msgid "Provider"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:123
+msgid "Cloudflare Turnstile"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:124
+msgid "Google reCAPTCHA v2"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:130
+msgid "Site Key"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:140
+msgid "Secret Key"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:149
+msgid "Show CAPTCHA On"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:152
+msgid "Login form"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:153
+msgid "Registration form"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:154
+msgid "Checkout"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:155
+msgid "Support tickets"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:164
+msgid "Enable Audit Log"
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:168
+msgid "Record user and system actions."
+msgstr ""
+
+#: modules/security/admin/templates/security-settings.php:174
+msgid "Retention Period"
+msgstr ""
+
+#: modules/security/class-hf-brute-force-protection.php:81
+#: modules/security/class-hf-brute-force-protection.php:91
+msgid "Your IP address has been blocked due to too many failed login attempts. Please try again later."
+msgstr ""
+
+#: modules/security/class-hf-brute-force-protection.php:268
+msgid "Too many failed login attempts."
+msgstr ""
+
+#: modules/security/class-hf-captcha.php:181
+#: modules/security/class-hf-captcha.php:217
+#: modules/security/class-hf-captcha.php:235
+msgid "CAPTCHA verification failed. Please try again."
+msgstr ""
+
+#: modules/security/class-hf-captcha.php:200
+msgid "<strong>Error:</strong> CAPTCHA verification failed. Please try again."
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:88
+msgid "Orders from your country are not currently accepted. Please contact support."
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:125
+msgid "This email provider is not accepted. Please use a different email address."
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:135
+msgid "This email address is not accepted. Please contact support."
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:164
+msgid "Your order could not be processed. Please contact support."
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:186
+msgid "Billing and shipping countries differ."
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:198
+msgid "High-value order with free email provider."
+msgstr ""
+
+#. translators: %d: number of failed orders
+#: modules/security/class-hf-fraud-detection.php:208
+msgid "%d recent failed orders from same email."
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:262
+msgid "HostForge Fraud Alert — Risk signals detected:"
+msgstr ""
+
+#. translators: %d: risk score
+#: modules/security/class-hf-fraud-detection.php:268
+msgid "Risk score: %d"
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:305
+msgid "<strong>Error:</strong> This email provider is not accepted for registration."
+msgstr ""
+
+#: modules/security/class-hf-fraud-detection.php:314
+msgid "<strong>Error:</strong> This email address is not accepted."
+msgstr ""
+
+#: modules/security/class-hf-ip-manager.php:322
+msgid "Access denied. Your IP address has been blocked."
+msgstr ""
+
+#: modules/security/class-hf-ip-manager.php:323
+msgid "Forbidden"
+msgstr ""
+
+#: modules/security/class-hf-security-module.php:51
+msgid "Anti brute-force protection, IP management, fraud detection, CAPTCHA and audit logging."
+msgstr ""
+
+#: modules/security/class-hf-security-module.php:234
+msgid "Failed Logins (24h)"
+msgstr ""
+
+#: modules/security/class-hf-security-module.php:242
+msgid "Successful Logins (24h)"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:86
+msgid "Testing connection..."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:87
+msgid "Connection successful!"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:88
+msgid "Connection failed."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:89
+msgid "Fetching packages..."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:90
+msgid "Packages fetched successfully."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:91
+#: modules/server-manager/admin/class-hf-server-admin.php:402
+msgid "Could not fetch packages."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:93
+msgid "Server saved."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:94
+msgid "Are you sure you want to delete this server? This cannot be undone."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:95
+#: modules/support-desk/admin/class-hf-ticket-admin.php:117
+msgid "Deleting..."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:96
+#: modules/server-manager/admin/class-hf-server-admin.php:576
+msgid "Server deleted."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:98
+msgid "Server hostname is required."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:99
+msgid "Please provide authentication credentials."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:157
+#: modules/server-manager/admin/class-hf-server-admin.php:237
+#: modules/server-manager/admin/class-hf-server-admin.php:557
+#: modules/server-manager/api/class-hf-rest-server-controller.php:224
+#: modules/server-manager/api/class-hf-rest-server-controller.php:241
+#: modules/server-manager/api/class-hf-rest-server-controller.php:267
+#: modules/server-manager/api/class-hf-rest-server-controller.php:293
+msgid "Server not found."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:285
+#: modules/server-manager/admin/class-hf-server-admin.php:336
+#: modules/server-manager/admin/class-hf-server-admin.php:382
+#: modules/server-manager/admin/class-hf-server-admin.php:441
+#: modules/server-manager/api/class-hf-rest-server-controller.php:248
+#: modules/server-manager/api/class-hf-rest-server-controller.php:274
+#: modules/server-manager/api/class-hf-rest-server-controller.php:300
+msgid "Invalid panel type."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:306
+#: modules/server-manager/admin/class-hf-server-admin.php:437
+msgid "Hostname and panel type are required."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:319
+msgid "Could not create temporary server."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:376
+#: modules/server-manager/admin/class-hf-server-admin.php:552
+msgid "Invalid server ID."
+msgstr ""
+
+#. translators: %d: number of packages found
+#: modules/server-manager/admin/class-hf-server-admin.php:395
+msgid "%d packages found."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-admin.php:530
+msgid "Server saved successfully."
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:44
+#: modules/server-manager/admin/templates/server-form.php:43
+msgid "Server Name"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:46
+#: templates/emails/provision-failed.php:42
+msgid "Panel"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:47
+msgid "Group"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:50
+#: modules/server-manager/admin/templates/server-form.php:242
+#: modules/server-manager/admin/templates/server-monitor.php:72
+msgid "Last Check"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:203
+msgid "Monitor"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:303
+#: modules/server-manager/admin/templates/server-form.php:249
+#: modules/server-manager/admin/templates/server-monitor.php:79
+msgid "Never"
+msgstr ""
+
+#. translators: %s: human time difference
+#: modules/server-manager/admin/class-hf-server-list-table.php:311
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:390
+#: templates/frontend/ticket-detail.php:105
+#: templates/frontend/ticket-list.php:65
+msgid "%s ago"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:343
+msgid "All Groups"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:353
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:456
+msgid "All Statuses"
+msgstr ""
+
+#: modules/server-manager/admin/class-hf-server-list-table.php:370
+msgid "No servers found. Add your first server to get started."
+msgstr ""
+
+#. translators: %s: server name
+#: modules/server-manager/admin/templates/server-form.php:17
+msgid "Edit Server: %s"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:18
+#: modules/server-manager/admin/templates/server-list.php:16
+#: modules/server-manager/class-hf-server-manager-module.php:134
+#: modules/server-manager/class-hf-server-manager-module.php:135
+msgid "Add New Server"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:25
+#: modules/server-manager/admin/templates/server-monitor.php:24
+msgid "Back to Servers"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:38
+msgid "Server Details"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:48
+msgid "e.g. Web Server 1"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:57
+msgid "Select panel type..."
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:58
+msgid "cPanel/WHM"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:59
+msgid "Plesk"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:65
+msgid "Hostname / IP"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:70
+msgid "e.g. server1.example.com"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:75
+#: modules/server-manager/admin/templates/server-monitor.php:51
+msgid "Port"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:81
+msgid "Default: 2087 (cPanel) / 8443 (Plesk)"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:91
+msgid "Leave 0 for unlimited."
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:100
+msgid "No group"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:109
+msgid "New group name..."
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:111
+msgid "New Group"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:125
+msgid ""
+"ns1.example.com\n"
+"ns2.example.com"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:126
+msgid "One nameserver per line."
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:133
+msgid "Notes"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:135
+msgid "Internal notes about this server..."
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:142
+msgid "Authentication"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:147
+msgid "Auth Method"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:151
+#: modules/server-manager/admin/templates/server-form.php:158
+msgid "API Token / Key"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:152
+msgid "Username & Password"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:163
+msgid "Token saved (leave blank to keep)"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:173
+msgid "Username saved (leave blank to keep)"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:178
+#: templates/emails/service-welcome.php:47
+msgid "Password"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:183
+msgid "Password saved (leave blank to keep)"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:198
+msgid "Packages"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:210
+msgid "No packages cached."
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:215
+msgid "Fetch Packages"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:247
+msgid "ago"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:260
+msgid "Update Server"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:260
+msgid "Add Server"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-form.php:265
+msgid "Delete Server"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-list.php:13
+#: modules/server-manager/class-hf-server-manager-module.php:132
+#: modules/server-manager/class-hf-server-manager-module.php:142
+#: modules/server-manager/class-hf-server-manager-module.php:364
+msgid "Servers"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-list.php:25
+#: modules/server-manager/class-hf-server-manager-module.php:139
+msgid "Search Servers"
+msgstr ""
+
+#. translators: %s: server name
+#: modules/server-manager/admin/templates/server-monitor.php:18
+msgid "Monitor: %s"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:27
+#: modules/server-manager/class-hf-server-manager-module.php:136
+msgid "Edit Server"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:35
+msgid "Server Information"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:91
+msgid "Server Statistics"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:103
+msgid "Version"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:109
+msgid "OS"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:115
+msgid "Load Average"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:132
+msgid "No statistics available. Run a health check first."
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:141
+msgid "Available Packages"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:145
+msgid "Package Name"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:147
+msgid "Disk"
+msgstr ""
+
+#: modules/server-manager/admin/templates/server-monitor.php:148
+msgid "Bandwidth"
+msgstr ""
+
+#: modules/server-manager/api/class-hf-rest-server-controller.php:153
+msgid "Too many requests."
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:42
+msgid "Server Manager"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:51
+msgid "Manage cPanel and Plesk servers: connections, accounts, packages and monitoring."
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:137
+msgid "New Server"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:138
+msgid "View Server"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:140
+msgid "No servers found."
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:141
+msgid "No servers found in Trash."
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:181
+#: modules/server-manager/class-hf-server-manager-module.php:189
+msgid "Server Groups"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:183
+msgid "Search Server Groups"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:184
+msgid "All Server Groups"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:185
+msgid "Edit Server Group"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:186
+msgid "Update Server Group"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:187
+msgid "Add New Server Group"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:188
+msgid "New Server Group Name"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:391
+msgid "Server Status"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:435
+msgid "Total Servers"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:439
+msgid "Online"
+msgstr ""
+
+#: modules/server-manager/class-hf-server-manager-module.php:443
+msgid "Errors"
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:162
+msgid "Could not connect to WHM server."
+msgstr ""
+
+#. translators: %s: cPanel/WHM version
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:175
+msgid "Connected successfully. WHM version: %s"
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:244
+msgid "Account created successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:290
+msgid "Account suspended successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:327
+msgid "Account unsuspended successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:368
+msgid "Account terminated successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:447
+msgid "Package changed successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-cpanel-provider.php:638
+msgid "Unknown WHM API error."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-plesk-provider.php:171
+msgid "Failed to parse Plesk XML response."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-plesk-provider.php:291
+msgid "Could not connect to Plesk server."
+msgstr ""
+
+#. translators: %s: Plesk version
+#: modules/server-manager/providers/class-hf-plesk-provider.php:304
+msgid "Connected successfully. Plesk version: %s"
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-plesk-provider.php:422
+#: modules/server-manager/providers/class-hf-plesk-provider.php:1059
+msgid "Unknown Plesk error."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-plesk-provider.php:445
+msgid "Webspace created successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-plesk-provider.php:512
+msgid "Webspace suspended successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-plesk-provider.php:572
+msgid "Webspace unsuspended successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-plesk-provider.php:629
+msgid "Webspace terminated successfully."
+msgstr ""
+
+#: modules/server-manager/providers/class-hf-plesk-provider.php:743
+msgid "Plan changed successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:113
+msgid "Sending reply..."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:114
+msgid "Reply sent."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:115
+msgid "Updating..."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:116
+msgid "Updated successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:118
+msgid "Deleted successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:119
+msgid "Are you sure you want to delete this item? This cannot be undone."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:120
+#: modules/support-desk/class-hf-ticket-frontend.php:122
+msgid "Are you sure you want to close this ticket?"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:122
+msgid "Please enter a reply."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:123
+#: modules/support-desk/class-hf-ticket-frontend.php:124
+#: modules/support-desk/class-hf-ticket-frontend.php:360
+msgid "Please enter a subject."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:124
+msgid "Please enter content."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:125
+msgid "Please enter a title."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:126
+msgid "Please enter a department name."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:127
+msgid "Search knowledge base..."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:128
+#: modules/support-desk/class-hf-support-desk-module.php:204
+msgid "No articles found."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:129
+msgid "Uploading..."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:262
+#: modules/support-desk/admin/class-hf-ticket-admin.php:567
+#: modules/support-desk/admin/class-hf-ticket-admin.php:734
+#: modules/support-desk/admin/class-hf-ticket-admin.php:785
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:367
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:501
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:542
+#: modules/support-desk/class-hf-ticket-frontend.php:211
+msgid "Ticket not found."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:433
+#: modules/support-desk/admin/class-hf-ticket-admin.php:998
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1125
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:645
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:649
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:690
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:694
+msgid "Article not found."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:488
+msgid "Subject is required."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:492
+msgid "Content is required."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:538
+#: modules/support-desk/class-hf-ticket-frontend.php:119
+#: modules/support-desk/class-hf-ticket-frontend.php:446
+msgid "Ticket created successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:562
+#: modules/support-desk/admin/class-hf-ticket-admin.php:729
+#: modules/support-desk/admin/class-hf-ticket-admin.php:780
+msgid "Invalid ticket ID."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:571
+msgid "Reply content is required."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:650
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:520
+msgid "Failed to add reply."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:659
+msgid "Reply added successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:685
+#: modules/support-desk/admin/templates/ticket-detail.php:118
+msgid "Private Note"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:687
+#: modules/support-desk/admin/templates/ticket-detail.php:120
+#: templates/frontend/ticket-detail.php:116
+msgid "Staff"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:696
+#: modules/support-desk/admin/templates/ticket-detail.php:133
+#: templates/frontend/ticket-detail.php:71
+#: templates/frontend/ticket-detail.php:125
+msgid "Attachments:"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:740
+msgid "Invalid status."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:758
+msgid "Ticket status updated."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:799
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:363
+#: modules/support-desk/admin/templates/ticket-detail.php:284
+msgid "Unassigned"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:803
+msgid "Ticket assigned successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:827
+msgid "Department name is required."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:859
+msgid "Department saved successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:880
+msgid "Invalid department ID."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:890
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:415
+msgid "Department not found."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:895
+msgid "Department deleted."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:921
+msgid "Article title is required."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:925
+msgid "Article content is required."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:971
+msgid "Article saved successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:993
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1120
+msgid "Invalid article ID."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1005
+msgid "Article deleted."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1028
+msgid "Response title is required."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1032
+msgid "Response content is required."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1067
+msgid "Canned response saved successfully."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1088
+msgid "Invalid response ID."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1093
+msgid "Canned response not found."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1100
+msgid "Canned response deleted."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1129
+msgid "Invalid vote."
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-admin.php:1148
+msgid "Thank you for your feedback!"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:44
+#: modules/support-desk/admin/templates/ticket-new.php:28
+#: templates/frontend/ticket-list.php:30
+#: templates/frontend/ticket-list.php:74
+#: templates/frontend/ticket-new.php:29
+msgid "Subject"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:46
+#: modules/support-desk/admin/templates/ticket-detail.php:263
+#: modules/support-desk/admin/templates/ticket-new.php:37
+#: modules/support-desk/class-hf-support-desk-module.php:289
+#: templates/emails/ticket-new-staff.php:51
+#: templates/frontend/ticket-list.php:31
+#: templates/frontend/ticket-list.php:77
+#: templates/frontend/ticket-new.php:37
+msgid "Department"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:49
+msgid "Assigned"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:50
+#: modules/support-desk/admin/templates/ticket-detail.php:331
+#: templates/frontend/ticket-list.php:34
+#: templates/frontend/ticket-list.php:94
+msgid "Last Reply"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:77
+msgid "Close"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:78
+msgid "Change Priority: High"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:79
+msgid "Change Priority: Medium"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:80
+msgid "Change Priority: Low"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:267
+msgid "View Customer"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:326
+#: modules/support-desk/class-hf-support-desk-module.php:970
+msgid "Critical"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:327
+#: modules/support-desk/class-hf-support-desk-module.php:969
+msgid "High"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:328
+#: modules/support-desk/class-hf-support-desk-module.php:968
+msgid "Medium"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:329
+#: modules/support-desk/class-hf-support-desk-module.php:967
+msgid "Low"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:379
+#: modules/support-desk/admin/templates/ticket-detail.php:337
+msgid "No replies"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:404
+msgid "by Customer"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:406
+msgid "by Staff"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:465
+msgid "All Priorities"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:475
+#: modules/support-desk/class-hf-support-desk-module.php:291
+msgid "All Departments"
+msgstr ""
+
+#: modules/support-desk/admin/class-hf-ticket-list-table.php:526
+#: modules/support-desk/class-hf-support-desk-module.php:162
+msgid "No tickets found."
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:12
+#: modules/support-desk/admin/templates/ticket-list.php:23
+#: modules/support-desk/class-hf-support-desk-module.php:238
+#: modules/support-desk/class-hf-support-desk-module.php:248
+msgid "Canned Responses"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:14
+#: modules/support-desk/admin/templates/departments.php:14
+#: modules/support-desk/admin/templates/ticket-detail.php:51
+#: modules/support-desk/admin/templates/ticket-new.php:15
+msgid "Back to Tickets"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:24
+#: modules/support-desk/class-hf-support-desk-module.php:240
+#: modules/support-desk/class-hf-support-desk-module.php:241
+msgid "Add New Response"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:32
+#: modules/support-desk/admin/templates/canned-responses.php:116
+#: modules/support-desk/admin/templates/kb-edit.php:48
+#: modules/support-desk/admin/templates/kb-list.php:25
+msgid "Title"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:36
+msgid "e.g. Welcome Response"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:41
+#: modules/support-desk/admin/templates/kb-edit.php:58
+msgid "Content"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:45
+msgid "Type the response content..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:52
+msgid "Save Response"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:64
+msgid "Available Merge Tags"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:65
+msgid "Use these tags in your response content. They will be replaced with actual values when inserted into a ticket reply."
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:69
+msgid "Tag"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:80
+msgid "Customer email address"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:84
+msgid "Ticket ID number"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:88
+msgid "Ticket subject line"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:92
+msgid "Related service domain name"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:96
+msgid "Website name"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:100
+msgid "Website URL"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:110
+msgid "Existing Responses"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:117
+msgid "Preview"
+msgstr ""
+
+#: modules/support-desk/admin/templates/canned-responses.php:147
+msgid "No canned responses found. Create one using the form on the left."
+msgstr ""
+
+#: modules/support-desk/admin/templates/departments.php:12
+#: modules/support-desk/admin/templates/ticket-list.php:20
+#: modules/support-desk/class-hf-support-desk-module.php:288
+#: modules/support-desk/class-hf-support-desk-module.php:296
+msgid "Departments"
+msgstr ""
+
+#: modules/support-desk/admin/templates/departments.php:24
+#: modules/support-desk/class-hf-support-desk-module.php:294
+msgid "Add New Department"
+msgstr ""
+
+#: modules/support-desk/admin/templates/departments.php:36
+msgid "e.g. Technical Support"
+msgstr ""
+
+#: modules/support-desk/admin/templates/departments.php:45
+msgid "Optional description for this department..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/departments.php:52
+msgid "Save Department"
+msgstr ""
+
+#: modules/support-desk/admin/templates/departments.php:66
+msgid "Existing Departments"
+msgstr ""
+
+#: modules/support-desk/admin/templates/departments.php:74
+#: modules/support-desk/admin/templates/ticket-list.php:12
+#: modules/support-desk/class-hf-support-desk-module.php:154
+#: modules/support-desk/class-hf-support-desk-module.php:164
+#: modules/support-desk/class-hf-support-desk-module.php:806
+msgid "Tickets"
+msgstr ""
+
+#: modules/support-desk/admin/templates/departments.php:101
+msgid "No departments found. Create one using the form on the left."
+msgstr ""
+
+#. translators: %s: article title
+#: modules/support-desk/admin/templates/kb-edit.php:24
+msgid "Edit Article: %s"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:25
+#: modules/support-desk/class-hf-support-desk-module.php:201
+msgid "New Article"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:30
+msgid "Back to Knowledge Base"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:43
+msgid "Article Content"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:53
+msgid "Enter article title..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:62
+msgid "Write the article content..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:63
+msgid "HTML is allowed. Use headings, lists, and code blocks to structure your content."
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:73
+#: templates/frontend/kb-archive.php:95
+msgid "Categories"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:86
+msgid "No categories available."
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:101
+#: modules/support-desk/admin/templates/kb-list.php:86
+msgid "Published"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:104
+#: modules/support-desk/admin/templates/kb-list.php:87
+msgid "Draft"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:107
+msgid "Pending Review"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:114
+#: modules/support-desk/admin/templates/kb-list.php:27
+msgid "Visibility"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:119
+#: modules/support-desk/admin/templates/kb-list.php:44
+msgid "Public"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:122
+msgid "Logged-in Users"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:125
+#: modules/support-desk/admin/templates/kb-list.php:46
+msgid "Customers Only"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:128
+msgid "Controls who can view this article on the frontend."
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:133
+#: templates/frontend/kb-single.php:130
+msgid "Related Articles"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:138
+msgid "e.g. 10, 25, 42"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:139
+msgid "Comma-separated article IDs to show as related content."
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:147
+msgid "Stats"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:150
+msgid "Helpful (Yes)"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:154
+msgid "Not Helpful (No)"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:162
+msgid "Last Modified"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:171
+msgid "Update Article"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:171
+msgid "Create Article"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-edit.php:176
+msgid "Delete Article"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-list.php:13
+#: modules/support-desk/class-hf-support-desk-module.php:812
+#: templates/frontend/kb-archive.php:73
+#: templates/frontend/kb-category.php:28
+#: templates/frontend/kb-single.php:35
+msgid "Knowledge Base"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-list.php:15
+#: modules/support-desk/class-hf-support-desk-module.php:198
+#: modules/support-desk/class-hf-support-desk-module.php:199
+msgid "Add New Article"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-list.php:26
+msgid "Category"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-list.php:28
+msgid "Votes"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-list.php:45
+msgid "Logged In"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-list.php:74
+msgid "Helpful"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-list.php:78
+msgid "Not helpful"
+msgstr ""
+
+#: modules/support-desk/admin/templates/kb-list.php:114
+msgid "No knowledge base articles found. Click \"Add New Article\" to create one."
+msgstr ""
+
+#. translators: %1$d: ticket ID, %2$s: ticket subject
+#: modules/support-desk/admin/templates/ticket-detail.php:44
+msgid "Ticket #%1$d: %2$s"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:70
+msgid "Flagged"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:155
+msgid "No replies yet."
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:161
+msgid "Add Reply"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:166
+msgid "Type your reply..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:172
+msgid "Private note (not visible to customer)"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:177
+#: modules/support-desk/admin/templates/ticket-new.php:88
+#: templates/frontend/ticket-detail.php:165
+#: templates/frontend/ticket-new.php:71
+msgid "Attachments"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:183
+msgid "Insert Canned Response"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:185
+msgid "Select a response..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:197
+msgid "Send Reply"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:219
+msgid "View Profile"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:223
+msgid "Unknown customer"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:239
+#: modules/support-desk/admin/templates/ticket-detail.php:256
+#: modules/support-desk/admin/templates/ticket-detail.php:274
+msgid "Update"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:281
+msgid "Assigned To"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:292
+msgid "Assign"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:302
+#: templates/frontend/ticket-new.php:50
+msgid "Related Service"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:314
+msgid "Flag"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:317
+msgid "Unflag Ticket"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:317
+msgid "Flag Ticket"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-detail.php:324
+msgid "Dates"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-list.php:14
+msgid "Add New"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-list.php:32
+#: modules/support-desk/class-hf-support-desk-module.php:161
+msgid "Search Tickets"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:13
+#: modules/support-desk/class-hf-support-desk-module.php:159
+#: templates/frontend/ticket-list.php:19
+msgid "New Ticket"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:23
+msgid "Ticket Details"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:32
+msgid "Enter ticket subject..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:41
+msgid "Select department..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:66
+msgid "Client"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:70
+msgid "Search by name or email..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:79
+#: templates/admin/logs.php:95
+#: templates/frontend/ticket-detail.php:160
+#: templates/frontend/ticket-new.php:66
+msgid "Message"
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:83
+msgid "Describe the issue or request..."
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:92
+msgid "Optional. You can select multiple files."
+msgstr ""
+
+#: modules/support-desk/admin/templates/ticket-new.php:100
+msgid "Create Ticket"
+msgstr ""
+
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:292
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:548
+msgid "Invalid ticket status."
+msgstr ""
+
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:304
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:398
+msgid "Invalid ticket priority."
+msgstr ""
+
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:405
+msgid "Client user not found."
+msgstr ""
+
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:456
+msgid "Failed to create ticket."
+msgstr ""
+
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:509
+msgid "Support Desk module is not available."
+msgstr ""
+
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:698
+msgid "Vote must be \"yes\" or \"no\"."
+msgstr ""
+
+#: modules/support-desk/api/class-hf-rest-ticket-controller.php:707
+msgid "Too many vote requests. Please try again later."
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:42
+msgid "Support Desk"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:51
+msgid "Support ticket system with knowledge base, canned responses, email piping and auto-close."
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:156
+#: modules/support-desk/class-hf-support-desk-module.php:157
+msgid "Add New Ticket"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:158
+msgid "Edit Ticket"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:160
+#: templates/emails/ticket-closed.php:48
+#: templates/emails/ticket-new-staff.php:68
+#: templates/emails/ticket-reply.php:76
+msgid "View Ticket"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:163
+msgid "No tickets found in Trash."
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:196
+#: modules/support-desk/class-hf-support-desk-module.php:206
+msgid "KB Articles"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:197
+msgid "KB Article"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:200
+msgid "Edit Article"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:202
+msgid "View Article"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:203
+msgid "Search Articles"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:205
+msgid "No articles found in Trash."
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:239
+msgid "Canned Response"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:242
+msgid "Edit Response"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:243
+msgid "New Response"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:244
+msgid "View Response"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:245
+msgid "Search Responses"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:246
+msgid "No responses found."
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:247
+msgid "No responses found in Trash."
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:290
+msgid "Search Departments"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:292
+msgid "Edit Department"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:293
+msgid "Update Department"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:295
+msgid "New Department Name"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:314
+#: modules/support-desk/class-hf-support-desk-module.php:322
+msgid "KB Categories"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:315
+msgid "KB Category"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:316
+msgid "Search KB Categories"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:317
+msgid "All KB Categories"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:318
+msgid "Edit KB Category"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:319
+msgid "Update KB Category"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:320
+msgid "Add New KB Category"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:321
+msgid "New KB Category Name"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:375
+msgid "General"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:376
+msgid "Technical Support"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:377
+msgid "Sales"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:378
+msgid "Billing"
+msgstr ""
+
+#. translators: %1$s ticket ID, %2$s ticket subject
+#: modules/support-desk/class-hf-support-desk-module.php:512
+msgid "[Ticket #%1$s] %2$s - Will be closed due to inactivity"
+msgstr ""
+
+#. translators: %1$s customer name, %2$s ticket ID, %3$s ticket subject
+#: modules/support-desk/class-hf-support-desk-module.php:519
+msgid ""
+"Hello %1$s,\n"
+"\n"
+"Your ticket #%2$s \"%3$s\" will be automatically closed in 24 hours due to inactivity.\n"
+"\n"
+"If you still need assistance, please reply to keep it open.\n"
+"\n"
+"Best regards."
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:906
+msgid "Awaiting Reply"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:944
+msgid "Customer Reply"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:945
+msgid "Staff Reply"
+msgstr ""
+
+#: modules/support-desk/class-hf-support-desk-module.php:946
+msgid "In Progress"
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:118
+msgid "Sending..."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:120
+#: modules/support-desk/class-hf-ticket-frontend.php:561
+msgid "Reply sent successfully."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:121
+#: modules/support-desk/class-hf-ticket-frontend.php:601
+msgid "Ticket has been closed."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:125
+#: modules/support-desk/class-hf-ticket-frontend.php:364
+#: modules/support-desk/class-hf-ticket-frontend.php:488
+msgid "Please enter a message."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:126
+msgid "File is too large. Maximum size is 10MB."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:127
+msgid "Invalid file type."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:218
+#: modules/support-desk/class-hf-ticket-frontend.php:469
+#: modules/support-desk/class-hf-ticket-frontend.php:583
+msgid "You do not have access to this ticket."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:352
+msgid "You must be logged in to create a ticket."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:390
+msgid "Could not create ticket. Please try again."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:461
+msgid "You must be logged in to reply."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:484
+msgid "You are not allowed to reply to this ticket."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:563
+msgid "Could not send reply. Please try again."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:576
+msgid "You must be logged in."
+msgstr ""
+
+#: modules/support-desk/class-hf-ticket-frontend.php:589
+msgid "This ticket is already closed."
+msgstr ""
+
+#: templates/admin/dashboard.php:14
+msgid "HostForge Dashboard"
+msgstr ""
+
+#: templates/admin/dashboard.php:19
+msgid "System Overview"
+msgstr ""
+
+#: templates/admin/dashboard.php:24
+msgid "Plugin Version"
+msgstr ""
+
+#: templates/admin/dashboard.php:28
+msgid "PHP Version"
+msgstr ""
+
+#: templates/admin/dashboard.php:32
+msgid "WooCommerce Version"
+msgstr ""
+
+#: templates/admin/dashboard.php:36
+msgid "Active Modules"
+msgstr ""
+
+#: templates/admin/dashboard.php:58
+#: templates/frontend/service-detail.php:63
+msgid "Quick Actions"
+msgstr ""
+
+#: templates/admin/dashboard.php:64
+msgid "Manage Modules"
+msgstr ""
+
+#: templates/admin/dashboard.php:67
+msgid "View Logs"
+msgstr ""
+
+#: templates/admin/logs.php:39
+msgid "HostForge Logs"
+msgstr ""
+
+#: templates/admin/logs.php:43
+msgid "Are you sure you want to clear all logs?"
+msgstr ""
+
+#: templates/admin/logs.php:45
+msgid "Clear All Logs"
+msgstr ""
+
+#: templates/admin/logs.php:51
+msgid "All logs have been cleared."
+msgstr ""
+
+#: templates/admin/logs.php:60
+msgid "All Modules"
+msgstr ""
+
+#: templates/admin/logs.php:69
+msgid "All Levels"
+msgstr ""
+
+#: templates/admin/logs.php:81
+msgid "Search logs..."
+msgstr ""
+
+#: templates/admin/logs.php:91
+msgid "ID"
+msgstr ""
+
+#: templates/admin/logs.php:93
+msgid "Level"
+msgstr ""
+
+#: templates/admin/logs.php:101
+msgid "No log entries found."
+msgstr ""
+
+#: templates/admin/logs.php:118
+msgid "Show context"
+msgstr ""
+
+#: templates/admin/modules.php:16
+msgid "HostForge Modules"
+msgstr ""
+
+#: templates/admin/modules.php:17
+msgid "Enable or disable modules to customize your HostForge installation."
+msgstr ""
+
+#: templates/admin/modules.php:37
+msgid "Requires:"
+msgstr ""
+
+#: templates/admin/modules.php:43
+msgid "Inactive"
+msgstr ""
+
+#: templates/admin/settings.php:14
+msgid "HostForge Settings"
+msgstr ""
+
+#. translators: %s: customer first name
+#. translators: %s: customer name
+#: templates/emails/domain-expiry-reminder.php:27
+#: templates/emails/domain-registered.php:28
+#: templates/emails/service-suspended.php:22
+#: templates/emails/service-terminated.php:21
+#: templates/emails/service-unsuspended.php:22
+#: templates/emails/service-welcome.php:29
+msgid "Hi %s,"
+msgstr ""
+
+#. translators: 1: domain name, 2: number of days, 3: expiry date
+#: templates/emails/domain-expiry-reminder.php:37
+msgid "Your domain %1$s will expire in %2$d day(s) on %3$s."
+msgstr ""
+
+#: templates/emails/domain-expiry-reminder.php:47
+msgid "Auto-renewal is enabled for this domain. It will be renewed automatically before expiry."
+msgstr ""
+
+#: templates/emails/domain-expiry-reminder.php:51
+msgid "Auto-renewal is NOT enabled for this domain. If you do not renew it manually, it will expire and you may lose it."
+msgstr ""
+
+#: templates/emails/domain-expiry-reminder.php:56
+msgid "You can manage your domain renewal settings from your account:"
+msgstr ""
+
+#: templates/emails/domain-expiry-reminder.php:62
+#: templates/emails/domain-registered.php:102
+msgid "Manage Domain"
+msgstr ""
+
+#. translators: %s: domain name
+#: templates/emails/domain-registered.php:38
+msgid "Your domain %s has been successfully registered!"
+msgstr ""
+
+#: templates/emails/domain-registered.php:45
+msgid "Domain Details"
+msgstr ""
+
+#: templates/emails/domain-registered.php:96
+msgid "You can manage your domain (DNS records, nameservers, auto-renewal) from your account:"
+msgstr ""
+
+#: templates/emails/provision-failed.php:21
+msgid "A hosting service provisioning has failed and requires attention."
+msgstr ""
+
+#: templates/emails/provision-failed.php:55
+msgid "View Service Details"
+msgstr ""
+
+#: templates/emails/provision-failed.php:60
+msgid "Please investigate the error and retry provisioning manually if needed."
+msgstr ""
+
+#. translators: %s: domain name
+#: templates/emails/service-suspended.php:32
+msgid "Your hosting service for %s has been suspended."
+msgstr ""
+
+#. translators: %s: suspension reason
+#: templates/emails/service-suspended.php:43
+msgid "Reason: %s"
+msgstr ""
+
+#: templates/emails/service-suspended.php:50
+msgid "While suspended, your website and email will not be accessible. Your data is preserved and the service can be reactivated once payment is received."
+msgstr ""
+
+#: templates/emails/service-suspended.php:52
+msgid "To reactivate your service, please log in to your account and make a payment, or contact our support team."
+msgstr ""
+
+#. translators: %s: domain name
+#: templates/emails/service-terminated.php:31
+msgid "Your hosting service for %s has been terminated."
+msgstr ""
+
+#: templates/emails/service-terminated.php:37
+msgid "All associated data, files, databases and email accounts have been permanently removed from the server. This action cannot be reversed."
+msgstr ""
+
+#: templates/emails/service-terminated.php:39
+msgid "If you believe this was done in error, please contact our support team immediately."
+msgstr ""
+
+#. translators: %s: domain name
+#: templates/emails/service-unsuspended.php:32
+msgid "Great news! Your hosting service for %s has been reactivated and is back online."
+msgstr ""
+
+#. translators: %s: panel URL
+#: templates/emails/service-unsuspended.php:43
+msgid "You can access your control panel at: %s"
+msgstr ""
+
+#: templates/emails/service-unsuspended.php:50
+msgid "If you have any questions, please contact our support team."
+msgstr ""
+
+#: templates/emails/service-welcome.php:35
+msgid "Your hosting account has been created and is ready to use! Here are your login details:"
+msgstr ""
+
+#: templates/emails/service-welcome.php:52
+#: templates/frontend/service-detail.php:47
+msgid "Plan"
+msgstr ""
+
+#: templates/emails/service-welcome.php:58
+msgid "Control Panel"
+msgstr ""
+
+#: templates/emails/service-welcome.php:64
+msgid "For security, we recommend changing your password after your first login."
+msgstr ""
+
+#: templates/emails/service-welcome.php:66
+msgid "You can manage your hosting services from your account dashboard."
+msgstr ""
+
+#. translators: %s: customer name
+#. translators: %s: recipient name
+#: templates/emails/ticket-closed.php:23
+#: templates/emails/ticket-reply.php:28
+msgid "Hello %s,"
+msgstr ""
+
+#. translators: 1: ticket ID, 2: ticket subject
+#: templates/emails/ticket-closed.php:33
+msgid "Your support ticket #%1$d: %2$s has been closed."
+msgstr ""
+
+#: templates/emails/ticket-closed.php:40
+msgid "If you need further assistance, you can reopen this ticket by replying to it from your account."
+msgstr ""
+
+#: templates/emails/ticket-closed.php:52
+msgid "Thank you for contacting us."
+msgstr ""
+
+#: templates/emails/ticket-new-staff.php:21
+msgid "A new support ticket has been submitted."
+msgstr ""
+
+#. translators: 1: ticket ID, 2: ticket subject
+#: templates/emails/ticket-new-staff.php:30
+msgid "#%1$d: %2$s"
+msgstr ""
+
+#. translators: 1: customer name, 2: customer email
+#: templates/emails/ticket-new-staff.php:43
+msgid "%1$s (%2$s)"
+msgstr ""
+
+#: templates/emails/ticket-new-staff.php:60
+msgid "Message:"
+msgstr ""
+
+#. translators: 1: ticket ID, 2: ticket subject
+#: templates/emails/ticket-reply.php:38
+msgid "There is a new reply on ticket #%1$d: %2$s"
+msgstr ""
+
+#. translators: %s: reply author name
+#: templates/emails/ticket-reply.php:50
+msgid "%s wrote:"
+msgstr ""
+
+#: templates/frontend/domain-detail.php:25
+msgid "Back to My Domains"
+msgstr ""
+
+#: templates/frontend/domain-detail.php:37
+msgid "Domain Overview"
+msgstr ""
+
+#: templates/frontend/domain-detail.php:122
+msgid "No DNS records found."
+msgstr ""
+
+#: templates/frontend/domain-detail.php:140
+msgid "Add"
+msgstr ""
+
+#: templates/frontend/domain-detail.php:150
+msgid "Transfer Away"
+msgstr ""
+
+#: templates/frontend/domain-detail.php:151
+msgid "To transfer this domain to another registrar, you will need the EPP/Authorization code."
+msgstr ""
+
+#: templates/frontend/domain-detail.php:163
+msgid "Linked Hosting Service"
+msgstr ""
+
+#: templates/frontend/domain-detail.php:166
+msgid "View Hosting Service"
+msgstr ""
+
+#: templates/frontend/domain-list.php:20
+msgid "You do not have any domains yet."
+msgstr ""
+
+#: templates/frontend/domain-list.php:28
+#: templates/frontend/domain-list.php:51
+msgid "Expiry"
+msgstr ""
+
+#: templates/frontend/domain-list.php:71
+#: templates/frontend/service-list.php:58
+msgid "Manage"
+msgstr ""
+
+#: templates/frontend/kb-archive.php:81
+msgid "Search the knowledge base..."
+msgstr ""
+
+#. translators: %d: number of articles
+#: templates/frontend/kb-archive.php:107
+msgid "%d article"
+msgid_plural "%d articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/frontend/kb-archive.php:121
+msgid "Popular Articles"
+msgstr ""
+
+#. translators: %d: number of helpful votes
+#: templates/frontend/kb-archive.php:135
+msgid "%d helpful vote"
+msgid_plural "%d helpful votes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/frontend/kb-archive.php:150
+msgid "Recent Articles"
+msgstr ""
+
+#: templates/frontend/kb-category.php:26
+#: templates/frontend/kb-single.php:33
+msgid "Breadcrumbs"
+msgstr ""
+
+#: templates/frontend/kb-category.php:68
+msgid "Previous"
+msgstr ""
+
+#: templates/frontend/kb-category.php:69
+msgid "Next"
+msgstr ""
+
+#: templates/frontend/kb-category.php:80
+msgid "No articles found in this category."
+msgstr ""
+
+#. translators: %s: article publish date
+#: templates/frontend/kb-single.php:55
+msgid "Last updated: %s"
+msgstr ""
+
+#: templates/frontend/kb-single.php:83
+msgid "Was this article helpful?"
+msgstr ""
+
+#. translators: %d: number of positive votes
+#: templates/frontend/kb-single.php:97
+msgid "%d found this helpful"
+msgstr ""
+
+#. translators: %d: number of negative votes
+#: templates/frontend/kb-single.php:106
+msgid "%d did not"
+msgstr ""
+
+#: templates/frontend/service-detail.php:23
+msgid "Back to services"
+msgstr ""
+
+#: templates/frontend/service-detail.php:67
+msgid "Login to Control Panel"
+msgstr ""
+
+#: templates/frontend/service-detail.php:76
+msgid "New Password"
+msgstr ""
+
+#: templates/frontend/service-detail.php:89
+msgid "Resource Usage"
+msgstr ""
+
+#: templates/frontend/service-detail.php:91
+msgid "Loading usage data..."
+msgstr ""
+
+#: templates/frontend/service-detail.php:97
+msgid "Change Plan"
+msgstr ""
+
+#: templates/frontend/service-detail.php:111
+msgid "Select Plan"
+msgstr ""
+
+#: templates/frontend/service-detail.php:113
+msgid "— Select —"
+msgstr ""
+
+#: templates/frontend/service-detail.php:126
+msgid "Request Change"
+msgstr ""
+
+#: templates/frontend/service-detail.php:131
+msgid "No packages available. Contact support for plan changes."
+msgstr ""
+
+#: templates/frontend/service-detail.php:142
+msgid "A cancellation request is already pending. Our team will review it shortly."
+msgstr ""
+
+#: templates/frontend/service-detail.php:147
+msgid "Reason for cancellation (optional)"
+msgstr ""
+
+#: templates/frontend/service-list.php:16
+msgid "You do not have any hosting services yet."
+msgstr ""
+
+#: templates/frontend/service-list.php:24
+#: templates/frontend/service-list.php:47
+msgid "Next Due"
+msgstr ""
+
+#: templates/frontend/ticket-detail.php:27
+#: templates/frontend/ticket-new.php:19
+msgid "Back to tickets"
+msgstr ""
+
+#. translators: %d: ticket ID
+#: templates/frontend/ticket-detail.php:39
+msgid "#%d"
+msgstr ""
+
+#: templates/frontend/ticket-detail.php:152
+msgid "This ticket is closed. Reply to reopen it."
+msgstr ""
+
+#: templates/frontend/ticket-detail.php:157
+msgid "Reply"
+msgstr ""
+
+#: templates/frontend/ticket-detail.php:171
+msgid "Submit Reply"
+msgstr ""
+
+#: templates/frontend/ticket-detail.php:176
+msgid "Close Ticket"
+msgstr ""
+
+#: templates/frontend/ticket-list.php:24
+msgid "You have no support tickets."
+msgstr ""
+
+#: templates/frontend/ticket-list.php:29
+#: templates/frontend/ticket-list.php:71
+msgid "#ID"
+msgstr ""
+
+#: templates/frontend/ticket-new.php:23
+msgid "New Support Ticket"
+msgstr ""
+
+#: templates/frontend/ticket-new.php:39
+msgid "&mdash; Select Department &mdash;"
+msgstr ""
+
+#: templates/frontend/ticket-new.php:52
+msgid "&mdash; None &mdash;"
+msgstr ""
+
+#: templates/frontend/ticket-new.php:77
+msgid "Submit Ticket"
+msgstr ""

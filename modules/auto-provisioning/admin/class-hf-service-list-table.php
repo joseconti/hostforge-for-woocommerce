@@ -39,7 +39,7 @@ class HF_Service_List_Table extends \WP_List_Table {
 	 * @return array
 	 */
 	public function get_columns(): array {
-		return array(
+		$columns = array(
 			'cb'       => '<input type="checkbox" />',
 			'domain'   => __( 'Domain', 'hostforge' ),
 			'customer' => __( 'Customer', 'hostforge' ),
@@ -48,6 +48,18 @@ class HF_Service_List_Table extends \WP_List_Table {
 			'status'   => __( 'Status', 'hostforge' ),
 			'created'  => __( 'Created', 'hostforge' ),
 		);
+
+		/**
+		 * Filter the service list table columns in admin.
+		 *
+		 * Allows adding, removing, or reordering columns
+		 * in the admin service list table.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $columns Associative array of column_slug => column_label.
+		 */
+		return apply_filters( 'hostforge_service_admin_columns', $columns );
 	}
 
 	/**

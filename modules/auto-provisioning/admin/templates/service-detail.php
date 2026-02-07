@@ -14,8 +14,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$status  = $meta['_hf_status'] ?? 'pending';
-$domain  = $meta['_hf_domain'] ?? '';
+$status = $meta['_hf_status'] ?? 'pending';
+$domain = $meta['_hf_domain'] ?? '';
 ?>
 <div class="wrap">
 	<h1>

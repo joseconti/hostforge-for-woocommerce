@@ -55,6 +55,16 @@ class HF_Email_Ticket_New_Staff extends \WC_Email {
 		$tags               = HF_Merge_Tags::get_ticket_tags( $ticket_id );
 		$this->placeholders = array_merge( $this->placeholders, $tags );
 
+		/**
+		 * Filter the recipient for the new ticket staff email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $recipient Email recipient address.
+		 * @param int    $ticket_id Ticket post ID.
+		 */
+		$this->recipient = apply_filters( 'hostforge_email_ticket_new_staff_recipient', $this->get_recipient(), $ticket_id );
+
 		if ( $this->is_enabled() && $this->get_recipient() ) {
 			$this->send(
 				$this->get_recipient(),
@@ -75,19 +85,31 @@ class HF_Email_Ticket_New_Staff extends \WC_Email {
 		$tags   = HF_Merge_Tags::get_ticket_tags( $this->ticket_id );
 		$ticket = get_post( $this->ticket_id );
 
+		$email_data = array(
+			'email_heading'     => HF_Merge_Tags::process( $this->get_heading(), $tags ),
+			'email'             => $this,
+			'ticket_id'         => $this->ticket_id,
+			'ticket_subject'    => $ticket ? $ticket->post_title : '',
+			'ticket_message'    => $ticket ? $ticket->post_content : '',
+			'customer_name'     => ! empty( $tags['{customer_name}'] ) ? $tags['{customer_name}'] : '',
+			'customer_email'    => ! empty( $tags['{customer_email}'] ) ? $tags['{customer_email}'] : '',
+			'ticket_priority'   => ! empty( $tags['{ticket_priority}'] ) ? $tags['{ticket_priority}'] : '',
+			'ticket_department' => ! empty( $tags['{ticket_department}'] ) ? $tags['{ticket_department}'] : '',
+		);
+
+		/**
+		 * Filter email template data before rendering the new ticket staff email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $email_data Template data key-value pairs.
+		 * @param int   $ticket_id  Ticket post ID.
+		 */
+		$email_data = apply_filters( 'hostforge_email_ticket_new_staff_data', $email_data, $this->ticket_id );
+
 		return wc_get_template_html(
 			$this->template_html,
-			array(
-				'email_heading'    => HF_Merge_Tags::process( $this->get_heading(), $tags ),
-				'email'            => $this,
-				'ticket_id'        => $this->ticket_id,
-				'ticket_subject'   => $ticket ? $ticket->post_title : '',
-				'ticket_message'   => $ticket ? $ticket->post_content : '',
-				'customer_name'    => ! empty( $tags['{customer_name}'] ) ? $tags['{customer_name}'] : '',
-				'customer_email'   => ! empty( $tags['{customer_email}'] ) ? $tags['{customer_email}'] : '',
-				'ticket_priority'  => ! empty( $tags['{ticket_priority}'] ) ? $tags['{ticket_priority}'] : '',
-				'ticket_department' => ! empty( $tags['{ticket_department}'] ) ? $tags['{ticket_department}'] : '',
-			),
+			$email_data,
 			'',
 			$this->template_base
 		);

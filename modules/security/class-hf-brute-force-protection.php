@@ -163,14 +163,25 @@ class HF_Brute_Force_Protection {
 		$wpdb->insert(
 			$table,
 			array(
-				'ip_address'  => $ip,
-				'username'    => sanitize_user( $username ),
-				'status'      => $status,
-				'user_agent'  => $user_agent,
-				'created_at'  => current_time( 'mysql', true ),
+				'ip_address' => $ip,
+				'username'   => sanitize_user( $username ),
+				'status'     => $status,
+				'user_agent' => $user_agent,
+				'created_at' => current_time( 'mysql', true ),
 			),
 			array( '%s', '%s', '%s', '%s', '%s' )
 		);
+
+		/**
+		 * Fires after a login attempt is recorded.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $ip       Visitor IP address.
+		 * @param string $username Username attempted.
+		 * @param string $status   Attempt status: 'success' or 'failed'.
+		 */
+		do_action( 'hostforge_login_attempt_recorded', $ip, sanitize_user( $username ), $status );
 	}
 
 	/**
@@ -186,6 +197,16 @@ class HF_Brute_Force_Protection {
 		$max_attempts = ! empty( $settings['max_login_attempts'] ) ? (int) $settings['max_login_attempts'] : 5;
 		$duration     = ! empty( $settings['lockout_duration'] ) ? (int) $settings['lockout_duration'] : 30;
 		$unit         = ! empty( $settings['lockout_duration_unit'] ) ? $settings['lockout_duration_unit'] : 'minutes';
+
+		/**
+		 * Filter the maximum number of failed login attempts before blocking an IP.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int    $max_attempts Maximum allowed failed attempts.
+		 * @param string $ip           The IP address being checked.
+		 */
+		$max_attempts = (int) apply_filters( 'hostforge_max_login_attempts', $max_attempts, $ip );
 
 		$since = $this->calculate_since( $duration, $unit );
 
@@ -219,7 +240,20 @@ class HF_Brute_Force_Protection {
 		$duration = ! empty( $settings['lockout_duration'] ) ? (int) $settings['lockout_duration'] : 30;
 		$unit     = ! empty( $settings['lockout_duration_unit'] ) ? $settings['lockout_duration_unit'] : 'minutes';
 
-		$expires_at = $this->calculate_expiry( $duration, $unit );
+		$block_seconds = 'hours' === $unit ? $duration * HOUR_IN_SECONDS : $duration * MINUTE_IN_SECONDS;
+
+		/**
+		 * Filter the block duration in seconds when an IP is locked out.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int    $block_seconds Block duration in seconds.
+		 * @param string $ip            The IP address being blocked.
+		 * @param string $type          Block type: 'auto' or 'manual'.
+		 */
+		$block_seconds = (int) apply_filters( 'hostforge_login_block_duration', $block_seconds, $ip, $type );
+
+		$expires_at = gmdate( 'Y-m-d H:i:s', time() + $block_seconds );
 
 		// Use INSERT ... ON DUPLICATE KEY UPDATE to handle existing blocks.
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
@@ -238,6 +272,17 @@ class HF_Brute_Force_Protection {
 		);
 
 		$this->module->log_warning( sprintf( 'IP %s blocked: too many failed login attempts.', $ip ) );
+
+		/**
+		 * Fires when an IP address is blocked due to too many failed login attempts.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $ip         The IP address that was blocked.
+		 * @param string $type       Block type: 'auto' or 'manual'.
+		 * @param string $expires_at Expiry datetime in MySQL format.
+		 */
+		do_action( 'hostforge_ip_blocked', $ip, $type, $expires_at );
 	}
 
 	/**

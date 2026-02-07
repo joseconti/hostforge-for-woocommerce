@@ -36,7 +36,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email );
 		/* translators: 1: domain name, 2: number of days, 3: expiry date */
 		esc_html__( 'Your domain %1$s will expire in %2$d day(s) on %3$s.', 'hostforge' ),
 		'<strong>' . esc_html( $domain_name ) . '</strong>',
-		$days_remaining,
+		absint( $days_remaining ),
 		'<strong>' . esc_html( $expiry_date ) . '</strong>'
 	);
 	?>

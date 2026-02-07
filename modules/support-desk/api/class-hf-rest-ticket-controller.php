@@ -310,8 +310,8 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 		}
 
 		if ( ! empty( $meta_query ) ) {
-			$meta_query['relation']  = 'AND';
-			$args['meta_query'] = $meta_query; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+			$meta_query['relation'] = 'AND';
+			$args['meta_query']     = $meta_query; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 		}
 
 		$department = $request->get_param( 'department' );
@@ -336,6 +336,16 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 		foreach ( $query->posts as $post ) {
 			$tickets[] = $this->prepare_ticket( $post );
 		}
+
+		/**
+		 * Filters the REST response data for a list of tickets.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array            $tickets Array of prepared ticket data.
+		 * @param \WP_REST_Request $request The REST request object.
+		 */
+		$tickets = apply_filters( 'hostforge_rest_ticket_response', $tickets, $request );
 
 		$response = new \WP_REST_Response( $tickets, 200 );
 		$response->header( 'X-WP-Total', (string) $query->found_posts );
@@ -363,7 +373,7 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 		$data['content'] = wp_kses_post( $ticket->post_content );
 
 		// Include replies.
-		$replies      = HF_Support_Desk_Module::get_replies( $ticket->ID, true );
+		$replies         = HF_Support_Desk_Module::get_replies( $ticket->ID, true );
 		$data['replies'] = array_map( array( $this, 'prepare_reply' ), $replies );
 
 		return new \WP_REST_Response( $data, 200 );
@@ -405,6 +415,30 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 				return $this->error( 'invalid_department', __( 'Department not found.', 'hostforge' ), 404 );
 			}
 		}
+
+		$create_data = array(
+			'subject'        => $subject,
+			'message'        => $message,
+			'priority'       => $priority,
+			'department_id'  => $department_id,
+			'client_user_id' => $client_user_id,
+		);
+
+		/**
+		 * Filters the data used to create a ticket via the REST API.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array            $create_data Ticket creation data.
+		 * @param \WP_REST_Request $request     The REST request object.
+		 */
+		$create_data = apply_filters( 'hostforge_rest_ticket_create_data', $create_data, $request );
+
+		$subject        = $create_data['subject'];
+		$message        = $create_data['message'];
+		$priority       = $create_data['priority'];
+		$department_id  = $create_data['department_id'];
+		$client_user_id = $create_data['client_user_id'];
 
 		$ticket_id = wp_insert_post(
 			array(
@@ -581,6 +615,16 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 			$articles[] = $this->prepare_kb_article( $post );
 		}
 
+		/**
+		 * Filters the REST response data for KB articles.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array            $articles Array of prepared KB article data.
+		 * @param \WP_REST_Request $request  The REST request object.
+		 */
+		$articles = apply_filters( 'hostforge_rest_kb_response', $articles, $request );
+
 		$response = new \WP_REST_Response( $articles, 200 );
 		$response->header( 'X-WP-Total', (string) $query->found_posts );
 		$response->header( 'X-WP-TotalPages', (string) $query->max_num_pages );
@@ -611,7 +655,7 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 		$data['content'] = wp_kses_post( $article->post_content );
 
 		// Include category details.
-		$categories = wp_get_object_terms( $article->ID, 'hf_kb_category' );
+		$categories         = wp_get_object_terms( $article->ID, 'hf_kb_category' );
 		$data['categories'] = array();
 		if ( ! is_wp_error( $categories ) ) {
 			foreach ( $categories as $term ) {
@@ -665,8 +709,8 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 			);
 		}
 
-		$meta_key  = 'yes' === $vote ? '_hf_helpful_yes' : '_hf_helpful_no';
-		$current   = absint( get_post_meta( $article_id, $meta_key, true ) );
+		$meta_key = 'yes' === $vote ? '_hf_helpful_yes' : '_hf_helpful_no';
+		$current  = absint( get_post_meta( $article_id, $meta_key, true ) );
 		update_post_meta( $article_id, $meta_key, $current + 1 );
 
 		return new \WP_REST_Response(
@@ -723,7 +767,7 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 	 * @return array<string, mixed>
 	 */
 	private function prepare_reply( \WP_Comment $comment ): array {
-		$attachments    = get_comment_meta( $comment->comment_ID, '_hf_attachments', true );
+		$attachments     = get_comment_meta( $comment->comment_ID, '_hf_attachments', true );
 		$attachment_data = array();
 
 		if ( ! empty( $attachments ) && is_array( $attachments ) ) {
@@ -741,16 +785,16 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 		}
 
 		return array(
-			'id'         => $comment->comment_ID,
-			'author'     => array(
+			'id'          => $comment->comment_ID,
+			'author'      => array(
 				'id'   => absint( $comment->user_id ),
 				'name' => esc_html( $comment->comment_author ),
 			),
-			'content'    => wp_kses_post( $comment->comment_content ),
-			'is_private' => (bool) get_comment_meta( $comment->comment_ID, '_hf_is_private_note', true ),
-			'is_staff'   => (bool) get_comment_meta( $comment->comment_ID, '_hf_is_staff_reply', true ),
+			'content'     => wp_kses_post( $comment->comment_content ),
+			'is_private'  => (bool) get_comment_meta( $comment->comment_ID, '_hf_is_private_note', true ),
+			'is_staff'    => (bool) get_comment_meta( $comment->comment_ID, '_hf_is_staff_reply', true ),
 			'attachments' => $attachment_data,
-			'created'    => esc_html( $comment->comment_date ),
+			'created'     => esc_html( $comment->comment_date ),
 		);
 	}
 

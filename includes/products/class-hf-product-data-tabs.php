@@ -130,7 +130,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_disk_limit',
 						'label'             => esc_html__( 'Disk Space (MB)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 						'description'       => esc_html__( '0 = unlimited.', 'hostforge' ),
 						'desc_tip'          => true,
 					)
@@ -141,7 +144,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_bandwidth_limit',
 						'label'             => esc_html__( 'Bandwidth (MB)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 						'description'       => esc_html__( '0 = unlimited.', 'hostforge' ),
 						'desc_tip'          => true,
 					)
@@ -152,7 +158,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_email_limit',
 						'label'             => esc_html__( 'Email Accounts', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -161,7 +170,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_db_limit',
 						'label'             => esc_html__( 'Databases', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -170,7 +182,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_subdomain_limit',
 						'label'             => esc_html__( 'Subdomains', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -179,7 +194,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_parked_domains_limit',
 						'label'             => esc_html__( 'Parked Domains', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -188,7 +206,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_addon_domains_limit',
 						'label'             => esc_html__( 'Addon Domains', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 				?>
@@ -202,7 +223,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_max_accounts',
 						'label'             => esc_html__( 'Max cPanel Accounts', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '1', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '1',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -211,7 +235,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_aggregate_disk_limit',
 						'label'             => esc_html__( 'Aggregate Disk (MB)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -220,7 +247,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_aggregate_bandwidth_limit',
 						'label'             => esc_html__( 'Aggregate Bandwidth (MB)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -256,10 +286,10 @@ class HF_Product_Data_Tabs {
 
 				woocommerce_wp_checkbox(
 					array(
-						'id'            => '_hf_auto_username',
-						'label'         => esc_html__( 'Auto Username', 'hostforge' ),
-						'description'   => esc_html__( 'Generate username from domain automatically.', 'hostforge' ),
-						'value'         => get_post_meta( $product_id, '_hf_auto_username', true ) ?: 'yes',
+						'id'          => '_hf_auto_username',
+						'label'       => esc_html__( 'Auto Username', 'hostforge' ),
+						'description' => esc_html__( 'Generate username from domain automatically.', 'hostforge' ),
+						'value'       => get_post_meta( $product_id, '_hf_auto_username', true ) ?: 'yes',
 					)
 				);
 
@@ -268,7 +298,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_setup_fee',
 						'label'             => esc_html__( 'Setup Fee', 'hostforge' ) . ' (' . get_woocommerce_currency_symbol() . ')',
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '0.01' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '0.01',
+						),
 					)
 				);
 
@@ -277,7 +310,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_trial_days',
 						'label'             => esc_html__( 'Trial Days', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 						'description'       => esc_html__( '0 = no trial.', 'hostforge' ),
 						'desc_tip'          => true,
 					)
@@ -305,7 +341,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_cpu_cores',
 						'label'             => esc_html__( 'CPU Cores', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '1', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '1',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -314,7 +353,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_ram',
 						'label'             => esc_html__( 'RAM (MB)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '256', 'step' => '256' ),
+						'custom_attributes' => array(
+							'min'  => '256',
+							'step' => '256',
+						),
 					)
 				);
 
@@ -323,7 +365,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_disk',
 						'label'             => esc_html__( 'Disk Space (GB)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '1', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '1',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -344,7 +389,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_bandwidth',
 						'label'             => esc_html__( 'Bandwidth (GB)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 						'description'       => esc_html__( '0 = unlimited.', 'hostforge' ),
 						'desc_tip'          => true,
 					)
@@ -360,7 +408,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_ipv4_count',
 						'label'             => esc_html__( 'IPv4 Addresses', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 
@@ -369,7 +420,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_ipv6_count',
 						'label'             => esc_html__( 'IPv6 Addresses', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 				?>
@@ -435,10 +489,10 @@ class HF_Product_Data_Tabs {
 
 				woocommerce_wp_checkbox(
 					array(
-						'id'            => '_hf_require_hostname',
-						'label'         => esc_html__( 'Require Hostname', 'hostforge' ),
-						'description'   => esc_html__( 'Customer must provide hostname at checkout.', 'hostforge' ),
-						'value'         => get_post_meta( $product_id, '_hf_require_hostname', true ) ?: 'yes',
+						'id'          => '_hf_require_hostname',
+						'label'       => esc_html__( 'Require Hostname', 'hostforge' ),
+						'description' => esc_html__( 'Customer must provide hostname at checkout.', 'hostforge' ),
+						'value'       => get_post_meta( $product_id, '_hf_require_hostname', true ) ?: 'yes',
 					)
 				);
 
@@ -464,7 +518,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_setup_fee',
 						'label'             => esc_html__( 'Setup Fee', 'hostforge' ) . ' (' . get_woocommerce_currency_symbol() . ')',
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '0.01' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '0.01',
+						),
 					)
 				);
 				?>
@@ -498,7 +555,11 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_registration_years',
 						'label'             => esc_html__( 'Registration Period (years)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '1', 'max' => '10', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '1',
+							'max'  => '10',
+							'step' => '1',
+						),
 						'value'             => get_post_meta( $product_id, '_hf_registration_years', true ) ?: '1',
 					)
 				);
@@ -515,19 +576,19 @@ class HF_Product_Data_Tabs {
 
 				woocommerce_wp_checkbox(
 					array(
-						'id'            => '_hf_auto_renew_default',
-						'label'         => esc_html__( 'Auto-Renew Default', 'hostforge' ),
-						'description'   => esc_html__( 'Enable auto-renewal by default.', 'hostforge' ),
-						'value'         => get_post_meta( $product_id, '_hf_auto_renew_default', true ) ?: 'yes',
+						'id'          => '_hf_auto_renew_default',
+						'label'       => esc_html__( 'Auto-Renew Default', 'hostforge' ),
+						'description' => esc_html__( 'Enable auto-renewal by default.', 'hostforge' ),
+						'value'       => get_post_meta( $product_id, '_hf_auto_renew_default', true ) ?: 'yes',
 					)
 				);
 
 				woocommerce_wp_checkbox(
 					array(
-						'id'            => '_hf_allow_transfer',
-						'label'         => esc_html__( 'Allow Transfer', 'hostforge' ),
-						'description'   => esc_html__( 'Allow domain transfer option at checkout.', 'hostforge' ),
-						'value'         => get_post_meta( $product_id, '_hf_allow_transfer', true ) ?: 'yes',
+						'id'          => '_hf_allow_transfer',
+						'label'       => esc_html__( 'Allow Transfer', 'hostforge' ),
+						'description' => esc_html__( 'Allow domain transfer option at checkout.', 'hostforge' ),
+						'value'       => get_post_meta( $product_id, '_hf_allow_transfer', true ) ?: 'yes',
 					)
 				);
 
@@ -580,7 +641,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_validity_months',
 						'label'             => esc_html__( 'Validity (months)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '1', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '1',
+							'step' => '1',
+						),
 						'value'             => get_post_meta( $product_id, '_hf_validity_months', true ) ?: '12',
 					)
 				);
@@ -598,16 +662,19 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_max_san_domains',
 						'label'             => esc_html__( 'Max SAN Domains', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '1',
+						),
 					)
 				);
 
 				woocommerce_wp_checkbox(
 					array(
-						'id'            => '_hf_require_domain',
-						'label'         => esc_html__( 'Require Domain', 'hostforge' ),
-						'description'   => esc_html__( 'Domain required at checkout.', 'hostforge' ),
-						'value'         => get_post_meta( $product_id, '_hf_require_domain', true ) ?: 'yes',
+						'id'          => '_hf_require_domain',
+						'label'       => esc_html__( 'Require Domain', 'hostforge' ),
+						'description' => esc_html__( 'Domain required at checkout.', 'hostforge' ),
+						'value'       => get_post_meta( $product_id, '_hf_require_domain', true ) ?: 'yes',
 					)
 				);
 
@@ -624,7 +691,10 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_warranty',
 						'label'             => esc_html__( 'Warranty (USD)', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '0', 'step' => '0.01' ),
+						'custom_attributes' => array(
+							'min'  => '0',
+							'step' => '0.01',
+						),
 					)
 				);
 				?>
@@ -662,10 +732,10 @@ class HF_Product_Data_Tabs {
 
 				woocommerce_wp_checkbox(
 					array(
-						'id'            => '_hf_require_server_ip',
-						'label'         => esc_html__( 'Require Server IP', 'hostforge' ),
-						'description'   => esc_html__( 'Customer must provide server IP at checkout.', 'hostforge' ),
-						'value'         => get_post_meta( $product_id, '_hf_require_server_ip', true ) ?: 'yes',
+						'id'          => '_hf_require_server_ip',
+						'label'       => esc_html__( 'Require Server IP', 'hostforge' ),
+						'description' => esc_html__( 'Customer must provide server IP at checkout.', 'hostforge' ),
+						'value'       => get_post_meta( $product_id, '_hf_require_server_ip', true ) ?: 'yes',
 					)
 				);
 
@@ -689,17 +759,20 @@ class HF_Product_Data_Tabs {
 						'id'                => '_hf_max_activations',
 						'label'             => esc_html__( 'Max Activations', 'hostforge' ),
 						'type'              => 'number',
-						'custom_attributes' => array( 'min' => '1', 'step' => '1' ),
+						'custom_attributes' => array(
+							'min'  => '1',
+							'step' => '1',
+						),
 						'value'             => get_post_meta( $product_id, '_hf_max_activations', true ) ?: '1',
 					)
 				);
 
 				woocommerce_wp_checkbox(
 					array(
-						'id'            => '_hf_allow_ip_change',
-						'label'         => esc_html__( 'Allow IP Change', 'hostforge' ),
-						'description'   => esc_html__( 'Customer can change server IP.', 'hostforge' ),
-						'value'         => get_post_meta( $product_id, '_hf_allow_ip_change', true ) ?: 'yes',
+						'id'          => '_hf_allow_ip_change',
+						'label'       => esc_html__( 'Allow IP Change', 'hostforge' ),
+						'description' => esc_html__( 'Customer can change server IP.', 'hostforge' ),
+						'value'       => get_post_meta( $product_id, '_hf_allow_ip_change', true ) ?: 'yes',
 					)
 				);
 				?>
@@ -765,32 +838,63 @@ class HF_Product_Data_Tabs {
 		$fields = array();
 
 		if ( in_array( $type, array( 'hf_shared_hosting', 'hf_reseller_hosting' ), true ) ) {
-			$fields = array_merge( $fields, array(
-				'_hf_server_group', '_hf_plan',
-				'_hf_disk_limit', '_hf_bandwidth_limit', '_hf_email_limit', '_hf_db_limit',
-				'_hf_subdomain_limit', '_hf_parked_domains_limit', '_hf_addon_domains_limit',
-				'_hf_setup_fee', '_hf_trial_days',
-			) );
+			$fields = array_merge(
+				$fields,
+				array(
+					'_hf_server_group',
+					'_hf_plan',
+					'_hf_disk_limit',
+					'_hf_bandwidth_limit',
+					'_hf_email_limit',
+					'_hf_db_limit',
+					'_hf_subdomain_limit',
+					'_hf_parked_domains_limit',
+					'_hf_addon_domains_limit',
+					'_hf_setup_fee',
+					'_hf_trial_days',
+				)
+			);
 		}
 
 		if ( 'hf_reseller_hosting' === $type ) {
-			$fields = array_merge( $fields, array(
-				'_hf_max_accounts', '_hf_aggregate_disk_limit', '_hf_aggregate_bandwidth_limit',
-				'_hf_reseller_plan',
-			) );
+			$fields = array_merge(
+				$fields,
+				array(
+					'_hf_max_accounts',
+					'_hf_aggregate_disk_limit',
+					'_hf_aggregate_bandwidth_limit',
+					'_hf_reseller_plan',
+				)
+			);
 		}
 
 		if ( in_array( $type, array( 'hf_vps_server', 'hf_dedicated_server' ), true ) ) {
-			$fields = array_merge( $fields, array(
-				'_hf_cpu_cores', '_hf_ram', '_hf_disk', '_hf_disk_type', '_hf_bandwidth',
-				'_hf_ipv4_count', '_hf_ipv6_count', '_hf_server_group', '_hf_setup_fee',
-			) );
+			$fields = array_merge(
+				$fields,
+				array(
+					'_hf_cpu_cores',
+					'_hf_ram',
+					'_hf_disk',
+					'_hf_disk_type',
+					'_hf_bandwidth',
+					'_hf_ipv4_count',
+					'_hf_ipv6_count',
+					'_hf_server_group',
+					'_hf_setup_fee',
+				)
+			);
 		}
 
 		if ( 'hf_dedicated_server' === $type ) {
-			$fields = array_merge( $fields, array(
-				'_hf_processor', '_hf_raid', '_hf_uplink', '_hf_datacenter',
-			) );
+			$fields = array_merge(
+				$fields,
+				array(
+					'_hf_processor',
+					'_hf_raid',
+					'_hf_uplink',
+					'_hf_datacenter',
+				)
+			);
 		}
 
 		if ( 'hf_domain' === $type ) {
@@ -798,16 +902,28 @@ class HF_Product_Data_Tabs {
 		}
 
 		if ( 'hf_ssl_certificate' === $type ) {
-			$fields = array_merge( $fields, array(
-				'_hf_ssl_type', '_hf_ssl_brand', '_hf_validity_months',
-				'_hf_max_san_domains', '_hf_warranty',
-			) );
+			$fields = array_merge(
+				$fields,
+				array(
+					'_hf_ssl_type',
+					'_hf_ssl_brand',
+					'_hf_validity_months',
+					'_hf_max_san_domains',
+					'_hf_warranty',
+				)
+			);
 		}
 
 		if ( 'hf_software_license' === $type ) {
-			$fields = array_merge( $fields, array(
-				'_hf_license_type', '_hf_license_provider', '_hf_key_prefix', '_hf_max_activations',
-			) );
+			$fields = array_merge(
+				$fields,
+				array(
+					'_hf_license_type',
+					'_hf_license_provider',
+					'_hf_key_prefix',
+					'_hf_max_activations',
+				)
+			);
 		}
 
 		return $fields;
@@ -847,9 +963,14 @@ class HF_Product_Data_Tabs {
 		}
 
 		if ( 'hf_software_license' === $type ) {
-			$fields = array_merge( $fields, array(
-				'_hf_require_server_ip', '_hf_auto_generate_key', '_hf_allow_ip_change',
-			) );
+			$fields = array_merge(
+				$fields,
+				array(
+					'_hf_require_server_ip',
+					'_hf_auto_generate_key',
+					'_hf_allow_ip_change',
+				)
+			);
 		}
 
 		return $fields;

@@ -30,6 +30,7 @@ class HF_Settings {
 	 */
 	public static function init(): void {
 		add_action( 'admin_init', array( static::class, 'register' ) );
+		add_action( 'update_option', array( static::class, 'on_option_updated' ), 10, 3 );
 	}
 
 	/**
@@ -72,6 +73,19 @@ class HF_Settings {
 		);
 
 		self::add_field( 'hf_license_key', __( 'License Key', 'hostforge' ), 'text', 'hf_license_section' );
+
+		/**
+		 * Filters the settings fields after core fields are registered.
+		 *
+		 * Allows modules and third-party code to register additional settings fields
+		 * within the HostForge settings page. Use `self::add_field()` pattern or
+		 * WordPress Settings API directly against the 'hf_settings' option group.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $option_group The settings option group name ('hf_settings').
+		 */
+		do_action( 'hostforge_settings_fields', self::OPTION_GROUP );
 	}
 
 	/**
@@ -202,5 +216,34 @@ class HF_Settings {
 	 */
 	public static function get_option_group(): string {
 		return self::OPTION_GROUP;
+	}
+
+	/**
+	 * Hook into option updates to fire hostforge_settings_saved action.
+	 *
+	 * @param string $option    Option name.
+	 * @param mixed  $old_value Old option value.
+	 * @param mixed  $new_value New option value.
+	 * @return void
+	 */
+	public static function on_option_updated( string $option, $old_value, $new_value ): void {
+		// Only fire for HostForge settings options.
+		if ( 0 !== strpos( $option, 'hf_' ) ) {
+			return;
+		}
+
+		/**
+		 * Fires after a HostForge setting has been saved.
+		 *
+		 * Use this hook to react to setting changes, flush caches,
+		 * or trigger configuration updates.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $option    The option name that was updated.
+		 * @param mixed  $new_value The new value of the option.
+		 * @param mixed  $old_value The previous value of the option.
+		 */
+		do_action( 'hostforge_settings_saved', $option, $new_value, $old_value );
 	}
 }

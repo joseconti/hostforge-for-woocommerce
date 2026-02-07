@@ -51,7 +51,7 @@ class HF_Product_Addons {
 	 */
 	public static function add_addons_tab( array $tabs ): array {
 		$hf_types = HF_Product_Types::get_type_slugs();
-		$classes   = array_map(
+		$classes  = array_map(
 			function ( string $type ): string {
 				return 'show_if_' . $type;
 			},
@@ -232,6 +232,23 @@ class HF_Product_Addons {
 			return;
 		}
 
+		/**
+		 * Filters the product add-ons before rendering on the frontend.
+		 *
+		 * Allows modifying, adding, or removing add-on options displayed
+		 * on the product page before customers see them.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array       $addons  Array of add-on definition arrays.
+		 * @param \WC_Product $product The current product object.
+		 */
+		$addons = apply_filters( 'hostforge_product_addons', $addons, $product );
+
+		if ( empty( $addons ) ) {
+			return;
+		}
+
 		echo '<div class="hf-product-addons">';
 		echo '<h4>' . esc_html__( 'Optional Add-ons', 'hostforge' ) . '</h4>';
 
@@ -288,6 +305,20 @@ class HF_Product_Addons {
 		}
 
 		if ( ! empty( $selected_addons ) ) {
+			/**
+			 * Filters the add-on data saved to the cart item.
+			 *
+			 * Allows modifying the add-on data before it is stored in
+			 * the cart item, for example to add custom metadata fields.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $selected_addons Array of selected add-on definitions.
+			 * @param int   $product_id      The product ID.
+			 * @param array $cart_item_data   The existing cart item data.
+			 */
+			$selected_addons = apply_filters( 'hostforge_addon_cart_data', $selected_addons, $product_id, $cart_item_data );
+
 			$cart_item_data['hf_addons'] = $selected_addons;
 		}
 
@@ -310,12 +341,29 @@ class HF_Product_Addons {
 				continue;
 			}
 
-			$product    = $cart_item['data'];
-			$base_price = (float) $product->get_price();
+			$product     = $cart_item['data'];
+			$base_price  = (float) $product->get_price();
 			$addon_total = 0;
 
 			foreach ( $cart_item['hf_addons'] as $addon ) {
-				$addon_total += (float) $addon['price'];
+				$addon_price = (float) $addon['price'];
+
+				/**
+				 * Filters the price of a single add-on during cart calculation.
+				 *
+				 * Allows modifying add-on pricing dynamically, for example
+				 * to apply discounts or currency conversions.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param float       $addon_price The add-on price.
+				 * @param array       $addon       The add-on definition array.
+				 * @param array       $cart_item   The cart item data.
+				 * @param \WC_Product $product     The product object.
+				 */
+				$addon_price = (float) apply_filters( 'hostforge_addon_price', $addon_price, $addon, $cart_item, $product );
+
+				$addon_total += $addon_price;
 			}
 
 			$product->set_price( $base_price + $addon_total );

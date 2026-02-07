@@ -166,6 +166,46 @@ class HF_Service_Admin {
 			)
 		);
 
+		/**
+		 * Filter the sections displayed on the admin service detail page.
+		 *
+		 * Allows adding, removing, or modifying the sections shown
+		 * on the service detail page in the admin area.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $sections {
+		 *     Sections data available to the template.
+		 *
+		 *     @type array         $meta        Service meta values.
+		 *     @type \WC_Order|null $order       WooCommerce order or null.
+		 *     @type \WP_User|null  $user        WordPress user or null.
+		 *     @type \WP_Post|null  $server      Server post or null.
+		 *     @type \WC_Product|null $product   WooCommerce product or null.
+		 *     @type array         $queue_items Provisioning queue history.
+		 * }
+		 * @param int   $service_id Service post ID.
+		 */
+		$sections = apply_filters(
+			'hostforge_service_detail_sections',
+			array(
+				'meta'        => $meta,
+				'order'       => $order,
+				'user'        => $user,
+				'server'      => $server,
+				'product'     => $product,
+				'queue_items' => $queue_items,
+			),
+			$service_id
+		);
+
+		$meta        = $sections['meta'];
+		$order       = $sections['order'];
+		$user        = $sections['user'];
+		$server      = $sections['server'];
+		$product     = $sections['product'];
+		$queue_items = $sections['queue_items'];
+
 		$template = $this->module->get_module_dir() . 'admin/templates/service-detail.php';
 		if ( file_exists( $template ) ) {
 			include $template;

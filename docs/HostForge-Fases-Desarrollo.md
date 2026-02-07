@@ -15,7 +15,7 @@ Autor: José Conti | Versión 1.0 | Febrero 2026
 | Concepto | Valor |
 |----------|-------|
 | Total de fases | 8 |
-| Total de tareas | ~153 |
+| Total de tareas | ~155 |
 | Fases críticas | 1, 2, 8 |
 | Fases de prioridad alta | 3, 4 |
 | Módulos independientes | 7 (Server Manager, Auto Provisioning, Support Desk, Domain Manager, Security, Notifications, Reports) |
@@ -368,7 +368,7 @@ Informes y gráficos con Chart.js.
 
 ## FASE 8 — Testing, Seguridad y Polish Final
 
-**Prioridad**: CRÍTICA | **Dependencias**: Todas las fases | **Tareas**: 21
+**Prioridad**: CRÍTICA | **Dependencias**: Todas las fases | **Tareas**: 22
 
 > Revisión completa de seguridad, rendimiento, compatibilidad y calidad de código.
 
@@ -376,21 +376,21 @@ Informes y gráficos con Chart.js.
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 8.1 | Escapar todo el output | `PENDING` | esc_html(), esc_attr(), esc_url(), wp_kses() |
-| 8.2 | Sanitizar todo el input | `PENDING` | sanitize_text_field(), absint(), sanitize_email() |
-| 8.3 | Nonces en todos los formularios | `PENDING` | wp_nonce_field() + wp_verify_nonce() |
-| 8.4 | Verificación de capabilities | `PENDING` | current_user_can() antes de cada acción |
-| 8.5 | $wpdb->prepare() en todas las queries | `PENDING` | Sin excepciones |
-| 8.6 | defined('ABSPATH') en todos los archivos | `PENDING` | Línea 1 de cada archivo PHP |
-| 8.7 | REST permission callbacks | `PENDING` | permission_callback en cada endpoint |
+| 8.1 | Escapar todo el output | `DONE` | esc_html(), esc_attr(), esc_url(), wp_kses() — Auditoría completa, fix en registrar-settings.php |
+| 8.2 | Sanitizar todo el input | `DONE` | sanitize_text_field(), absint(), sanitize_email() — Auditoría completa, fix absint en domain-expiry-reminder.php |
+| 8.3 | Nonces en todos los formularios | `DONE` | wp_nonce_field() + wp_verify_nonce() — Verificado en todos los archivos |
+| 8.4 | Verificación de capabilities | `DONE` | current_user_can() antes de cada acción — Fix en ajax_kb_search |
+| 8.5 | $wpdb->prepare() en todas las queries | `DONE` | Sin excepciones — phpcs ignore en queries sin variables de usuario |
+| 8.6 | defined('ABSPATH') en todos los archivos | `DONE` | 139 archivos verificados — todos correctos |
+| 8.7 | REST permission callbacks | `DONE` | permission_callback en cada endpoint — verificado |
 
 ### 8B — Rendimiento
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 8.8 | Sin N+1 queries, caching con transients | `PENDING` | Transient caching para APIs externas |
-| 8.9 | Carga condicional de assets | `PENDING` | CSS/JS solo donde se necesitan |
-| 8.10 | Índices DB en tablas custom | `PENDING` | En todas las columnas de búsqueda |
+| 8.8 | Sin N+1 queries, caching con transients | `DONE` | Reescrito class-hf-report-data.php — JOIN queries, transient MRR cache, domain search cache |
+| 8.9 | Carga condicional de assets | `DONE` | CAPTCHA scripts solo en checkout/account/login — page context check |
+| 8.10 | Índices DB en tablas custom | `DONE` | Todos los índices verificados — correctos |
 
 ### 8C — Compatibilidad
 
@@ -400,7 +400,7 @@ Informes y gráficos con Chart.js.
 | 8.12 | Test: PHP 8.0, 8.1, 8.2, 8.3 | `PENDING` | Compatibilidad multi-versión |
 | 8.13 | Test: HPOS habilitado | `PENDING` | High Performance Order Storage |
 | 8.14 | Test: Checkout de bloques | `PENDING` | WooCommerce Blocks |
-| 8.15 | Adaptador SUMO Subscriptions (HF_SUMO_Adapter) | `PENDING` | Docs en docs/Plugins suscripciones/sumosubscriptions/ — CPT sumo_subscription, SUMOSubs_Subscription class |
+| 8.15 | Adaptador SUMO Subscriptions (HF_SUMO_Adapter) | `DONE` | class-hf-sumo-adapter.php — 10 métodos, normalización estados, factory actualizada |
 | 8.16 | Test: Los 4 adaptadores de suscripciones | `PENDING` | WCS, YITH, Advanced Subs, SUMO |
 
 ### 8D — Documentación y Calidad
@@ -408,10 +408,11 @@ Informes y gráficos con Chart.js.
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
 | 8.17 | PHPDoc completo | `PENDING` | Todas las clases y métodos |
-| 8.18 | README.md + CHANGELOG.md | `PENDING` | Documentación del proyecto |
-| 8.19 | Documento de referencia de hooks | `PENDING` | Todos los actions y filters |
-| 8.20 | Guía de desarrollo | `PENDING` | Cómo crear providers, registrars, adapters custom |
-| 8.21 | Generar hostforge.pot | `PENDING` | Archivo de traducciones |
+| 8.18 | README.md + CHANGELOG.md | `DONE` | README.md completo + CHANGELOG.md v1.0.0 |
+| 8.19 | Documento de referencia de hooks | `DONE` | docs/hooks-reference.md — 46 actions + 125 filters = 171 hooks documentados |
+| 8.20 | Guía de desarrollo | `DONE` | docs/developer-guide.md — providers, registrars, adapters, hooks, templates, REST API |
+| 8.21 | Generar hostforge.pot | `DONE` | languages/hostforge.pot — 1.117 strings, 5.196 líneas |
+| 8.22 | Añadir do_action/apply_filters en todas partes | `DONE` | 100+ hooks añadidos en 40+ archivos: includes/, server-manager, auto-provisioning, support-desk, domain-manager, security, notifications, reports |
 
 ---
 
@@ -426,8 +427,8 @@ Informes y gráficos con Chart.js.
 | 5 | Support Desk (Tickets + KB) | MEDIA | 23 | 23 | 100% |
 | 6 | Domain Manager | MEDIA | 18 | 18 | 100% |
 | 7 | Módulos Adicionales | NORMAL | 14 | 14 | 100% |
-| 8 | Testing, Seguridad y Polish | CRÍTICA | 21 | 0 | 0% |
-| **TOTAL** | | | **154** | **133** | **86%** |
+| 8 | Testing, Seguridad y Polish | CRÍTICA | 22 | 17 | 77% |
+| **TOTAL** | | | **155** | **150** | **97%** |
 
 ---
 
@@ -446,6 +447,7 @@ Informes y gráficos con Chart.js.
 | 9 | HPOS | `$order->get_meta()` / `$order->update_meta_data()` |
 | 10 | Blocks Checkout | Compatible con checkout de bloques |
 | 11 | Sin facturación | No facturas, no impuestos, no PDFs |
+| 12 | Hooks en todas partes (OBLIGATORIO) | `do_action()` y `apply_filters()` en cada punto importante. Antes/después de cada operación, filtros en datos, templates, admin, REST API, validación. Prefijo `hostforge_`. El plugin debe ser extremadamente flexible para desarrolladores |
 
 ---
 

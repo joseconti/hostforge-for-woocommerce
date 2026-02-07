@@ -160,21 +160,31 @@ class HF_Ticket_Frontend {
 	private function render_ticket_list(): void {
 		$user_id = get_current_user_id();
 
-		$tickets = get_posts(
-			array(
-				'post_type'      => 'hf_ticket',
-				'post_status'    => 'publish',
-				'posts_per_page' => -1,
-				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-					array(
-						'key'   => '_hf_client_user_id',
-						'value' => $user_id,
-					),
+		$query_args = array(
+			'post_type'      => 'hf_ticket',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					'key'   => '_hf_client_user_id',
+					'value' => $user_id,
 				),
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-			)
+			),
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 		);
+
+		/**
+		 * Filters the query arguments for listing user tickets on the frontend.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $query_args WP_Query arguments.
+		 * @param int   $user_id    The current user ID.
+		 */
+		$query_args = apply_filters( 'hostforge_ticket_list_query', $query_args, $user_id );
+
+		$tickets = get_posts( $query_args );
 
 		$statuses   = HF_Support_Desk_Module::get_statuses();
 		$priorities = HF_Support_Desk_Module::get_priorities();
@@ -269,6 +279,26 @@ class HF_Ticket_Frontend {
 		);
 
 		$priorities = HF_Support_Desk_Module::get_priorities();
+
+		$form_fields = array(
+			'departments' => $departments,
+			'services'    => $services,
+			'priorities'  => $priorities,
+		);
+
+		/**
+		 * Filters the new ticket form fields and data available to the template.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $form_fields Array of form field data (departments, services, priorities).
+		 * @param int   $user_id     The current user ID.
+		 */
+		$form_fields = apply_filters( 'hostforge_ticket_form_fields', $form_fields, $user_id );
+
+		$departments = $form_fields['departments'];
+		$services    = $form_fields['services'];
+		$priorities  = $form_fields['priorities'];
 
 		$template = hf_locate_template( 'frontend/ticket-new.php' );
 		if ( $template ) {
@@ -393,6 +423,22 @@ class HF_Ticket_Frontend {
 		 */
 		do_action( 'hostforge_ticket_created', $ticket_id, $user_id );
 
+		/**
+		 * Fires after a ticket is submitted from the frontend form.
+		 *
+		 * This fires in addition to hostforge_ticket_created and provides
+		 * additional context about the frontend submission (department, service, attachments).
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int   $ticket_id      The ticket post ID.
+		 * @param int   $user_id        The user who submitted the ticket.
+		 * @param int   $department_id  The selected department term ID.
+		 * @param int   $related_service The related service post ID (0 if none).
+		 * @param array $attachment_ids  Array of attachment IDs.
+		 */
+		do_action( 'hostforge_ticket_submitted', $ticket_id, $user_id, $department_id, $related_service, $attachment_ids );
+
 		$redirect_url = wc_get_account_endpoint_url( self::ENDPOINT ) . $ticket_id . '/';
 
 		wp_send_json_success(
@@ -421,6 +467,21 @@ class HF_Ticket_Frontend {
 
 		if ( ! $this->verify_ticket_ownership( $ticket_id, $user_id ) ) {
 			wp_send_json_error( array( 'message' => __( 'You do not have access to this ticket.', 'hostforge' ) ) );
+		}
+
+		/**
+		 * Filters whether the current user can reply to a ticket.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param bool $can_reply  Whether the user can reply. Default true.
+		 * @param int  $ticket_id  The ticket post ID.
+		 * @param int  $user_id    The user ID attempting to reply.
+		 */
+		$can_reply = apply_filters( 'hostforge_ticket_can_reply', true, $ticket_id, $user_id );
+
+		if ( ! $can_reply ) {
+			wp_send_json_error( array( 'message' => __( 'You are not allowed to reply to this ticket.', 'hostforge' ) ) );
 		}
 
 		if ( empty( $message ) ) {
@@ -485,6 +546,18 @@ class HF_Ticket_Frontend {
 		}
 
 		if ( ! empty( $comment_id ) ) {
+			/**
+			 * Fires after a ticket reply is submitted from the frontend.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param int   $ticket_id      The ticket post ID.
+			 * @param int   $comment_id     The reply comment ID.
+			 * @param int   $user_id        The user who submitted the reply.
+			 * @param array $attachment_ids  Array of attachment IDs for the reply.
+			 */
+			do_action( 'hostforge_ticket_reply_submitted', $ticket_id, $comment_id, $user_id, $attachment_ids );
+
 			wp_send_json_success( array( 'message' => __( 'Reply sent successfully.', 'hostforge' ) ) );
 		} else {
 			wp_send_json_error( array( 'message' => __( 'Could not send reply. Please try again.', 'hostforge' ) ) );

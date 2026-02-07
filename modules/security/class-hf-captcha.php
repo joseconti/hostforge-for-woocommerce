@@ -52,15 +52,31 @@ class HF_Captcha {
 			return;
 		}
 
+		$locations = array(
+			'login'    => 'yes' === ( ! empty( $settings['captcha_on_login'] ) ? $settings['captcha_on_login'] : 'no' ),
+			'register' => 'yes' === ( ! empty( $settings['captcha_on_register'] ) ? $settings['captcha_on_register'] : 'yes' ),
+			'checkout' => 'yes' === ( ! empty( $settings['captcha_on_checkout'] ) ? $settings['captcha_on_checkout'] : 'no' ),
+			'tickets'  => 'yes' === ( ! empty( $settings['captcha_on_tickets'] ) ? $settings['captcha_on_tickets'] : 'yes' ),
+		);
+
+		/**
+		 * Filter the locations where CAPTCHA is enabled.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $locations Associative array of location => bool pairs.
+		 */
+		$locations = apply_filters( 'hostforge_captcha_enabled_locations', $locations );
+
 		// Login form.
-		if ( 'yes' === ( ! empty( $settings['captcha_on_login'] ) ? $settings['captcha_on_login'] : 'no' ) ) {
+		if ( ! empty( $locations['login'] ) ) {
 			add_action( 'login_form', array( $this, 'render_captcha_widget' ) );
 			add_action( 'woocommerce_login_form', array( $this, 'render_captcha_widget' ) );
 			add_filter( 'authenticate', array( $this, 'verify_login_captcha' ), 99, 3 );
 		}
 
 		// Registration form.
-		if ( 'yes' === ( ! empty( $settings['captcha_on_register'] ) ? $settings['captcha_on_register'] : 'yes' ) ) {
+		if ( ! empty( $locations['register'] ) ) {
 			add_action( 'register_form', array( $this, 'render_captcha_widget' ) );
 			add_action( 'woocommerce_register_form', array( $this, 'render_captcha_widget' ) );
 			add_filter( 'registration_errors', array( $this, 'verify_registration_captcha' ), 99, 3 );
@@ -68,7 +84,7 @@ class HF_Captcha {
 		}
 
 		// Checkout form.
-		if ( 'yes' === ( ! empty( $settings['captcha_on_checkout'] ) ? $settings['captcha_on_checkout'] : 'no' ) ) {
+		if ( ! empty( $locations['checkout'] ) ) {
 			add_action( 'woocommerce_review_order_before_submit', array( $this, 'render_captcha_widget' ) );
 			add_action( 'woocommerce_after_checkout_validation', array( $this, 'verify_checkout_captcha' ), 10, 2 );
 		}
@@ -84,6 +100,11 @@ class HF_Captcha {
 	 * @return void
 	 */
 	public function enqueue_captcha_scripts(): void {
+		// Only load on pages where CAPTCHA is actually rendered.
+		if ( ! is_checkout() && ! is_account_page() && ! in_array( $GLOBALS['pagenow'] ?? '', array( 'wp-login.php', 'wp-register.php' ), true ) ) {
+			return;
+		}
+
 		$settings = $this->module->get_security_settings();
 		$provider = ! empty( $settings['captcha_provider'] ) ? $settings['captcha_provider'] : 'turnstile';
 
@@ -271,9 +292,22 @@ class HF_Captcha {
 			return true;
 		}
 
-		$body = json_decode( wp_remote_retrieve_body( $response ), true );
+		$body   = json_decode( wp_remote_retrieve_body( $response ), true );
+		$result = ! empty( $body['success'] ) && true === $body['success'];
 
-		return ! empty( $body['success'] ) && true === $body['success'];
+		/**
+		 * Filter the CAPTCHA verification result.
+		 *
+		 * Allows third-party code to override the CAPTCHA verification
+		 * outcome (e.g. to bypass for trusted users or testing).
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param bool   $result   Whether verification passed.
+		 * @param string $provider CAPTCHA provider: 'turnstile' or 'recaptcha'.
+		 * @param array  $body     Raw response body from the provider API.
+		 */
+		return (bool) apply_filters( 'hostforge_captcha_verify_result', $result, $provider, $body );
 	}
 
 	/**

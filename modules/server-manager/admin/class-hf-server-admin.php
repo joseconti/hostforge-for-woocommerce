@@ -186,6 +186,39 @@ class HF_Server_Admin {
 			}
 		}
 
+		/**
+		 * Filter the server form fields data before rendering.
+		 *
+		 * Allows modification of the server meta values and groups
+		 * passed to the server add/edit form template.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array    $form_data {
+		 *     Form data for the server.
+		 *
+		 *     @type array    $meta           Server meta values.
+		 *     @type array    $groups         Available server groups.
+		 *     @type array    $current_groups Currently assigned group IDs.
+		 * }
+		 * @param int      $server_id Server post ID (0 for new).
+		 * @param \WP_Post|null $server Server post object or null.
+		 */
+		$form_data = apply_filters(
+			'hostforge_server_form_fields',
+			array(
+				'meta'           => $meta,
+				'groups'         => $groups,
+				'current_groups' => $current_groups,
+			),
+			$server_id,
+			$server
+		);
+
+		$meta           = $form_data['meta'];
+		$groups         = $form_data['groups'];
+		$current_groups = $form_data['current_groups'];
+
 		$template = $this->module->get_module_dir() . 'admin/templates/server-form.php';
 		if ( file_exists( $template ) ) {
 			include $template;
@@ -304,6 +337,20 @@ class HF_Server_Admin {
 		}
 
 		$result = $provider->test_connection();
+
+		/**
+		 * Filter the server connection test result before returning JSON.
+		 *
+		 * Allows modification of the test result, e.g. to add additional
+		 * diagnostics or validation information.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $result    Test result with keys: success, message.
+		 * @param int   $server_id Server post ID (may be 0 for temp servers).
+		 */
+		$result = apply_filters( 'hostforge_server_test_result', $result, $server_id );
+
 		if ( $result['success'] ) {
 			wp_send_json_success( $result );
 		} else {
@@ -467,6 +514,17 @@ class HF_Server_Admin {
 			wp_set_object_terms( $server_id, array(), 'hf_server_group' );
 		}
 
+		/**
+		 * Fires after a server is saved (created or updated) via admin.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int    $server_id  Server post ID.
+		 * @param string $panel_type Panel type (cpanel, plesk).
+		 * @param string $hostname   Server hostname.
+		 */
+		do_action( 'hostforge_server_saved', $server_id, $panel_type, $hostname );
+
 		wp_send_json_success(
 			array(
 				'message'   => __( 'Server saved successfully.', 'hostforge' ),
@@ -499,7 +557,19 @@ class HF_Server_Admin {
 			wp_send_json_error( array( 'message' => __( 'Server not found.', 'hostforge' ) ) );
 		}
 
+		$server_name = $server->post_title;
+
 		wp_delete_post( $server_id, true );
+
+		/**
+		 * Fires after a server is deleted via admin.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int    $server_id   The deleted server post ID.
+		 * @param string $server_name The deleted server's title.
+		 */
+		do_action( 'hostforge_server_deleted', $server_id, $server_name );
 
 		wp_send_json_success(
 			array(

@@ -94,6 +94,16 @@ class HF_Domain_Search {
 			$tlds = array( 'com', 'net', 'org', 'info', 'biz' );
 		}
 
+		/**
+		 * Filters the list of TLDs to check during a domain search.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array<string> $tlds           Array of TLD strings (e.g. 'com', 'net').
+		 * @param string        $search_keyword The keyword being searched.
+		 */
+		$tlds = apply_filters( 'hostforge_domain_search_tlds', $tlds, $search_keyword );
+
 		// Build domain list.
 		$domains = array();
 		foreach ( $tlds as $tld ) {
@@ -109,10 +119,28 @@ class HF_Domain_Search {
 			);
 		}
 
-		$availability = $registrar->check_availability_bulk( $domains );
+		// Cache availability results to avoid repeated API calls.
+		$cache_key    = 'hf_domain_avail_' . md5( implode( ',', $domains ) );
+		$availability = get_transient( $cache_key );
+
+		if ( false === $availability ) {
+			$availability = $registrar->check_availability_bulk( $domains );
+			set_transient( $cache_key, $availability, 5 * MINUTE_IN_SECONDS );
+		}
 
 		// Merge with pricing data.
 		$results = $this->merge_with_pricing( $availability );
+
+		/**
+		 * Filters the domain search results before returning to the client.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array  $results        Array of search result arrays (domain, available, pricing, etc.).
+		 * @param string $search_keyword The keyword that was searched.
+		 * @param array  $tlds           The TLDs that were checked.
+		 */
+		$results = apply_filters( 'hostforge_domain_search_results', $results, $search_keyword, $tlds );
 
 		wp_send_json_success(
 			array( 'results' => $results )

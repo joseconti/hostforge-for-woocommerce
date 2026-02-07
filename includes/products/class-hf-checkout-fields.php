@@ -77,11 +77,11 @@ class HF_Checkout_Fields {
 					woocommerce_form_field(
 						$field_id,
 						array(
-							'type'    => 'select',
-							'label'   => $field['label'],
-							'required'=> $field['required'],
-							'class'   => array( 'form-row-wide' ),
-							'options' => $field['options'],
+							'type'     => 'select',
+							'label'    => $field['label'],
+							'required' => $field['required'],
+							'class'    => array( 'form-row-wide' ),
+							'options'  => $field['options'],
 						),
 						$field_value
 					);
@@ -147,6 +147,22 @@ class HF_Checkout_Fields {
 					self::validate_field_value( $field, $value );
 				}
 			}
+
+			/**
+			 * Filters the validation result for a single checkout field.
+			 *
+			 * Allows third-party code to add custom validation rules for
+			 * HostForge checkout fields. Return false or add wc_add_notice()
+			 * errors to fail validation.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param bool   $is_valid Whether the field value is considered valid so far.
+			 * @param array  $field    The field definition array.
+			 * @param string $value    The submitted field value (sanitized).
+			 */
+			$value = isset( $_POST[ $field_id ] ) ? sanitize_text_field( wp_unslash( $_POST[ $field_id ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			apply_filters( 'hostforge_checkout_field_validation', true, $field, $value );
 		}
 	}
 
@@ -205,6 +221,20 @@ class HF_Checkout_Fields {
 				}
 			}
 		}
+
+		/**
+		 * Fires after HostForge checkout field meta has been saved to the order.
+		 *
+		 * Use this hook to save additional meta, trigger provisioning tasks,
+		 * or perform post-checkout processing based on the submitted fields.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param \WC_Order $order  The WooCommerce order object.
+		 * @param array     $fields The checkout fields that were processed.
+		 * @param array     $data   The posted checkout data.
+		 */
+		do_action( 'hostforge_checkout_meta_saved', $order, $fields, $data );
 	}
 
 	/**
@@ -235,7 +265,7 @@ class HF_Checkout_Fields {
 			return array();
 		}
 
-		$fields       = array();
+		$fields        = array();
 		$types_in_cart = array();
 
 		foreach ( WC()->cart->get_cart() as $cart_item ) {

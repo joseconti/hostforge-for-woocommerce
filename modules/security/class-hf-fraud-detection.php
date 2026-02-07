@@ -72,6 +72,16 @@ class HF_Fraud_Detection {
 			$blocked = array_map( 'trim', explode( ',', strtoupper( $blocked_countries ) ) );
 			$blocked = array_filter( $blocked );
 
+			/**
+			 * Filter the list of blocked countries for fraud detection.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $blocked Array of uppercase country codes (e.g. 'US', 'GB').
+			 * @param array $data    Checkout data.
+			 */
+			$blocked = apply_filters( 'hostforge_fraud_blocked_countries', $blocked, $data );
+
 			if ( in_array( strtoupper( $data['billing_country'] ), $blocked, true ) ) {
 				$errors->add(
 					'hf_blocked_country',
@@ -87,7 +97,21 @@ class HF_Fraud_Detection {
 		if ( ! empty( $blocked_emails ) && ! empty( $data['billing_email'] ) ) {
 			$patterns = array_map( 'trim', explode( "\n", $blocked_emails ) );
 			$patterns = array_filter( $patterns );
-			$email    = strtolower( $data['billing_email'] );
+
+			/**
+			 * Filter the list of blocked email patterns for fraud detection.
+			 *
+			 * Patterns can be exact emails or domain patterns starting with @
+			 * (e.g. '@tempmail.com').
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $patterns Array of blocked email patterns.
+			 * @param array $data     Checkout data.
+			 */
+			$patterns = apply_filters( 'hostforge_fraud_blocked_emails', $patterns, $data );
+
+			$email = strtolower( $data['billing_email'] );
 
 			foreach ( $patterns as $pattern ) {
 				$pattern = strtolower( $pattern );
@@ -158,7 +182,7 @@ class HF_Fraud_Detection {
 		$shipping_country = $order->get_shipping_country();
 
 		if ( ! empty( $billing_country ) && ! empty( $shipping_country ) && $billing_country !== $shipping_country ) {
-			$risk_score += 10;
+			$risk_score  += 10;
 			$risk_flags[] = __( 'Billing and shipping countries differ.', 'hostforge' );
 		}
 
@@ -170,7 +194,7 @@ class HF_Fraud_Detection {
 		$email_domain = substr( $email, strpos( $email, '@' ) + 1 );
 
 		if ( $order_total > 500 && in_array( $email_domain, $free_emails, true ) ) {
-			$risk_score += 5;
+			$risk_score  += 5;
 			$risk_flags[] = __( 'High-value order with free email provider.', 'hostforge' );
 		}
 
@@ -178,13 +202,54 @@ class HF_Fraud_Detection {
 		$recent_failed = $this->count_recent_failed_orders( $email );
 
 		if ( $recent_failed >= 3 ) {
-			$risk_score += 20;
+			$risk_score  += 20;
 			$risk_flags[] = sprintf(
 				/* translators: %d: number of failed orders */
 				__( '%d recent failed orders from same email.', 'hostforge' ),
 				$recent_failed
 			);
 		}
+
+		/**
+		 * Filter the calculated fraud risk score for an order.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int       $risk_score Calculated risk score.
+		 * @param array     $risk_flags Array of human-readable risk flag strings.
+		 * @param \WC_Order $order      The WooCommerce order being assessed.
+		 */
+		$risk_score = (int) apply_filters( 'hostforge_fraud_risk_score', $risk_score, $risk_flags, $order );
+
+		/**
+		 * Filter the fraud check result for an order.
+		 *
+		 * Allows third-party code to modify the pass/fail outcome and
+		 * the list of risk flags before they are stored on the order.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array     $result {
+		 *     Fraud check result data.
+		 *
+		 *     @type bool  $passed     Whether the order passed fraud checks.
+		 *     @type int   $risk_score The calculated risk score.
+		 *     @type array $risk_flags Array of risk flag strings.
+		 * }
+		 * @param \WC_Order $order The WooCommerce order.
+		 */
+		$result = apply_filters(
+			'hostforge_fraud_check_result',
+			array(
+				'passed'     => $risk_score < 15,
+				'risk_score' => $risk_score,
+				'risk_flags' => $risk_flags,
+			),
+			$order
+		);
+
+		$risk_score = ! empty( $result['risk_score'] ) ? (int) $result['risk_score'] : $risk_score;
+		$risk_flags = ! empty( $result['risk_flags'] ) ? $result['risk_flags'] : $risk_flags;
 
 		// Store risk data.
 		if ( $risk_score > 0 ) {

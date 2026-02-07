@@ -83,10 +83,13 @@ class HF_Order_Meta_Handler {
 					'_hf_setup_fee',
 				);
 				if ( 'hf_reseller_hosting' === $type ) {
-					$keys = array_merge( $keys, array(
-						'_hf_max_accounts',
-						'_hf_reseller_plan',
-					) );
+					$keys = array_merge(
+						$keys,
+						array(
+							'_hf_max_accounts',
+							'_hf_reseller_plan',
+						)
+					);
 				}
 				break;
 
@@ -103,10 +106,13 @@ class HF_Order_Meta_Handler {
 					'_hf_setup_fee',
 				);
 				if ( 'hf_dedicated_server' === $type ) {
-					$keys = array_merge( $keys, array(
-						'_hf_processor',
-						'_hf_datacenter',
-					) );
+					$keys = array_merge(
+						$keys,
+						array(
+							'_hf_processor',
+							'_hf_datacenter',
+						)
+					);
 				}
 				break;
 
@@ -136,32 +142,32 @@ class HF_Order_Meta_Handler {
 	 */
 	public static function display_meta_key( string $display_key, $meta, $item ): string {
 		$labels = array(
-			'_hf_product_type'    => __( 'Service Type', 'hostforge' ),
-			'_hf_server_group'    => __( 'Server Group', 'hostforge' ),
-			'_hf_plan'            => __( 'Hosting Plan', 'hostforge' ),
-			'_hf_disk_limit'      => __( 'Disk Space (MB)', 'hostforge' ),
-			'_hf_bandwidth_limit' => __( 'Bandwidth (MB)', 'hostforge' ),
-			'_hf_email_limit'     => __( 'Email Accounts', 'hostforge' ),
-			'_hf_db_limit'        => __( 'Databases', 'hostforge' ),
-			'_hf_cpu_cores'       => __( 'CPU Cores', 'hostforge' ),
-			'_hf_ram'             => __( 'RAM (MB)', 'hostforge' ),
-			'_hf_disk'            => __( 'Disk (GB)', 'hostforge' ),
-			'_hf_disk_type'       => __( 'Disk Type', 'hostforge' ),
-			'_hf_bandwidth'       => __( 'Bandwidth (GB)', 'hostforge' ),
-			'_hf_ipv4_count'      => __( 'IPv4 Addresses', 'hostforge' ),
-			'_hf_max_accounts'    => __( 'Max Accounts', 'hostforge' ),
-			'_hf_reseller_plan'   => __( 'Reseller Plan', 'hostforge' ),
-			'_hf_processor'       => __( 'Processor', 'hostforge' ),
-			'_hf_datacenter'      => __( 'Datacenter', 'hostforge' ),
-			'_hf_registrar'       => __( 'Registrar', 'hostforge' ),
+			'_hf_product_type'       => __( 'Service Type', 'hostforge' ),
+			'_hf_server_group'       => __( 'Server Group', 'hostforge' ),
+			'_hf_plan'               => __( 'Hosting Plan', 'hostforge' ),
+			'_hf_disk_limit'         => __( 'Disk Space (MB)', 'hostforge' ),
+			'_hf_bandwidth_limit'    => __( 'Bandwidth (MB)', 'hostforge' ),
+			'_hf_email_limit'        => __( 'Email Accounts', 'hostforge' ),
+			'_hf_db_limit'           => __( 'Databases', 'hostforge' ),
+			'_hf_cpu_cores'          => __( 'CPU Cores', 'hostforge' ),
+			'_hf_ram'                => __( 'RAM (MB)', 'hostforge' ),
+			'_hf_disk'               => __( 'Disk (GB)', 'hostforge' ),
+			'_hf_disk_type'          => __( 'Disk Type', 'hostforge' ),
+			'_hf_bandwidth'          => __( 'Bandwidth (GB)', 'hostforge' ),
+			'_hf_ipv4_count'         => __( 'IPv4 Addresses', 'hostforge' ),
+			'_hf_max_accounts'       => __( 'Max Accounts', 'hostforge' ),
+			'_hf_reseller_plan'      => __( 'Reseller Plan', 'hostforge' ),
+			'_hf_processor'          => __( 'Processor', 'hostforge' ),
+			'_hf_datacenter'         => __( 'Datacenter', 'hostforge' ),
+			'_hf_registrar'          => __( 'Registrar', 'hostforge' ),
 			'_hf_registration_years' => __( 'Registration Years', 'hostforge' ),
-			'_hf_ssl_type'        => __( 'SSL Type', 'hostforge' ),
-			'_hf_ssl_brand'       => __( 'SSL Brand', 'hostforge' ),
-			'_hf_validity_months' => __( 'Validity (months)', 'hostforge' ),
-			'_hf_license_type'    => __( 'License Type', 'hostforge' ),
-			'_hf_license_provider' => __( 'License Provider', 'hostforge' ),
-			'_hf_max_activations' => __( 'Max Activations', 'hostforge' ),
-			'_hf_setup_fee'       => __( 'Setup Fee', 'hostforge' ),
+			'_hf_ssl_type'           => __( 'SSL Type', 'hostforge' ),
+			'_hf_ssl_brand'          => __( 'SSL Brand', 'hostforge' ),
+			'_hf_validity_months'    => __( 'Validity (months)', 'hostforge' ),
+			'_hf_license_type'       => __( 'License Type', 'hostforge' ),
+			'_hf_license_provider'   => __( 'License Provider', 'hostforge' ),
+			'_hf_max_activations'    => __( 'Max Activations', 'hostforge' ),
+			'_hf_setup_fee'          => __( 'Setup Fee', 'hostforge' ),
 		);
 
 		return $labels[ $display_key ] ?? $display_key;
@@ -175,7 +181,18 @@ class HF_Order_Meta_Handler {
 	 */
 	public static function hidden_order_itemmeta( array $hidden_meta ): array {
 		$hidden_meta[] = '_hf_product_type';
-		return $hidden_meta;
+
+		/**
+		 * Filters the list of hidden order item meta keys for HostForge products.
+		 *
+		 * Allows adding additional meta keys to hide from the order item display,
+		 * or removing keys to make them visible in admin order views.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $hidden_meta Array of meta key strings to hide.
+		 */
+		return apply_filters( 'hostforge_order_meta_keys', $hidden_meta );
 	}
 
 	/**
@@ -186,13 +203,26 @@ class HF_Order_Meta_Handler {
 	 */
 	public static function display_hosting_info_admin( \WC_Order $order ): void {
 		$hosting_fields = array(
-			'_hf_hosting_domain'       => __( 'Domain', 'hostforge' ),
-			'_hf_server_hostname'      => __( 'Hostname', 'hostforge' ),
-			'_hf_server_os'            => __( 'Operating System', 'hostforge' ),
-			'_hf_domain_name'          => __( 'Domain Name', 'hostforge' ),
-			'_hf_ssl_domain'           => __( 'SSL Domain', 'hostforge' ),
-			'_hf_license_server_ip'    => __( 'Server IP', 'hostforge' ),
+			'_hf_hosting_domain'    => __( 'Domain', 'hostforge' ),
+			'_hf_server_hostname'   => __( 'Hostname', 'hostforge' ),
+			'_hf_server_os'         => __( 'Operating System', 'hostforge' ),
+			'_hf_domain_name'       => __( 'Domain Name', 'hostforge' ),
+			'_hf_ssl_domain'        => __( 'SSL Domain', 'hostforge' ),
+			'_hf_license_server_ip' => __( 'Server IP', 'hostforge' ),
 		);
+
+		/**
+		 * Filters the hosting meta fields displayed in the admin order detail.
+		 *
+		 * Allows adding, removing, or modifying the hosting-related fields
+		 * shown after the billing address in admin order views.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array    $hosting_fields Associative array of meta_key => label.
+		 * @param \WC_Order $order         The WooCommerce order object.
+		 */
+		$hosting_fields = apply_filters( 'hostforge_order_hosting_meta', $hosting_fields, $order );
 
 		$has_data = false;
 

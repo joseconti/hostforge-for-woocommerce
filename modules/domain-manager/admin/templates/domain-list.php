@@ -23,7 +23,7 @@ $current_tab = sanitize_text_field( wp_unslash( $_GET['tab'] ?? 'domains' ) ); /
 	<nav class="nav-tab-wrapper">
 		<?php foreach ( $tabs as $slug => $label ) : ?>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=hostforge-domains&tab=' . $slug ) ); ?>"
-			   class="nav-tab <?php echo $current_tab === $slug ? 'nav-tab-active' : ''; ?>">
+				class="nav-tab <?php echo $current_tab === $slug ? 'nav-tab-active' : ''; ?>">
 				<?php echo esc_html( $label ); ?>
 			</a>
 		<?php endforeach; ?>

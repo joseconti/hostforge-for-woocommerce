@@ -369,6 +369,18 @@ class HF_Security_Module extends HF_Module {
 			'audit_retention_days'  => 90,
 		);
 
+		/**
+		 * Filter the default security settings.
+		 *
+		 * Allows third-party code to modify the default values for all
+		 * security settings before they are merged with saved options.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $defaults Default security settings key-value pairs.
+		 */
+		$defaults = apply_filters( 'hostforge_security_settings_defaults', $defaults );
+
 		$saved = get_option( 'hf_security_settings', array() );
 
 		return wp_parse_args( $saved, $defaults );
