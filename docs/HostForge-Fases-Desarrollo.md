@@ -250,29 +250,29 @@ FASE 8: Testing, Seguridad y Polish ←───── TODAS LAS FASES ─┘
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 5.1 | CPT hf_ticket con meta y taxonomía de departamento | `PENDING` | priority, status, assigned_to, related_service |
-| 5.2 | Sistema de respuestas via WP comments | `PENDING` | comment_type = hf_ticket_reply |
-| 5.3 | Notas privadas | `PENDING` | Meta _hf_is_private_note |
-| 5.4 | Adjuntos en tickets | `PENDING` | Meta _hf_attachments |
-| 5.5 | CPT hf_kb_article con taxonomía | `PENDING` | hf_kb_category |
-| 5.6 | Votación de utilidad KB (AJAX) | `PENDING` | helpful_yes / helpful_no counters |
-| 5.7 | CPT hf_canned_response | `PENDING` | Respuestas predefinidas con merge tags |
-| 5.8 | Auto-cierre de tickets inactivos (Action Scheduler) | `PENDING` | Diario, cerrar > X días inactivos, email aviso 24h antes |
-| 5.9 | Email piping: verificación IMAP | `PENDING` | Cada 5min via Action Scheduler |
-| 5.10 | Sugerencias de KB al crear ticket | `PENDING` | Búsqueda AJAX mientras escribe |
-| 5.11 | Admin: Lista de tickets con filtros | `PENDING` | WP_List_Table: estado, prioridad, departamento |
-| 5.12 | Admin: Detalle del ticket (respuestas, notas, sidebar) | `PENDING` | Thread de conversación con acciones laterales |
-| 5.13 | Admin: Inserción de respuestas predefinidas | `PENDING` | Selector con merge tags |
-| 5.14 | Admin: Gestión de departamentos | `PENDING` | CRUD taxonomía hf_department |
-| 5.15 | Admin: Gestión de KB | `PENDING` | CRUD artículos y categorías |
-| 5.16 | Frontend: endpoint support-tickets | `PENDING` | WooCommerce My Account |
-| 5.17 | Frontend: Formulario nuevo ticket | `PENDING` | Con sugerencias KB |
-| 5.18 | Frontend: Detalle del ticket con respuestas | `PENDING` | Thread de conversación del cliente |
-| 5.19 | Frontend: Página pública KB | `PENDING` | Categorías y búsqueda |
-| 5.20 | Email: Nuevo ticket (al staff) | `PENDING` | Notificación al equipo |
-| 5.21 | Email: Notificaciones de respuesta | `PENDING` | Staff→cliente y cliente→staff |
-| 5.22 | Email: Ticket cerrado | `PENDING` | Notificación al cliente |
-| 5.23 | Dashboard widget: tickets abiertos | `PENDING` | Widget en el dashboard de HostForge |
+| 5.1 | CPT hf_ticket con meta y taxonomía de departamento | `DONE` | class-hf-support-desk-module.php — CPT hf_ticket, 10 meta keys, hf_department taxonomy |
+| 5.2 | Sistema de respuestas via WP comments | `DONE` | comment_type = hf_ticket_reply, add_reply() en module class |
+| 5.3 | Notas privadas | `DONE` | Meta _hf_is_private_note en comment, filtrado en frontend |
+| 5.4 | Adjuntos en tickets | `DONE` | Meta _hf_attachments en comment, wp_handle_upload |
+| 5.5 | CPT hf_kb_article con taxonomía | `DONE` | CPT hf_kb_article, taxonomía hf_kb_category, public con rewrite |
+| 5.6 | Votación de utilidad KB (AJAX) | `DONE` | _hf_helpful_yes/_hf_helpful_no counters, AJAX público |
+| 5.7 | CPT hf_canned_response | `DONE` | CPT hf_canned_response con merge tags system |
+| 5.8 | Auto-cierre de tickets inactivos (Action Scheduler) | `DONE` | Diario hostforge_auto_close_tickets, warning 24h antes |
+| 5.9 | Email piping: verificación IMAP | `DONE` | Cada 5min hostforge_check_imap_email, crea tickets/replies |
+| 5.10 | Sugerencias de KB al crear ticket | `DONE` | AJAX hf_kb_search mientras escribe subject |
+| 5.11 | Admin: Lista de tickets con filtros | `DONE` | HF_Ticket_List_Table — status tabs, priority/department filters |
+| 5.12 | Admin: Detalle del ticket (respuestas, notas, sidebar) | `DONE` | ticket-detail.php — thread, reply form, sidebar actions |
+| 5.13 | Admin: Inserción de respuestas predefinidas | `DONE` | Dropdown con data-content, merge tags processing |
+| 5.14 | Admin: Gestión de departamentos | `DONE` | departments.php — CRUD AJAX taxonomía hf_department |
+| 5.15 | Admin: Gestión de KB | `DONE` | kb-list.php + kb-edit.php — CRUD artículos y categorías |
+| 5.16 | Frontend: endpoint support-tickets | `DONE` | HF_Ticket_Frontend — support-tickets endpoint, rewrite rules |
+| 5.17 | Frontend: Formulario nuevo ticket | `DONE` | ticket-new.php — subject, department, service, message, attachments |
+| 5.18 | Frontend: Detalle del ticket con respuestas | `DONE` | ticket-detail.php — thread sin notas privadas, reply form |
+| 5.19 | Frontend: Página pública KB | `DONE` | kb-archive.php, kb-single.php, kb-category.php |
+| 5.20 | Email: Nuevo ticket (al staff) | `DONE` | templates/emails/ticket-new-staff.php |
+| 5.21 | Email: Notificaciones de respuesta | `DONE` | templates/emails/ticket-reply.php — bidireccional |
+| 5.22 | Email: Ticket cerrado | `DONE` | templates/emails/ticket-closed.php |
+| 5.23 | Dashboard widget: tickets abiertos | `DONE` | render_dashboard_widget — open/awaiting/closed counts |
 
 ---
 
@@ -438,11 +438,11 @@ Informes y gráficos con Chart.js.
 | 2 | Tipos de Producto WooCommerce | CRÍTICA | 16 | 16 | 100% |
 | 3 | Server Manager (cPanel/Plesk) | ALTA | 20 | 20 | 100% |
 | 4 | Auto Provisioning | ALTA | 24 | 24 | 100% |
-| 5 | Support Desk (Tickets + KB) | MEDIA | 23 | 0 | 0% |
+| 5 | Support Desk (Tickets + KB) | MEDIA | 23 | 23 | 100% |
 | 6 | Domain Manager | MEDIA | 18 | 0 | 0% |
 | 7 | Módulos Adicionales | NORMAL | 19 | 0 | 0% |
 | 8 | Testing, Seguridad y Polish | CRÍTICA | 20 | 0 | 0% |
-| **TOTAL** | | | **158** | **78** | **49%** |
+| **TOTAL** | | | **158** | **101** | **64%** |
 
 ---
 

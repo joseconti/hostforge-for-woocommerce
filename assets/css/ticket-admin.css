@@ -1,0 +1,438 @@
+/**
+ * Ticket Admin Styles.
+ *
+ * @package HostForge
+ */
+
+/* Ticket Detail Layout */
+.hf-ticket-layout {
+	display: grid;
+	grid-template-columns: 1fr 320px;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.hf-ticket-main {
+	min-width: 0;
+}
+
+.hf-ticket-sidebar {
+	min-width: 0;
+}
+
+/* Ticket Header */
+.hf-ticket-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+
+.hf-ticket-header h1 {
+	margin: 0;
+	font-size: 20px;
+	line-height: 1.4;
+}
+
+.hf-ticket-id {
+	color: #787c82;
+	font-weight: 400;
+}
+
+/* Cards */
+.hf-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.hf-card h2,
+.hf-card h3 {
+	margin: 0 0 15px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid #f0f0f1;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+/* Original Message */
+.hf-ticket-message {
+	background: #f6f7f7;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 15px 20px;
+	margin-bottom: 20px;
+}
+
+.hf-ticket-message-meta {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	font-size: 13px;
+	color: #50575e;
+}
+
+.hf-ticket-message-author {
+	font-weight: 600;
+}
+
+/* Reply Thread */
+.hf-replies {
+	margin-bottom: 20px;
+}
+
+.hf-reply {
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 15px 20px;
+	margin-bottom: 12px;
+}
+
+.hf-reply--staff {
+	border-left: 4px solid #2271b1;
+	background: #f0f6fc;
+}
+
+.hf-reply--customer {
+	border-left: 4px solid #50575e;
+	background: #fff;
+}
+
+.hf-reply--private {
+	border-left: 4px solid #dba617;
+	background: #fcf9e8;
+}
+
+.hf-reply-meta {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	font-size: 12px;
+	color: #787c82;
+}
+
+.hf-reply-author {
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.hf-reply-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: 600;
+	margin-left: 8px;
+}
+
+.hf-reply-badge--staff {
+	background: #e0eaf0;
+	color: #2271b1;
+}
+
+.hf-reply-badge--private {
+	background: #fef0cc;
+	color: #8a6914;
+}
+
+.hf-reply-content {
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.hf-reply-content p:first-child {
+	margin-top: 0;
+}
+
+.hf-reply-content p:last-child {
+	margin-bottom: 0;
+}
+
+.hf-reply-attachments {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #f0f0f1;
+	font-size: 13px;
+}
+
+.hf-reply-attachments a {
+	display: inline-block;
+	margin-right: 12px;
+}
+
+/* Reply Form */
+.hf-reply-form {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 20px;
+}
+
+.hf-reply-form h3 {
+	margin: 0 0 15px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.hf-reply-form textarea {
+	width: 100%;
+	min-height: 150px;
+	margin-bottom: 12px;
+}
+
+.hf-reply-form-actions {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	flex-wrap: wrap;
+}
+
+.hf-reply-form-actions label {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 13px;
+}
+
+.hf-canned-select {
+	min-width: 200px;
+}
+
+/* Sidebar Sections */
+.hf-sidebar-section {
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.hf-sidebar-section:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.hf-sidebar-section h4 {
+	margin: 0 0 8px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.hf-sidebar-section .hf-sidebar-value {
+	margin-bottom: 8px;
+	font-size: 13px;
+}
+
+.hf-sidebar-section select {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.hf-sidebar-section .button {
+	margin-top: 5px;
+}
+
+/* Priority badges */
+.hf-priority {
+	display: inline-block;
+	padding: 2px 10px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.hf-priority--critical {
+	background: #fcecec;
+	color: #b32d2e;
+}
+
+.hf-priority--high {
+	background: #fef0e5;
+	color: #b35400;
+}
+
+.hf-priority--medium {
+	background: #e0eaf0;
+	color: #2271b1;
+}
+
+.hf-priority--low {
+	background: #f0f0f1;
+	color: #787c82;
+}
+
+/* Ticket status badges */
+.hf-status-badge--open {
+	background: #e0eaf0;
+	color: #2271b1;
+}
+
+.hf-status-badge--customer_reply {
+	background: #fef0e5;
+	color: #b35400;
+}
+
+.hf-status-badge--staff_reply {
+	background: #edfaef;
+	color: #00a32a;
+}
+
+.hf-status-badge--in_progress {
+	background: #fcf9e8;
+	color: #996800;
+}
+
+.hf-status-badge--closed {
+	background: #f0f0f1;
+	color: #787c82;
+}
+
+/* Two Column Grid (Departments, Canned Responses) */
+.hf-two-col-grid {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+/* Flagged */
+.hf-flag-btn {
+	cursor: pointer;
+}
+
+.hf-flag-btn--active {
+	color: #b32d2e;
+}
+
+/* Management tables */
+.hf-manage-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.hf-manage-table th {
+	text-align: left;
+	padding: 10px;
+	border-bottom: 2px solid #c3c4c7;
+	font-weight: 600;
+}
+
+.hf-manage-table td {
+	padding: 10px;
+	border-bottom: 1px solid #f0f0f1;
+	vertical-align: top;
+}
+
+.hf-manage-table .row-actions {
+	font-size: 13px;
+	padding-top: 2px;
+}
+
+/* Merge tags info */
+.hf-merge-tags-info {
+	background: #f0f6fc;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 15px;
+	margin-top: 15px;
+}
+
+.hf-merge-tags-info h4 {
+	margin: 0 0 10px;
+	font-size: 13px;
+}
+
+.hf-merge-tags-info code {
+	display: inline-block;
+	margin: 2px 5px 2px 0;
+	padding: 2px 6px;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 3px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+/* KB Articles table */
+.hf-kb-votes {
+	display: flex;
+	gap: 10px;
+	font-size: 13px;
+}
+
+.hf-kb-votes .hf-vote-yes {
+	color: #00a32a;
+}
+
+.hf-kb-votes .hf-vote-no {
+	color: #b32d2e;
+}
+
+/* KB edit form */
+.hf-kb-edit-grid {
+	display: grid;
+	grid-template-columns: 1fr 320px;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.hf-kb-categories {
+	max-height: 200px;
+	overflow-y: auto;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.hf-kb-categories label {
+	display: block;
+	padding: 3px 0;
+}
+
+/* Nav links */
+.hf-admin-nav {
+	display: flex;
+	gap: 15px;
+	margin-bottom: 15px;
+	font-size: 13px;
+}
+
+.hf-admin-nav a {
+	text-decoration: none;
+}
+
+/* Notice */
+.hf-notice {
+	display: none;
+	padding: 10px 15px;
+	margin: 10px 0;
+	border-radius: 4px;
+	font-size: 13px;
+}
+
+.hf-notice--success {
+	background: #edfaef;
+	color: #00a32a;
+	border: 1px solid #00a32a;
+}
+
+.hf-notice--error {
+	background: #fcecec;
+	color: #b32d2e;
+	border: 1px solid #b32d2e;
+}
+
+/* Responsive */
+@media screen and (max-width: 960px) {
+	.hf-ticket-layout,
+	.hf-two-col-grid,
+	.hf-kb-edit-grid {
+		grid-template-columns: 1fr;
+	}
+}

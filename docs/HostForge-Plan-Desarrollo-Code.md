@@ -449,29 +449,29 @@ My Account `support-tickets`: list, new ticket form (with KB suggestions), ticke
 
 | ID | Task | Status |
 |----|------|--------|
-| 5.1 | CPT hf_ticket with meta and department taxonomy | `PENDING` |
-| 5.2 | Reply system via WP comments | `PENDING` |
-| 5.3 | Private notes | `PENDING` |
-| 5.4 | File attachments on tickets | `PENDING` |
-| 5.5 | CPT hf_kb_article with taxonomy | `PENDING` |
-| 5.6 | KB helpfulness voting (AJAX) | `PENDING` |
-| 5.7 | CPT hf_canned_response | `PENDING` |
-| 5.8 | Auto-close inactive tickets (Action Scheduler) | `PENDING` |
-| 5.9 | Email piping: IMAP check | `PENDING` |
-| 5.10 | KB suggestions when creating ticket | `PENDING` |
-| 5.11 | Admin: Ticket list with filters | `PENDING` |
-| 5.12 | Admin: Ticket detail (replies, notes, sidebar) | `PENDING` |
-| 5.13 | Admin: Canned response insertion | `PENDING` |
-| 5.14 | Admin: Department management | `PENDING` |
-| 5.15 | Admin: KB management | `PENDING` |
-| 5.16 | Frontend: support-tickets endpoint | `PENDING` |
-| 5.17 | Frontend: New ticket form | `PENDING` |
-| 5.18 | Frontend: Ticket detail with replies | `PENDING` |
-| 5.19 | Frontend: Public KB page | `PENDING` |
-| 5.20 | Email: New ticket (to staff) | `PENDING` |
-| 5.21 | Email: Reply notifications | `PENDING` |
-| 5.22 | Email: Ticket closed | `PENDING` |
-| 5.23 | Dashboard widget: open tickets | `PENDING` |
+| 5.1 | CPT hf_ticket with meta and department taxonomy | `DONE` |
+| 5.2 | Reply system via WP comments | `DONE` |
+| 5.3 | Private notes | `DONE` |
+| 5.4 | File attachments on tickets | `DONE` |
+| 5.5 | CPT hf_kb_article with taxonomy | `DONE` |
+| 5.6 | KB helpfulness voting (AJAX) | `DONE` |
+| 5.7 | CPT hf_canned_response | `DONE` |
+| 5.8 | Auto-close inactive tickets (Action Scheduler) | `DONE` |
+| 5.9 | Email piping: IMAP check | `DONE` |
+| 5.10 | KB suggestions when creating ticket | `DONE` |
+| 5.11 | Admin: Ticket list with filters | `DONE` |
+| 5.12 | Admin: Ticket detail (replies, notes, sidebar) | `DONE` |
+| 5.13 | Admin: Canned response insertion | `DONE` |
+| 5.14 | Admin: Department management | `DONE` |
+| 5.15 | Admin: KB management | `DONE` |
+| 5.16 | Frontend: support-tickets endpoint | `DONE` |
+| 5.17 | Frontend: New ticket form | `DONE` |
+| 5.18 | Frontend: Ticket detail with replies | `DONE` |
+| 5.19 | Frontend: Public KB page | `DONE` |
+| 5.20 | Email: New ticket (to staff) | `DONE` |
+| 5.21 | Email: Reply notifications | `DONE` |
+| 5.22 | Email: Ticket closed | `DONE` |
+| 5.23 | Dashboard widget: open tickets | `DONE` |
 
 ---
 
