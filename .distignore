@@ -1,0 +1,67 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# GitHub
+.github
+
+# CI/CD
+.travis.yml
+.gitlab-ci.yml
+
+# Development files
+.distignore
+.editorconfig
+.eslintrc*
+.prettierrc*
+.stylelintrc*
+phpcs.xml*
+phpunit.xml*
+.phpunit.*
+Gruntfile.js
+Gulpfile.js
+webpack.config.js
+rollup.config.js
+
+# Package managers config
+package.json
+package-lock.json
+yarn.lock
+composer.json
+composer.lock
+
+# Development dependencies
+node_modules
+vendor
+
+# Documentation (dev only)
+docs
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+
+# Tests
+tests
+bin
+
+# Build tools
+build
+Makefile
+
+# IDE
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+._*
+Thumbs.db
+
+# Misc
+*.zip
+*.tar.gz
+tmp
+*.log
+*.bak

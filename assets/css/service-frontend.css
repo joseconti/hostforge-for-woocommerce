@@ -1,0 +1,222 @@
+/**
+ * Service Frontend Styles.
+ *
+ * Styles for the My Account hosting-services endpoint.
+ *
+ * @package HostForge
+ */
+
+/* Service List Table */
+.hf-services-list .hf-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.hf-services-list .hf-table th,
+.hf-services-list .hf-table td {
+	padding: 10px 12px;
+	text-align: left;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.hf-services-list .hf-table th {
+	font-weight: 600;
+	color: #2c3338;
+}
+
+.hf-services-list .hf-empty {
+	padding: 30px 0;
+	text-align: center;
+	color: #787c82;
+}
+
+/* Status Badges */
+.hf-status-badge {
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.hf-status-badge--active {
+	background: #edfaef;
+	color: #00a32a;
+}
+
+.hf-status-badge--pending {
+	background: #fcf9e8;
+	color: #996800;
+}
+
+.hf-status-badge--suspended {
+	background: #fef0e5;
+	color: #b32d2e;
+}
+
+.hf-status-badge--terminated,
+.hf-status-badge--cancelled {
+	background: #f0f0f1;
+	color: #787c82;
+}
+
+/* Service Detail */
+.hf-service-detail > div {
+	margin-bottom: 25px;
+	padding: 20px;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+	background: #fff;
+}
+
+.hf-service-detail h3 {
+	margin: 0 0 15px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid #f0f0f1;
+	font-size: 16px;
+}
+
+/* Detail Table */
+.hf-detail-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.hf-detail-table th {
+	text-align: left;
+	padding: 8px 10px 8px 0;
+	width: 140px;
+	font-weight: 600;
+	color: #50575e;
+}
+
+.hf-detail-table td {
+	padding: 8px 0;
+}
+
+.hf-detail-table tr + tr {
+	border-top: 1px solid #f0f0f1;
+}
+
+/* Actions Card */
+.hf-service-actions-card .hf-sso-btn {
+	margin-right: 10px;
+}
+
+/* Forms */
+.hf-change-password-form,
+.hf-cancel-form,
+.hf-upgrade-form {
+	max-width: 400px;
+}
+
+.hf-change-password-form label,
+.hf-cancel-form label,
+.hf-upgrade-form label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+.hf-change-password-form .input-text,
+.hf-cancel-form textarea,
+.hf-upgrade-form select {
+	width: 100%;
+}
+
+/* Cancel button */
+.button--cancel {
+	color: #b32d2e !important;
+	border-color: #b32d2e !important;
+}
+
+.button--cancel:hover {
+	background: #b32d2e !important;
+	color: #fff !important;
+}
+
+/* Usage Stats */
+.hf-usage-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 15px;
+}
+
+.hf-usage-item {
+	padding: 12px;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+}
+
+.hf-usage-item__label {
+	display: block;
+	font-size: 12px;
+	color: #787c82;
+	margin-bottom: 5px;
+}
+
+.hf-usage-item__value {
+	font-size: 18px;
+	font-weight: 600;
+	color: #2c3338;
+}
+
+.hf-usage-item__bar {
+	margin-top: 8px;
+	height: 6px;
+	background: #f0f0f1;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.hf-usage-item__bar-fill {
+	height: 100%;
+	background: #2271b1;
+	border-radius: 3px;
+	transition: width 0.3s ease;
+}
+
+.hf-usage-item__bar-fill--warning {
+	background: #dba617;
+}
+
+.hf-usage-item__bar-fill--danger {
+	background: #b32d2e;
+}
+
+/* Loading */
+.hf-loading {
+	color: #787c82;
+	font-style: italic;
+}
+
+.hf-muted {
+	color: #a7aaad;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+	.hf-services-list .hf-table thead {
+		display: none;
+	}
+
+	.hf-services-list .hf-table tr {
+		display: block;
+		margin-bottom: 15px;
+		border: 1px solid #e5e5e5;
+		border-radius: 4px;
+	}
+
+	.hf-services-list .hf-table td {
+		display: block;
+		text-align: right;
+		padding: 8px 12px;
+	}
+
+	.hf-services-list .hf-table td::before {
+		content: attr(data-title);
+		float: left;
+		font-weight: 600;
+	}
+}

@@ -1,0 +1,139 @@
+/**
+ * Service Admin Styles.
+ *
+ * @package HostForge
+ */
+
+/* Service Detail Grid */
+.hf-service-detail-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.hf-service-detail-grid .hf-card--full {
+	grid-column: 1 / -1;
+}
+
+/* Cards */
+.hf-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 20px;
+}
+
+.hf-card h2 {
+	margin: 0 0 15px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid #f0f0f1;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.hf-card--warning {
+	border-color: #dba617;
+	background: #fcf9e8;
+}
+
+/* Info Table */
+.hf-info-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.hf-info-table th {
+	text-align: left;
+	padding: 8px 10px 8px 0;
+	width: 140px;
+	font-weight: 600;
+	color: #50575e;
+	vertical-align: top;
+}
+
+.hf-info-table td {
+	padding: 8px 0;
+}
+
+.hf-info-table tr + tr {
+	border-top: 1px solid #f0f0f1;
+}
+
+/* Service Actions */
+.hf-service-actions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	padding-top: 5px;
+}
+
+.hf-service-actions .button-link-delete {
+	color: #b32d2e;
+}
+
+.hf-service-actions .button-link-delete:hover {
+	color: #a00;
+}
+
+/* Muted text */
+.hf-muted {
+	color: #a7aaad;
+}
+
+/* Status badges */
+.hf-status-badge {
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.hf-status-badge--active,
+.hf-status-badge--completed {
+	background: #edfaef;
+	color: #00a32a;
+}
+
+.hf-status-badge--pending,
+.hf-status-badge--processing {
+	background: #fcf9e8;
+	color: #996800;
+}
+
+.hf-status-badge--suspended,
+.hf-status-badge--warning {
+	background: #fef0e5;
+	color: #b32d2e;
+}
+
+.hf-status-badge--terminated,
+.hf-status-badge--failed {
+	background: #f0f0f1;
+	color: #50575e;
+}
+
+.hf-status-badge--cancelled {
+	background: #f0f0f1;
+	color: #787c82;
+}
+
+/* Queue History Table */
+.hf-card--full .widefat {
+	border: none;
+	box-shadow: none;
+}
+
+.hf-card--full .widefat td,
+.hf-card--full .widefat th {
+	padding: 8px 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+	.hf-service-detail-grid {
+		grid-template-columns: 1fr;
+	}
+}

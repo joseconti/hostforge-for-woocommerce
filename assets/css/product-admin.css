@@ -1,0 +1,44 @@
+/**
+ * HostForge Product Admin CSS.
+ *
+ * Styles for product data tabs in the WooCommerce product editor.
+ *
+ * @package HostForge
+ */
+
+/* Tab icons */
+#woocommerce-product-data ul.wc-tabs li.hf_hosting_options a::before {
+	content: "\f108";
+	font-family: dashicons;
+}
+
+#woocommerce-product-data ul.wc-tabs li.hf_server_options a::before {
+	content: "\f176";
+	font-family: dashicons;
+}
+
+#woocommerce-product-data ul.wc-tabs li.hf_domain_options a::before {
+	content: "\f325";
+	font-family: dashicons;
+}
+
+#woocommerce-product-data ul.wc-tabs li.hf_ssl_options a::before {
+	content: "\f160";
+	font-family: dashicons;
+}
+
+#woocommerce-product-data ul.wc-tabs li.hf_license_options a::before {
+	content: "\f513";
+	font-family: dashicons;
+}
+
+/* Section headers inside panels */
+#hf_hosting_data h4,
+#hf_server_data h4,
+#hf_domain_data h4,
+#hf_ssl_data h4,
+#hf_license_data h4 {
+	margin: 1em 0 0.5em;
+	color: #23282d;
+	font-weight: 600;
+}

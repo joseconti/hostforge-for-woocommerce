@@ -1,0 +1,223 @@
+/**
+ * HostForge Admin Styles
+ *
+ * @package HostForge
+ */
+
+/* === Layout === */
+.hostforge-wrap {
+	max-width: 1200px;
+}
+
+/* === Dashboard Widgets === */
+.hostforge-dashboard-widgets {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.hostforge-widget {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.hostforge-widget h2 {
+	margin: 0;
+	padding: 8px 12px;
+	border-bottom: 1px solid #c3c4c7;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.hostforge-widget-content {
+	padding: 12px;
+}
+
+.hostforge-widget-content .button {
+	margin-right: 8px;
+	margin-bottom: 8px;
+}
+
+/* === Modules Grid === */
+.hostforge-modules-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.hostforge-module-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 16px;
+	transition: border-color 0.2s;
+}
+
+.hostforge-module-card.is-active {
+	border-color: #2271b1;
+	border-left-width: 4px;
+}
+
+.hostforge-module-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.hostforge-module-header h3 {
+	margin: 0;
+	font-size: 14px;
+}
+
+.hostforge-module-description {
+	color: #50575e;
+	font-size: 13px;
+	margin: 0 0 8px;
+}
+
+.hostforge-module-deps {
+	font-size: 12px;
+	color: #8c8f94;
+	margin: 0 0 8px;
+}
+
+.hostforge-module-status {
+	margin-top: 8px;
+}
+
+/* === Toggle Switch === */
+.hostforge-toggle {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 22px;
+	flex-shrink: 0;
+}
+
+.hostforge-toggle input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.hostforge-toggle-slider {
+	position: absolute;
+	cursor: pointer;
+	inset: 0;
+	background-color: #c3c4c7;
+	border-radius: 22px;
+	transition: background-color 0.2s;
+}
+
+.hostforge-toggle-slider::before {
+	content: "";
+	position: absolute;
+	height: 16px;
+	width: 16px;
+	left: 3px;
+	bottom: 3px;
+	background-color: #fff;
+	border-radius: 50%;
+	transition: transform 0.2s;
+}
+
+.hostforge-toggle input:checked + .hostforge-toggle-slider {
+	background-color: #2271b1;
+}
+
+.hostforge-toggle input:checked + .hostforge-toggle-slider::before {
+	transform: translateX(18px);
+}
+
+/* === Badges === */
+.hf-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+.hf-badge--success {
+	background: #d4edda;
+	color: #155724;
+}
+
+.hf-badge--warning {
+	background: #fff3cd;
+	color: #856404;
+}
+
+.hf-badge--error,
+.hf-badge--critical {
+	background: #f8d7da;
+	color: #721c24;
+}
+
+.hf-badge--info {
+	background: #d1ecf1;
+	color: #0c5460;
+}
+
+.hf-badge--debug {
+	background: #e2e3e5;
+	color: #383d41;
+}
+
+.hf-badge--notice {
+	background: #cce5ff;
+	color: #004085;
+}
+
+.hf-badge--inactive {
+	background: #e2e3e5;
+	color: #6c757d;
+}
+
+/* === Log Viewer === */
+.hostforge-log-filters {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin: 16px 0;
+	flex-wrap: wrap;
+}
+
+.hostforge-log-filters select,
+.hostforge-log-filters input[type="search"] {
+	max-width: 200px;
+}
+
+.hf-log-context {
+	margin-top: 8px;
+	padding: 8px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	font-size: 12px;
+	max-height: 200px;
+	overflow: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.column-id {
+	width: 60px;
+}
+
+.column-date {
+	width: 160px;
+}
+
+.column-level {
+	width: 90px;
+}
+
+.column-module {
+	width: 120px;
+}
