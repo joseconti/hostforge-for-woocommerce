@@ -262,7 +262,7 @@ class HF_Service_List_Table extends \WP_List_Table {
 		return sprintf(
 			'<strong><a href="%s">%s</a></strong>%s',
 			esc_url( $detail_url ),
-			esc_html( $domain ?: $item->post_title ),
+			esc_html( ! empty( $domain ) ? $domain : $item->post_title ),
 			$this->row_actions( $actions )
 		);
 	}
@@ -284,7 +284,7 @@ class HF_Service_List_Table extends \WP_List_Table {
 		return sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( admin_url( 'user-edit.php?user_id=' . $user_id ) ),
-			esc_html( $user->display_name ?: $user->user_email )
+			esc_html( ! empty( $user->display_name ) ? $user->display_name : $user->user_email )
 		);
 	}
 
@@ -337,7 +337,8 @@ class HF_Service_List_Table extends \WP_List_Table {
 	 * @return string
 	 */
 	public function column_status( $item ): string {
-		$status = get_post_meta( $item->ID, '_hf_status', true ) ?: 'pending';
+		$raw_status = get_post_meta( $item->ID, '_hf_status', true );
+		$status     = ! empty( $raw_status ) ? $raw_status : 'pending';
 		return hf_format_status_badge( $status );
 	}
 

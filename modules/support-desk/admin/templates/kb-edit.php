@@ -5,7 +5,7 @@
  * @package HostForge\Modules\SupportDesk\Admin
  * @var \WP_Post|null $article             Article post or null for new.
  * @var array         $meta                Article meta values.
- * @var array         $categories          Array of WP_Term KB categories.
+ * @var array         $hf_categories          Array of WP_Term KB categories.
  * @var array         $current_categories  Array of current category term IDs.
  */
 
@@ -19,13 +19,13 @@ if ( ! is_array( $related ) ) {
 	$related = array();
 }
 
-$title = $is_edit
+$hf_title = $is_edit
 	/* translators: %s: article title */
 	? sprintf( __( 'Edit Article: %s', 'hostforge' ), $article->post_title )
 	: __( 'New Article', 'hostforge' );
 ?>
 <div class="wrap hf-wrap">
-	<h1 class="wp-heading-inline"><?php echo esc_html( $title ); ?></h1>
+	<h1 class="wp-heading-inline"><?php echo esc_html( $hf_title ); ?></h1>
 	<a href="<?php echo esc_url( admin_url( 'admin.php?page=hostforge-knowledge-base' ) ); ?>" class="page-title-action">
 		<?php esc_html_e( 'Back to Knowledge Base', 'hostforge' ); ?>
 	</a>
@@ -72,13 +72,13 @@ $title = $is_edit
 				<div class="hf-card">
 					<h2 class="hf-card__title"><?php esc_html_e( 'Categories', 'hostforge' ); ?></h2>
 
-					<?php if ( ! empty( $categories ) ) : ?>
+					<?php if ( ! empty( $hf_categories ) ) : ?>
 						<div class="hf-checkbox-list">
-							<?php foreach ( $categories as $cat ) : ?>
+							<?php foreach ( $hf_categories as $hf_cat ) : ?>
 								<label class="hf-checkbox-label">
-									<input type="checkbox" name="categories[]" value="<?php echo esc_attr( $cat->term_id ); ?>"
-										<?php checked( in_array( $cat->term_id, $current_categories, true ) ); ?> />
-									<?php echo esc_html( $cat->name ); ?>
+									<input type="checkbox" name="categories[]" value="<?php echo esc_attr( $hf_cat->term_id ); ?>"
+										<?php checked( in_array( $hf_cat->term_id, $current_categories, true ) ); ?> />
+									<?php echo esc_html( $hf_cat->name ); ?>
 								</label>
 							<?php endforeach; ?>
 						</div>

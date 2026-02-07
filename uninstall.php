@@ -68,28 +68,28 @@ $post_types = array(
 	'hf_domain',
 );
 
-foreach ( $post_types as $post_type ) {
-	$posts = get_posts(
+foreach ( $post_types as $hf_post_type ) {
+	$hf_posts = get_posts(
 		array(
-			'post_type'      => $post_type,
+			'post_type'      => $hf_post_type,
 			'posts_per_page' => -1,
 			'post_status'    => 'any',
 			'fields'         => 'ids',
 		)
 	);
 
-	foreach ( $posts as $post_id ) {
-		wp_delete_post( $post_id, true );
+	foreach ( $hf_posts as $hf_post_id ) {
+		wp_delete_post( $hf_post_id, true );
 	}
 }
 
 // Delete custom taxonomies terms.
 $taxonomies = array( 'hf_department', 'hf_kb_category', 'hf_server_group' );
 
-foreach ( $taxonomies as $taxonomy ) {
+foreach ( $taxonomies as $hf_taxonomy ) {
 	$terms = get_terms(
 		array(
-			'taxonomy'   => $taxonomy,
+			'taxonomy'   => $hf_taxonomy,
 			'hide_empty' => false,
 			'fields'     => 'ids',
 		)
@@ -97,7 +97,7 @@ foreach ( $taxonomies as $taxonomy ) {
 
 	if ( is_array( $terms ) ) {
 		foreach ( $terms as $term_id ) {
-			wp_delete_term( $term_id, $taxonomy );
+			wp_delete_term( $term_id, $hf_taxonomy );
 		}
 	}
 }
@@ -116,10 +116,10 @@ $capabilities = array(
 );
 
 foreach ( $roles as $role_name ) {
-	$role = get_role( $role_name );
-	if ( $role ) {
+	$hf_role = get_role( $role_name );
+	if ( $hf_role ) {
 		foreach ( $capabilities as $cap ) {
-			$role->remove_cap( $cap );
+			$hf_role->remove_cap( $cap );
 		}
 	}
 }

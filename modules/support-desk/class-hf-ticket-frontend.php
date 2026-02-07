@@ -633,6 +633,7 @@ class HF_Ticket_Frontend {
 	 * @return array<int> Array of attachment IDs.
 	 */
 	private function handle_file_uploads( int $ticket_id ): array {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 		if ( empty( $_FILES['attachments'] ) ) {
 			return array();
 		}
@@ -649,7 +650,8 @@ class HF_Ticket_Frontend {
 		}
 
 		$attachment_ids = array();
-		$files          = $_FILES['attachments']; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput
+		$files = $_FILES['attachments'];
 
 		// Allowed file types.
 		$allowed_types = array(
@@ -709,21 +711,19 @@ class HF_Ticket_Frontend {
 			}
 
 			unset( $_FILES['hf_upload'] );
-		} else {
+		} elseif ( UPLOAD_ERR_OK === $files['error'] && $files['size'] <= $max_size ) {
 			// Single file upload.
-			if ( UPLOAD_ERR_OK === $files['error'] && $files['size'] <= $max_size ) {
-				$file_type = wp_check_filetype( $files['name'] );
+			$file_type = wp_check_filetype( $files['name'] );
 
-				if ( ! empty( $file_type['type'] ) && in_array( $file_type['type'], $allowed_types, true ) ) {
-					$_FILES['hf_upload'] = $files;
-					$attachment_id       = media_handle_upload( 'hf_upload', $ticket_id );
+			if ( ! empty( $file_type['type'] ) && in_array( $file_type['type'], $allowed_types, true ) ) {
+				$_FILES['hf_upload'] = $files;
+				$attachment_id       = media_handle_upload( 'hf_upload', $ticket_id );
 
-					if ( ! is_wp_error( $attachment_id ) ) {
-						$attachment_ids[] = $attachment_id;
-					}
-
-					unset( $_FILES['hf_upload'] );
+				if ( ! is_wp_error( $attachment_id ) ) {
+					$attachment_ids[] = $attachment_id;
 				}
+
+				unset( $_FILES['hf_upload'] );
 			}
 		}
 

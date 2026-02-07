@@ -289,7 +289,7 @@ class HF_Product_Data_Tabs {
 						'id'          => '_hf_auto_username',
 						'label'       => esc_html__( 'Auto Username', 'hostforge' ),
 						'description' => esc_html__( 'Generate username from domain automatically.', 'hostforge' ),
-						'value'       => get_post_meta( $product_id, '_hf_auto_username', true ) ?: 'yes',
+						'value'       => ! empty( get_post_meta( $product_id, '_hf_auto_username', true ) ) ? get_post_meta( $product_id, '_hf_auto_username', true ) : 'yes',
 					)
 				);
 
@@ -492,7 +492,7 @@ class HF_Product_Data_Tabs {
 						'id'          => '_hf_require_hostname',
 						'label'       => esc_html__( 'Require Hostname', 'hostforge' ),
 						'description' => esc_html__( 'Customer must provide hostname at checkout.', 'hostforge' ),
-						'value'       => get_post_meta( $product_id, '_hf_require_hostname', true ) ?: 'yes',
+						'value'       => ! empty( get_post_meta( $product_id, '_hf_require_hostname', true ) ) ? get_post_meta( $product_id, '_hf_require_hostname', true ) : 'yes',
 					)
 				);
 
@@ -560,7 +560,7 @@ class HF_Product_Data_Tabs {
 							'max'  => '10',
 							'step' => '1',
 						),
-						'value'             => get_post_meta( $product_id, '_hf_registration_years', true ) ?: '1',
+						'value'             => ! empty( get_post_meta( $product_id, '_hf_registration_years', true ) ) ? get_post_meta( $product_id, '_hf_registration_years', true ) : '1',
 					)
 				);
 
@@ -579,7 +579,7 @@ class HF_Product_Data_Tabs {
 						'id'          => '_hf_auto_renew_default',
 						'label'       => esc_html__( 'Auto-Renew Default', 'hostforge' ),
 						'description' => esc_html__( 'Enable auto-renewal by default.', 'hostforge' ),
-						'value'       => get_post_meta( $product_id, '_hf_auto_renew_default', true ) ?: 'yes',
+						'value'       => ! empty( get_post_meta( $product_id, '_hf_auto_renew_default', true ) ) ? get_post_meta( $product_id, '_hf_auto_renew_default', true ) : 'yes',
 					)
 				);
 
@@ -588,7 +588,7 @@ class HF_Product_Data_Tabs {
 						'id'          => '_hf_allow_transfer',
 						'label'       => esc_html__( 'Allow Transfer', 'hostforge' ),
 						'description' => esc_html__( 'Allow domain transfer option at checkout.', 'hostforge' ),
-						'value'       => get_post_meta( $product_id, '_hf_allow_transfer', true ) ?: 'yes',
+						'value'       => ! empty( get_post_meta( $product_id, '_hf_allow_transfer', true ) ) ? get_post_meta( $product_id, '_hf_allow_transfer', true ) : 'yes',
 					)
 				);
 
@@ -645,7 +645,7 @@ class HF_Product_Data_Tabs {
 							'min'  => '1',
 							'step' => '1',
 						),
-						'value'             => get_post_meta( $product_id, '_hf_validity_months', true ) ?: '12',
+						'value'             => ! empty( get_post_meta( $product_id, '_hf_validity_months', true ) ) ? get_post_meta( $product_id, '_hf_validity_months', true ) : '12',
 					)
 				);
 
@@ -674,7 +674,7 @@ class HF_Product_Data_Tabs {
 						'id'          => '_hf_require_domain',
 						'label'       => esc_html__( 'Require Domain', 'hostforge' ),
 						'description' => esc_html__( 'Domain required at checkout.', 'hostforge' ),
-						'value'       => get_post_meta( $product_id, '_hf_require_domain', true ) ?: 'yes',
+						'value'       => ! empty( get_post_meta( $product_id, '_hf_require_domain', true ) ) ? get_post_meta( $product_id, '_hf_require_domain', true ) : 'yes',
 					)
 				);
 
@@ -735,7 +735,7 @@ class HF_Product_Data_Tabs {
 						'id'          => '_hf_require_server_ip',
 						'label'       => esc_html__( 'Require Server IP', 'hostforge' ),
 						'description' => esc_html__( 'Customer must provide server IP at checkout.', 'hostforge' ),
-						'value'       => get_post_meta( $product_id, '_hf_require_server_ip', true ) ?: 'yes',
+						'value'       => ! empty( get_post_meta( $product_id, '_hf_require_server_ip', true ) ) ? get_post_meta( $product_id, '_hf_require_server_ip', true ) : 'yes',
 					)
 				);
 
@@ -763,7 +763,7 @@ class HF_Product_Data_Tabs {
 							'min'  => '1',
 							'step' => '1',
 						),
-						'value'             => get_post_meta( $product_id, '_hf_max_activations', true ) ?: '1',
+						'value'             => ! empty( get_post_meta( $product_id, '_hf_max_activations', true ) ) ? get_post_meta( $product_id, '_hf_max_activations', true ) : '1',
 					)
 				);
 
@@ -772,7 +772,7 @@ class HF_Product_Data_Tabs {
 						'id'          => '_hf_allow_ip_change',
 						'label'       => esc_html__( 'Allow IP Change', 'hostforge' ),
 						'description' => esc_html__( 'Customer can change server IP.', 'hostforge' ),
-						'value'       => get_post_meta( $product_id, '_hf_allow_ip_change', true ) ?: 'yes',
+						'value'       => ! empty( get_post_meta( $product_id, '_hf_allow_ip_change', true ) ) ? get_post_meta( $product_id, '_hf_allow_ip_change', true ) : 'yes',
 					)
 				);
 				?>

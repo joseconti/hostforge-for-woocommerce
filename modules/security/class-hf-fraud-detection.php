@@ -147,7 +147,7 @@ class HF_Fraud_Detection {
 
 			$table = $wpdb->prefix . 'hf_ip_blocks';
 
-			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 			$blocked = $wpdb->get_var(
 				$wpdb->prepare(
 					"SELECT id FROM {$table}
@@ -157,6 +157,7 @@ class HF_Fraud_Detection {
 					current_time( 'mysql', true )
 				)
 			);
+			// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 			if ( $blocked ) {
 				$errors->add(

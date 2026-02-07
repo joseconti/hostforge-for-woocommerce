@@ -109,7 +109,7 @@ class HF_IP_Manager {
 
 		$table = $wpdb->prefix . 'hf_ip_blocks';
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name.
 		$result = $wpdb->query(
 			$wpdb->prepare(
 				"INSERT INTO {$table} (ip_address, block_type, reason, expires_at, created_at)
@@ -123,6 +123,7 @@ class HF_IP_Manager {
 				current_time( 'mysql', true )
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		return false !== $result;
 	}
@@ -161,10 +162,10 @@ class HF_IP_Manager {
 		$table  = $wpdb->prefix . 'hf_ip_blocks';
 		$offset = ( $page - 1 ) * $per_page;
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name.
 		$total = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name.
 		$items = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT * FROM {$table} ORDER BY created_at DESC LIMIT %d OFFSET %d",
@@ -172,6 +173,7 @@ class HF_IP_Manager {
 				$offset
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		return array(
 			'items' => ! empty( $items ) ? $items : array(),
@@ -190,13 +192,14 @@ class HF_IP_Manager {
 
 		$table = $wpdb->prefix . 'hf_ip_blocks';
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name.
 		$block = $wpdb->get_row(
 			$wpdb->prepare(
 				"SELECT * FROM {$table} WHERE ip_address = %s",
 				$ip
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		if ( ! $block ) {
 			return false;

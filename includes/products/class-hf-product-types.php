@@ -71,6 +71,7 @@ class HF_Product_Types {
 	 */
 	public static function add_product_types( array $types ): array {
 		foreach ( self::$types as $type_slug => $type_info ) {
+			// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText -- Dynamic product type labels.
 			$types[ $type_slug ] = esc_html__( $type_info['label'], 'hostforge' );
 		}
 

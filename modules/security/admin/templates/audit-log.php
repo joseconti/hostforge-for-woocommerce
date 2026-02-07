@@ -14,20 +14,20 @@ $page_num = ! empty( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 $filter_type = ! empty( $_GET['object_type'] ) ? sanitize_text_field( wp_unslash( $_GET['object_type'] ) ) : '';
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-$search = ! empty( $_GET['s'] ) ? sanitize_text_field( wp_unslash( $_GET['s'] ) ) : '';
+$hf_search = ! empty( $_GET['s'] ) ? sanitize_text_field( wp_unslash( $_GET['s'] ) ) : '';
 
 $result = $audit->get_entries(
 	array(
 		'per_page'    => 30,
 		'page'        => $page_num,
 		'object_type' => $filter_type,
-		'search'      => $search,
+		'search'      => $hf_search,
 	)
 );
 
-$items = $result['items'];
-$total = $result['total'];
-$pages = ceil( $total / 30 );
+$items    = $result['items'];
+$total    = $result['total'];
+$hf_pages = ceil( $total / 30 );
 
 $object_types = array(
 	''        => __( 'All Types', 'hostforge' ),
@@ -66,7 +66,7 @@ $object_types = array(
 					<?php endforeach; ?>
 				</select>
 
-				<input type="search" name="s" value="<?php echo esc_attr( $search ); ?>"
+				<input type="search" name="s" value="<?php echo esc_attr( $hf_search ); ?>"
 					placeholder="<?php esc_attr_e( 'Search...', 'hostforge' ); ?>" />
 
 				<button type="submit" class="button"><?php esc_html_e( 'Filter', 'hostforge' ); ?></button>
@@ -128,7 +128,7 @@ $object_types = array(
 				</tbody>
 			</table>
 
-			<?php if ( $pages > 1 ) : ?>
+			<?php if ( $hf_pages > 1 ) : ?>
 				<div class="tablenav bottom">
 					<div class="tablenav-pages">
 						<?php
@@ -136,8 +136,8 @@ $object_types = array(
 						if ( ! empty( $filter_type ) ) {
 							$base_url .= '&object_type=' . $filter_type;
 						}
-						if ( ! empty( $search ) ) {
-							$base_url .= '&s=' . rawurlencode( $search );
+						if ( ! empty( $hf_search ) ) {
+							$base_url .= '&s=' . rawurlencode( $hf_search );
 						}
 
 						echo wp_kses_post(
@@ -146,7 +146,7 @@ $object_types = array(
 									'base'    => add_query_arg( 'paged', '%#%', $base_url ),
 									'format'  => '',
 									'current' => $page_num,
-									'total'   => $pages,
+									'total'   => $hf_pages,
 								)
 							)
 						);

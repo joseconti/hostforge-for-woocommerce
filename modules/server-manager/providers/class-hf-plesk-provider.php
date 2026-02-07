@@ -88,8 +88,10 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 	public function __construct( int $server_id ) {
 		$this->server_id   = $server_id;
 		$this->hostname    = get_post_meta( $server_id, '_hf_hostname', true );
-		$this->port        = (int) ( get_post_meta( $server_id, '_hf_port', true ) ?: 8443 );
-		$this->auth_method = get_post_meta( $server_id, '_hf_auth_method', true ) ?: 'token';
+		$port_meta         = get_post_meta( $server_id, '_hf_port', true );
+		$this->port        = ! empty( $port_meta ) ? (int) $port_meta : 8443;
+		$auth_meta         = get_post_meta( $server_id, '_hf_auth_method', true );
+		$this->auth_method = ! empty( $auth_meta ) ? $auth_meta : 'token';
 		$this->api_key     = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_api_token', true ) );
 		$this->username    = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_username', true ) );
 		$this->password    = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_password', true ) );
@@ -780,8 +782,9 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 			);
 		}
 
-		$packages = array();
-		$plans    = $result['data']->xpath( '//service-plan/get/result' ) ?: array();
+		$packages    = array();
+		$xpath_plans = $result['data']->xpath( '//service-plan/get/result' );
+		$plans       = ! empty( $xpath_plans ) ? $xpath_plans : array();
 
 		foreach ( $plans as $plan ) {
 			if ( 'ok' !== (string) ( $plan->status ?? '' ) ) {
@@ -1009,8 +1012,9 @@ class HF_Plesk_Provider implements HF_Panel_Provider {
 			);
 		}
 
-		$customers = array();
-		$results   = $result['data']->xpath( '//customer/get/result' ) ?: array();
+		$customers     = array();
+		$xpath_results = $result['data']->xpath( '//customer/get/result' );
+		$results       = ! empty( $xpath_results ) ? $xpath_results : array();
 
 		foreach ( $results as $cust ) {
 			if ( 'ok' !== (string) ( $cust->status ?? '' ) ) {

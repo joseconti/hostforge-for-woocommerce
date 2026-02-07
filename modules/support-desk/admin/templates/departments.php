@@ -79,7 +79,7 @@ defined( 'ABSPATH' ) || exit;
 							<?php foreach ( $departments as $dept ) : ?>
 								<tr data-department-id="<?php echo esc_attr( $dept->term_id ); ?>">
 									<td><strong><?php echo esc_html( $dept->name ); ?></strong></td>
-									<td><?php echo esc_html( $dept->description ?: '—' ); ?></td>
+									<td><?php echo esc_html( ! empty( $dept->description ) ? $dept->description : '—' ); ?></td>
 									<td><?php echo esc_html( $dept->count ); ?></td>
 									<td>
 										<button type="button" class="button button-small hf-edit-department"

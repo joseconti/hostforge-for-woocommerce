@@ -42,8 +42,8 @@ defined( 'ABSPATH' ) || exit;
 						<td><?php esc_html_e( 'Panel Type', 'hostforge' ); ?></td>
 						<td>
 							<?php
-							$type = $meta['_hf_panel_type'] ?? '';
-							echo esc_html( 'cpanel' === $type ? 'cPanel/WHM' : ( 'plesk' === $type ? 'Plesk' : ucfirst( $type ) ) );
+							$hf_type = $meta['_hf_panel_type'] ?? '';
+							echo esc_html( 'cpanel' === $hf_type ? 'cPanel/WHM' : ( 'plesk' === $hf_type ? 'Plesk' : ucfirst( $hf_type ) ) );
 							?>
 						</td>
 					</tr>

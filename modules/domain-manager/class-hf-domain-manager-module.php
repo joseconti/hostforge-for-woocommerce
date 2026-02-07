@@ -329,7 +329,7 @@ class HF_Domain_Manager_Module extends HF_Module {
 			$registrar_id = get_option( 'hf_active_registrar', 'namecheap' );
 		}
 
-		if ( $this->registrar_instance && $registrar_id === get_option( 'hf_active_registrar', 'namecheap' ) ) {
+		if ( $this->registrar_instance && get_option( 'hf_active_registrar', 'namecheap' ) === $registrar_id ) {
 			return $this->registrar_instance;
 		}
 

@@ -321,7 +321,7 @@ class HF_Server_Admin {
 
 		update_post_meta( $temp_id, '_hf_panel_type', $panel_type );
 		update_post_meta( $temp_id, '_hf_hostname', $hostname );
-		update_post_meta( $temp_id, '_hf_port', $port ?: ( 'cpanel' === $panel_type ? 2087 : 8443 ) );
+		update_post_meta( $temp_id, '_hf_port', ! empty( $port ) ? $port : ( 'cpanel' === $panel_type ? 2087 : 8443 ) );
 		update_post_meta( $temp_id, '_hf_auth_method', $auth_method );
 		update_post_meta( $temp_id, '_hf_api_token', HF_Encryption::encrypt( $api_token ) );
 		update_post_meta( $temp_id, '_hf_username', HF_Encryption::encrypt( $username ) );

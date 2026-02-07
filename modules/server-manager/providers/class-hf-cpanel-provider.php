@@ -78,8 +78,10 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 	public function __construct( int $server_id ) {
 		$this->server_id    = $server_id;
 		$this->hostname     = get_post_meta( $server_id, '_hf_hostname', true );
-		$this->port         = (int) ( get_post_meta( $server_id, '_hf_port', true ) ?: 2087 );
-		$this->auth_method  = get_post_meta( $server_id, '_hf_auth_method', true ) ?: 'token';
+		$port_meta          = get_post_meta( $server_id, '_hf_port', true );
+		$this->port         = ! empty( $port_meta ) ? (int) $port_meta : 2087;
+		$auth_meta          = get_post_meta( $server_id, '_hf_auth_method', true );
+		$this->auth_method  = ! empty( $auth_meta ) ? $auth_meta : 'token';
 		$this->api_token    = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_api_token', true ) );
 		$this->whm_username = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_username', true ) );
 		$this->whm_password = HF_Encryption::decrypt( get_post_meta( $server_id, '_hf_password', true ) );
@@ -107,7 +109,7 @@ class HF_CPanel_Provider extends HF_API_Client implements HF_Panel_Provider {
 		);
 
 		if ( 'token' === $this->auth_method && ! empty( $this->api_token ) ) {
-			$headers['Authorization'] = sprintf( 'whm %s:%s', $this->whm_username ?: 'root', $this->api_token );
+			$headers['Authorization'] = sprintf( 'whm %s:%s', ! empty( $this->whm_username ) ? $this->whm_username : 'root', $this->api_token );
 		}
 
 		return $headers;

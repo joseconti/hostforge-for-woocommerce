@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $statuses      = \HostForge\Modules\DomainManager\HF_Domain_Manager_Module::get_statuses();
-$status        = $meta['_hf_status'] ?? 'pending';
+$hf_status     = $meta['_hf_status'] ?? 'pending';
 $domain_name   = $meta['_hf_domain_name'] ?? '';
 $ns_decoded    = json_decode( $meta['_hf_nameservers'] ?? '[]', true );
 $nameservers   = ! empty( $ns_decoded ) ? $ns_decoded : array();
@@ -24,8 +24,8 @@ $whois_data    = ! empty( $whois_decoded ) ? $whois_decoded : array();
 	<h1>
 		<a href="<?php echo esc_url( admin_url( 'admin.php?page=hostforge-domains' ) ); ?>">&larr;</a>
 		<?php echo esc_html( $domain_name ); ?>
-		<span class="hf-status-badge hf-status-badge--<?php echo esc_attr( $status ); ?>">
-			<?php echo esc_html( $statuses[ $status ] ?? ucfirst( $status ) ); ?>
+		<span class="hf-status-badge hf-status-badge--<?php echo esc_attr( $hf_status ); ?>">
+			<?php echo esc_html( $statuses[ $hf_status ] ?? ucfirst( $hf_status ) ); ?>
 		</span>
 	</h1>
 
@@ -92,12 +92,18 @@ $whois_data    = ! empty( $whois_decoded ) ? $whois_decoded : array();
 				<div id="hf-nameservers-form" data-domain-id="<?php echo esc_attr( $domain_id ); ?>">
 					<?php for ( $i = 0; $i < 5; $i++ ) : ?>
 						<p class="form-row">
-							<label><?php printf( esc_html__( 'NS%d', 'hostforge' ), $i + 1 ); ?></label>
+							<?php
+							/* translators: %d: nameserver number */
+							$ns_label = sprintf( esc_html__( 'NS%d', 'hostforge' ), intval( $i ) + 1 );
+							/* translators: %d: nameserver number */
+							$ns_placeholder = sprintf( esc_attr__( 'ns%d.example.com', 'hostforge' ), intval( $i ) + 1 );
+							?>
+							<label><?php echo esc_html( $ns_label ); ?></label>
 							<input type="text"
 								name="nameservers[]"
 								class="regular-text"
 								value="<?php echo esc_attr( $nameservers[ $i ] ?? '' ); ?>"
-								placeholder="<?php printf( esc_attr__( 'ns%d.example.com', 'hostforge' ), $i + 1 ); ?>"
+								placeholder="<?php echo esc_attr( $ns_placeholder ); ?>"
 							/>
 						</p>
 					<?php endfor; ?>
@@ -230,7 +236,7 @@ $whois_data    = ! empty( $whois_decoded ) ? $whois_decoded : array();
 					<button type="button" class="button" id="hf-get-epp" data-domain-id="<?php echo esc_attr( $domain_id ); ?>">
 						<?php esc_html_e( 'Get EPP Code', 'hostforge' ); ?>
 					</button>
-					<?php if ( 'active' === $status ) : ?>
+					<?php if ( 'active' === $hf_status ) : ?>
 						<button type="button" class="button" id="hf-renew-domain" data-domain-id="<?php echo esc_attr( $domain_id ); ?>">
 							<?php esc_html_e( 'Renew Domain', 'hostforge' ); ?>
 						</button>

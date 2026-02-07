@@ -201,7 +201,7 @@ class HF_Security_Module extends HF_Module {
 		$table_blocks   = $wpdb->prefix . 'hf_ip_blocks';
 
 		// Failed attempts in last 24h.
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$failed_24h = (int) $wpdb->get_var(
 			$wpdb->prepare(
 				"SELECT COUNT(*) FROM {$table_attempts}
@@ -211,14 +211,12 @@ class HF_Security_Module extends HF_Module {
 		);
 
 		// Active IP blocks.
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$active_blocks = (int) $wpdb->get_var(
 			"SELECT COUNT(*) FROM {$table_blocks}
 			WHERE expires_at IS NULL OR expires_at > NOW()"
 		);
 
 		// Successful logins in last 24h.
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$success_24h = (int) $wpdb->get_var(
 			$wpdb->prepare(
 				"SELECT COUNT(*) FROM {$table_attempts}
@@ -226,6 +224,7 @@ class HF_Security_Module extends HF_Module {
 				gmdate( 'Y-m-d H:i:s', strtotime( '-24 hours' ) )
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		?>
 		<ul class="hf-dashboard-stats">
@@ -280,13 +279,14 @@ class HF_Security_Module extends HF_Module {
 
 		$table = $wpdb->prefix . 'hf_login_attempts';
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$deleted = $wpdb->query(
 			$wpdb->prepare(
 				"DELETE FROM {$table} WHERE created_at < %s",
 				gmdate( 'Y-m-d H:i:s', strtotime( '-30 days' ) )
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		if ( $deleted > 0 ) {
 			$this->log_info( sprintf( 'Cleaned %d old login attempts.', $deleted ) );
@@ -303,7 +303,7 @@ class HF_Security_Module extends HF_Module {
 
 		$table = $wpdb->prefix . 'hf_ip_blocks';
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$deleted = $wpdb->query(
 			$wpdb->prepare(
 				"DELETE FROM {$table}
@@ -311,6 +311,7 @@ class HF_Security_Module extends HF_Module {
 				current_time( 'mysql', true )
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		if ( $deleted > 0 ) {
 			$this->log_info( sprintf( 'Cleaned %d expired IP blocks.', $deleted ) );
@@ -329,13 +330,14 @@ class HF_Security_Module extends HF_Module {
 		$settings       = $this->get_security_settings();
 		$retention_days = ! empty( $settings['audit_retention_days'] ) ? (int) $settings['audit_retention_days'] : 90;
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$deleted = $wpdb->query(
 			$wpdb->prepare(
 				"DELETE FROM {$table} WHERE created_at < %s",
 				gmdate( 'Y-m-d H:i:s', strtotime( sprintf( '-%d days', $retention_days ) ) )
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		if ( $deleted > 0 ) {
 			$this->log_info( sprintf( 'Cleaned %d old audit log entries.', $deleted ) );

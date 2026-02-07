@@ -287,7 +287,8 @@ class HF_Server_List_Table extends \WP_List_Table {
 	 * @return string
 	 */
 	public function column_status( $item ): string {
-		$status = get_post_meta( $item->ID, '_hf_status', true ) ?: 'unknown';
+		$status_meta = get_post_meta( $item->ID, '_hf_status', true );
+		$status      = ! empty( $status_meta ) ? $status_meta : 'unknown';
 		return hf_format_status_badge( $status );
 	}
 

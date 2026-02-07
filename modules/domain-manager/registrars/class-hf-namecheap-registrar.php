@@ -109,7 +109,9 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		$available = false;
 		$premium   = false;
 
+		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 		if ( isset( $xml->CommandResponse->DomainCheckResult ) ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 			$attrs     = $xml->CommandResponse->DomainCheckResult->attributes();
 			$available = 'true' === (string) ( $attrs['Available'] ?? 'false' );
 			$premium   = 'true' === (string) ( $attrs['IsPremiumName'] ?? 'false' );
@@ -153,7 +155,9 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 
 			$xml = $result['data'];
 
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 			if ( isset( $xml->CommandResponse->DomainCheckResult ) ) {
+				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 				foreach ( $xml->CommandResponse->DomainCheckResult as $check ) {
 					$attrs = $check->attributes();
 					$name  = (string) ( $attrs['Domain'] ?? '' );
@@ -240,7 +244,9 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		$xml  = $result['data'];
 		$data = array();
 
+		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 		if ( isset( $xml->CommandResponse->DomainCreateResult ) ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 			$attrs = $xml->CommandResponse->DomainCreateResult->attributes();
 			$data  = array(
 				'domain_id'  => (string) ( $attrs['DomainID'] ?? '' ),
@@ -380,7 +386,9 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		$nameservers = array();
 		$xml         = $result['data'];
 
+		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 		if ( isset( $xml->CommandResponse->DomainDNSGetListResult->Nameserver ) ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 			foreach ( $xml->CommandResponse->DomainDNSGetListResult->Nameserver as $ns ) {
 				$nameservers[] = (string) $ns;
 			}
@@ -457,7 +465,9 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		$xml    = $result['data'];
 		$locked = false;
 
+		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 		if ( isset( $xml->CommandResponse->DomainGetRegistrarLockResult ) ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 			$attrs  = $xml->CommandResponse->DomainGetRegistrarLockResult->attributes();
 			$locked = 'true' === (string) ( $attrs['RegistrarLockStatus'] ?? 'false' );
 		}
@@ -548,6 +558,7 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		$xml   = $result['data'];
 		$whois = array();
 
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response properties.
 		if ( isset( $xml->CommandResponse->DomainContactsResult ) ) {
 			foreach ( array( 'Registrant', 'Tech', 'Admin', 'AuxBilling' ) as $type ) {
 				if ( isset( $xml->CommandResponse->DomainContactsResult->$type ) ) {
@@ -568,6 +579,7 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 				}
 			}
 		}
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 
 		return array(
 			'success' => true,
@@ -633,7 +645,9 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		$records = array();
 		$xml     = $result['data'];
 
+		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 		if ( isset( $xml->CommandResponse->DomainDNSGetHostsResult->host ) ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 			foreach ( $xml->CommandResponse->DomainDNSGetHostsResult->host as $host ) {
 				$attrs     = $host->attributes();
 				$records[] = array(
@@ -912,7 +926,9 @@ class HF_Namecheap_Registrar extends HF_API_Client implements HF_Registrar {
 		if ( 'OK' !== $status ) {
 			$error_msg = __( 'Namecheap API error.', 'hostforge' );
 
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 			if ( isset( $xml->Errors->Error ) ) {
+				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- Namecheap API XML response property.
 				$error_msg = (string) $xml->Errors->Error;
 			}
 

@@ -388,7 +388,8 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 	public function create_item( $request ): \WP_REST_Response|\WP_Error {
 		$subject        = $request->get_param( 'subject' );
 		$message        = $request->get_param( 'message' );
-		$priority       = $request->get_param( 'priority' ) ?: 'medium';
+		$priority_param = $request->get_param( 'priority' );
+		$priority       = ! empty( $priority_param ) ? $priority_param : 'medium';
 		$department_id  = $request->get_param( 'department_id' );
 		$client_user_id = $request->get_param( 'client_user_id' );
 
@@ -737,11 +738,15 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 		$departments = wp_get_object_terms( $post->ID, 'hf_department', array( 'fields' => 'all' ) );
 		$department  = ( ! is_wp_error( $departments ) && ! empty( $departments ) ) ? $departments[0] : null;
 
+		$ticket_status   = get_post_meta( $post->ID, '_hf_status', true );
+		$ticket_priority = get_post_meta( $post->ID, '_hf_priority', true );
+		$last_reply_at   = get_post_meta( $post->ID, '_hf_last_reply_at', true );
+
 		return array(
 			'id'         => $post->ID,
 			'subject'    => esc_html( $post->post_title ),
-			'status'     => esc_html( get_post_meta( $post->ID, '_hf_status', true ) ?: 'open' ),
-			'priority'   => esc_html( get_post_meta( $post->ID, '_hf_priority', true ) ?: 'medium' ),
+			'status'     => esc_html( ! empty( $ticket_status ) ? $ticket_status : 'open' ),
+			'priority'   => esc_html( ! empty( $ticket_priority ) ? $ticket_priority : 'medium' ),
 			'department' => $department ? array(
 				'id'   => $department->term_id,
 				'name' => esc_html( $department->name ),
@@ -755,7 +760,7 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 				'id'   => $assigned->ID,
 				'name' => esc_html( $assigned->display_name ),
 			) : null,
-			'last_reply' => esc_html( get_post_meta( $post->ID, '_hf_last_reply_at', true ) ?: '' ),
+			'last_reply' => esc_html( ! empty( $last_reply_at ) ? $last_reply_at : '' ),
 			'created'    => esc_html( $post->post_date ),
 		);
 	}
@@ -774,11 +779,12 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 			foreach ( $attachments as $attachment_id ) {
 				$attachment_id = absint( $attachment_id );
 				$url           = wp_get_attachment_url( $attachment_id );
+				$attached_file = get_attached_file( $attachment_id );
 				if ( $url ) {
 					$attachment_data[] = array(
 						'id'       => $attachment_id,
 						'url'      => esc_url( $url ),
-						'filename' => esc_html( basename( get_attached_file( $attachment_id ) ?: '' ) ),
+						'filename' => esc_html( basename( ! empty( $attached_file ) ? $attached_file : '' ) ),
 					);
 				}
 			}

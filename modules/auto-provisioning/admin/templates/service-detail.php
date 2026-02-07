@@ -14,8 +14,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$status = $meta['_hf_status'] ?? 'pending';
-$domain = $meta['_hf_domain'] ?? '';
+$hf_status = $meta['_hf_status'] ?? 'pending';
+$hf_domain = $meta['_hf_domain'] ?? '';
 ?>
 <div class="wrap">
 	<h1>
@@ -23,7 +23,7 @@ $domain = $meta['_hf_domain'] ?? '';
 		printf(
 			/* translators: %s: domain name */
 			esc_html__( 'Service: %s', 'hostforge' ),
-			esc_html( $domain ?: $service->post_title )
+			esc_html( ! empty( $hf_domain ) ? $hf_domain : $service->post_title )
 		);
 		?>
 	</h1>
@@ -41,11 +41,11 @@ $domain = $meta['_hf_domain'] ?? '';
 			<table class="hf-info-table">
 				<tr>
 					<th><?php esc_html_e( 'Domain', 'hostforge' ); ?></th>
-					<td><?php echo esc_html( $domain ); ?></td>
+					<td><?php echo esc_html( $hf_domain ); ?></td>
 				</tr>
 				<tr>
 					<th><?php esc_html_e( 'Status', 'hostforge' ); ?></th>
-					<td><?php echo hf_format_status_badge( $status ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
+					<td><?php echo hf_format_status_badge( $hf_status ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 				</tr>
 				<tr>
 					<th><?php esc_html_e( 'Panel Username', 'hostforge' ); ?></th>
@@ -91,7 +91,7 @@ $domain = $meta['_hf_domain'] ?? '';
 					<td>
 						<?php if ( $user ) : ?>
 							<a href="<?php echo esc_url( admin_url( 'user-edit.php?user_id=' . $user->ID ) ); ?>">
-								<?php echo esc_html( $user->display_name ?: $user->user_email ); ?>
+								<?php echo esc_html( ! empty( $user->display_name ) ? $user->display_name : $user->user_email ); ?>
 							</a>
 						<?php else : ?>
 							<span class="hf-muted"><?php esc_html_e( 'Unknown', 'hostforge' ); ?></span>
@@ -167,25 +167,25 @@ $domain = $meta['_hf_domain'] ?? '';
 		<div class="hf-card">
 			<h2><?php esc_html_e( 'Manual Actions', 'hostforge' ); ?></h2>
 			<div class="hf-service-actions">
-				<?php if ( 'active' === $status ) : ?>
+				<?php if ( 'active' === $hf_status ) : ?>
 					<button type="button" class="button hf-service-action-btn" data-action="suspend" data-service-id="<?php echo esc_attr( $service->ID ); ?>">
 						<?php esc_html_e( 'Suspend Service', 'hostforge' ); ?>
 					</button>
 				<?php endif; ?>
 
-				<?php if ( 'suspended' === $status ) : ?>
+				<?php if ( 'suspended' === $hf_status ) : ?>
 					<button type="button" class="button button-primary hf-service-action-btn" data-action="unsuspend" data-service-id="<?php echo esc_attr( $service->ID ); ?>">
 						<?php esc_html_e( 'Reactivate Service', 'hostforge' ); ?>
 					</button>
 				<?php endif; ?>
 
-				<?php if ( ! in_array( $status, array( 'terminated', 'cancelled' ), true ) ) : ?>
+				<?php if ( ! in_array( $hf_status, array( 'terminated', 'cancelled' ), true ) ) : ?>
 					<button type="button" class="button button-link-delete hf-service-action-btn" data-action="terminate" data-service-id="<?php echo esc_attr( $service->ID ); ?>">
 						<?php esc_html_e( 'Terminate Service', 'hostforge' ); ?>
 					</button>
 				<?php endif; ?>
 
-				<?php if ( in_array( $status, array( 'terminated', 'cancelled' ), true ) ) : ?>
+				<?php if ( in_array( $hf_status, array( 'terminated', 'cancelled' ), true ) ) : ?>
 					<p class="description"><?php esc_html_e( 'No actions available for terminated or cancelled services.', 'hostforge' ); ?></p>
 				<?php endif; ?>
 			</div>
@@ -212,9 +212,9 @@ $domain = $meta['_hf_domain'] ?? '';
 						<td><?php echo esc_html( ucfirst( $qi->action ) ); ?></td>
 						<td><?php echo hf_format_status_badge( $qi->status ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 						<td><?php echo esc_html( $qi->attempts . '/' . $qi->max_attempts ); ?></td>
-						<td><?php echo esc_html( $qi->last_error ?: '—' ); ?></td>
+						<td><?php echo esc_html( ! empty( $qi->last_error ) ? $qi->last_error : '—' ); ?></td>
 						<td><?php echo esc_html( $qi->scheduled_at ); ?></td>
-						<td><?php echo esc_html( $qi->completed_at ?: '—' ); ?></td>
+						<td><?php echo esc_html( ! empty( $qi->completed_at ) ? $qi->completed_at : '—' ); ?></td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>

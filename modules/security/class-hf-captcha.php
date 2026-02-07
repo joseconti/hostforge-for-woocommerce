@@ -255,13 +255,15 @@ class HF_Captcha {
 		$token = '';
 
 		if ( 'turnstile' === $provider ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Missing
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WordPress handles nonce in login/registration.
 			$token = ! empty( $_POST['cf-turnstile-response'] )
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WordPress handles nonce in login/registration.
 				? sanitize_text_field( wp_unslash( $_POST['cf-turnstile-response'] ) )
 				: '';
 		} else {
-			// phpcs:ignore WordPress.Security.NonceVerification.Missing
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WordPress handles nonce in login/registration.
 			$token = ! empty( $_POST['g-recaptcha-response'] )
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WordPress handles nonce in login/registration.
 				? sanitize_text_field( wp_unslash( $_POST['g-recaptcha-response'] ) )
 				: '';
 		}

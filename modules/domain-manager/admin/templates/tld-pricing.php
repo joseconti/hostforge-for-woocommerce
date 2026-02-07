@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$tabs = array(
+$hf_tabs = array(
 	'domains'     => __( 'Domains', 'hostforge' ),
 	'tld-pricing' => __( 'TLD Pricing', 'hostforge' ),
 	'registrar'   => __( 'Registrar Settings', 'hostforge' ),
@@ -19,7 +19,7 @@ $tabs = array(
 	<h1 class="wp-heading-inline"><?php esc_html_e( 'Domain Manager', 'hostforge' ); ?></h1>
 
 	<nav class="nav-tab-wrapper">
-		<?php foreach ( $tabs as $slug => $label ) : ?>
+		<?php foreach ( $hf_tabs as $slug => $label ) : ?>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=hostforge-domains&tab=' . $slug ) ); ?>"
 				class="nav-tab <?php echo 'tld-pricing' === $slug ? 'nav-tab-active' : ''; ?>">
 				<?php echo esc_html( $label ); ?>

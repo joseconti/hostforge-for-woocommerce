@@ -293,7 +293,7 @@ class HF_Ticket_List_Table extends \WP_List_Table {
 		return sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( admin_url( 'user-edit.php?user_id=' . $user_id ) ),
-			esc_html( $user->display_name ?: $user->user_email )
+			esc_html( ! empty( $user->display_name ) ? $user->display_name : $user->user_email )
 		);
 	}
 
@@ -320,7 +320,8 @@ class HF_Ticket_List_Table extends \WP_List_Table {
 	 * @return string
 	 */
 	public function column_priority( $item ): string {
-		$priority = get_post_meta( $item->ID, '_hf_priority', true ) ?: 'medium';
+		$priority = get_post_meta( $item->ID, '_hf_priority', true );
+		$priority = ! empty( $priority ) ? $priority : 'medium';
 
 		$labels = array(
 			'critical' => __( 'Critical', 'hostforge' ),
@@ -345,7 +346,8 @@ class HF_Ticket_List_Table extends \WP_List_Table {
 	 * @return string
 	 */
 	public function column_status( $item ): string {
-		$status = get_post_meta( $item->ID, '_hf_status', true ) ?: 'open';
+		$status = get_post_meta( $item->ID, '_hf_status', true );
+		$status = ! empty( $status ) ? $status : 'open';
 		return hf_format_status_badge( $status );
 	}
 
@@ -363,7 +365,7 @@ class HF_Ticket_List_Table extends \WP_List_Table {
 			return '<span class="hf-muted">' . esc_html__( 'Unassigned', 'hostforge' ) . '</span>';
 		}
 
-		return esc_html( $user->display_name ?: $user->user_email );
+		return esc_html( ! empty( $user->display_name ) ? $user->display_name : $user->user_email );
 	}
 
 	/**

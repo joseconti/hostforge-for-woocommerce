@@ -34,11 +34,12 @@ defined( 'ABSPATH' ) || exit;
 			<tbody>
 				<?php foreach ( $articles as $article ) : ?>
 					<?php
-					$visibility   = get_post_meta( $article->ID, '_hf_visibility', true ) ?: 'public';
-					$helpful_yes  = absint( get_post_meta( $article->ID, '_hf_helpful_yes', true ) );
-					$helpful_no   = absint( get_post_meta( $article->ID, '_hf_helpful_no', true ) );
-					$article_cats = wp_get_object_terms( $article->ID, 'hf_kb_category', array( 'fields' => 'names' ) );
-					$edit_url     = admin_url( 'admin.php?page=hostforge-knowledge-base&action=edit&article_id=' . $article->ID );
+					$visibility_raw = get_post_meta( $article->ID, '_hf_visibility', true );
+					$visibility     = ! empty( $visibility_raw ) ? $visibility_raw : 'public';
+					$helpful_yes    = absint( get_post_meta( $article->ID, '_hf_helpful_yes', true ) );
+					$helpful_no     = absint( get_post_meta( $article->ID, '_hf_helpful_no', true ) );
+					$article_cats   = wp_get_object_terms( $article->ID, 'hf_kb_category', array( 'fields' => 'names' ) );
+					$edit_url       = admin_url( 'admin.php?page=hostforge-knowledge-base&action=edit&article_id=' . $article->ID );
 
 					$visibility_labels = array(
 						'public'         => __( 'Public', 'hostforge' ),

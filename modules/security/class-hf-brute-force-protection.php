@@ -212,7 +212,7 @@ class HF_Brute_Force_Protection {
 
 		$table = $wpdb->prefix . 'hf_login_attempts';
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$failed_count = (int) $wpdb->get_var(
 			$wpdb->prepare(
 				"SELECT COUNT(*) FROM {$table}
@@ -221,6 +221,7 @@ class HF_Brute_Force_Protection {
 				$since
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		return $failed_count >= $max_attempts;
 	}
@@ -256,7 +257,7 @@ class HF_Brute_Force_Protection {
 		$expires_at = gmdate( 'Y-m-d H:i:s', time() + $block_seconds );
 
 		// Use INSERT ... ON DUPLICATE KEY UPDATE to handle existing blocks.
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$wpdb->query(
 			$wpdb->prepare(
 				"INSERT INTO {$table} (ip_address, block_type, reason, expires_at, created_at)
@@ -270,6 +271,7 @@ class HF_Brute_Force_Protection {
 				current_time( 'mysql', true )
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		$this->module->log_warning( sprintf( 'IP %s blocked: too many failed login attempts.', $ip ) );
 
@@ -296,13 +298,14 @@ class HF_Brute_Force_Protection {
 
 		$table = $wpdb->prefix . 'hf_ip_blocks';
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$block = $wpdb->get_row(
 			$wpdb->prepare(
 				"SELECT * FROM {$table} WHERE ip_address = %s",
 				$ip
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		if ( ! $block ) {
 			return false;

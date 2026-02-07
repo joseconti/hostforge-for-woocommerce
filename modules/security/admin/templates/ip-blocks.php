@@ -14,7 +14,7 @@ $page_num = ! empty( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
 $result   = $ip_manager->get_blocked_ips( 20, $page_num );
 $items    = $result['items'];
 $total    = $result['total'];
-$pages    = ceil( $total / 20 );
+$hf_pages = ceil( $total / 20 );
 ?>
 <div class="wrap hf-wrap">
 	<h1><?php esc_html_e( 'Security', 'hostforge' ); ?></h1>
@@ -96,7 +96,7 @@ $pages    = ceil( $total / 20 );
 				</tbody>
 			</table>
 
-			<?php if ( $pages > 1 ) : ?>
+			<?php if ( $hf_pages > 1 ) : ?>
 				<div class="tablenav bottom">
 					<div class="tablenav-pages">
 						<?php
@@ -106,7 +106,7 @@ $pages    = ceil( $total / 20 );
 									'base'    => add_query_arg( 'paged', '%#%' ),
 									'format'  => '',
 									'current' => $page_num,
-									'total'   => $pages,
+									'total'   => $hf_pages,
 								)
 							)
 						);

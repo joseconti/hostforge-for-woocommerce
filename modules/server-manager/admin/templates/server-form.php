@@ -11,15 +11,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$is_edit = ! empty( $server );
-$title   = $is_edit
+$is_edit  = ! empty( $server );
+$hf_title = $is_edit
 	/* translators: %s: server name */
 	? sprintf( __( 'Edit Server: %s', 'hostforge' ), $server->post_title )
 	: __( 'Add New Server', 'hostforge' );
 ?>
 <div class="wrap hf-wrap">
 	<h1 class="wp-heading-inline">
-		<?php echo esc_html( $title ); ?>
+		<?php echo esc_html( $hf_title ); ?>
 	</h1>
 	<a href="<?php echo esc_url( admin_url( 'admin.php?page=hostforge-servers' ) ); ?>" class="page-title-action">
 		<?php esc_html_e( 'Back to Servers', 'hostforge' ); ?>

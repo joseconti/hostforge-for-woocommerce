@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ruleset name="HostForge">
+	<description>PHPCS ruleset for HostForge for WooCommerce.</description>
+
+	<rule ref="WordPress-Extra">
+		<!-- Allow abstract- prefix for abstract class files. -->
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+	</rule>
+
+	<!-- Custom capabilities are registered in HF_Activator. -->
+	<rule ref="WordPress.WP.Capabilities">
+		<properties>
+			<property name="custom_capabilities" type="array">
+				<element value="manage_hostforge"/>
+				<element value="manage_hostforge_settings"/>
+				<element value="manage_hostforge_services"/>
+				<element value="manage_hostforge_tickets"/>
+				<element value="manage_hostforge_domains"/>
+				<element value="view_hostforge_reports"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Check only PHP files. -->
+	<arg name="extensions" value="php"/>
+
+	<!-- Show sniff codes in all reports. -->
+	<arg value="ps"/>
+
+	<file>./hostforge-for-woocommerce.php</file>
+	<file>./uninstall.php</file>
+	<file>./includes/</file>
+	<file>./modules/</file>
+
+	<!-- Exclude third-party code. -->
+	<exclude-pattern>./vendor/*</exclude-pattern>
+	<exclude-pattern>./node_modules/*</exclude-pattern>
+</ruleset>

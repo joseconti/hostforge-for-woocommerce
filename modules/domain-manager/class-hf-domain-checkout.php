@@ -214,6 +214,7 @@ class HF_Domain_Checkout {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 		$action = sanitize_text_field( wp_unslash( $_POST['hf_domain_action'] ?? '' ) );
 
 		if ( ! in_array( $action, array( 'register', 'transfer', 'existing' ), true ) ) {
@@ -225,6 +226,7 @@ class HF_Domain_Checkout {
 
 		switch ( $action ) {
 			case 'register':
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 				$domain = sanitize_text_field( wp_unslash( $_POST['hf_domain_name'] ?? '' ) );
 				if ( empty( $domain ) ) {
 					wc_add_notice( __( 'Please search and select a domain to register.', 'hostforge' ), 'error' );
@@ -233,7 +235,9 @@ class HF_Domain_Checkout {
 				break;
 
 			case 'transfer':
-				$domain   = sanitize_text_field( wp_unslash( $_POST['hf_transfer_domain'] ?? '' ) );
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
+				$domain = sanitize_text_field( wp_unslash( $_POST['hf_transfer_domain'] ?? '' ) );
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 				$epp_code = sanitize_text_field( wp_unslash( $_POST['hf_domain_epp'] ?? '' ) );
 
 				if ( empty( $domain ) ) {
@@ -247,6 +251,7 @@ class HF_Domain_Checkout {
 				break;
 
 			case 'existing':
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 				$domain = sanitize_text_field( wp_unslash( $_POST['hf_existing_domain'] ?? '' ) );
 				if ( empty( $domain ) ) {
 					wc_add_notice( __( 'Please enter your domain name.', 'hostforge' ), 'error' );
@@ -288,6 +293,7 @@ class HF_Domain_Checkout {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 		$action = sanitize_text_field( wp_unslash( $_POST['hf_domain_action'] ?? '' ) );
 
 		if ( ! in_array( $action, array( 'register', 'transfer', 'existing' ), true ) ) {
@@ -298,12 +304,15 @@ class HF_Domain_Checkout {
 
 		switch ( $action ) {
 			case 'register':
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 				$domain = sanitize_text_field( wp_unslash( $_POST['hf_domain_name'] ?? '' ) );
 				$order->update_meta_data( '_hf_domain_name', strtolower( $domain ) );
 				break;
 
 			case 'transfer':
-				$domain   = sanitize_text_field( wp_unslash( $_POST['hf_transfer_domain'] ?? '' ) );
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
+				$domain = sanitize_text_field( wp_unslash( $_POST['hf_transfer_domain'] ?? '' ) );
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 				$epp_code = sanitize_text_field( wp_unslash( $_POST['hf_domain_epp'] ?? '' ) );
 
 				$order->update_meta_data( '_hf_domain_name', strtolower( $domain ) );
@@ -311,6 +320,7 @@ class HF_Domain_Checkout {
 				break;
 
 			case 'existing':
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce handles nonce.
 				$domain = sanitize_text_field( wp_unslash( $_POST['hf_existing_domain'] ?? '' ) );
 				$order->update_meta_data( '_hf_domain_name', strtolower( $domain ) );
 				break;

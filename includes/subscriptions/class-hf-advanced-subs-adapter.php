@@ -100,7 +100,7 @@ class HF_Advanced_Subs_Adapter implements HF_Subscription_Adapter {
 
 		$status = get_post_meta( $subscription_id, '_aswc_status', true );
 
-		return $this->normalize_status( $status ?: 'unknown' );
+		return $this->normalize_status( ! empty( $status ) ? $status : 'unknown' );
 	}
 
 	/**
