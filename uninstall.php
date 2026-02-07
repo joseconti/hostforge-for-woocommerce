@@ -22,9 +22,6 @@ $tables = array(
 	$wpdb->prefix . 'hf_activity_log',
 	$wpdb->prefix . 'hf_provisioning_queue',
 	$wpdb->prefix . 'hf_dns_records',
-	$wpdb->prefix . 'hf_affiliates',
-	$wpdb->prefix . 'hf_commissions',
-	$wpdb->prefix . 'hf_referrals',
 	$wpdb->prefix . 'hf_login_attempts',
 	$wpdb->prefix . 'hf_ip_blocks',
 );
@@ -141,7 +138,6 @@ if ( function_exists( 'as_unschedule_all_actions' ) ) {
 		'hostforge-server-monitor',
 		'hostforge-tickets',
 		'hostforge-domains',
-		'hostforge-affiliates',
 		'hostforge-security',
 		'hostforge-reports',
 		'hostforge-logs',

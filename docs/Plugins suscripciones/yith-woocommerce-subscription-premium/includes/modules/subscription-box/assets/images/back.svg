@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="14px" viewBox="0 0 24 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>arrow / thin_big_left</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+    </defs>
+    <g id="💙-coolicons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Arrow" transform="translate(-40.000000, -333.000000)">
+            <g id="arrow-/-thin_big_left" transform="translate(40.000000, 328.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="arrow-/-thin_big_left-(Background/Mask)"></g>
+                <path d="M6.5,5.5 L0,12.0000362 L6.5,18.5000229 L7.20710754,17.7929173 L1.9141643,12.4999866 L24,12.5 L24,11.5 L1.9142549,11.4999871 L7.20710659,6.20710677 L6.5,5.5 Z" fill="#2E3A59" fill-rule="nonzero" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

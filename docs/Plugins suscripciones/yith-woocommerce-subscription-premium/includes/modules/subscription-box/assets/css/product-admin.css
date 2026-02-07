@@ -1,0 +1,97 @@
+#woocommerce-product-data ul.wc-tabs li.subscription-box-options_tab a::before {
+	font-family : WooCommerce;
+	content     : "\e006";
+}
+
+#subscription_box_data .ywsbs-box-steps {
+	max-width     : 1000px;
+	counter-reset : step;
+}
+
+#subscription_box_data .ywsbs-box-step {
+	margin-bottom : 25px;
+	border-radius : 5px;
+	box-shadow    : 0 0 0 1px var(--yith-light-border-color), 0 3px 11px 6px var(--yith-light-shadow);
+	overflow      : hidden;
+}
+
+#subscription_box_data .ywsbs-step-title {
+	padding         : 20px;
+	font-weight     : bold;
+	font-size       : 14px;
+	display         : flex;
+	align-items     : center;
+	justify-content : space-between;
+	column-gap      : 15px;
+}
+
+#subscription_box_data .ywsbs-step-title > span:after {
+	counter-increment : step;
+	content           : "#" counter(step);
+	margin-left       : 5px;
+	letter-spacing    : 2px;
+}
+
+#subscription_box_data .ywsbs-step-title:hover,
+#subscription_box_data .ywsbs-box-step.opened .ywsbs-step-title {
+	background : var(--yith-table-row-highlight);
+}
+
+#subscription_box_data .ywsbs-step-actions {
+	opacity : 0;
+}
+
+#subscription_box_data .ywsbs-step-actions .yith-plugin-fw__action-button {
+	margin-bottom : 0;
+}
+
+#subscription_box_data .ywsbs-step-title:hover .ywsbs-step-actions,
+#subscription_box_data .ywsbs-box-step.opened .ywsbs-step-actions {
+	opacity    : 1;
+	transition : opacity .3s ease;
+}
+
+#subscription_box_data .ywsbs-step-settings {
+	padding : 0 20px 20px;
+}
+
+#subscription_box_data .ywsbs-step-settings > div:first-of-type {
+	margin-top: 35px;
+}
+
+#subscription_box_data .ywsbs-step-settings input[type="text"],
+#subscription_box_data .ywsbs-step-settings select {
+	width     : 100%;
+	max-width : 400px;
+}
+
+#subscription_box_data .ywsbs_box_steps_text_editor_trigger {
+	cursor        : pointer;
+	width         : 100%;
+	max-width     : 400px;
+	border        : 1px solid #e0e0e0;
+	border-radius : 5px;
+	padding       : 10px;
+	box-sizing    : border-box;
+}
+
+#subscription_box_data .ywsbs_box_steps_text_editor_trigger iframe {
+	pointer-events : none;
+	display        : block;
+	width          : 100%;
+}
+
+#subscription_box_data .ywsbs-step-delete-wrap {
+	text-align : right;
+}
+
+.ywsbs-box-step-text-editor .yith-plugin-fw__modal__footer {
+	background-color : transparent;
+	text-align       : right;
+}
+
+/* TEXT-EDITOR MODAL */
+
+.yith-plugin-fw__modal__wrap.ywsbs-box-step-text-editor {
+	z-index : 1000 !important;
+}

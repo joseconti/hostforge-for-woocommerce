@@ -1,0 +1,447 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+
+/* License CSS */
+.aswc-license-wrap {
+	margin-top: 30px;
+}
+.aswc-license-wrap .aswc_license_text {
+	border: solid 2px #ccc;
+	margin-top: 10px;
+	padding: 10px 15px;
+}
+.aswc-license-wrap .aswc_license_text #aswc_license_form .submit {
+	padding: 0px 5px !important;
+}
+.aswc-license-wrap .aswc_license_text table.aswc-form-table tr {
+	padding: 0;
+}
+.aswc-license-wrap .aswc_license_text table.aswc-form-table {
+	width: 100%;
+}
+.aswc-license-wrap .aswc_license_text table.aswc-form-table tr th {
+	width: 30%;
+	text-align: left;
+}
+.aswc-license-wrap .aswc_license_text table.aswc-form-table tr td{
+	width: 100%;
+	display: block;
+}
+.aswc-license-wrap .aswc_license_text table.aswc-form-table tr #aswc_license_key {
+	height: 38px;
+	width: 100%;
+	max-width: 380px !important;
+}
+.aswc-license-wrap .aswc_license_text p.submit {
+	padding: 20px 10px !important;
+}
+.aswc-license-wrap h1 {
+	font-size: 22px !important;
+	background-color: #f1f1f1;
+	padding: 10px 10px;
+	border-radius: 10px 0px;
+}
+.aswc-license-wrap .aswc_license_text {
+	border: solid 2px #ccc;
+	margin-top: 10px;
+	padding: 10px 15px;
+}
+
+.aswc-license-wrap form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
+.aswc-license-wrap form .aswc_license_form-col-right {
+	flex: 0 0 60%;
+	max-width: 60%
+}
+.aswc-license-wrap form .aswc_license_form-col-left {
+	flex: 0 0 40%;
+	max-width: 40%
+}
+.aswc-license-wrap form .aswc_license_form-col-right #aswc-ajax-loading-gif img {
+	margin-top: -9px;
+}
+.aswc_subscription_table_inner_wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 20px;
+}
+.aswc_subscription_table_inner_wrap h3{
+	line-height: 1;
+}
+.aswc_manual_inner_wrap{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+.aswc_manual_inner_wrap input{
+	width: 100%;
+	max-width: 150px;
+}
+.aswc_manual_inner_wrap select{
+	width: 100%;
+	max-width: 100px;
+}
+#aswc_billing_schedule label{
+	margin-bottom: 5px;
+	display: inline-block;
+}
+.wp-admin.wp-core-ui .select2-container--default .select2-results .select2-results__option--highlighted[aria-selected], .wp-admin.wp-core-ui .select2-container--default .select2-results .select2-results__option--highlighted[data-selected]{
+	background-color: #2271b1;
+}
+
+@media only screen and (max-width: 768px) {
+	.aswc-license-wrap form .aswc_license_form-col-right {
+		flex: 0 0 40%;
+		max-width: 40%
+	}
+	.aswc-license-wrap form .aswc_license_form-col-left {
+		flex: 0 0 60%;
+		max-width: 60%
+	}
+}
+@media only screen and (max-width: 600px) {
+	.aswc-license-wrap form .aswc_license_form-col-right {
+		flex: 0 0 30%;
+		max-width: 30%
+	}
+	.aswc-license-wrap form .aswc_license_form-col-left {
+		flex: 0 0 70%;
+		max-width: 70%
+	}
+}
+	@media only screen and (max-width: 490px) {
+	.aswc-license-wrap form ::placeholder {
+		opacity: 0;
+	}
+	}
+
+
+	/* popup css */
+	.aswc-aswc_popup-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 99999;
+}
+
+.aswc-aswc_popup-overlay .popup-content {
+	background: #fff;
+	padding: 20px;
+	width: 400px;
+	border-radius: 10px;
+	text-align: center;
+	position: relative;
+}
+
+.aswc-aswc_popup-overlay .close-popup {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+}
+.aswc-aswc_popup-overlay .aswc_sub_popup_wrapper {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	flex-wrap: wrap;
+	margin: 15px 0;
+}
+
+.aswc-aswc_popup-overlay .aswc_sub_popup_wrapper label{
+	flex: 0 0 120px;
+	text-align: left;
+}
+
+.aswc-aswc_popup-overlay input[type="text"], .aswc-aswc_popup-overlay input[type="number"], .aswc-aswc_popup-overlay input[type="date"] {
+	width: 100%;
+	flex: 1 0 50%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.aswc-aswc_popup-overlay button {
+	padding: 10px 20px;
+	background-color: #0073aa;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+.aswc-aswc_popup-overlay button:hover {
+	background-color: #005177;
+}
+
+/* Related orders table */
+.woocommerce_subscriptions_related_orders table {
+	width: 100%;
+	table-layout: fixed;
+}
+.woocommerce_subscriptions_related_orders th,
+.woocommerce_subscriptions_related_orders td {
+	width: 20%;
+	text-align: left;
+}
+
+/* Adjust admin order list layout for AWC Subscriptions */
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table th,
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table td {
+	vertical-align: middle;
+}
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .column-order_number small,
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .column-order_number .wc-order-status {
+	display: none;
+}
+
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .column-order_number .wc-order-preview,
+body.post-type-aswc_subscriptions .wp-list-table .column-order_number .wc-order-preview {
+		float: right;
+}
+
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .order-preview,
+body.post-type-aswc_subscriptions .wp-list-table .order-preview {
+		position: relative;
+		width: 16px;
+		display: inline-block;
+		text-indent: -9999px;
+}
+
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .order-preview::before,
+body.post-type-aswc_subscriptions .wp-list-table .order-preview::before {
+		font-family: WooCommerce;
+		speak: never;
+		font-weight: 400;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		margin: 0;
+		text-indent: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		content: "\e010";
+		line-height: 16px;
+		font-size: 14px;
+		vertical-align: middle;
+		top: 4px;
+}
+.wp-list-table .order-preview, .woocommerce_page_wc-orders .wp-list-table .order-preview {
+	float: right;
+	width: 16px;
+	padding: 20px 4px 4px 4px;
+	height: 0;
+	overflow: hidden;
+	position: relative;
+	border: 2px solid transparent;
+	border-radius: 4px;
+}
+
+.aswc_list_table table .updates-table tbody td.check-column,
+.widefat tbody th.check-column {
+		padding: 0 !important;
+		vertical-align: middle;
+}
+
+.order-status.status-active {
+	background: #c6e1c6;
+	color: #5b841b;
+}
+
+.order-status.status-expired {
+	background: #bd94af;
+	color: #724663;
+}
+
+.order-status.status-cancelled {
+	background: #fbdec4;
+	color: #e67e22;
+}
+
+.order-status.status-on-hold {
+	background: #fff4c7;
+	color: #f1c40f;
+}
+
+.order-status.status-paused {
+	background: #cfecff;
+	color: #3498db;
+}
+.order-status.status-pending-cancellation {
+	background: #bfbfbf;
+	color: #737373;
+}
+
+@media only screen and (max-width: 782px) {
+	body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .column-order_number small,
+	body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .column-order_number .wc-order-status {
+		display: inline-block;
+	}
+
+		body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .column-order_number .wc-order-preview {
+				float: none;
+				margin-right: 4px;
+		}
+}
+
+/* Align subscription preview buttons to the left */
+.wc-order-preview .aswc-preview-status-container {
+	display: block;
+	text-align: left;
+}
+
+.wc-order-preview .aswc-preview-status-container .button {
+	margin-right: 4px;
+}
+
+/* Ensure products table is displayed without unwanted spacing */
+.wc-order-preview-table-wrapper {
+        margin: 0;
+        padding: 0;
+}
+
+/* Match WooCommerce backbone modal layout */
+.wc-backbone-modal * {
+        box-sizing: border-box;
+}
+
+.wc-backbone-modal .wc-backbone-modal-content {
+        position: fixed;
+        background: #fff;
+        z-index: 100000;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        max-width: 100%;
+        min-width: 500px;
+        max-height: 90vh; /* Keep modal within the visible viewport */
+        overflow-y: auto;
+}
+
+.wc-backbone-modal .wc-backbone-modal-content article {
+        overflow: auto;
+}
+
+body.woocommerce_page_wc-orders--aswc_subscriptions .wc-backbone-modal .wc-backbone-modal-content,
+body.post-type-aswc_subscriptions .wc-backbone-modal .wc-backbone-modal-content {
+        width: 70%;
+        max-width: 1000px;
+        min-width: 640px;
+        max-height: 95vh;
+}
+
+body.woocommerce_page_wc-orders--aswc_subscriptions .wc-backbone-modal .wc-backbone-modal-content article,
+body.post-type-aswc_subscriptions .wc-backbone-modal .wc-backbone-modal-content article {
+        max-height: calc(95vh - 140px);
+        overflow-y: auto;
+}
+
+body.woocommerce_page_wc-orders--aswc_subscriptions .wc-backbone-modal-main,
+body.post-type-aswc_subscriptions .wc-backbone-modal-main {
+        padding-bottom: 165px ! important;
+}
+
+@media only screen and (max-width: 960px) {
+        body.woocommerce_page_wc-orders--aswc_subscriptions .wc-backbone-modal .wc-backbone-modal-content,
+        body.post-type-aswc_subscriptions .wc-backbone-modal .wc-backbone-modal-content {
+                width: 95%;
+                min-width: 0;
+        }
+}
+
+.wc-backbone-modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        min-height: 360px;
+        background: #000;
+        opacity: 0.7;
+        z-index: 99900;
+}
+
+/* Replicate WooCommerce order preview layout */
+.wc-order-preview .wc-order-preview-table {
+        width: 100%;
+        margin: 0;
+}
+
+.wc-order-preview .wc-order-preview-table td,
+.wc-order-preview .wc-order-preview-table th {
+        padding: 1em 1.5em;
+        text-align: left;
+        border: 0;
+        border-bottom: 1px solid #eee;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        text-align: right;
+        vertical-align: top;
+}
+
+.wc-order-preview .wc-order-preview-table td:first-child,
+.wc-order-preview .wc-order-preview-table th:first-child {
+        text-align: left;
+}
+
+.wc-order-preview .wc-order-preview-table th {
+        border-color: #ccc;
+}
+
+.wc-order-preview .wc-order-preview-table tr:last-child td {
+        border: 0;
+}
+
+.wc-order-preview .wc-order-preview-addresses {
+        overflow: hidden;
+        padding-bottom: 1.5em;
+}
+
+.wc-order-preview .wc-order-preview-addresses .wc-order-preview-address,
+.wc-order-preview .wc-order-preview-addresses .wc-order-preview-note {
+        width: 50%;
+        float: left;
+        padding: 1.5em 1.5em 0;
+        box-sizing: border-box;
+        word-wrap: break-word;
+}
+
+.wc-order-preview .wc-order-preview-addresses .wc-order-preview-address h2,
+.wc-order-preview .wc-order-preview-addresses .wc-order-preview-note h2 {
+        margin-top: 0;
+}
+
+.wc-order-preview .wc-order-preview-addresses .wc-order-preview-address strong,
+.wc-order-preview .wc-order-preview-addresses .wc-order-preview-note strong {
+        display: block;
+        margin-top: 1.5em;
+}
+
+.wc-order-preview .wc-order-preview-addresses .wc-order-preview-address strong:first-child,
+.wc-order-preview .wc-order-preview-addresses .wc-order-preview-note strong:first-child {
+        margin-top: 0;
+}
+
+.wc-order-preview footer .wc-action-button-group {
+        display: inline-block;
+        float: left;
+}

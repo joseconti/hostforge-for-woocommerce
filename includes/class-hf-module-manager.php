@@ -60,7 +60,6 @@ class HF_Module_Manager {
 			'auto-provisioning' => 'HostForge\\Modules\\AutoProvisioning\\HF_Auto_Provisioning_Module',
 			'support-desk'      => 'HostForge\\Modules\\SupportDesk\\HF_Support_Desk_Module',
 			'domain-manager'    => 'HostForge\\Modules\\DomainManager\\HF_Domain_Manager_Module',
-			'affiliates'        => 'HostForge\\Modules\\Affiliates\\HF_Affiliates_Module',
 			'security'          => 'HostForge\\Modules\\Security\\HF_Security_Module',
 			'notifications'     => 'HostForge\\Modules\\Notifications\\HF_Notifications_Module',
 			'reports'           => 'HostForge\\Modules\\Reports\\HF_Reports_Module',

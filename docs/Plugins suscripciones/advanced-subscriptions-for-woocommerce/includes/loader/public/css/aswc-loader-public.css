@@ -1,0 +1,180 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+ .aswc_expiry_interval_field {
+    margin-bottom: 10px;
+}
+
+.aswc_expiry_interval_field_wrap .aswc_label {
+    display: block;
+    margin-bottom: 10px;
+}
+.storefront-sticky-add-to-cart__content-price .aswc_subscription_wrapper{
+    display: none;
+}
+
+.theme-storefront .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+    max-width: 190px;
+    width: 100%;
+    padding: 10px 10px;
+    height: auto;
+    display: inline-block;
+}
+
+.theme-Divi .aswc_expiry_interval_field_wrap .aswc_label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.theme-Divi .aswc_expiry_interval_field_wrap input[type="number"],
+.theme-Avada .aswc_expiry_interval_field_wrap input[type="number"],
+.theme-oceanwp .aswc_expiry_interval_field_wrap input[type="number"],
+.theme-flatsome .aswc_expiry_interval_field_wrap input[type="number"],
+.theme-betheme .aswc_expiry_interval_field_wrap input[type="number"] {
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 13%);
+    line-height: 1.6;
+    margin: 0 5px 10px 0;
+    padding: 10px;
+}
+
+.theme-flatsome .aswc_expiry_interval_field_wrap input[type="number"] {
+    height: auto;
+    max-width: 220px;
+}
+
+.theme-oceanwp .aswc_expiry_interval_field_wrap input[type="number"],
+.theme-betheme .aswc_expiry_interval_field_wrap input[type="number"] {
+    display: inline-block;
+    max-width: 200px;
+}
+
+.theme-Avada .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+    height: auto;
+    margin-bottom: 10px;
+    max-width: 200px !important;
+    padding: 12px 10px;
+    width: 100%;
+}
+
+.theme-Divi .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+    display: inline-block;
+    max-width: 170px !important;
+    padding: 12px 10px;
+    width: 100%;
+}
+
+.theme-oceanwp .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval,
+.theme-betheme .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+    display: inline-block;
+    height: auto;
+    margin-bottom: 10px;
+    padding: 12px 10px !important;
+}
+
+.theme-oceanwp .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+    max-width: 150px;
+}
+
+.theme-betheme .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+    max-width: 200px;
+}
+
+.theme-flatsome .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+    display: inline-block;
+    height: auto;
+    margin-bottom: 10px !important;
+    max-width: 90px;
+    padding: 10px !important;
+}
+
+.theme-Avada .aswc_expiry_interval_field_wrap {
+    width: 100%;
+}
+
+.woocommerce-variation-price .woocommerce-Price-amount.amount+div,
+.woocommerce-variation-price+.woocommerce-variation-availability+div {
+    border: none !important;
+    max-width: 98%;
+    padding: 0 10px;
+    background-image: linear-gradient(45deg, #009688, #8bc34a);
+    color: #fff;
+}
+
+.woocommerce-variation-price .woocommerce-Price-amount.amount {
+    margin-bottom: 15px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.woocommerce-variation-price .woocommerce-Price-amount.amount+div input[type="checkbox"],
+.woocommerce-variation-price+.woocommerce-variation-availability+div input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#aswc_check_variartion_cart_one_time_purchase+.amount {
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+}
+
+.aswc_subscription_wrapper {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.owp-floating-bar .aswc_subscription_wrapper, .owp-floating-bar .aswc_onetimesimple_wrapper {
+    display: none;
+}
+
+.aswc_subscription_wrapper input[type="radio"],
+.aswc_onetimesimple_wrapper input[type="radio"] {
+    margin-right: 5px;
+}
+
+.woocommerce-variation-price+.woocommerce-variation-availability+div {
+    margin-top: -10px;
+}
+
+.aswc_onetimesimple_wrapper .amount {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+/*Media Queries*/
+
+@media only screen and (max-width: 1343px) {
+    .theme-Divi .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+        max-width: 200px !important
+    }
+}
+
+@media only screen and (max-width: 1307px) {
+    .theme-oceanwp .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+        max-width: 200px;
+    }
+}
+
+@media only screen and (max-width: 1123px) {
+    .theme-storefront .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+        max-width: 213px;
+    }
+
+    .theme-storefront .aswc_expiry_interval_field_wrap input[type="number"] {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 1044px) {
+    .theme-flatsome .aswc_expiry_interval_field_wrap .aswc_expiry_number_interval {
+        max-width: 220px;
+    }
+}
+
+@media only screen and (max-width: 355px) {
+    .theme-Divi .aswc_expiry_interval_field {
+        padding-bottom: 20px !important;
+    }
+}

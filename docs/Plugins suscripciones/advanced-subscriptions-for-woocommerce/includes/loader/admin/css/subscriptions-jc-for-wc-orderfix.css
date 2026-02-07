@@ -1,0 +1,20 @@
+/*
+ * Additional admin styles for AWC Subscriptions order list layout.
+ */
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .column-order_number .small-screen-only {
+    display: none;
+}
+
+body.woocommerce_page_wc-orders--aswc_subscriptions .wp-list-table .toggle-row {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    display: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+

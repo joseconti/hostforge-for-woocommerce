@@ -1,0 +1,150 @@
+/**
+ * Security Admin Styles.
+ *
+ * @package HostForge
+ */
+
+/* Settings form */
+.hf-settings-form .form-table th {
+	width: 200px;
+	padding: 15px 10px;
+}
+
+.hf-settings-form .form-table td {
+	padding: 10px;
+}
+
+.hf-settings-form h2 {
+	margin-top: 30px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.hf-settings-form h2:first-child {
+	margin-top: 20px;
+}
+
+/* Inline form */
+.hf-inline-form {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+
+.hf-inline-form .spinner {
+	float: none;
+	margin: 0;
+}
+
+/* Badges */
+.hf-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+	background: #f0f0f1;
+	color: #50575e;
+}
+
+.hf-badge-success {
+	background: #d4edda;
+	color: #155724;
+}
+
+.hf-badge-danger {
+	background: #f8d7da;
+	color: #721c24;
+}
+
+.hf-badge-warning {
+	background: #fff3cd;
+	color: #856404;
+}
+
+.hf-badge-info {
+	background: #d1ecf1;
+	color: #0c5460;
+}
+
+/* Audit log */
+.hf-audit-log-page .column-date {
+	width: 160px;
+}
+
+.hf-audit-log-page .column-user {
+	width: 120px;
+}
+
+.hf-audit-log-page .column-action {
+	width: 160px;
+}
+
+.hf-audit-log-page .column-type {
+	width: 80px;
+}
+
+.hf-audit-log-page .column-ip {
+	width: 130px;
+}
+
+/* Dashboard stats */
+.hf-dashboard-stats {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	gap: 20px;
+}
+
+.hf-dashboard-stats li {
+	flex: 1;
+	text-align: center;
+	padding: 10px;
+	background: #f9f9f9;
+	border-radius: 4px;
+}
+
+.hf-dashboard-stats li strong {
+	display: block;
+	font-size: 24px;
+	line-height: 1.2;
+	color: #1d2327;
+}
+
+/* Notice */
+.hf-settings-form .notice {
+	margin: 15px 0;
+}
+
+/* IP blocks page */
+.hf-add-block-form {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	padding: 15px 20px;
+	margin: 20px 0;
+}
+
+.hf-add-block-form h2 {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+	.hf-dashboard-stats {
+		flex-direction: column;
+	}
+
+	.hf-inline-form {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.hf-inline-form input {
+		width: 100%;
+	}
+}

@@ -1,0 +1,19 @@
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+
+function backendStyles() {
+    return gulp.src('assets/src/back-end/scss/main.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('public/css'));
+}
+
+function frontendStyles() {
+    return gulp.src('assets/src/front-end/scss/main.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('public/css'));
+}
+
+exports.build = gulp.parallel(backendStyles, frontendStyles);
+exports.watch = function() {
+    gulp.watch('assets/src/**/*.scss', exports.build);
+};

@@ -1,0 +1,105 @@
+#yith-plugin-fw-panel-custom-tab-delivery-delivery-list-table .yith-plugin-fw__panel__content__page__heading {
+	display     : flex;
+	column-gap  : 15px;
+	align-items : center;
+}
+
+#yith-plugin-fw-panel-custom-tab-delivery-delivery-list-table .yith-plugin-fw__panel__content__page__description {
+	margin-top : 0;
+}
+
+#yith-plugin-fw-panel-custom-tab-delivery-delivery-list-table .ywsbs-export-button i {
+	margin-right : 5px;
+}
+
+.delivery-status .status-label {
+	font-size   : 14px;
+	font-weight : 400;
+	line-height : 1.2em;
+	display     : inline-block;
+	padding     : 8px 30px 8px 10px;
+}
+
+.delivery-status .status-change,
+tr:hover .delivery-status .status-label {
+	display : none;
+}
+
+tr:hover .delivery-status .status-change {
+	display : inline-block;
+}
+
+td.delivery_info.column-delivery_info {
+	max-width: 200px;
+}
+
+.ywsbs-subscription-delivery-schedules div.dataTables_length,
+.ywsbs-subscription-delivery-schedules div.dataTables_info,
+.ywsbs-subscription-delivery-schedules div.dataTables_filter {
+	display : none;
+}
+
+.ywsbs-subscription-delivery-schedules div.dataTables_paginate {
+	margin-top  : 20px;
+	margin-left : 5px;
+}
+
+.ywsbs-subscription-delivery-schedules div.dataTables_paginate.paging_simple_numbers a {
+	margin : 0 5px;
+	cursor : pointer;
+}
+
+.ywsbs-subscription-delivery-schedules div.dataTables_paginate.paging_simple_numbers a.current,
+.ywsbs-subscription-delivery-schedules div.dataTables_paginate.paging_simple_numbers a.disabled {
+	color  : #555;
+	cursor : unset !important;
+}
+
+table.ywsbs-delivery-schedules-table {
+	padding-top : 20px;
+	max-width   : 100%;
+}
+
+table.ywsbs-delivery-schedules-table thead th {
+	font-weight : 500;
+	border      : 0;
+}
+
+table.ywsbs-delivery-schedules-table td {
+	vertical-align : middle;
+}
+
+table.ywsbs-delivery-schedules-table .delivery-status .status-label {
+	padding     : 0 24px 0 8px;
+	line-height : 2;
+}
+
+#ywsbs-delivery-schedules-table-notice {
+	padding       : 15px 40px 15px 45px;
+	margin        : 15px 0 20px;
+	border-radius : 6px;
+	font-weight   : 400;
+	font-size     : 14px;
+	text-align    : left;
+	border        : 1px solid var(--yith-success-light, #d4df9a);
+	background    : var(--yith-success-lightest, #f5f8e7);
+	box-shadow    : 1px 1px 2px var(--yith-success-lighter);
+	color         : var(--yith-success, #98aa36);
+	position      : relative;
+}
+
+#ywsbs-delivery-schedules-table-notice:before {
+	font-family : yith-icon;
+	position    : absolute;
+	top         : 50%;
+	left        : 13px;
+	font-size   : 21px;
+	font-weight : 400;
+	transform   : translateY(-50%);
+	content     : "\e921";
+	color       : var(--yith-success, #98aa36);
+}
+
+#ywsbs-delivery-schedules-table-notice p {
+	margin : 0;
+}

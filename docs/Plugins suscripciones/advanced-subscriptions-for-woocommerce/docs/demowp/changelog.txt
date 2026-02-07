@@ -1,0 +1,85 @@
+*** DemoWP ***
+
+2026-01-23 - version 1.2.0
+
+* NEW: Email mode option - choose between using site admin email or asking users for their email when creating demos
+* NEW: User-provided email replaces WordPress admin_email and WooCommerce email settings in demo clones
+* NEW: WooCommerce serialized email settings support (new_order, cancelled_order, failed_order recipient fields)
+* NEW: Custom welcome message now displays correctly in demo sites via MU-plugin
+* NEW: Privacy-focused email field with clear explanation that email is only used for demo test emails
+* FIX: Statistics now preserve historical data - demos marked as 'deleted' instead of completely removed
+* FIX: Rewrite rules now properly flushed on plugin activation (register endpoint before flush)
+* FIX: Welcome message was not showing in demos (fixed MU-plugin to read demowp_welcome_message option)
+
+2026-01-12 - version 1.1.0
+
+* NEW: Advanced statistics page with comprehensive analytics dashboard
+* NEW: Date range filters with quick period buttons (Today, 7/30/90 days, Year)
+* NEW: Custom date range selector for statistics
+* NEW: Period-over-period comparison with percentage changes
+* NEW: Interactive charts using Chart.js (demos over time, hourly distribution, day of week, status)
+* NEW: Top IP addresses tracking table
+* NEW: Demos by hour of day analysis
+* NEW: Demos by day of week analysis
+* NEW: Unique IPs count metric
+* NEW: Average demos per day calculation
+* NEW: Export statistics to CSV with filters
+* NEW: Paginated demos list in statistics
+* NEW: "Powered by DemoWP" link in public pages (form, progress, error)
+* NEW: Block/Unblock demos feature - prevent automatic deletion of specific demos
+* FIX: Foreign key constraints causing "Duplicate key" errors (errno: 121) when cloning tables
+* FIX: Statistics now bypass object cache for accurate real-time data
+* FIX: Improved WordPress coding standards compliance
+
+2025-01-11 - version 1.0.1
+
+* FIX: Database table name length limit issue with Action Scheduler
+* FIX: Dynamic prefix calculation to stay within MySQL 64-char limit
+* FIX: Clone Action Scheduler tables (structure only) to prevent errors
+* FIX: Handle very long template prefixes by generating short new prefix
+* FIX: Skip tables that would exceed 64 character limit
+* FIX: Autologin now redirects directly to wp-admin
+* FIX: Improved early token processing for seamless authentication
+* FIX: Handle autologin when WordPress redirects to wp-login.php
+* FIX: Prevent duplicate autologin processing on same request
+* FIX: Real-time progress updates during demo creation
+* FIX: Direct database writes to bypass object cache for progress tracking
+* FIX: "Demo creation already in progress" false positive error
+* FIX: Consistent DB read/write for status tracking (bypass object cache)
+* FIX: Auto-cleanup of stale processing status after 2 minute timeout
+* FIX: Atomic UPDATE operation to prevent race conditions with duplicate AJAX requests
+* FIX: Translation loading too early error (WordPress 6.7+)
+* FIX: Action Scheduler initialization timing (load on plugins_loaded hook)
+* FIX: Action Scheduler scheduled before data store ready error
+* FIX: Exclude demo clone tables when cloning (prevent nested prefixes)
+* FIX: Autologin now uses both login_init and init hooks for better compatibility
+* FIX: Improved autologin token lookup with fallback to get_transient
+* FIX: Added detailed logging for autologin debugging
+* FIX: Race condition with parallel browser requests consuming autologin token
+* FIX: Token now marked as "used" instead of deleted (atomic UPDATE vs DELETE)
+* FIX: Parallel requests detect used token and redirect immediately
+* FIX: Plugin initialization moved to 'init' hook to ensure translations load first
+* FIX: Complete rewrite of autologin system using reusable tokens in user_meta
+* FIX: Eliminated race conditions by storing token linked to user (like TLWP plugin)
+* FIX: Token no longer deleted after use - multiple requests can use same token
+
+2025-01-10 - version 1.0.0
+
+* NEW: Initial release
+* NEW: Complete site cloning (database and files)
+* NEW: Automatic login system with secure tokens
+* NEW: Security restrictions via MU-Plugin
+* NEW: Automatic cleanup with Action Scheduler
+* NEW: IP-based demo limits
+* NEW: Maintenance mode for main site
+* NEW: License system for automatic updates
+* NEW:Admin dashboard with statistics
+* NEW: Active demos management page
+* NEW: Configurable demo endpoint URL
+* NEW: Configurable demo lifetime (30 min to 24 hours)
+* NEW: Welcome message customization
+* NEW: Blocks plugin/theme installation in demos
+* NEW: Blocks file editing in demos
+* NEW: Blocks WordPress core updates in demos
+* NEW: Isolated database tables per demo
+* NEW: Isolated file directories per demo

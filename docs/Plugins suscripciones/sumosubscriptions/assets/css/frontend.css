@@ -1,0 +1,14 @@
+.sumosubs-duration-every{line-height: 30px;}
+.sumosubs-duration-interval{width: 70px;margin: 5px;}
+.sumosubs-duration-period{width: 100px;margin: 5px;}
+.sumosubs-duration-length{width: 130px;margin: 5px;}
+
+.subscription_activity_logs .sumo_alert_box {border-radius:20px;font-family:Tahoma,Geneva,Arial,sans-serif;font-size:14px;padding:10px 10px 10px 20px;margin:20px;}
+.subscription_activity_logs .sumo_alert_box span {font-weight:bold;}
+.subscription_activity_logs .error {background:#ffecec;border:2px solid #f5aca6;}
+.subscription_activity_logs ._success {background:#e9ffd9;border:2px solid #a6ca8a;}
+.subscription_activity_logs .warning {background:#fff8c4;border:2px solid #f2c779;}
+.subscription_activity_logs .notice {background:#e3f7fc;border:2px solid #8ed9f6;}
+.woocommerce table.my_account_orders .button {margin: 2px;}
+.sumosubs-change-payment,
+.sumosubs-add-payment{margin-left:5px;}

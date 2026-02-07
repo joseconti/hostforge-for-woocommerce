@@ -1,0 +1,20 @@
+/**
+ * All of the CSS for your common functionality should be
+ * included in this file.
+ */
+input#authnet-card-cvc {
+    display: block;
+}
+/* Css for Avada Theme only */
+.theme-Avada .single_variation_wrap .avada-variation .woocommerce-variation-price .price{
+    display: block;
+}
+
+
+.aswc_prorate_price_tooltip::before {
+    font-family: 'dashicons';
+    content: "\f223"; /* Display a question mark or any other icon you prefer */
+    color: #333;
+    margin-left: 5px;
+    vertical-align: middle;
+}

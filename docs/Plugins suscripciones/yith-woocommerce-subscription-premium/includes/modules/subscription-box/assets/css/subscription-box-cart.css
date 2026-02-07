@@ -1,0 +1,48 @@
+tr.cart_item .ywsbs-subscription-box-view-content {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin: 5px 0;
+  cursor: pointer;
+}
+tr.cart_item .ywsbs-subscription-box-view-content:hover {
+  text-decoration: underline;
+}
+
+.ywsbs-subscription-box-cart-content {
+  text-align: left;
+}
+.ywsbs-subscription-box-cart-content h3 {
+  margin: 0 0 25px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.ywsbs-subscription-box-cart-content h4 {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0 0 15px;
+}
+.ywsbs-subscription-box-cart-content .ywsbs-subscription-box-cart-step {
+  margin: 0 0 15px;
+}
+.ywsbs-subscription-box-cart-content .ywsbs-box-products {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.ywsbs-subscription-box-cart-content .ywsbs-box-product {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+.ywsbs-subscription-box-cart-content .ywsbs-box-product-image {
+  flex: 0 0 60px;
+}
+.ywsbs-subscription-box-cart-content .ywsbs-box-product-name {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=subscription-box-cart.css.map */

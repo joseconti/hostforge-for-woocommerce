@@ -43,7 +43,6 @@ class HF_Deactivator {
 			'hostforge-server-monitor',
 			'hostforge-tickets',
 			'hostforge-domains',
-			'hostforge-affiliates',
 			'hostforge-security',
 			'hostforge-reports',
 			'hostforge-logs',

@@ -1,0 +1,28 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+ .woocommerce-MyAccount-content .aswc_coupon_error_msg {
+ 	background-color: red;
+ 	color: #ffffff;
+ 	font-weight: 700;
+ 	letter-spacing: 0.3px;
+ 	padding: 10px 10px;
+ }
+
+ .woocommerce-MyAccount-content .aswc_coupon_success_msg {
+ 	background-color: green;
+ 	color: #ffffff;
+ 	font-weight: 700;
+ 	letter-spacing: 0.3px;
+ 	padding: 10px 10px;
+ }
+ .aswc-my-account-ajax-loading-gif {
+    display: inline-block;
+    vertical-align: middle;
+}
+.aswc-my-account-ajax-loading-gif img {
+	height: 30px;
+	width: 30px;
+}

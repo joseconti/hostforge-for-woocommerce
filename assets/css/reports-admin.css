@@ -1,0 +1,150 @@
+/**
+ * HostForge Reports Admin Styles.
+ *
+ * @package HostForge
+ */
+
+/* Summary Cards */
+.hf-report-summary-cards {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	margin: 20px 0;
+}
+
+.hf-summary-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 20px;
+	text-align: center;
+}
+
+.hf-summary-label {
+	display: block;
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #646970;
+	letter-spacing: 0.5px;
+	margin-bottom: 8px;
+}
+
+.hf-summary-value {
+	display: block;
+	font-size: 28px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+/* Chart Cards */
+.hf-report-charts-row {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.hf-report-charts-row:last-of-type {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.hf-chart-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 20px;
+}
+
+.hf-chart-card-small {
+	min-height: 300px;
+}
+
+.hf-chart-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.hf-chart-header h2 {
+	margin: 0;
+	font-size: 14px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.hf-chart-container {
+	position: relative;
+	width: 100%;
+	min-height: 250px;
+}
+
+.hf-chart-doughnut {
+	max-width: 280px;
+	margin: 0 auto;
+	min-height: 220px;
+}
+
+.hf-chart-note {
+	text-align: center;
+	font-size: 12px;
+	color: #646970;
+	margin: 12px 0 0;
+}
+
+/* Server Capacity Table */
+.hf-chart-card .wp-list-table {
+	border: none;
+}
+
+.hf-chart-card .wp-list-table th,
+.hf-chart-card .wp-list-table td {
+	padding: 10px 12px;
+}
+
+.hf-progress-bar {
+	background: #e0e0e0;
+	border-radius: 10px;
+	height: 16px;
+	overflow: hidden;
+}
+
+.hf-progress-fill {
+	height: 100%;
+	border-radius: 10px;
+	transition: width 0.6s ease;
+}
+
+.hf-bar-success {
+	background: #00a32a;
+}
+
+.hf-bar-warning {
+	background: #dba617;
+}
+
+.hf-bar-danger {
+	background: #d63638;
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+	.hf-report-summary-cards {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.hf-report-charts-row,
+	.hf-report-charts-row:last-of-type {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.hf-report-summary-cards {
+		grid-template-columns: 1fr;
+	}
+
+	.hf-summary-value {
+		font-size: 22px;
+	}
+}

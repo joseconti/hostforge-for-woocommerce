@@ -1,0 +1,350 @@
+/**
+ * DemoWP Public Styles
+ *
+ * Modern, clean styling for demo creation pages.
+ */
+
+/* CSS Variables */
+:root {
+    --demowp-primary: #2563eb;
+    --demowp-primary-hover: #1d4ed8;
+    --demowp-primary-light: #dbeafe;
+    --demowp-success: #10b981;
+    --demowp-success-light: #d1fae5;
+    --demowp-error: #ef4444;
+    --demowp-error-light: #fee2e2;
+    --demowp-warning: #f59e0b;
+    --demowp-warning-light: #fef3c7;
+    --demowp-text: #1f2937;
+    --demowp-text-muted: #6b7280;
+    --demowp-bg: #f3f4f6;
+    --demowp-card-bg: #ffffff;
+    --demowp-border: #e5e7eb;
+    --demowp-radius: 12px;
+    --demowp-radius-sm: 8px;
+    --demowp-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --demowp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --demowp-transition: all 0.2s ease;
+}
+
+/* Reset */
+.demowp-page {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--demowp-text);
+    background: var(--demowp-bg);
+    min-height: 100vh;
+}
+
+.demowp-page * {
+    box-sizing: border-box;
+}
+
+/* Container */
+.demowp-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Card */
+.demowp-card {
+    background: var(--demowp-card-bg);
+    border-radius: var(--demowp-radius);
+    box-shadow: var(--demowp-shadow-lg);
+    overflow: hidden;
+}
+
+.demowp-card-header {
+    padding: 32px 32px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--demowp-border);
+}
+
+.demowp-card-body {
+    padding: 24px 32px 32px;
+}
+
+/* Logo/Icon */
+.demowp-logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    background: var(--demowp-primary-light);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demowp-logo .demowp-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--demowp-primary);
+}
+
+.demowp-error-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    background: var(--demowp-error-light);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demowp-error-icon svg {
+    width: 32px;
+    height: 32px;
+    color: var(--demowp-error);
+}
+
+/* Typography */
+.demowp-card h1 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--demowp-text);
+}
+
+.demowp-subtitle {
+    margin: 0;
+    color: var(--demowp-text-muted);
+    font-size: 14px;
+}
+
+/* Form */
+.demowp-form {
+    margin: 0;
+}
+
+.demowp-form-group {
+    margin-bottom: 24px;
+}
+
+.demowp-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--demowp-text);
+}
+
+.demowp-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid var(--demowp-border);
+    border-radius: var(--demowp-radius-sm);
+    background: var(--demowp-card-bg);
+    color: var(--demowp-text);
+    transition: var(--demowp-transition);
+}
+
+.demowp-input:focus {
+    outline: none;
+    border-color: var(--demowp-primary);
+    box-shadow: 0 0 0 3px var(--demowp-primary-light);
+}
+
+/* Captcha Box */
+.demowp-captcha-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--demowp-bg);
+    border-radius: var(--demowp-radius-sm);
+    border: 2px solid var(--demowp-border);
+}
+
+.demowp-captcha-question {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--demowp-text);
+}
+
+.demowp-captcha-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    background: var(--demowp-card-bg);
+    border-radius: var(--demowp-radius-sm);
+    box-shadow: var(--demowp-shadow);
+}
+
+.demowp-captcha-operator,
+.demowp-captcha-equals {
+    color: var(--demowp-text-muted);
+}
+
+.demowp-captcha-input {
+    width: 80px !important;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Button */
+.demowp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--demowp-radius-sm);
+    cursor: pointer;
+    transition: var(--demowp-transition);
+}
+
+.demowp-button-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.demowp-button-primary {
+    background: var(--demowp-primary);
+    color: white;
+}
+
+.demowp-button-primary:hover {
+    background: var(--demowp-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--demowp-shadow);
+}
+
+.demowp-button-secondary {
+    background: var(--demowp-bg);
+    color: var(--demowp-text);
+    border: 2px solid var(--demowp-border);
+}
+
+.demowp-button-secondary:hover {
+    background: var(--demowp-border);
+}
+
+/* Alerts */
+.demowp-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--demowp-radius-sm);
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.demowp-alert-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.demowp-alert-error {
+    background: var(--demowp-error-light);
+    color: var(--demowp-error);
+}
+
+.demowp-alert-success {
+    background: var(--demowp-success-light);
+    color: var(--demowp-success);
+}
+
+.demowp-alert-warning {
+    background: var(--demowp-warning-light);
+    color: var(--demowp-warning);
+}
+
+/* Info Box */
+.demowp-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--demowp-border);
+    font-size: 13px;
+    color: var(--demowp-text-muted);
+}
+
+.demowp-info-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.demowp-info p {
+    margin: 0;
+}
+
+/* Footer */
+.demowp-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--demowp-text-muted);
+}
+
+.demowp-footer p {
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+    .demowp-container {
+        padding: 20px 16px;
+    }
+
+    .demowp-card-header {
+        padding: 24px 20px 20px;
+    }
+
+    .demowp-card-body {
+        padding: 20px;
+    }
+
+    .demowp-captcha-box {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .demowp-captcha-input {
+        width: 100% !important;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.demowp-card {
+    animation: fadeIn 0.4s ease;
+}

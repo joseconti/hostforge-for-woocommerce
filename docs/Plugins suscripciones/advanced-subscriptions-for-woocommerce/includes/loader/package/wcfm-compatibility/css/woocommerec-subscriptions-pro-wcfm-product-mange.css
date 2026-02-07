@@ -1,0 +1,73 @@
+.aswc_wcfm_ele_hide{
+    display: none !important;
+}
+.aswc_sub_num,
+.aswc_sub_expiry_num,
+.aswc_sub_free_trial {
+	min-height: 39px !important;
+	width: 33% !important;
+}
+
+.aswc_sub_interval,
+.aswc_exp,
+.aswc_sub_free_trial_interval {
+	margin-bottom: 15px;
+	margin-left: 10px;
+	margin-right: 0 !important;
+	min-height: 35px;
+	padding: 8px 10px;
+	width: 25% !important;
+}
+
+@media only screen and (max-width: 992px) {
+	.aswc_sub_num,
+	.aswc_sub_expiry_num,
+	.aswc_sub_free_trial,
+	.aswc_sub_interval,
+	.aswc_exp,
+	.aswc_sub_free_trial_interval,
+	.aswc_subscription_initial_signup_price {
+		margin-left: 0;
+		width: 100% !important;
+	}
+}
+
+.aswc-label {
+	display: block;
+	width: 100% !important;
+}
+
+.aswc_var_sub_free_trial_num,
+.aswc_var_sub_interval_num,
+.aswc_var_sub_expiry_num {
+	display: inline-block;
+	margin-right: 5px !important;
+	width: 49% !important;
+}
+.aswc_var_sub_free_trial_interval,
+.aswc_var_sub_interval,
+.aswc_var_sub_exp_interval {
+	display: inline-block;
+	width: 49% !important;
+}
+
+.aswc_var_sub_initial_signup_price {
+	display: block;
+	width: 99% !important;
+}
+
+@media only screen and (max-width: 992px) {
+	.aswc_var_sub_free_trial_num,
+	.aswc_var_sub_interval_num,
+	.aswc_var_sub_expiry_num {
+		display: block;
+		margin-right: 0px !important;
+		width: 100% !important;
+	}
+	.aswc_var_sub_free_trial_interval,
+	.aswc_var_sub_interval,
+	.aswc_var_sub_exp_interval {
+		display: block;
+		width: 100% !important;
+	}
+}

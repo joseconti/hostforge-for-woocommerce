@@ -1,0 +1,3000 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Subscriptions For WooCommerce 1.0.0\n"
+"POT-Creation-Date: 2025-07-22 14:24+0200\n"
+"PO-Revision-Date: 2023-10-03 13:22+0530\n"
+"Last-Translator: \n"
+"Language-Team: Wp Swings\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n;_x;_ex;_nx;esc_attr_x;esc_html;esc_html_x;_n_noop;_nx_noop;translate_nooped_plural\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: build\n"
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:135
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:141
+msgid "Make Sure, You have filled the Client ID and Client secret keys"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:137
+msgid "Supported Recurring Payment"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:152
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:116
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:341
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:109
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:479
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:500
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:139
+msgid "Days"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:153
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:117
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:342
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:110
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:480
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:501
+msgid "Weeks"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:154
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:118
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:343
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:111
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:481
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:502
+msgid "Months"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:155
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:119
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:344
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:112
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:482
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:503
+msgid "Years"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:156
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:345
+msgid "Expiry Interval must be greater than subscription interval"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:157
+msgid "Expiry Interval must not be greater than 90 Days"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:158
+msgid "Expiry Interval must not be greater than 52 Weeks"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:159
+msgid "Expiry Interval must not be greater than 24 Months"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:160
+msgid "Expiry Interval must not be greater than 5 Years"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:161
+msgid "Trial period must not be greater than 90 Days"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:162
+msgid "Trial period must not be greater than 52 Weeks"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:163
+msgid "Trial period must not be greater than 24 Months"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:164
+msgid "Trial period must not be greater than 5 Years"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:193
+#: admin/class-aswc-wc-settings.php:291
+msgid "Enable/Disable Subscription"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:195
+#: admin/class-aswc-wc-settings.php:292
+msgid "Check this box to enable the subscription."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:202
+#: admin/class-aswc-wc-settings.php:298
+msgid "Add to cart text"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:204
+msgid "Use this option to change add to cart button text."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:208
+msgid "Add to cart button text"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:211
+#: admin/class-aswc-wc-settings.php:305
+msgid "Place order text"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:213
+msgid "Use this option to change place order button text."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:217
+msgid "Place order button text"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:220
+#: admin/class-aswc-wc-settings.php:312
+msgid "Allow Customer to cancel Subscription"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:222
+msgid "Enable this option to allow the customer to cancel the subscription."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:229
+#: admin/class-aswc-wc-settings.php:319
+msgid "Enable Log"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:231
+msgid "Enable Log."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:238
+msgid "Enable Paypal Standard"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:241
+#, php-format
+msgid "You will see the %1s in the Woocommerce Payments section."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:241
+msgid "Paypal Standard Gateway"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:241
+#, php-format
+msgid "Please click %1s to know that, How to get the API Credentials for the setup"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:241
+msgid "Here"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:250
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:275
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:942
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:478
+msgid "Save Settings"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:275
+msgid "Generate & Save"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:279
+msgid "Enable API Features"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:281
+msgid "Enable this to allow API functionality to view subscription."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:286
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:907
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:180
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:193
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:215
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:227
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:239
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:252
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:275
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:287
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:299
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:321
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:334
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:358
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:384
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:397
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:410
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:424
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:436
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:460
+msgid "YES"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:287
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:908
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:181
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:194
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:216
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:228
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:240
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:253
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:276
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:288
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:300
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:322
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:335
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:359
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:385
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:398
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:411
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:425
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:437
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:461
+msgid "NO"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:291
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:297
+msgid "API secret key"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:293
+msgid "API secret key."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:352
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:389
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:428
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:524
+msgid "Id of some field is missing"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:456
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:548
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:248
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:385
+#: advanced-subscriptions-for-woocommerce.php:531
+msgid "Subscription"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:457
+msgid "This is the Subscriptions type product."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:474
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:463
+msgid "Subscription Settings"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:516
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1073
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:695
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1751
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:473
+msgid "Subscriptions Per Interval"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:518
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1075
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:701
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1756
+msgid "Enter subscription interval"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:525
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1082
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:698
+msgid ""
+"Choose the subscriptions time interval for the product \"for example 10 days\""
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:531
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1088
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:730
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1766
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:278
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:491
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:151
+msgid "Subscriptions Expiry Interval"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:533
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1090
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:736
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1770
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:154
+msgid "Enter subscription expiry"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:540
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1097
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:733
+msgid ""
+"Choose the subscriptions expiry time interval for the product \"leave empty for "
+"unlimited\""
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:547
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:746
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:294
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:509
+msgid "Initial Signup fee"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:548
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:747
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1559
+msgid "("
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:551
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:754
+msgid "Enter signup fee"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:554
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:751
+msgid ""
+"Choose the subscriptions initial fee for the product \"leave empty for no "
+"initial fee\""
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:560
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:759
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:304
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:522
+msgid "Free trial interval"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:562
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:765
+msgid "Enter free trial interval"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:569
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:762
+msgid ""
+"Choose the trial period for subscription \"leave empty for no trial period\""
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:586
+msgid "Attach LearnPress Courses"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:763
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2092
+msgid "Verification Successful"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:900
+#: admin/class-aswc-wc-settings.php:62
+msgid "Enable Multi-Product Subscription Feature"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:902
+#: admin/class-aswc-wc-settings.php:63
+msgid "Enable this to Create and Sell Multi-Product Subscription"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:913
+#: admin/class-aswc-wc-settings.php:69
+msgid "Add to cart text For Multi-Product Subscription"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:915
+msgid ""
+"Use this option to change add to cart button text For Multi-Product Subscription "
+"Product."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:919
+msgid "Multi-Product Subscription Add to cart button text"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:922
+#: admin/class-aswc-wc-settings.php:76
+msgid "Place order text For Multi-Product Subscription"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:924
+msgid ""
+"Use this option to change place order button text For Multi-Product Subscription "
+"Product."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:928
+msgid "Multi-Product Subscription Place order button text"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:932
+msgid "To Create Multiple Multi-Product Subscription Feature Need Use Pro Version"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:971
+#: admin/class-aswc-wc-settings.php:47
+msgid "Multi-Product Subscription"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:990
+#: admin/class-aswc-wc-settings.php:57
+msgid "Multi-Product Subscription Settings"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1058
+msgid "Subscriptions Setting For Multi-Product"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1062
+msgid "Multi-Product Subscriptions Price"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1064
+msgid "Enter multi-product subscription price"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1068
+msgid "Manage multi-product subscription Price through all selected products"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1102
+msgid "Setup For Multi-Product Subscription"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1105
+msgid "Apply Multi-Product Subscription To"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1108
+msgid "Specific Products"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1109
+msgid "Specific Categories"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1115
+msgid "Select Products"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1118
+msgid "Search for a product..."
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1135
+msgid "Select Categories"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1137
+msgid "Search for categories..."
+msgstr ""
+
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1187
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:775
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1858
+msgid "Upgrade"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1195
+msgid "Multi-Product Step Label"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1197
+msgid "Enter step label"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1308
+msgid "Subscription And Renewal Supported"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1329
+msgid "Yes"
+msgstr ""
+
+#: admin/class-advanced-subscriptions-for-woocommerce-admin.php:1331
+msgid "No"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:16
+#: advanced-subscriptions-for-woocommerce.php:230
+#: advanced-subscriptions-for-woocommerce.php:243
+msgid "Advanced Subscriptions"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:46
+#: admin/class-aswc-wc-settings.php:286
+msgid "General Settings"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:48
+#: admin/class-aswc-wc-settings.php:88
+msgid "Advanced Settings"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:70
+msgid ""
+"Text displayed on the Add to cart button for multi-product subscription products."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:77
+msgid ""
+"Text displayed on the Place order button for multi-product subscription checkout."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:93
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:173
+msgid "Allow customer to select subscription expiry date"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:94
+msgid "Let customers choose an expiry date for their subscription."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:100
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:186
+msgid "Enable automatic retry subscription on failed attempts"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:101
+msgid "Automatically retry failed renewal payments."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:107
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:198
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:204
+msgid ""
+"Enter the number after certain failed attempts subscription will be canceled"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:108
+msgid "Cancel the subscription after this many consecutive failed payments."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:115
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:208
+msgid "Ability to pause the subscription for a certain time by customer"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:116
+msgid "Allow customers to temporarily pause their subscription."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:122
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:220
+msgid "Ability to start paused subscription by customer"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:123
+msgid "Allow customers to resume a paused subscription themselves."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:129
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:232
+msgid "Ability to accept manual payment for subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:130
+msgid "Enable manual payments for subscriptions."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:136
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:245
+msgid "Ability to send subscription is going to expire email notification"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:137
+msgid "Send an email before the subscription expires."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:143
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:257
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:263
+msgid "Enter the number of days before subscription expire email send"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:144
+msgid "Number of days in advance to send the expiration email."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:151
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:268
+msgid "Ability to upgrade/downgrade variable subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:152
+msgid "Allow customers to upgrade or downgrade variable subscription products."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:158
+msgid "Allow only for same interval in upgrade/downgrade"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:159
+msgid "Restrict upgrades or downgrades to the same billing interval."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:165
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:292
+msgid "Stop Downgrade variable subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:166
+msgid "Prevent customers from downgrading variable subscriptions."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:172
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:304
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:310
+msgid "Upgrade and Downgrade button text"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:173
+msgid "Custom label for the upgrade and downgrade action button."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:179
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:314
+msgid ""
+"Ability to accept prorate signup fee upgrade/downgrade variable subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:180
+msgid "Prorate the signup fee when upgrading or downgrading."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:186
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:327
+msgid "Ability to accept prorate price on upgrade/downgrade variable subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:187
+msgid "Prorate the remaining subscription price during upgrades or downgrades."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:193
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:339
+msgid "Manage prorate amount during upgrade/downgrade subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:194
+msgid "Choose how prorated amounts are handled when a subscription changes."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:199
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:346
+msgid "Extend next payment date"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:200
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:347
+msgid "Put left amount in the user wallet"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:204
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:351
+msgid "Ability to take renewal subscription payment from the certain date"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:205
+msgid "Start taking renewal payments from a specific day of the month."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:211
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:363
+msgid "Prorate amount for certain date of month subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:212
+msgid "Define how prorate charges are applied when syncing to a date."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:217
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:370
+msgid "Do not charge prorate amount"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:218
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:371
+msgid "Charge prorate amount for subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:219
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:372
+msgid "Charge prorate amount for subscription even free trial"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:223
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:377
+msgid "Ability to allow the customer to add multiple subscriptions in cart"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:224
+msgid "Permit customers to purchase multiple subscriptions at once."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:230
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:390
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:392
+msgid "Allow shipping cost on subscription products."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:231
+msgid "Enable shipping charges on subscription products."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:237
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:403
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:405
+msgid "Allow shipping cost For First Purchase of subscription."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:238
+msgid "Charge shipping only on the first subscription purchase."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:244
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:417
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:419
+msgid "Allow multiple quantities on subscription products."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:245
+msgid "Allow customers to purchase multiple quantities of a subscription."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:251
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:429
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:431
+msgid "Allow start date on subscription products."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:252
+msgid "Let customers select a start date for their subscription."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:258
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:441
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:443
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:447
+msgid ""
+"Enter the number of days before which you want to send the recurring payment "
+"reminder."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:259
+msgid "Number of days before renewal to send a reminder email."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:266
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:453
+msgid "Allow the Time duration for the Subscription cancellation"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:267
+msgid "Enable a grace period before customers can cancel."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:273
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:465
+msgid ""
+"Enter the number of days after that, user should be able to cancel their "
+"subscription"
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:274
+msgid "Number of days after purchase before cancellation is allowed."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:299
+msgid "Text displayed on the Add to cart button for subscription products."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:306
+msgid "Text displayed on the Place order button during checkout."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:313
+msgid "Allow customers to cancel their subscriptions from their account."
+msgstr ""
+
+#: admin/class-aswc-wc-settings.php:320
+msgid "Enable logging of subscription actions for debugging purposes."
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:55
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1111
+msgid "Subscription ID"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:56
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1112
+msgid "Parent Order ID"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:57
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1113
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:56
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1565
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1663
+#: public/partials/templates/myaccount/aswc-subscriptions.php:27
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:48
+#: advanced-subscriptions-for-woocommerce.php:530
+msgid "Status"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:58
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1114
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:205
+msgid "Product Name"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:59
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1115
+#: advanced-subscriptions-for-woocommerce.php:534
+msgid "Recurring Amount"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:60
+#: advanced-subscriptions-for-woocommerce.php:533
+msgid "Payment Method"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:61
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1116
+msgid "User Name"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:62
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1117
+#: advanced-subscriptions-for-woocommerce.php:535
+msgid "Next Payment Date"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:63
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1118
+#: advanced-subscriptions-for-woocommerce.php:536
+msgid "Expiry Date"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:89
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:238
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:184
+msgid "Cancel"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:112
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:920
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:402
+msgid "Reactivate"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:146
+msgid "Manual"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:198
+msgid "Subscriptions Deleted Successfully"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:217
+msgid "Subscriptions Cancelled Successfully"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:237
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:152
+msgid "Delete"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:652
+#: public/partials/templates/myaccount/aswc-subscriptions.php:68
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:53
+msgid "active"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:654
+#: public/partials/templates/myaccount/aswc-subscriptions.php:70
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:55
+msgid "on-hold"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:656
+#: public/partials/templates/myaccount/aswc-subscriptions.php:72
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:57
+msgid "cancelled"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:658
+#: public/partials/templates/myaccount/aswc-subscriptions.php:74
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:59
+msgid "paused"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:660
+#: public/partials/templates/myaccount/aswc-subscriptions.php:76
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:61
+msgid "pending"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:662
+#: public/partials/templates/myaccount/aswc-subscriptions.php:78
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:63
+msgid "expired"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:710
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:976
+msgid "Subscriptions"
+msgstr ""
+
+#: admin/partials/class-advanced-subscriptions-for-woocommerce-admin-subscription-list.php:720
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:319
+msgid "Search Order"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:36
+msgid "Cancelled Subscription Email Notification"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:38
+msgid "This Email Notification Send if any subscription is Cancelled"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:55
+msgid "Cancelled Susbcription Email {site_title}"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:65
+msgid "Subscription Cancelled"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:151
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:136
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:149
+#: includes/class-wc-gateway-aswc-paypal-integration.php:193
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:142
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:156
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:140
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:156
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:151
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:112
+msgid "Enable/Disable"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:153
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:138
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:151
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:144
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:158
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:142
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:158
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:153
+msgid "Enable this email notification"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:157
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:142
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:148
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:146
+msgid "Recipient Email Address"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:160
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:145
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:151
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:149
+#, php-format
+msgid "Enter recipient email address. Defaults to %s."
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:166
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:151
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:155
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:157
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:162
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:155
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:162
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:157
+msgid "Subject"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:168
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:153
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:157
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:159
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:164
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:157
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:164
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:159
+msgid "Enter the email subject"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:174
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:176
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:159
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:161
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:163
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:165
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:165
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:167
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:170
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:172
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:163
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:165
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:170
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:172
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:165
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:167
+msgid "Email Heading"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:182
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:167
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:171
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:173
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:178
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:171
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:178
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:173
+msgid "Email type"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-cancel-subscription-email.php:184
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:169
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:173
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:175
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:180
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:173
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:180
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:175
+msgid "Choose which format of email to send."
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:36
+msgid "Expired Subscription Email Notification"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:37
+msgid "This Email Notification Send if any subscription is Expired"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:54
+msgid "Expired Susbcription Email {site_title}"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-expired-subscription-email.php:64
+msgid "Subscription Expired"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:36
+msgid "On-Hold Active Subscription Email Notification"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:38
+msgid "This Email Notification Send if any subscription is Active From On-Hold"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:55
+msgid "On-Hold Active Susbcription Email {site_title}"
+msgstr ""
+
+#: emails/class-advanced-subscriptions-for-woocommerce-onhold-active-subscription-email.php:65
+msgid "Subscription On-Hold Active"
+msgstr ""
+
+#: emails/templates/plain/aswc-cancel-subscription-email-template.php:20
+#: emails/templates/aswc-cancel-subscription-email-template.php:18
+#, php-format
+msgid ""
+"A subscription [#%s] has been cancelled. Their subscription's details are as "
+"follows:"
+msgstr ""
+
+#: emails/templates/plain/aswc-cancel-subscription-email-template.php:29
+#: emails/templates/plain/aswc-expired-subscription-email-template.php:27
+#: emails/templates/plain/aswc-onhold-active-subscription-email-template.php:30
+#: includes/loader/emails/templates/plain/aswc-wsp-pause-subscription-email-template.php:29
+#: includes/loader/emails/templates/plain/aswc-wsp-plan-going-to-expire-email-template.php:27
+#: includes/loader/emails/templates/plain/aswc-wsp-reactivate-subscription-email-template.php:27
+#: includes/loader/emails/templates/plain/aswc-wsp-reminder-email-template.php:28
+#: includes/loader/includes/aswc-loader-common-functions.php:773
+#: includes/loader/public/partials/form-pay.php:20
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:292
+#: public/partials/templates/myaccount/aswc-add-new-payment-details.php:21
+#: advanced-subscriptions-for-woocommerce.php:532
+msgid "Product"
+msgstr ""
+
+#: emails/templates/plain/aswc-cancel-subscription-email-template.php:33
+#: emails/templates/plain/aswc-expired-subscription-email-template.php:31
+#: emails/templates/plain/aswc-onhold-active-subscription-email-template.php:34
+#: includes/loader/emails/templates/plain/aswc-wsp-pause-subscription-email-template.php:33
+#: includes/loader/emails/templates/plain/aswc-wsp-plan-going-to-expire-email-template.php:31
+#: includes/loader/emails/templates/plain/aswc-wsp-reactivate-subscription-email-template.php:31
+#: includes/loader/emails/templates/plain/aswc-wsp-reminder-email-template.php:32
+#: includes/loader/includes/aswc-loader-common-functions.php:774
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:293
+#: public/partials/templates/myaccount/aswc-add-new-payment-details.php:22
+msgid "Quantity"
+msgstr ""
+
+#: emails/templates/plain/aswc-cancel-subscription-email-template.php:37
+#: emails/templates/plain/aswc-expired-subscription-email-template.php:35
+#: emails/templates/plain/aswc-onhold-active-subscription-email-template.php:38
+#: includes/loader/emails/templates/plain/aswc-wsp-pause-subscription-email-template.php:37
+#: includes/loader/emails/templates/plain/aswc-wsp-plan-going-to-expire-email-template.php:35
+#: includes/loader/emails/templates/plain/aswc-wsp-reactivate-subscription-email-template.php:35
+#: includes/loader/emails/templates/plain/aswc-wsp-reminder-email-template.php:36
+#: includes/loader/includes/aswc-loader-common-functions.php:775
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:294
+msgid "Price"
+msgstr ""
+
+#: emails/templates/plain/aswc-expired-subscription-email-template.php:18
+#: includes/loader/emails/templates/plain/aswc-wsp-plan-going-to-expire-email-template.php:18
+#: includes/loader/emails/templates/plain/aswc-wsp-reactivate-subscription-email-template.php:18
+#, php-format
+msgid ""
+"A subscription [#%s] has been expired. Their subscription's details are as "
+"follows:"
+msgstr ""
+
+#: emails/templates/plain/aswc-onhold-active-subscription-email-template.php:21
+#: emails/templates/aswc-onhold-active-subscription-email-template.php:18
+#, php-format
+msgid ""
+"A subscription [#%s] has been Activated From On-hold By Admin. Their "
+"subscription's details are as follows:"
+msgstr ""
+
+#: emails/templates/aswc-expired-subscription-email-template.php:18
+#, php-format
+msgid ""
+"A subscription [#%s] has been Expired. Their subscription's details are as "
+"follows:"
+msgstr ""
+
+#: includes/class-advanced-subscriptions-for-woocommerce-scheduler.php:255
+#: includes/class-advanced-subscriptions-for-woocommerce-scheduler.php:796
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:445
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2171
+#, php-format
+msgid "This renewal order belongs to Subscription #%s"
+msgstr ""
+
+#: includes/class-advanced-subscriptions-for-woocommerce.php:436
+msgid "Subscription Table"
+msgstr ""
+
+#: includes/class-advanced-subscriptions-for-woocommerce.php:465
+#, php-format
+msgid ""
+"Unable to locate file at location \"%s\". Some features may not work properly in "
+"this plugin. Please contact us!"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:60
+msgid "Proceed to PayPal"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:61
+msgid "WPS Paypal Payment"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:62
+msgid "Accept Payments from PayPal ( Recurring Support for US only )"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:98
+msgid "Gateway disabled"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:98
+msgid "PayPal Standard does not support your store currency."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:128
+msgid "Unable to proceed the refund process"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:132
+msgid "Please enter the amount to refund"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:143
+#, php-format
+msgid "Refunded : %1$s from PayPal- Refund ID : %2$s"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:152
+msgid "Unable to refund the amount from PayPal."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:195
+msgid "Enable Jose Conti PayPal"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:199
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:119
+msgid "Title"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:201
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:202
+msgid "PayPal"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:206
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:126
+msgid "Description"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:209
+msgid "This controls the description which the user sees during checkout."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:210
+msgid ""
+"Pay via PayPal; you can pay with your credit card if you don't have a PayPal "
+"account."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:213
+msgid "IPN email notifications"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:215
+msgid "Enable IPN email notifications"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:219
+#, php-format
+msgid ""
+"Send notifications when an IPN is received from PayPal indicating refunds, "
+"chargebacks and cancellations. Please make sure to login your PayPal business "
+"account navigate to %s  <button class=\"aswc-ipn-url-copy-to-clipboard\">Copy</"
+"button>"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:224
+msgid "Email"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:226
+msgid "You will recieve IPN email notifications on this mail."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:232
+msgid "Invoice prefix"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:234
+msgid ""
+"Please enter a prefix for your invoice numbers. If you use your PayPal account "
+"for multiple stores ensure this prefix is unique as PayPal will not allow orders "
+"with the same invoice number."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:239
+msgid "API credentials"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:243
+#, php-format
+msgid ""
+"To get your API credentials please create a <a href=\"%1$s\" "
+"target=\"_blank\">PayPal developer account</a>. Visit <a href=\"%2$s\" "
+"target=\"_blank\">My Apps & Credentials</a> select the tab ( Sandbox or Live ), "
+"Create app and get the below credentails."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:249
+msgid "PayPal sandbox"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:251
+#: includes/class-wc-gateway-aswc-paypal-integration.php:275
+msgid "Enable PayPal sandbox"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:254
+#, php-format
+msgid ""
+"PayPal sandbox can be used to test payments. Make Sure you have filled the Test "
+"Credentials below If you are using the test mode. Sign up for a <a "
+"href=\"%s\">developer account</a>."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:257
+msgid "Client ID"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:259
+msgid "Please enter client ID here after following the above mentioned process."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:265
+msgid "Client secret"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:267
+msgid ""
+"Please enter client secret here after following the above mentioned process."
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:277
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:144
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:167
+msgid "Validate"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:354
+msgid "Error"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:561
+msgid "Unable to create order"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:719
+msgid "Unable to capture the payment : response"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:756
+#, php-format
+msgid "order captured from PayPal for PayPal order ID : %s"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:775
+#: includes/class-wc-gateway-aswc-paypal-integration.php:887
+#, php-format
+msgid "payment completed txn ID : %s"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:785
+msgid "IPN received from the PayPal"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:788
+#, php-format
+msgid "Order ID : %1$s , PayPal Txn ID : %2$s"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:876
+#: includes/class-wc-gateway-aswc-paypal-integration.php:906
+msgid "renewal payment failed"
+msgstr ""
+
+#: includes/class-wc-gateway-aswc-paypal-integration.php:937
+#: includes/class-wc-gateway-aswc-paypal-integration.php:944
+msgid "Could not fetch payment token."
+msgstr ""
+
+#: includes/class-woocommerce-subscriptions-pro-update.php:142
+msgid "Plugin Description"
+msgstr ""
+
+#: includes/class-woocommerce-subscriptions-pro-update.php:146
+msgid "Plugin Change Log"
+msgstr ""
+
+#: includes/class-aswc-paypal-block-support.php:82
+#: includes/loader/includes/aswc-paypal-subscription/wc-blocks-compatibility/class-psi-block-support.php:81
+msgid "WPS PayPal"
+msgstr ""
+
+#: includes/loader.php:67
+msgid "WooCommerce Subscriptions PRO Require latest Subscriptions For Woocommerce"
+msgstr ""
+
+#: includes/loader.php:108
+msgid ""
+"Heads up, We highly recommend Also Update Latest Org Plugin. The latest update "
+"includes some substantial changes across different areas of the plugin."
+msgstr ""
+
+#: includes/loader.php:181 includes/loader.php:187
+msgid "WooCommerce Subscriptions PRO"
+msgstr ""
+
+#: includes/loader.php:255
+msgid "Settings"
+msgstr ""
+
+#: includes/loader.php:445
+msgid ""
+"WooCommerce is not activated, Please activate WooCommerce first to activate "
+"WooCommerce Subscriptions PRO."
+msgstr ""
+
+#: includes/loader.php:453
+msgid ""
+"Subscriptions For WooCommerce is not activated, Please activate Subscriptions "
+"For WooCommerce first to activate WooCommerce Subscriptions PRO. "
+msgstr ""
+
+#: includes/loader.php:465
+msgid "Install"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:101
+msgid "Subscription price must be greater than 0."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:102
+msgid "Next payment date cannot be in the past date. Kindly check!"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:155
+msgid "Advance Settings"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:175
+msgid "Enable Allow customer to select subscription expiry date."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:188
+msgid "Enable automatic retry subscription on failed attempts."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:200
+msgid ""
+"Enter the number after certain failed attempts subscription will be canceled."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:210
+msgid "Ability to pause the subscription for a certain time by the customer."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:222
+msgid "Ability to start paused subscription by customer."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:234
+msgid "Enable this to accept Manual payment for subscription."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:247
+msgid "Enable this to send subscription is going to expire email notification."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:259
+msgid "Enter the number of days before subscription expire email send."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:270
+msgid "Enable this to upgrade/downgrade variable subscription."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:280
+msgid "Allow only for same interval in upgrade/downgrade."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:282
+msgid "Enable this to allow only for same interval in upgrade/downgrade."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:294
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:341
+msgid "Enable this to downgrade variable subscription."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:306
+msgid "Use this option to change Upgrade and Downgrade button text."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:316
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:329
+msgid "Enable this to accept signup upgrade/downgrade variable subscription."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:353
+msgid "Ability to start subscription from the certain date of the month."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:379
+msgid "Ability to allow the customer to add multiple subscriptions."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:547
+msgid "Enable this option to make subscription type variation"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:716
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:719
+msgid "Choose subscription start date"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:722
+msgid "Choose Start Date"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:777
+msgid "Free trial Limit"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:780
+msgid "This Limit Restrict User to puchase multiple subscription\""
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:783
+msgid "Enter free trial Limit"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:808
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:809
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1301
+msgid "Enable subscription renewal on certain day/ date"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:821
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1315
+msgid "Week for Synchronisation"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:835
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1328
+msgid "Month for Synchronisation"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:843
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:844
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1337
+msgid "Year for Synchronisation"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:869
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1552
+msgid "Enable one-time purchase"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:872
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1564
+msgid ""
+"Please enter the One Time Purchase amount and make sure you have set the one "
+"time purchase amount is greater than subscription price otherwise this will not "
+"work"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:875
+msgid "Enter One Time Purchase Subscription Price"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:876
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1567
+msgid ""
+"Make sure you have set the one time purchase amount is greater than subscription "
+"price otherwise this will not work"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:906
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:390
+msgid "Pause"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:936
+msgid "View Renewals"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:954
+msgid "Create Renewal"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1165
+msgid "Export CSV"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1211
+msgid "Wallet Debited through Subscription Renewal"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1226
+#, php-format
+msgid "Payment Recieve From Customer Wallet of Amount - : %s."
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1230
+msgid ""
+" order payment is not completed due to insufficient funds in customer wallet "
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1260
+msgid "Choose Subscription Start Date"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1262
+msgid "Enter start date"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1264
+msgid "Choose subscription start date\""
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1425
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1429
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1430
+msgid "Enable subscription coupon type"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1433
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1437
+msgid "Select coupon type"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1441
+msgid "Fixed cart discount( Gift card )"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1490
+msgid "Please Activate"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1491
+msgid "Wallet System For Woocommerce"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1492
+msgid "to manage prorate amount while downgrade"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1535
+msgid "Enable Free Trials Limit"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1541
+msgid "Limit Value"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1544
+msgid "Enter Limit Value"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1546
+msgid ""
+"If the Subscription Cancellation Exceed the Set Limit, User Will Not Able To "
+"Cancel Their Subscription"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1558
+msgid "One Time Purchase Price"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1562
+msgid "Enter One Time Purchase Price"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1589
+msgid "Add Manual Subscription"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1613
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1619
+msgid "Parent order:"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1712
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:1725
+msgctxt "meta box title"
+msgid "Subscriptions Schedule Data"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2136
+msgid "Retry Renewal Payment"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2164
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2184
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2199
+msgid "Update Subscription"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2178
+msgid "Update"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2189
+msgid "Next Payment Date:"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2194
+msgid "Subscription Item Total:"
+msgstr ""
+
+#: includes/loader/admin/class-advanced-subscriptions-for-woocommerce-loader-admin.php:2196
+msgid ""
+"final price will based on all taxes calculation and shipping charges if "
+"applicable previously on subscription"
+msgstr ""
+
+#: includes/loader/admin/index.php:14 includes/loader/includes/index.php:14
+#: includes/loader/index.php:14 includes/loader/public/index.php:14
+msgid "oops looks like nothing is here"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:44
+msgid "Create subscriptions for variation type products"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:45
+msgid "Set and change subscriptions plan expiry date"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:46
+msgid "Automatic retrial and cancellation of subscriptions plan"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:47
+msgid "Upgrade or downgrade subscription plans by users"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:48
+msgid "Exclusive coupon types"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:49
+msgid "Pause Subscription plans"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:50
+msgid "Email notifications for reminders"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:51
+msgid "API of course for details on a mobile app"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:52
+msgid "Export active subscriptions "
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:69
+msgid "Set Start And Due Date"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:71
+msgid ""
+"Admin has settings to enable users to start a subscription from a certain date "
+"for a subscription plan. Users can change the subscription plan based on dates, "
+"months, or years as allowed by the admin."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:80
+msgid "Automatic Payment Retrial, Cancel Subscription Plans"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:82
+msgid ""
+"Merchants can allow automatic subscription payment retry on failed attempts. "
+"After a set number of failed payment attempts, the subscription plan will be "
+"aborted automatically."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:91
+msgid "Subscription Coupons"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:93
+msgid ""
+"Different coupon types apply on subscription plans, i.e., Initial Fee Discount "
+"Type, Initial percentage discount Type, Recurring Product Discount Type, and "
+"Recurring Product percentage discount type. Users can apply them."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:102
+msgid "Handle Proration"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:104
+msgid ""
+"Admin can enable the users to upgrade and downgrade their subscription plans. "
+"Users can easily upgrade or downgrade their variable product subscription plans "
+"for a set period whenever they want. The WooCommerce Subscriptions Pro plugin "
+"can handle proration on recurring payments and sign-up fees."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:113
+msgid "Pause / Hold and Re-Activate Subscription Plans"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:115
+msgid ""
+"Admin gets the settings allowing users to start subscriptions from a specific "
+"date of a month. Users can pause and restart their subscription plans after "
+"putting them on hold for a particular time."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:124
+msgid "Email notifications for Admin and Users."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:126
+msgid ""
+"Admin can enable email notification for all the activity related to subscription "
+"plans. There are email notification options are.,Subscription plan is going to "
+"expire, Subscription payment has been made, Subscription plan has been Paused/On-"
+"Hold, Subscription plan has been Resumed"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:135
+msgid "Manual and Automatic Subscription Payment Option."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:137
+msgid ""
+"Admin can set manual or automatic subscription payment options. WooCommerce "
+"Subscription Pro will send an automated invoice to the customer payable through "
+"a link in the manual subscription payment. Offline payment COD is also available."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:146
+msgid "Export Subscription Plan Details."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:148
+msgid ""
+"Admin can export all active subscription plans in a file and view all "
+"subscription renewal orders under the Subscription table tab."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:157
+msgid "API for Mobile App."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:159
+msgid ""
+"APIs, of course, have been provided in the WooCommerce Subscriptions Pro to let "
+"the admin get subscription details on mobile apps quickly."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:168
+msgid "View Subscriptions Renewal Order for Particular Subscription."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-overview.php:170
+msgid ""
+"Admin can view all renewal orders for each subscription. It will help them to "
+"identify the number of recurring payments completed for a particular "
+"subscription plan."
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:55
+msgid "Order ID"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:57
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1666
+msgid "Date"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:58
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1669
+msgid "Order Total"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:59
+msgid "Retry Failed Attempts"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:133
+msgid "Order Deleted Successfully"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:311
+msgid "Subscriptions Renewal Order"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:313
+msgid "aswc_susbcription_list_table"
+msgstr ""
+
+#: includes/loader/admin/partials/class-advanced-subscriptions-for-woocommerce-loader-view-renewal-list.php:324
+msgid "Go Back"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:129
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:160
+msgid "Successfully Verified..."
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:135
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:166
+msgid "License Verification Failed."
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:189
+msgid "Initial Signup Fee Discount"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:190
+msgid "Initial Signup Fee Percent Discount"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:191
+msgid "Recurring And Product Discount"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:192
+msgid "Recurring And Product Percent Discount"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:217
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:468
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:509
+msgid "Sorry, this coupon is only valid for subscription products."
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:220
+msgid ""
+"Sorry, this coupon is only valid for subscription products with a sign-up fee."
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:887
+msgid "Coupon Applied Successfully"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:890
+msgid "Coupon is expired"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:893
+msgid "Coupon is already used"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:896
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:899
+msgid "Coupon is not valid Giftcard"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:903
+msgid "Gift Card already applied"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:1476
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:628
+msgctxt "subscription post title. \"Subscriptions order - <this>\""
+msgid "%1$b %2$d, %Y @ %I:%M %p"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:1484
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:636
+#, php-format
+msgctxt "Subscription post title"
+msgid "AWC Subscriptions &ndash; %s"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:1650
+#, php-format
+msgid "A subscription %s has created on Paypal"
+msgstr ""
+
+#: includes/loader/common/class-advanced-subscriptions-for-woocommerce-loader-common.php:1653
+#, php-format
+msgid "Created Paypal Order ID : %s"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:36
+msgid "Paused Subscription Email Notification"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:38
+msgid "This Email Notification Send if any subscription is Paused"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:60
+msgid "Paused Susbcription Email {site_title}"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-pause-subscription-email.php:70
+msgid "Subscription Paused"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:38
+msgid "Subscription Going To Expire Email Notification"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:40
+msgid ""
+"This Email Notification Send to customer if any subscription plan going to expire"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:56
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-plan-going-to-expire-email.php:66
+msgid "Subscription going to expire"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:36
+msgid "Reactivate Subscription Email Notification"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:37
+msgid "This Email Notification Send if any subscription is Reactivated"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:58
+msgid "Reactivated Susbcription Email {site_title}"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reactivate-subscription-email.php:68
+msgid "Subscription Reactivated"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:38
+msgid "Subscription Recurring Payment Notification"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:40
+msgid ""
+"This Email Notification Send to customer regarding recurring payment reminder"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:56
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-reminder-email.php:66
+msgid "Reminder Of Recurring Payment"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:36
+msgid "Manual Renewal Subscription Invoice Email Notification"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:38
+msgid "invoice, The email contains renewal order information and payment links"
+msgstr ""
+
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:54
+#: includes/loader/emails/class-advanced-subscriptions-for-woocommerce-loader-renewal-subscription-invoice-email.php:64
+msgid "Invoice for renewal order {order_number}"
+msgstr ""
+
+#: includes/loader/emails/templates/plain/aswc-wsp-pause-subscription-email-template.php:20
+#: includes/loader/emails/templates/aswc-wsp-pause-subscription-email-template.php:18
+#, php-format
+msgid ""
+"A subscription [#%s] has been paused. Their subscription's details are as "
+"follows:"
+msgstr ""
+
+#: includes/loader/emails/templates/plain/aswc-wsp-reminder-email-template.php:18
+#: includes/loader/emails/templates/aswc-wsp-reminder-email-template.php:18
+#, php-format
+msgid ""
+"We will cut your recurring payment for this subscription [#%s]. Their "
+"subscription's details are as follows:"
+msgstr ""
+
+#: includes/loader/emails/templates/plain/aswc-wsp-reminder-email-template.php:40
+#: includes/loader/includes/aswc-loader-common-functions.php:776
+msgid "Recurring Payment Date"
+msgstr ""
+
+#: includes/loader/emails/templates/plain/aswc-wsp-renewal-subscription-invoice-email-template.php:19
+#: includes/loader/emails/templates/aswc-wsp-renewal-subscription-invoice-email-template.php:19
+#, php-format
+msgid "Hi %s,"
+msgstr ""
+
+#: includes/loader/emails/templates/plain/aswc-wsp-renewal-subscription-invoice-email-template.php:23
+#, php-format
+msgctxt "In customer renewal invoice email"
+msgid ""
+"An order has been created for you to renew your subscription on %1$s. To pay for "
+"this invoice please use the following link: %2$s"
+msgstr ""
+
+#: includes/loader/emails/templates/aswc-wsp-plan-going-to-expire-email-template.php:18
+#, php-format
+msgid ""
+"Your subscription [#%s] is going to expire soon. Their subscription's details "
+"are as follows:"
+msgstr ""
+
+#: includes/loader/emails/templates/aswc-wsp-reactivate-subscription-email-template.php:18
+#, php-format
+msgid ""
+"A subscription [#%s] has been Reactivated. Their subscription's details are as "
+"follows:"
+msgstr ""
+
+#: includes/loader/emails/templates/aswc-wsp-renewal-subscription-invoice-email-template.php:27
+#, php-format
+msgctxt "advanced-subscriptions-for-woocommerce"
+msgid ""
+"An order has been created for you to renew your subscription on %1$s. To pay for "
+"this invoice please use the following link: %2$s"
+msgstr ""
+
+#: includes/loader/emails/templates/aswc-wsp-renewal-subscription-invoice-email-template.php:29
+msgid "Pay Now &raquo;"
+msgstr ""
+
+#: includes/loader/includes/class-advanced-subscriptions-for-woocommerce-include.php:957
+msgid "max="
+msgstr ""
+
+#: includes/loader/includes/woocommerce-paypal-payments-module/class-aswc-subscriptions-module.php:143
+#, php-format
+msgid "Could not add token Id to order %1$s: %2$s"
+msgstr ""
+
+#: includes/loader/includes/woocommerce-paypal-payments-module/class-aswc-woocommerce-paypal-payments-integration.php:106
+msgid "WooCommerce PayPal Payments"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:32
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:216
+#, php-format
+msgid " and %s  free trial"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:54
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:196
+#, php-format
+msgid " and %s  Sign up fee"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:732
+#, php-format
+msgid ""
+"Your next recurring payment will be taken after %1$s %2$s because your %3$s %4$s "
+"amount has been left from previous product"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:739
+#, php-format
+msgid ""
+"Your left amount %1$s %2$s will be added to your wallet, You can check that from"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:739
+msgid "Wallet"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:862
+msgid "Monday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:863
+msgid "Tuesday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:864
+msgid "Wednesday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:865
+msgid "Thursday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:866
+msgid "Friday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:867
+msgid "Saturday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:868
+msgid "Sunday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:885
+#, php-format
+msgid "Day %s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:887
+msgid "Last day of month"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:903
+msgid "January"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:904
+msgid "February"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:905
+msgid "March"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:906
+msgid "April"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:907
+msgid "May"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:908
+msgid "June"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:909
+msgid "July"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:910
+msgid "August"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:911
+msgid "September"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:912
+msgid "October"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:913
+msgid "November"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:914
+msgid "December"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:961
+#, php-format
+msgid " payment on  %s month"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:967
+#, php-format
+msgid " payment on %s "
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:973
+#, php-format
+msgid " payment on %s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:991
+#: includes/loader/includes/aswc-loader-common-functions.php:1035
+msgid "every"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:994
+#, php-format
+msgid "every %s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1000
+#: includes/loader/includes/aswc-loader-common-functions.php:1109
+#, php-format
+msgid "%1$1sst of %2$2s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1004
+#: includes/loader/includes/aswc-loader-common-functions.php:1113
+#, php-format
+msgid "%1$snd of %2$2s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1008
+#: includes/loader/includes/aswc-loader-common-functions.php:1117
+#, php-format
+msgid "%1$srd of %2$2s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1012
+#, php-format
+msgid "last day of %s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1016
+#: includes/loader/includes/aswc-loader-common-functions.php:1121
+#, php-format
+msgid "%1$sth of %2$2s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1038
+#, php-format
+msgid "every %s week on"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1045
+#, php-format
+msgid "%s Monday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1049
+#, php-format
+msgid "%s Tuesday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1053
+#, php-format
+msgid "%s Wednesday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1057
+#, php-format
+msgid "%s Thursday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1061
+#, php-format
+msgid "%s Friday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1065
+#, php-format
+msgid "%s Saturday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1069
+#, php-format
+msgid "%s Sunday"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1101
+msgid "every year"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1104
+#, php-format
+msgid "every %s year"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1126
+#, php-format
+msgid "%1$1s %2$2s"
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1141
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1106
+msgid "Your subscription will start on: "
+msgstr ""
+
+#: includes/loader/includes/aswc-loader-common-functions.php:1233
+#, php-format
+msgid "You have to pay first recurring payment on: %s "
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:113
+msgid "Enable WPS Paypal Subscription Gateway"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:121
+msgid "This controls the title which the user sees during checkout"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:122
+msgid "WPS Paypal Subscription"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:128
+msgid "This controls the description which the user sees during checkout"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:129
+msgid "Pay with your credit card via our super-cool payment gateway"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:132
+msgid "CLIENT ID"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:136
+msgid "CLIENT SECRET"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:142
+msgid "Test Paypal Live Keys"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:147
+msgid "Test mode"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:148
+msgid "Enable Test Mode"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:150
+msgid "Place the payment gateway in test mode using test API keys"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:155
+msgid "Sandbox CLIENT ID"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:159
+msgid "Sandbox CLIENT SECRET"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:165
+msgid "Test Paypal Test Keys"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:170
+msgid "API Credentials ( Client ID and Client Secret )"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:175
+msgid "Webhook"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:447
+msgid "Renewal Order is creating through Paypal Subscription webhook"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:476
+msgid "The Subscription has been cancelled from the paypal"
+msgstr ""
+
+#: includes/loader/includes/aswc-paypal-subscription/class-aswc-paypal-subscription-integration-gateway.php:503
+msgid "The Subscription has on-hold due to failed payment"
+msgstr ""
+
+
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:127
+msgid "Store"
+msgstr ""
+
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:262
+msgid "Subscriptions Interval"
+msgstr ""
+
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:482
+msgid ""
+"Choose the subscriptions time interval for the product \"for example 10 days\"."
+msgstr ""
+
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:500
+msgid ""
+"Choose the subscriptions expiry time interval for the product leave empty for "
+"unlimited, And expiry Interval must be greater than subscription interval ."
+msgstr ""
+
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:518
+msgid ""
+"Choose the subscriptions initial fee for the product \"leave empty for no "
+"initial fee\"."
+msgstr ""
+
+#: includes/loader/package/wcfm-compatibility/class-advanced-subscriptions-for-woocommerce-loader-wcfm-compatibility.php:531
+msgid ""
+"Choose the trial period for subscription \"leave empty for no trial period\"."
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:124
+msgid "Please enter coupon code"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:229
+msgid "Expiry Interval must be greater than subscription interval."
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:259
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:545
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:582
+#, php-format
+msgid "%s Day"
+msgid_plural "%s Days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:263
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:549
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:586
+#, php-format
+msgid "%s Week"
+msgid_plural "%s Weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:267
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:553
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:590
+#, php-format
+msgid "%s Month"
+msgid_plural "%s Months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:271
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:557
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:594
+#, php-format
+msgid "%s Year"
+msgid_plural "%s Years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:412
+msgid "Change Payment Method"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:504
+msgid "Subscription Paused Successfully"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:528
+msgid "Subscription Reactivated Successfully"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:608
+msgid "You can switch only with subscription products"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:612
+msgid "You can not switch with same variation"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:676
+#, php-format
+msgid "You can not upgrade into %1$2s from %2$1s"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:683
+msgid "You can not downgrade the plan"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:737
+msgid "You can not switch others user subscriptions."
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:777
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1860
+msgid "Downgrade"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1249
+msgid "Apply Gift card Coupon"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1253
+msgid "Enter coupon code"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1254
+msgid "Apply"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1383
+msgid "Cancel Recurring payment"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1447
+msgid "Enable for subscription"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1447
+#, php-format
+msgid ""
+"%s Off Every Order, Guaranteed Delivery, Make Changes Any Time, Prompt VIP "
+"Support"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1451
+msgid "Enable for one Time Subscription is"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1558
+msgid "Related subscriptions"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1564
+#: public/partials/templates/myaccount/aswc-subscriptions.php:25
+msgid "ID"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1566
+msgid "Next payment date"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1567
+msgid "Recurring Total"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1568
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1672
+#: public/partials/templates/myaccount/aswc-subscriptions.php:30
+msgid "Action"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1628
+#: public/partials/templates/myaccount/aswc-subscriptions.php:107
+msgid "Show"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1656
+msgid "Renewal Order Details"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1660
+msgid "Order Id"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1695
+msgid "show"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1976
+msgid ""
+"Prorate pricing adjusts the price of a subscription depending on when it started "
+"and when it will be renewed."
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:1998
+#, php-format
+msgid "Payment method %s updated"
+msgstr ""
+
+#: includes/loader/public/class-advanced-subscriptions-for-woocommerce-loader-public.php:2013
+#, php-format
+msgid "This will update the Payment Method used for the subscription #%s."
+msgstr ""
+
+#: includes/loader/public/partials/form-pay.php:21
+msgid "Qty"
+msgstr ""
+
+#: includes/loader/public/partials/form-pay.php:22
+#: public/partials/templates/myaccount/aswc-add-new-payment-details.php:23
+msgid "Totals"
+msgstr ""
+
+#: includes/loader/public/partials/form-pay.php:73
+msgid ""
+"Sorry, it seems that there are no available payment methods for your location. "
+"Please contact us if you require assistance or wish to make alternate "
+"arrangements."
+msgstr ""
+
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:391
+msgid "There was an error with your request."
+msgstr ""
+
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:394
+msgid "Invalid Subscription."
+msgstr ""
+
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:397
+msgid "Invalid subscription order."
+msgstr ""
+
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:696
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:160
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1087
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1888
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2731
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2739
+#, php-format
+msgid " / %s "
+msgstr ""
+
+#: includes/advanced-subscriptions-for-woocommerce-common-function.php:752
+msgid "WooCommerce Stripe Gateway"
+msgstr ""
+
+#: package/rest-api/class-advanced-subscriptions-for-woocommerce-rest-api.php:147
+msgid "Data not found"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:170
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1948
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2749
+#, php-format
+msgid " For %s "
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:246
+msgid "Create Multi-Product Subscription"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:713
+#, php-format
+msgid "A new Subscription #%s is created"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:837
+msgid "Please enable payment method"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:863
+msgid "Payment Method Added Successfully"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1106
+msgid "Not a valid subscription"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1163
+msgid "Subscription Cancelled Successfully"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1339
+msgid "You can not add multiple subscription products in cart"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1554
+msgid "Only the Card is supported for the recurring payment"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1584
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1624
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1804
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1839
+msgid "Renewal For"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1587
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1627
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1807
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1842
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:223
+msgid "Subtotal"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1589
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1629
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1809
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1844
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:239
+msgid "Tax"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1592
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1632
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1812
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1847
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:254
+msgid "Shipping"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1594
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1634
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1814
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1849
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2501
+#: public/partials/templates/myaccount/aswc-subscriptions.php:29
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:268
+msgid "Total"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1909
+#, php-format
+msgid "including %1$s Sign up fee, renewal will be %2$s"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1925
+#, php-format
+msgid "including %s Sign up fee"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:1934
+#, php-format
+msgid "and %1$s free trial, renewal will be %2$s"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2001
+msgid ""
+"Please check <strong>\"Save payment information to my account for future "
+"purchases\"</strong> to proceed further "
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2173
+msgid "Important Information"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2187
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2201
+msgid "Renewal Order"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2231
+msgid "You will be subscribing to"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2297
+msgid "Your subscription is not active"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2297
+msgid "Please renew or purchase a subscription to access this course"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2299
+msgid "#"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2303
+msgid "You have not purchased the attached course subscription yet"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2303
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2316
+msgid "Please purchase one of the following subscriptions to access this course"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2316
+msgid "You have not purchased the subscription yet"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2415
+msgid "Customize Your Multi-Product Subscription"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2417
+msgid "Choose which product to add to your box"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2502
+msgid "Add to Subscription"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2882
+msgid "View Attached Products"
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2929
+msgid ""
+"You cannot add other products while a Multi-Product Subscription is in the cart. "
+"Please remove it first."
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2934
+msgid ""
+"You cannot add a Multi-Product Subscription when other products are in the cart. "
+"Please remove them first."
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2988
+msgid "Subscription Interval: "
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2994
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2998
+msgid "Subscription Expiry: "
+msgstr ""
+
+#: public/class-advanced-subscriptions-for-woocommerce-public.php:2998
+msgid "Unlimited"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-subscriptions.php:26
+msgid "Parent ID"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-subscriptions.php:28
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:80
+msgid "Next Payment"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-subscriptions.php:123
+msgid "Previous"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-subscriptions.php:127
+msgid "Next"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-subscriptions.php:133
+msgid "You do not have any active subscription(s)."
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-add-new-payment-details.php:46
+msgid "Add payment method"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:44
+msgid "Subscription Details"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:50
+msgid "aswc_"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:71
+msgid "Created"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:95
+msgid "Expiry"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:115
+msgid "Trial End Date"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:129
+msgid "Next Recurring"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:142
+msgid "Tomorrow"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:165
+msgid "Add Payment Method"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:172
+msgid "Actions"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:200
+msgid "Subscription Order Details"
+msgstr ""
+
+#: public/partials/templates/myaccount/aswc-show-subscription-details.php:293
+msgid "Total Subscription Points Collected"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:72
+msgid ""
+"Heads up, The latest update includes some substantial changes across different "
+"areas of the plugin."
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:99 advanced-subscriptions-for-woocommerce.php:105
+msgid "Subscriptions For Woocommerce"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:231
+msgid "AWC Subscriptions"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:232
+msgid "Add AWC Subscriptions"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:233
+msgid "Add New AWC Subscriptions"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:234
+msgid "Edit"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:235
+msgid "Edit AWC Subscriptions"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:236
+msgid "New AWC Subscriptions"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:237
+#: advanced-subscriptions-for-woocommerce.php:238
+msgid "View AWC Subscriptions"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:239
+msgid "Search AWC Subscriptions"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:240
+msgid "Not Found"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:241
+msgid "No AWC Subscriptions found in the trash"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:242
+msgid "Parent AWC Subscriptions"
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:245
+msgid "These AWC Subscriptions are stored."
+msgstr ""
+
+#: advanced-subscriptions-for-woocommerce.php:557
+msgid "by"
+msgstr ""
+

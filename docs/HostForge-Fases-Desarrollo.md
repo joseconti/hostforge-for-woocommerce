@@ -15,10 +15,10 @@ Autor: José Conti | Versión 1.0 | Febrero 2026
 | Concepto | Valor |
 |----------|-------|
 | Total de fases | 8 |
-| Total de tareas | ~115 |
+| Total de tareas | ~153 |
 | Fases críticas | 1, 2, 8 |
 | Fases de prioridad alta | 3, 4 |
-| Módulos independientes | 8 (Server Manager, Auto Provisioning, Support Desk, Domain Manager, Affiliates, Security, Notifications, Reports) |
+| Módulos independientes | 7 (Server Manager, Auto Provisioning, Support Desk, Domain Manager, Security, Notifications, Reports) |
 
 ### Arquitectura
 
@@ -118,7 +118,7 @@ FASE 8: Testing, Seguridad y Polish ←───── TODAS LAS FASES ─┘
 
 ### Componentes principales
 
-- **Capa de abstracción de suscripciones**: Adapta WooCommerce Subscriptions, YITH o Advanced Subs.
+- **Capa de abstracción de suscripciones**: Adapta WooCommerce Subscriptions, YITH, Advanced Subs y SUMO Subscriptions.
 - **7 tipos de producto** personalizados con sus campos de admin y checkout.
 - **Campos de checkout** personalizados compatibles con checkout clásico y de bloques.
 - **Sistema de add-ons** para extras opcionales (IP dedicada, backup, SSL, almacenamiento).
@@ -127,7 +127,7 @@ FASE 8: Testing, Seguridad y Polish ←───── TODAS LAS FASES ─┘
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 2.1 | Interfaz del adaptador de suscripciones y factory | `DONE` | HF_Subscription_Factory auto-detecta WCS, YITH, Advanced Subs |
+| 2.1 | Interfaz del adaptador de suscripciones y factory | `DONE` | HF_Subscription_Factory auto-detecta WCS, YITH, Advanced Subs (SUMO pendiente en Fase 8) |
 | 2.2 | Adaptador para WooCommerce Subscriptions | `DONE` | HF_WCS_Adapter — create, cancel, suspend, reactivate, status hooks |
 | 2.3 | Adaptador para YITH Subscriptions | `DONE` | HF_YITH_Adapter — mismos métodos, normalización de estados |
 | 2.4 | Adaptador para Advanced Subscriptions | `DONE` | HF_Advanced_Subs_Adapter — mismos métodos |
@@ -317,29 +317,13 @@ FASE 8: Testing, Seguridad y Polish ←───── TODAS LAS FASES ─┘
 
 ## FASE 7 — Módulos Adicionales
 
-**Prioridad**: NORMAL | **Dependencias**: Fases 1-6 | **Tareas**: 19
+**Prioridad**: NORMAL | **Dependencias**: Fases 1-6 | **Tareas**: 14
 
-> Cuatro módulos complementarios, cada uno activable de forma independiente.
-
----
-
-### 7A — Módulo Affiliates (`affiliates`)
-
-Sistema de afiliados con comisiones, referidos y pagos.
-
-**Tablas DB**: `hf_affiliates`, `hf_commissions`, `hf_referrals`
-
-| ID | Tarea | Estado | Notas |
-|----|-------|--------|-------|
-| 7.1 | Tablas DB de afiliados | `PENDING` | affiliates, commissions, referrals |
-| 7.2 | Tracking de referidos (cookie 30 días) | `PENDING` | Cookie con referral_code |
-| 7.3 | Cálculo de comisiones | `PENDING` | Porcentaje/fijo, one-time/recurrente, override por producto |
-| 7.4 | Admin: pantallas de afiliados | `PENDING` | Lista, comisiones, pagos, settings |
-| 7.5 | Frontend: panel My Account de afiliados | `PENDING` | Stats, enlaces, historial, solicitud de pago |
+> Tres módulos complementarios, cada uno activable de forma independiente.
 
 ---
 
-### 7B — Módulo Security (`security`)
+### 7A — Módulo Security (`security`)
 
 Protección contra fuerza bruta, fraude y spam.
 
@@ -347,44 +331,44 @@ Protección contra fuerza bruta, fraude y spam.
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 7.6 | Anti brute-force | `PENDING` | Bloqueo tras X intentos |
-| 7.7 | Allowlist/blocklist de IPs | `PENDING` | Gestión manual de IPs |
-| 7.8 | Hooks de detección de fraude | `PENDING` | IP, país, email en checkout |
-| 7.9 | Turnstile/reCAPTCHA | `PENDING` | En formularios |
-| 7.10 | Audit log | `PENDING` | Tabla hf_activity_log |
+| 7.1 | Anti brute-force | `DONE` | HF_Brute_Force_Protection — bloqueo tras X intentos, exponential lockout |
+| 7.2 | Allowlist/blocklist de IPs | `DONE` | HF_IP_Manager — CIDR support, DB blocks, early init hook |
+| 7.3 | Hooks de detección de fraude | `DONE` | HF_Fraud_Detection — country/email/IP checks en checkout |
+| 7.4 | Turnstile/reCAPTCHA | `DONE` | HF_Captcha — Turnstile + reCAPTCHA v2 en login/register/checkout/tickets |
+| 7.5 | Audit log | `DONE` | HF_Audit_Log — auth/user/module/service/ticket/domain events |
 
 ---
 
-### 7C — Módulo Notifications (`notifications`)
+### 7B — Módulo Notifications (`notifications`)
 
 Emails transaccionales como subclases de WC_Email.
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 7.11 | Todas las subclases WC_Email | `PENDING` | 11 emails: welcome, suspended, terminated, tickets, domains, etc. |
-| 7.12 | Sistema de merge tags | `PENDING` | {customer_name}, {service_domain}, {ticket_id}, etc. |
-| 7.13 | Templates de email (HTML + plain) | `PENDING` | En templates/emails/, overrideable via theme |
-| 7.14 | Admin: settings de activar/desactivar emails | `PENDING` | WooCommerce > Settings > Emails |
+| 7.6 | Todas las subclases WC_Email | `DONE` | 11 WC_Email subclasses: service, ticket, domain, provision-failed |
+| 7.7 | Sistema de merge tags | `DONE` | HF_Merge_Tags — service/ticket/domain contexts, static process() |
+| 7.8 | Templates de email (HTML + plain) | `DONE` | templates/emails/ + plain/, overrideable via theme |
+| 7.9 | Admin: settings de activar/desactivar emails | `DONE` | Via WooCommerce > Settings > Emails (native WC_Email) |
 
 ---
 
-### 7D — Módulo Reports (`reports`)
+### 7C — Módulo Reports (`reports`)
 
 Informes y gráficos con Chart.js.
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 7.15 | Dashboard con Chart.js | `PENDING` | Gráficos interactivos AJAX |
-| 7.16 | Informes de ingresos (MRR, mensual) | `PENDING` | Revenue recurrente y total |
-| 7.17 | Informes de servicios y soporte | `PENDING` | Por tipo, estado, métricas de tickets |
-| 7.18 | Exportación CSV | `PENDING` | Descargar datos |
-| 7.19 | REST endpoints para datos de gráficos | `PENDING` | API para alimentar Chart.js |
+| 7.10 | Dashboard con Chart.js | `DONE` | HF_Reports_Admin — Chart.js v4.4.7 CDN, 5 canvas charts |
+| 7.11 | Informes de ingresos (MRR, mensual) | `DONE` | HF_Report_Data — revenue from wc_order_stats, MRR from active services |
+| 7.12 | Informes de servicios y soporte | `DONE` | Services by status, ticket metrics, avg resolution, domain stats |
+| 7.13 | Exportación CSV | `DONE` | HF_CSV_Exporter — BOM UTF-8, 5 export types (revenue, services, tickets, domains, servers) |
+| 7.14 | REST endpoints para datos de gráficos | `DONE` | HF_REST_Reports_Controller — 6 endpoints: revenue, customers, services, tickets, domains, servers |
 
 ---
 
 ## FASE 8 — Testing, Seguridad y Polish Final
 
-**Prioridad**: CRÍTICA | **Dependencias**: Todas las fases | **Tareas**: 20
+**Prioridad**: CRÍTICA | **Dependencias**: Todas las fases | **Tareas**: 21
 
 > Revisión completa de seguridad, rendimiento, compatibilidad y calidad de código.
 
@@ -416,17 +400,18 @@ Informes y gráficos con Chart.js.
 | 8.12 | Test: PHP 8.0, 8.1, 8.2, 8.3 | `PENDING` | Compatibilidad multi-versión |
 | 8.13 | Test: HPOS habilitado | `PENDING` | High Performance Order Storage |
 | 8.14 | Test: Checkout de bloques | `PENDING` | WooCommerce Blocks |
-| 8.15 | Test: Los 3 adaptadores de suscripciones | `PENDING` | WCS, YITH, Advanced Subs |
+| 8.15 | Adaptador SUMO Subscriptions (HF_SUMO_Adapter) | `PENDING` | Docs en docs/Plugins suscripciones/sumosubscriptions/ — CPT sumo_subscription, SUMOSubs_Subscription class |
+| 8.16 | Test: Los 4 adaptadores de suscripciones | `PENDING` | WCS, YITH, Advanced Subs, SUMO |
 
 ### 8D — Documentación y Calidad
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 8.16 | PHPDoc completo | `PENDING` | Todas las clases y métodos |
-| 8.17 | README.md + CHANGELOG.md | `PENDING` | Documentación del proyecto |
-| 8.18 | Documento de referencia de hooks | `PENDING` | Todos los actions y filters |
-| 8.19 | Guía de desarrollo | `PENDING` | Cómo crear providers, registrars, adapters custom |
-| 8.20 | Generar hostforge.pot | `PENDING` | Archivo de traducciones |
+| 8.17 | PHPDoc completo | `PENDING` | Todas las clases y métodos |
+| 8.18 | README.md + CHANGELOG.md | `PENDING` | Documentación del proyecto |
+| 8.19 | Documento de referencia de hooks | `PENDING` | Todos los actions y filters |
+| 8.20 | Guía de desarrollo | `PENDING` | Cómo crear providers, registrars, adapters custom |
+| 8.21 | Generar hostforge.pot | `PENDING` | Archivo de traducciones |
 
 ---
 
@@ -440,9 +425,9 @@ Informes y gráficos con Chart.js.
 | 4 | Auto Provisioning | ALTA | 24 | 24 | 100% |
 | 5 | Support Desk (Tickets + KB) | MEDIA | 23 | 23 | 100% |
 | 6 | Domain Manager | MEDIA | 18 | 18 | 100% |
-| 7 | Módulos Adicionales | NORMAL | 19 | 0 | 0% |
-| 8 | Testing, Seguridad y Polish | CRÍTICA | 20 | 0 | 0% |
-| **TOTAL** | | | **158** | **119** | **75%** |
+| 7 | Módulos Adicionales | NORMAL | 14 | 14 | 100% |
+| 8 | Testing, Seguridad y Polish | CRÍTICA | 21 | 0 | 0% |
+| **TOTAL** | | | **154** | **133** | **86%** |
 
 ---
 
@@ -475,11 +460,6 @@ Informes y gráficos con Chart.js.
 
 ### Domain Manager
 - `{prefix}hf_dns_records` — Registros DNS (domain_id, type, name, value, ttl, priority)
-
-### Affiliates
-- `{prefix}hf_affiliates` — Afiliados (user_id, status, commission_type/rate, referral_code)
-- `{prefix}hf_commissions` — Comisiones (affiliate_id, order_id, amount, status)
-- `{prefix}hf_referrals` — Referidos (affiliate_id, visitor_ip, referral_code, converted_user_id)
 
 ### Security
 - `{prefix}hf_login_attempts` — Intentos de login (ip_address, username, status)

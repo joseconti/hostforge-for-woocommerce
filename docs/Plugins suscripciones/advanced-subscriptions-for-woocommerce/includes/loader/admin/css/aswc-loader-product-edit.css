@@ -1,0 +1,149 @@
+.aswc_active {
+    display: none !important;
+}
+
+@media only screen and (max-width: 1030px) {
+    .dimensions_field input[type="text"] {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (min-width: 1070px) {
+
+    .aswc_variation_subscription_number_field .woocommerce-help-tip,
+    .aswc_variation_subscription_expiry_field .woocommerce-help-tip,
+    .aswc_variation_subscription_free_trial_field .woocommerce-help-tip {
+        margin-left: auto !important;
+    }
+
+    .aswc_variation_subscription_free_trial_field,
+    .aswc_variation_subscription_number_field,
+    .aswc_variation_subscription_expiry_field {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .aswc_variation_subscription_free_trial_field label,
+    .aswc_variation_subscription_number_field label,
+    .aswc_variation_subscription_expiry_field label {
+        flex: 0 0 100%;
+        max-width: calc(100% - 25px);
+    }
+
+    .aswc_variation_subscription_free_trial_field input[type="number"],
+    .aswc_variation_subscription_number_field input[type="number"],
+    .aswc_variation_subscription_expiry_field input[type="number"] {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .aswc_variation_subscription_free_trial_field select,
+    .aswc_variation_subscription_number_field select,
+    .aswc_variation_subscription_expiry_field select {
+        max-width: 100%;
+        flex: 0 0 50%;
+    }
+}
+
+.aswc-enable-week p,
+.aswc-enable-month p {
+    max-width: 100% !important;
+}
+
+.aswc-enable-year {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.aswc-enable-year label {
+    display: block;
+    flex: 0 0 100%;
+    margin: 5px 0;
+}
+
+.aswc-enable-year select,
+.aswc-enable-year input[type="number"] {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .variable_pricing .form-row-first,
+    .variable_pricing .form-row-last {
+        width: 100% !important;
+        float: none;
+    }
+}
+
+/*added for simple product*/
+#aswc_certain_date_enable_year_number {
+    width: auto;
+}
+
+/*fixing issues for pro*/
+
+.aswc_variation_onetime_purchase_field.form-row label {
+    display: inline-flex;
+    margin-bottom: 5px;
+}
+
+.aswc_variation_onetime_purchase_field label span {
+    margin: 4px 15px 4px 0px;
+}
+
+.aswc_one_time_purchase-wrap {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.aswc_one_time_purchase-wrap span {
+    margin-right: 10px;
+}
+div#aswc_product_target_section .form-field label {
+    padding-right: 10px;
+}
+
+@media screen and (max-width: 782px) {
+    .aswc_variation_onetime_purchase_field.form-row label {
+        margin-bottom: 15px;
+    }
+
+    .aswc_variation_onetime_purchase_field label span {
+        line-height: 28px;
+    }
+
+    .aswc_variation_onetime_purchase_field label input[type=checkbox],
+    .aswc_one_time_purchase-wrap input[type=checkbox] {
+        width: 30px !important;
+        height: 30px;
+    }
+
+    .aswc_variation_onetime_purchase_field label input[type=checkbox]:before,
+    .aswc_one_time_purchase-wrap input[type=checkbox]:before {
+        width: 28px;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+@media screen and (max-width: 420px) {
+
+    .aswc_one_time_purchase-wrap {
+        padding: 10px 20px;
+    }
+
+    .aswc_variation_onetime_purchase_field label input[type=checkbox],
+    .aswc_one_time_purchase-wrap input[type=checkbox] {
+        width: 25px !important;
+        height: 25px;
+    }
+
+    .aswc_variation_onetime_purchase_field label input[type=checkbox]:before,
+    .aswc_one_time_purchase-wrap input[type=checkbox]:before {
+        width: 25px;
+    }
+}

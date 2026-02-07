@@ -1,0 +1,329 @@
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
+/**
+ * YITH_WC_Subscription_WC_Stripe integration with WooCommerce Stripe Plugin
+ *
+ * @class   YITH_WC_Subscription_WC_Stripe
+ * @since   1.0.0
+ * @author YITH
+ * @package YITH\Subscription
+ */
+
+defined( 'YITH_YWSBS_INIT' ) || exit; // Exit if accessed directly.
+
+/**
+ * Compatibility class for WooCommerce Gateway Stripe.
+ *
+ * @extends WC_Gateway_Stripe
+ */
+class YITH_WC_Subscription_WC_Stripe extends WC_Gateway_Stripe {
+	use YITH_WC_Subscription_Singleton_Trait;
+
+	/**
+	 * Stripe gateway id
+	 *
+	 * @since 1.0
+	 * @var   string ID of specific gateway
+	 */
+	public static $gateway_id = 'stripe';
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		parent::__construct();
+
+		$this->supports = array(
+			'products',
+			'refunds',
+			'tokenization',
+			'yith_subscriptions',
+			'yith_subscriptions_scheduling',
+			'yith_subscriptions_pause',
+			'yith_subscriptions_multiple',
+			'yith_subscriptions_payment_date',
+			'yith_subscriptions_recurring_amount',
+		);
+
+		// Pay the renew orders.
+		add_action( 'ywsbs_pay_renew_order_with_' . $this->id, array( $this, 'pay_renew_order' ), 10, 2 );
+	}
+
+	/**
+	 * Process the payment based on type.
+	 *
+	 * @param int   $order_id          Reference.
+	 * @param bool  $retry             Should we retry on fail.
+	 * @param bool  $force_save_source Force save the payment source.
+	 * @param mixed $previous_error    Any error message from previous request.
+	 * @param bool  $use_order_source  Whether to use the source, which should already be attached to the order.
+	 *
+	 * @return array
+	 * @throws Exception Trigger an error.
+	 */
+	public function process_payment( $order_id, $retry = true, $force_save_source = false, $previous_error = false, $use_order_source = false ) {
+		$sbs = YWSBS_Subscription_Order()->get_subscription_items_inside_the_order( $order_id );
+
+		if ( YWSBS_Subscription_Cart::cart_has_subscriptions() || ! empty( $sbs ) ) {
+			return parent::process_payment( $order_id, $retry, true, $previous_error );
+		}
+
+		return parent::process_payment( $order_id, $retry, $force_save_source, $previous_error );
+	}
+
+	/**
+	 * Pay the renew order.
+	 *
+	 * It is triggered by ywsbs_pay_renew_order_with_{gateway_id} action.
+	 *
+	 * @since  1.1.0
+	 * @param WC_Order $renewal_order Order to renew.
+	 * @param bool     $manually      Check if this is a manual renew.
+	 * @return array|bool|WP_Error
+	 * @throws WC_Stripe_Exception Trigger an error.
+	 */
+	public function pay_renew_order( $renewal_order = null, $manually = false ) {
+
+		if ( ! $renewal_order instanceof WC_Order ) {
+			return false;
+		}
+
+		// Refresh order.
+		$renewal_order   = wc_get_order( $renewal_order->get_id() );
+		$is_a_renew      = $renewal_order->get_meta( 'is_a_renew' );
+		$subscriptions   = $renewal_order->get_meta( 'subscriptions' );
+		$subscription_id = $subscriptions ? $subscriptions[0] : false;
+		$order_id        = $renewal_order->get_id();
+
+		if ( ! $subscription_id ) {
+			// translators: placeholder order id.
+			WC_Stripe_Logger::log( sprintf( __( 'Sorry, no subscription is found for this order: %s', 'yith-woocommerce-subscription' ), $order_id ) );
+			// translators: placeholder order id.
+			yith_subscription_log( sprintf( __( 'Sorry, no subscription is found for this order: %s', 'yith-woocommerce-subscription' ), $order_id ), 'subscription_payment' );
+
+			return false;
+		}
+
+		if ( $this->lock_order_payment( $renewal_order ) || $renewal_order->has_status( array( 'processing', 'completed' ) ) ) {
+			return false;
+		}
+
+		foreach ( $subscriptions as $subscription_id ) {
+
+			$subscription   = ywsbs_get_subscription( $subscription_id );
+			$has_source     = $subscription->get( '_stripe_source_id' );
+			$has_customer   = $subscription->get( '_stripe_customer_id' );
+			$previous_error = false;
+
+			if ( 'yes' !== $is_a_renew || empty( $has_source ) || empty( $has_customer ) ) {
+				yith_subscription_log( 'Cannot pay order for the subscription ' . $subscription->id . ' stripe_customer_id=' . $has_customer . ' stripe_source_id=' . $has_source, 'subscription_payment' );
+				ywsbs_register_failed_payment( $renewal_order, __( 'Error: Stripe customer and source info are missing.', 'yith-woocommerce-subscription' ) );
+
+				return false;
+			}
+
+			$amount = $renewal_order->get_total();
+			if ( $amount <= 0 ) {
+				$renewal_order->payment_complete();
+
+				return true;
+			}
+
+			try {
+
+				if ( $amount * 100 < WC_Stripe_Helper::get_minimum_amount() ) {
+					/* translators: minimum amount */
+					$message = sprintf( __( 'Sorry, the minimum allowed order total is %1$s to use this payment method.', 'woocommerce-gateway-stripe' ), wc_price( WC_Stripe_Helper::get_minimum_amount() / 100 ) );
+					ywsbs_register_failed_payment( $renewal_order, $message );
+
+					return new WP_Error( 'stripe_error', $message );
+				}
+
+				$order_id = $renewal_order->get_id();
+
+				// Get source from order.
+				$prepared_source = $this->prepare_order_source( $renewal_order );
+
+				if ( ! $prepared_source ) {
+					throw new WC_Stripe_Exception( WC_Stripe_Helper::get_localized_messages()['missing'] );
+				}
+
+				$source_object = $prepared_source->source_object;
+
+				if ( ! $prepared_source->customer ) {
+					throw new WC_Stripe_Exception(
+						'Failed to process renewal for order ' . $renewal_order->get_id() . '. Stripe customer id is missing in the order',
+						__( 'Customer not found', 'woocommerce-gateway-stripe' )
+					);
+				}
+
+				WC_Stripe_Logger::log( "Info: Begin processing subscription payment for order {$order_id} for the amount of {$amount}" );
+
+				/*
+				 * If we're doing a retry and source is chargeable, we need to pass
+				 * a different idempotency key and retry for success.
+				 */
+				if ( is_object( $source_object ) && empty( $source_object->error ) && $this->need_update_idempotency_key( $source_object, $previous_error ) ) {
+					add_filter( 'wc_stripe_idempotency_key', array( $this, 'change_idempotency_key' ), 10, 2 );
+				}
+
+				if ( ( $this->is_no_such_source_error( $previous_error ) || $this->is_no_linked_source_error( $previous_error ) ) && apply_filters( 'wc_stripe_use_default_customer_source', true ) ) {
+					// Passing empty source will charge customer default.
+					$prepared_source->source = '';
+				}
+
+				$response                   = $this->create_and_confirm_intent_for_off_session( $renewal_order, $prepared_source, $amount );
+				$is_authentication_required = $this->is_authentication_required_for_payment( $response );
+
+				if ( ! empty( $response->error ) && ! $is_authentication_required ) {
+					$localized_message = __( 'Sorry, we are unable to process your payment at this time. Please retry later.', 'woocommerce-gateway-stripe' );
+					$renewal_order->add_order_note( $localized_message );
+					throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
+				}
+
+				if ( $is_authentication_required ) {
+					do_action( 'wc_gateway_stripe_process_payment_authentication_required', $renewal_order, $response );
+
+					$error_message = __( 'This transaction requires authentication.', 'woocommerce-gateway-stripe' );
+					$renewal_order->add_order_note( $error_message );
+
+					$charge = end( $response->error->payment_intent->charges->data );
+					$id     = $charge->id;
+					$renewal_order->set_transaction_id( $id );
+					/* translators: %s is the charge Id */
+					$renewal_order->update_status( 'failed', sprintf( __( 'Stripe charge awaiting authentication by user: %s.', 'woocommerce-gateway-stripe' ), $id ) );
+					$renewal_order->save();
+				} else {
+					do_action( 'wc_gateway_stripe_process_payment', $response, $renewal_order );
+
+					$latest_charge = $this->get_latest_charge_from_intent( $response );
+					// Use the last charge within the intent or the full response body in case of SEPA.
+					$this->process_response( ( ! empty( $latest_charge ) ) ? $latest_charge : $response, $renewal_order );
+				}
+			} catch ( WC_Stripe_Exception $e ) {
+				WC_Stripe_Logger::log( 'Error: ' . $e->getMessage() );
+				ywsbs_register_failed_payment( $renewal_order, 'Error: ' . $e->getMessage() );
+				do_action( 'wc_gateway_stripe_process_payment_error', $e, $renewal_order );
+			}
+		}
+	}
+
+	/**
+	 * Get payment source from an order.
+	 *
+	 * Not using 2.6 tokens for this part since we need a customer AND a card
+	 * token, and not just one.
+	 *
+	 * @since   3.1.0
+	 * @param WC_Order $order Order.
+	 *
+	 * @return  boolean|object
+	 * @version 4.0.0
+	 */
+	public function prepare_order_source( $order = null ) {
+
+        $subscriptions = ( $order instanceof WC_Order ) ? $order->get_meta( 'subscriptions' ) : array();
+
+        // If order is not set or subscription is empty, fallback to parent method.
+        if ( empty( $subscriptions ) ) {
+            return parent::prepare_order_source( $order );
+        }
+
+		$stripe_customer = new WC_Stripe_Customer();
+		$stripe_source   = false;
+		$token_id        = false;
+		$source_object   = false;
+
+        foreach ( $subscriptions as $subscription_id ) {
+            $subscription       = ywsbs_get_subscription( $subscription_id );
+            $stripe_customer_id = $subscription->get( '_stripe_customer_id' );
+
+            if ( $stripe_customer_id ) {
+                $stripe_customer->set_id( $stripe_customer_id );
+            }
+
+            $source_id = $subscription->get( '_stripe_source_id' );
+            if ( $source_id ) {
+                $stripe_source = $source_id;
+                $source_object = WC_Stripe_API::retrieve( 'sources/' . $source_id );
+
+                if (
+                    (
+                        empty( $source_object ) ||
+                        isset( $source_object->error->code ) && 'resource_missing' === $source_object->error->code ||
+                        isset( $source_object->status ) && 'consumed' === $source_object->status
+                    ) &&
+                    apply_filters( 'ywsbs_wc_stripe_get_alternative_sources', true ) ) {
+                    /**
+                     * If the source status is "Consumed" this means that the customer has removed it from its account.
+                     * So we search for the default source ID.
+                     * If this ID is empty, this means that the customer has no credit card saved on the account so the payment will fail.
+                     */
+
+                    // Retrieve the available PaymentMethods from the customer
+                    $customer       = WC_Stripe_API::retrieve( "payment_methods?customer=$stripe_customer_id" );
+                    $default_source = '';
+                    if ( ! empty( $customer->data ) && is_array( $customer->data ) ) {
+                        // Iterate over the PaymentMethods and take the first one.
+                        foreach ( $customer->data as $payment_method ) {
+                            if ( ! empty( $payment_method->id ) ) {
+                                $default_source = $payment_method->id;
+                                break;
+                            }
+                        }
+                    }
+
+                    if ( $default_source ) {
+                        $stripe_source = $default_source;
+                        $source_object = WC_Stripe_API::retrieve( 'sources/' . $default_source );
+                    } else {
+                        return false;
+                    }
+                }
+            } elseif ( apply_filters( 'wc_stripe_use_default_customer_source', true ) ) {
+                /*
+                * We can attempt to charge the customer's default source
+                * by sending empty source id.
+                */
+                $stripe_source = '';
+            }
+        }
+
+        return (object) array(
+            'token_id'      => $token_id,
+            'customer'      => $stripe_customer ? $stripe_customer->get_id() : false,
+            'source'        => $stripe_source,
+            'source_object' => $source_object,
+        );
+	}
+
+	/**
+	 * Returns the list of enabled payment method types for UPE.
+	 *
+	 * @return string[]
+	 */
+	public function get_upe_enabled_payment_method_ids( $force_refresh = false ) {
+		return array( 'card' );
+	}
+
+	/**
+	 * Locks an order for payment intent processing for 5 minutes.
+	 *
+	 * @since 4.2
+	 * @param WC_Order $order  The order that is being paid.
+	 * @param stdClass $intent The intent that is being processed.
+	 * @return bool            A flag that indicates whether the order is already locked.
+	 */
+	public function lock_order_payment( $order, $intent = null ) {
+		static $processing_orders;
+
+		is_null( $processing_orders ) && $processing_orders = array();
+
+		$order_id = $order->get_id();
+		if ( in_array( $order_id, $processing_orders, true ) ) {
+			return true;
+		}
+
+		$processing_orders[] = $order_id;
+		return parent::lock_order_payment( $order, $intent );
+	}
+}

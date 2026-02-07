@@ -111,7 +111,6 @@ hostforge-for-woocommerce/
 │   ├── auto-provisioning/
 │   ├── domain-manager/
 │   ├── support-desk/
-│   ├── affiliates/
 │   ├── security/
 │   ├── notifications/
 │   └── reports/
@@ -238,9 +237,17 @@ Namespace `hostforge/v1`. Health check: `GET /wp-json/hostforge/v1/status`. Abst
 
 Interface `HF_Subscription_Adapter` with methods: `is_available()`, `create_subscription()`, `cancel_subscription()`, `suspend_subscription()`, `reactivate_subscription()`, `get_status()`, `get_next_payment_date()`, `get_subscriptions_by_user()`.
 
-Implementations: `HF_WCS_Adapter` (WooCommerce Subscriptions), `HF_YITH_Adapter` (YITH), `HF_Advanced_Subs_Adapter` (Advanced Subs).
+Implementations: `HF_WCS_Adapter` (WooCommerce Subscriptions), `HF_YITH_Adapter` (YITH), `HF_Advanced_Subs_Adapter` (Advanced Subs), `HF_SUMO_Adapter` (SUMO Subscriptions — PENDING).
 
 Factory auto-detects active plugin. Admin notice if none active.
+
+> **RESEARCH NOTE (Phase 8)**: SUMO Subscriptions (v15.7.0) documentation is available in `docs/Plugins suscripciones/sumosubscriptions/`. Key integration points:
+> - **Detection**: `class_exists('SUMOSubscriptions')` or `SUMOSubscriptions::instance()`
+> - **CPT**: `sumo_subscription` with post meta (`sumo_get_status`, `sumo_get_parent_order_id`)
+> - **Class**: `SUMOSubs_Subscription($id)` + `SUMOSubs_Subscription_Factory`
+> - **Lifecycle hooks**: `sumosubscriptions_active_subscription($id, $parent_order_id)`, `sumosubscriptions_pause_subscription`, `sumosubscriptions_cancel_subscription`, `sumosubscriptions_renewal_payment_complete($post_id, $order_id)`
+> - **Status mapping**: Active→active, Paused/Suspended→on-hold, Cancelled/Pending_Cancellation→cancelled, Overdue→on-hold, Trial→active, Pending→pending
+> - **Duration period**: `get_duration_period()` returns 'D', 'W', 'M', 'Y'
 
 ### 2.2-2.8 Product Types
 
@@ -540,15 +547,7 @@ Daily Action Scheduler: domains expiring in X days. Auto-renew → create WC ord
 
 Each independently activatable.
 
-### 7.1 Affiliates Module (`affiliates`)
-
-Tables: `hf_affiliates` (user_id, status, commission_type/rate, payment_delay, min_withdrawal), `hf_commissions` (affiliate_id, order_id, amount, status), `hf_referrals` (affiliate_id, visitor_ip, referral_code, converted_user_id).
-
-Features: percentage/fixed commissions, one-time/recurring, payment delay, min withdrawal, per-product overrides, cookie tracking (30 days), referral links.
-
-Admin: affiliate list, commissions, payouts, settings. Frontend My Account: stats, links, history, payout requests.
-
-### 7.2 Security Module (`security`)
+### 7.1 Security Module (`security`)
 
 Anti brute-force: `hf_login_attempts` table, block after X attempts, IP allowlist/blocklist.
 Fraud detection: checkout hooks for IP/country/email verification.
@@ -556,7 +555,7 @@ Anti-spam: Turnstile/reCAPTCHA on forms.
 Audit log: `hf_activity_log` table.
 Email verification for new accounts.
 
-### 7.3 Notifications Module (`notifications`)
+### 7.2 Notifications Module (`notifications`)
 
 WC_Email subclasses:
 
@@ -578,7 +577,7 @@ Merge tags: `{customer_name}`, `{service_domain}`, `{service_username}`, `{servi
 
 Templates in `templates/emails/`, overrideable via theme.
 
-### 7.4 Reports Module (`reports`)
+### 7.3 Reports Module (`reports`)
 
 Dashboard widgets with Chart.js: MRR, revenue, services by type/status, customers growth, support metrics, domains, server capacity. CSV export. AJAX-loaded chart data via REST endpoints.
 
@@ -586,25 +585,20 @@ Dashboard widgets with Chart.js: MRR, revenue, services by type/status, customer
 
 | ID | Task | Status |
 |----|------|--------|
-| 7.1 | Affiliates: DB tables | `PENDING` |
-| 7.2 | Affiliates: Referral tracking (cookie) | `PENDING` |
-| 7.3 | Affiliates: Commission calculation | `PENDING` |
-| 7.4 | Affiliates: Admin screens | `PENDING` |
-| 7.5 | Affiliates: Frontend My Account panel | `PENDING` |
-| 7.6 | Security: Anti brute-force | `PENDING` |
-| 7.7 | Security: IP allowlist/blocklist | `PENDING` |
-| 7.8 | Security: Fraud detection hooks | `PENDING` |
-| 7.9 | Security: Turnstile/reCAPTCHA | `PENDING` |
-| 7.10 | Security: Audit log | `PENDING` |
-| 7.11 | Notifications: All WC_Email subclasses | `PENDING` |
-| 7.12 | Notifications: Merge tags system | `PENDING` |
-| 7.13 | Notifications: Email templates (HTML + plain) | `PENDING` |
-| 7.14 | Notifications: Admin enable/disable settings | `PENDING` |
-| 7.15 | Reports: Dashboard with Chart.js | `PENDING` |
-| 7.16 | Reports: Revenue (MRR, monthly) | `PENDING` |
-| 7.17 | Reports: Services and support | `PENDING` |
-| 7.18 | Reports: CSV export | `PENDING` |
-| 7.19 | Reports: REST endpoints for chart data | `PENDING` |
+| 7.1 | Security: Anti brute-force | `DONE` |
+| 7.2 | Security: IP allowlist/blocklist | `DONE` |
+| 7.3 | Security: Fraud detection hooks | `DONE` |
+| 7.4 | Security: Turnstile/reCAPTCHA | `DONE` |
+| 7.5 | Security: Audit log | `DONE` |
+| 7.6 | Notifications: All WC_Email subclasses | `DONE` |
+| 7.7 | Notifications: Merge tags system | `DONE` |
+| 7.8 | Notifications: Email templates (HTML + plain) | `DONE` |
+| 7.9 | Notifications: Admin enable/disable settings | `DONE` |
+| 7.10 | Reports: Dashboard with Chart.js | `DONE` |
+| 7.11 | Reports: Revenue (MRR, monthly) | `DONE` |
+| 7.12 | Reports: Services and support | `DONE` |
+| 7.13 | Reports: CSV export | `DONE` |
+| 7.14 | Reports: REST endpoints for chart data | `DONE` |
 
 ---
 
@@ -641,7 +635,7 @@ For every PHP file verify:
 - WC 8.0+
 - HPOS enabled
 - Block checkout
-- All 3 subscription adapters
+- All 4 subscription adapters (WCS, YITH, Advanced Subs, SUMO)
 - Popular themes (Storefront, Astra, GeneratePress)
 
 ### 8.4 Code Quality and Documentation
@@ -673,12 +667,13 @@ For every PHP file verify:
 | 8.12 | Test: PHP 8.0-8.3 | `PENDING` |
 | 8.13 | Test: HPOS | `PENDING` |
 | 8.14 | Test: Block checkout | `PENDING` |
-| 8.15 | Test: All subscription adapters | `PENDING` |
-| 8.16 | PHPDoc complete | `PENDING` |
-| 8.17 | README.md + CHANGELOG.md | `PENDING` |
-| 8.18 | Hooks reference document | `PENDING` |
-| 8.19 | Developer guide | `PENDING` |
-| 8.20 | hostforge.pot generated | `PENDING` |
+| 8.15 | SUMO Subscriptions adapter (HF_SUMO_Adapter) | `PENDING` |
+| 8.16 | Test: All 4 subscription adapters (WCS, YITH, Advanced Subs, SUMO) | `PENDING` |
+| 8.17 | PHPDoc complete | `PENDING` |
+| 8.18 | README.md + CHANGELOG.md | `PENDING` |
+| 8.19 | Hooks reference document | `PENDING` |
+| 8.20 | Developer guide | `PENDING` |
+| 8.21 | hostforge.pot generated | `PENDING` |
 
 ---
 
@@ -738,39 +733,6 @@ All tables use `$wpdb->get_charset_collate()` and `dbDelta()`.
   priority      INT UNSIGNED    NULL
   created_at    DATETIME        NOT NULL
   updated_at    DATETIME        NOT NULL
-```
-
-### Affiliates
-
-```
-{prefix}hf_affiliates
-  id              BIGINT UNSIGNED AUTO_INCREMENT PK
-  user_id         BIGINT UNSIGNED NOT NULL  UNIQUE
-  status          VARCHAR(20)     DEFAULT 'pending'
-  commission_type VARCHAR(20)     DEFAULT 'percentage'
-  commission_rate DECIMAL(10,2)   DEFAULT 0.00
-  payment_delay_days INT UNSIGNED DEFAULT 30
-  min_withdrawal  DECIMAL(10,2)   DEFAULT 50.00
-  referral_code   VARCHAR(50)     NOT NULL  UNIQUE
-  created_at      DATETIME        NOT NULL
-
-{prefix}hf_commissions
-  id            BIGINT UNSIGNED AUTO_INCREMENT PK
-  affiliate_id  BIGINT UNSIGNED NOT NULL  INDEX
-  order_id      BIGINT UNSIGNED NOT NULL
-  amount        DECIMAL(10,2)   NOT NULL
-  status        VARCHAR(20)     DEFAULT 'pending' INDEX
-  created_at    DATETIME        NOT NULL
-  paid_at       DATETIME
-
-{prefix}hf_referrals
-  id                BIGINT UNSIGNED AUTO_INCREMENT PK
-  affiliate_id      BIGINT UNSIGNED NOT NULL  INDEX
-  visitor_ip        VARCHAR(45)
-  landing_url       TEXT
-  referral_code     VARCHAR(50)     NOT NULL
-  converted_user_id BIGINT UNSIGNED NULL
-  created_at        DATETIME        NOT NULL  INDEX
 ```
 
 ### Security
@@ -851,14 +813,6 @@ do_action( 'hostforge_server_connection_failed', int $server_id, string $error )
 apply_filters( 'hostforge_select_server', int $server_id, int $product_id, string $group );
 ```
 
-### Affiliates
-
-```php
-do_action( 'hostforge_commission_created', int $commission_id, int $affiliate_id, int $order_id );
-do_action( 'hostforge_commission_paid', int $commission_id, int $affiliate_id );
-apply_filters( 'hostforge_commission_amount', float $amount, int $order_id, int $affiliate_id );
-```
-
 ---
 
 ## Appendix C: WordPress Security Checklist
@@ -892,10 +846,10 @@ Verify for EVERY PHP file:
 | 4 | Auto Provisioning | Phases 2, 3 | **HIGH** |
 | 5 | Support Desk (Tickets + KB) | Phase 1 | **MEDIUM** |
 | 6 | Domain Manager | Phases 1, 2 | **MEDIUM** |
-| 7 | Additional Modules (4) | Phases 1-6 | **NORMAL** |
+| 7 | Additional Modules (3) | Phases 1-6 | **NORMAL** |
 | 8 | Testing, Security, Polish | All | **CRITICAL** |
 
-**Total: ~115 tasks across 8 phases.** Progress tracking enables resuming at any point after a chat switch.
+**Total: ~154 tasks across 8 phases.** Progress tracking enables resuming at any point after a chat switch.
 
 ---
 

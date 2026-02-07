@@ -1,0 +1,41 @@
+#sumosubscription_details .handlediv{display:none}
+#sumosubscription_details .hndle{display:none}
+#sumosubscription_trial_info .handlediv{display:block}
+#sumosubscription_trial_info .hndle{display:block}
+#sumosubscription_trial_info{border: 1px solid #e5e5e5 !important;width: 100% !important;height: auto !important;float:  left !important;margin-top: 10px !important;margin-bottom: 0px !important;background-color: #f4f3f2 !important;}
+#sumosubscription_trial_info .hndle{padding: 8px 12px !important;font-weight: 600 !important;font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif !important;line-height: 1.4 !important;font-size: 14px !important;}
+
+#sumosubscription_cancel_methods .sumo_submit_subscription_cancel_request{margin:8px; margin-left:0px;}
+#sumosubscription_cancel_methods #sumo_subscription_cancel_scheduled_on{margin:8px; margin-left:0px;}
+
+.sumo_subscription_related_orders table {width:100%;border-collapse: collapse;border: 1px solid #ccc;}
+.sumo_subscription_related_orders table thead {background: #f1f1f1;}
+.sumo_subscription_related_orders table th,
+.sumo_subscription_related_orders table td {padding: 10px;text-align: left;border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+
+.sumosubs-duration-every{float:left; font-size: 15px !important;line-height: 40px !important;}
+.sumosubs-duration-interval{width: 70px !important;margin: 3px !important;}
+.sumosubs-duration-period{width: 97px !important;margin: 3px !important;}
+.sumosubs-duration-length{width: 150px !important;margin: 3px !important;}
+.sumosubs-trial-duration-interval{width: 90px !important;margin: 3px !important;}
+.sumosubs-trial-duration-period{width: 115px !important;margin: 3px !important;}
+.sumosubs-input-number{width: 215px !important;margin: 3px !important;}
+.sumosubs-input-price{width: 215px !important;margin: 3px !important;}
+.sumosubs-select{width: 215px !important;margin: 3px !important;}
+
+#sumosubscription_log_information ul.subscription_notes{padding: 2px 0 0;}
+#sumosubscription_log_information ul.subscription_notes li {padding: 0 10px;}
+#sumosubscription_log_information ul.subscription_notes li .note_content{padding: 10px;position: relative;}
+#sumosubscription_log_information ul.subscription_notes li .note_content p{margin: 0;padding: 0;word-wrap: break-word;color:#fff;}
+#sumosubscription_log_information ul.subscription_notes li a.delete_note {color: #a00;}
+#sumosubscription_log_information ul.subscription_notes li p.meta {color: #999;font-size: 11px;margin: 0;padding: 10px;}
+#sumosubscription_log_information ul.subscription_notes li .note_content::after {border-style: solid;border-width: 10px 10px 0 0;bottom: -10px;content: "";display: block;height: 0;left: 20px;position: absolute;width: 0;}
+#sumosubscription_log_information ul.subscription_notes .note_content::after {border-color: #d7cad2 transparent;}
+#sumosubscription_log_information .add_subscription_note{border-top: 1px solid #ddd;padding: 10px 10px 0;}
+#sumosubscription_log_information .add_subscription_note h4 {margin-top: 5px !important;}
+#sumosubscription_log_information .add_subscription_note #add_subscription_note{height: 50px;width: 100%;}
+
+.sumo_subscription_fields_wrapper{width: 100%;float: left;margin: 0.5em 0;} 
+.sumo_subscription_fields_wrapper label{float:left;width:150px;} 
+.sumo_subscription_fields_wrapper select{width:50%;margin-left:0px;margin-right:0px;} 
+.sumo_subscription_fields_wrapper input[type="text"]{width:50%;margin-left:0px;margin-right:0px;}

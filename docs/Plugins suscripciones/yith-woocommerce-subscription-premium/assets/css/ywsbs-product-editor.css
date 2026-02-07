@@ -1,0 +1,109 @@
+#woocommerce-product-data ul.wc-tabs li.ywsbs-sub-tab a {
+	padding: 7px 7px 7px 30px
+}
+
+#woocommerce-product-data ul.wc-tabs li.subscription-settings_tab.ywsbs-has-sub-tab a,
+#woocommerce-product-data ul.wc-tabs li.ywsbs-sub-tab a {
+	border-bottom: 0;
+}
+
+#woocommerce-product-data ul.wc-tabs li.subscription-settings-sub_tab a::before {
+	font-family: Dashicons;
+	content: "\f111";
+}
+
+#woocommerce-product-data ul.wc-tabs li.ywsbs-sub-tab.last-child a {
+	border-bottom: 1px solid #eee;
+}
+
+#woocommerce-product-data ul.wc-tabs li.subscription-settings_tab.ywsbs-has-sub-tab.active a {
+	background-color: #fafafa;
+	color: #2271b1
+}
+
+#woocommerce-product-data ul.wc-tabs li.subscription-settings_tab.ywsbs-has-sub-tab.active + li.ywsbs-sub-tab a {
+	background-color: #eee;
+	color: #555
+}
+
+.ywsbs-product-metabox-options-panel {
+	padding: 20px;
+	border-bottom: 0 !important;
+	border-top: 0 !important;
+}
+
+.ywsbs-product-metabox-options-panel.ywsbs_subscription_variation_products {
+	padding: 20px 0;
+	float: left;
+}
+
+.ywsbs-product-metabox-options-panel .ywsbs-title-section {
+	margin: 0 0 30px;
+	font-size: 1.2em;
+}
+
+.ywsbs-product-metabox-options-panel .ywsbs-description-section {
+	margin: -25px 0 35px;
+	padding: 0;
+}
+
+.ywsbs-product-metabox-options-panel.ywsbs_subscription_variation_products h3 {
+	padding: 0 !important;
+	margin: 0 0 30px !important;
+}
+
+.ywsbs-product-metabox-options-panel label {
+	float: none;
+	width: auto;
+	margin: 0;
+}
+
+.ywsbs-product-metabox-options-panel input,
+.ywsbs-product-metabox-options-panel select {
+	float: none;
+	margin: 0;
+}
+
+.ywsbs-product-metabox-options-panel .select2-container {
+	float: none;
+}
+
+.ywsbs-product-metabox-options-panel .ywsbs-short {
+	width: 100px !important;
+}
+
+.ywsbs-product-metabox-options-panel .ywsbs-product-metabox-field {
+	display: flex;
+	position: relative;
+	margin: 0 0 35px;
+	align-items: flex-start;
+	gap: 15px;
+}
+
+.ywsbs-product-metabox-options-panel .ywsbs-product-metabox-field > label {
+	flex: 0 0 180px;
+}
+
+.ywsbs-product-metabox-options-panel .ywsbs-product-metabox-field-container {
+	flex: 0 1 100%;
+}
+
+.ywsbs-product-metabox-options-panel .ywsbs-product-metabox-field-content {
+	display: flex;
+	width: 100%;
+	gap: 10px;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: 0 0 10px;
+}
+
+.ywsbs-product-metabox-options-panel .ywsbs-product-metabox-field-description {
+	font-size: 0.9em;
+	margin: 10px 0 0;
+}
+
+@media (max-width: 900px) {
+	.ywsbs-product-metabox-options-panel .ywsbs-product-metabox-field {
+		flex-wrap: wrap;
+	}
+}
