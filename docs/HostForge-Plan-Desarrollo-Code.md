@@ -72,7 +72,7 @@ DB tables are created on first activation and NOT deleted on deactivation (only 
 
 ```
 hostforge-for-woocommerce/
-├── hostforge.php                         # Main plugin file
+├── hostforge-for-woocommerce.php          # Main plugin file
 ├── uninstall.php                         # Cleanup on uninstall
 ├── composer.json                         # PSR-4 autoloading config
 ├── assets/
@@ -148,7 +148,7 @@ Absolute priority. No module works without this.
 
 ### 1.1 Main Plugin File
 
-`hostforge.php` with constants: `HOSTFORGE_VERSION`, `HOSTFORGE_PLUGIN_FILE`, `HOSTFORGE_PLUGIN_DIR`, `HOSTFORGE_PLUGIN_URL`, `HOSTFORGE_PLUGIN_BASENAME`, `HOSTFORGE_MIN_PHP` (8.0), `HOSTFORGE_MIN_WP` (6.0), `HOSTFORGE_MIN_WC` (8.0).
+`hostforge-for-woocommerce.php` with constants: `HOSTFORGE_VERSION`, `HOSTFORGE_PLUGIN_FILE`, `HOSTFORGE_PLUGIN_DIR`, `HOSTFORGE_PLUGIN_URL`, `HOSTFORGE_PLUGIN_BASENAME`, `HOSTFORGE_MIN_PHP` (8.0), `HOSTFORGE_MIN_WP` (6.0), `HOSTFORGE_MIN_WC` (8.0).
 
 `defined('ABSPATH') || exit;` on line 1. Load on `plugins_loaded` priority 10. HPOS declaration via `before_woocommerce_init`. Admin notice if WC missing.
 
@@ -515,24 +515,24 @@ Daily Action Scheduler: domains expiring in X days. Auto-renew → create WC ord
 
 | ID | Task | Status |
 |----|------|--------|
-| 6.1 | HF_Registrar interface | `PENDING` |
-| 6.2 | CPT hf_domain with meta | `PENDING` |
-| 6.3 | DNS records table | `PENDING` |
-| 6.4 | First registrar implementation | `PENDING` |
-| 6.5 | Domain availability search (AJAX) | `PENDING` |
-| 6.6 | Checkout: domain search widget | `PENDING` |
-| 6.7 | Checkout: register/transfer/own flow | `PENDING` |
-| 6.8 | Auto registration on order complete | `PENDING` |
-| 6.9 | Admin: TLD pricing table | `PENDING` |
-| 6.10 | Admin: Registrar configuration | `PENDING` |
-| 6.11 | Admin: Domain list | `PENDING` |
-| 6.12 | Admin: Domain detail with DNS | `PENDING` |
-| 6.13 | Frontend: domains endpoint | `PENDING` |
-| 6.14 | Frontend: Domain detail | `PENDING` |
-| 6.15 | Action Scheduler: expiry check, auto-renew | `PENDING` |
-| 6.16 | Email: Domain registered | `PENDING` |
-| 6.17 | Email: Domain expiry reminder | `PENDING` |
-| 6.18 | Dashboard widget: domains summary | `PENDING` |
+| 6.1 | HF_Registrar interface | `DONE` |
+| 6.2 | CPT hf_domain with meta | `DONE` |
+| 6.3 | DNS records table | `DONE` |
+| 6.4 | First registrar implementation (Namecheap) | `DONE` |
+| 6.5 | Domain availability search (AJAX) | `DONE` |
+| 6.6 | Checkout: domain search widget | `DONE` |
+| 6.7 | Checkout: register/transfer/own flow | `DONE` |
+| 6.8 | Auto registration on order complete | `DONE` |
+| 6.9 | Admin: TLD pricing table | `DONE` |
+| 6.10 | Admin: Registrar configuration | `DONE` |
+| 6.11 | Admin: Domain list | `DONE` |
+| 6.12 | Admin: Domain detail with DNS | `DONE` |
+| 6.13 | Frontend: domains endpoint | `DONE` |
+| 6.14 | Frontend: Domain detail | `DONE` |
+| 6.15 | Action Scheduler: expiry check, auto-renew | `DONE` |
+| 6.16 | Email: Domain registered | `DONE` |
+| 6.17 | Email: Domain expiry reminder | `DONE` |
+| 6.18 | Dashboard widget: domains summary | `DONE` |
 
 ---
 

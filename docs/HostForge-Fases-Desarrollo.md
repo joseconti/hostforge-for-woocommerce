@@ -89,7 +89,7 @@ FASE 8: Testing, Seguridad y Polish ←───── TODAS LAS FASES ─┘
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 1.1 | Archivo principal del plugin con constantes, cabeceras y verificación de dependencias | `DONE` | hostforge.php — Constantes, HPOS declaration, admin notices, action_links |
+| 1.1 | Archivo principal del plugin con constantes, cabeceras y verificación de dependencias | `DONE` | hostforge-for-woocommerce.php — Constantes, HPOS declaration, admin notices, action_links |
 | 1.2 | Autoloader PSR-4 | `DONE` | class-hf-autoloader.php — HostForge\\ → includes/, modules → modules/{slug}/ |
 | 1.3 | Clase principal singleton con init() | `DONE` | class-hostforge.php — instance(), helpers, textdomain, module manager |
 | 1.4 | Module Manager (registrar, activar, desactivar, cargar) | `DONE` | class-hf-module-manager.php — AJAX toggles, dependencias, cascada |
@@ -101,12 +101,12 @@ FASE 8: Testing, Seguridad y Polish ←───── TODAS LAS FASES ─┘
 | 1.10 | Settings: página General | `DONE` | class-hf-settings.php + settings.php template |
 | 1.11 | Settings: pantalla de Módulos con toggles AJAX | `DONE` | modules.php template + admin.js AJAX |
 | 1.12 | REST API base: namespace, health-check, controlador abstracto | `DONE` | abstract-hf-rest-controller.php + class-hf-rest-status-controller.php |
-| 1.13 | Declaración de compatibilidad HPOS | `DONE` | En hostforge.php via before_woocommerce_init |
+| 1.13 | Declaración de compatibilidad HPOS | `DONE` | En hostforge-for-woocommerce.php via before_woocommerce_init |
 | 1.14 | Dependency checker | `DONE` | class-hf-dependency-checker.php — PHP, WP, WC, subs plugin |
 | 1.15 | CSS/JS base admin con carga condicional | `DONE` | admin.css + admin.js — Solo en páginas hostforge |
 | 1.16 | Página Dashboard con registro de widgets | `DONE` | dashboard.php template + hostforge_dashboard_widgets hook |
 | 1.17 | Configuración de generación de archivo POT | `DONE` | Textdomain: hostforge, domain-path /languages |
-| 1.18 | plugin_action_links con enlace a Settings | `DONE` | En hostforge.php — hostforge_plugin_action_links() |
+| 1.18 | plugin_action_links con enlace a Settings | `DONE` | En hostforge-for-woocommerce.php — hostforge_plugin_action_links() |
 
 ---
 
@@ -294,24 +294,24 @@ FASE 8: Testing, Seguridad y Polish ←───── TODAS LAS FASES ─┘
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 6.1 | Interfaz HF_Registrar | `PENDING` | check_availability, register, transfer, renew, DNS, WHOIS, nameservers |
-| 6.2 | CPT hf_domain con meta | `PENDING` | domain_name, registrar, expiry_date, auto_renew, lock_status |
-| 6.3 | Tabla de registros DNS | `PENDING` | hf_dns_records: type, name, value, ttl, priority |
-| 6.4 | Primera implementación de registrar | `PENDING` | OpenProvider o Namecheap |
-| 6.5 | Búsqueda de disponibilidad de dominio (AJAX) | `PENDING` | check_availability + check_availability_bulk |
-| 6.6 | Checkout: widget de búsqueda de dominio | `PENDING` | Integrado en el checkout |
-| 6.7 | Checkout: flujo registrar/transferir/usar propio | `PENDING` | Tres opciones con campos específicos |
-| 6.8 | Auto-registro al completar pedido | `PENDING` | Hook woocommerce_order_status_completed |
-| 6.9 | Admin: Tabla de precios TLD | `PENDING` | Precios por extensión |
-| 6.10 | Admin: Configuración de registrar | `PENDING` | Credenciales y settings del registrador |
-| 6.11 | Admin: Lista de dominios | `PENDING` | WP_List_Table |
-| 6.12 | Admin: Detalle del dominio con DNS | `PENDING` | Gestión completa DNS |
-| 6.13 | Frontend: endpoint domains | `PENDING` | WooCommerce My Account |
-| 6.14 | Frontend: Detalle del dominio | `PENDING` | DNS, nameservers, WHOIS, lock, EPP, auto-renew |
-| 6.15 | Action Scheduler: verificación expiración, auto-renovación | `PENDING` | Diaria: crear pedido WC o enviar email aviso |
-| 6.16 | Email: Dominio registrado | `PENDING` | Confirmación al cliente |
-| 6.17 | Email: Aviso de expiración de dominio | `PENDING` | Recordatorio al cliente |
-| 6.18 | Dashboard widget: resumen de dominios | `PENDING` | Widget en el dashboard de HostForge |
+| 6.1 | Interfaz HF_Registrar | `DONE` | interface-hf-registrar.php (Phase 1) — 18 métodos |
+| 6.2 | CPT hf_domain con meta | `DONE` | class-hf-domain-manager-module.php — CPT hf_domain, 18 meta keys |
+| 6.3 | Tabla de registros DNS | `DONE` | hf_dns_records + hf_tld_pricing + hf_domain_queue (3 tablas) via dbDelta |
+| 6.4 | Primera implementación de registrar | `DONE` | class-hf-namecheap-registrar.php — XML API, sandbox, 18 métodos |
+| 6.5 | Búsqueda de disponibilidad de dominio (AJAX) | `DONE` | HF_Domain_Search — AJAX con rate limiting 10/min/IP |
+| 6.6 | Checkout: widget de búsqueda de dominio | `DONE` | HF_Domain_Checkout — radio register/transfer/own + domain search |
+| 6.7 | Checkout: flujo registrar/transferir/usar propio | `DONE` | Validación, EPP encriptado, order meta HPOS |
+| 6.8 | Auto-registro al completar pedido | `DONE` | HF_Domain_Engine — order hooks + Action Scheduler async |
+| 6.9 | Admin: Tabla de precios TLD | `DONE` | tld-pricing.php — CRUD AJAX, importar TLDs comunes |
+| 6.10 | Admin: Configuración de registrar | `DONE` | registrar-settings.php — credenciales, sandbox, auto-register, NS |
+| 6.11 | Admin: Lista de dominios | `DONE` | HF_Domain_List_Table — status tabs, filtros, búsqueda |
+| 6.12 | Admin: Detalle del dominio con DNS | `DONE` | domain-detail.php — DNS editor, nameservers, WHOIS, acciones |
+| 6.13 | Frontend: endpoint domains | `DONE` | HF_Domain_Frontend — my-domains endpoint, AJAX handlers |
+| 6.14 | Frontend: Detalle del dominio | `DONE` | domain-detail.php — DNS, nameservers, auto-renew, EPP, transfer |
+| 6.15 | Action Scheduler: verificación expiración, auto-renovación | `DONE` | Diaria: hostforge_domain_expiry_check + hostforge_domain_auto_renew |
+| 6.16 | Email: Dominio registrado | `DONE` | templates/emails/domain-registered.php — tabla de detalles |
+| 6.17 | Email: Aviso de expiración de dominio | `DONE` | templates/emails/domain-expiry-reminder.php — auto-renew status |
+| 6.18 | Dashboard widget: resumen de dominios | `DONE` | render_dashboard_widget — active/pending/expiring counts |
 
 ---
 
@@ -439,10 +439,10 @@ Informes y gráficos con Chart.js.
 | 3 | Server Manager (cPanel/Plesk) | ALTA | 20 | 20 | 100% |
 | 4 | Auto Provisioning | ALTA | 24 | 24 | 100% |
 | 5 | Support Desk (Tickets + KB) | MEDIA | 23 | 23 | 100% |
-| 6 | Domain Manager | MEDIA | 18 | 0 | 0% |
+| 6 | Domain Manager | MEDIA | 18 | 18 | 100% |
 | 7 | Módulos Adicionales | NORMAL | 19 | 0 | 0% |
 | 8 | Testing, Seguridad y Polish | CRÍTICA | 20 | 0 | 0% |
-| **TOTAL** | | | **158** | **101** | **64%** |
+| **TOTAL** | | | **158** | **119** | **75%** |
 
 ---
 

@@ -1,0 +1,297 @@
+/**
+ * Domain Manager Frontend Styles.
+ *
+ * @package HostForge
+ */
+
+/* Domain Cards */
+.hf-domain-card {
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.hf-domain-card h3 {
+	margin-top: 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+/* Detail Table */
+.hf-detail-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.hf-detail-table th,
+.hf-detail-table td {
+	padding: 8px 0;
+	border-bottom: 1px solid #f0f0f0;
+	vertical-align: middle;
+}
+
+.hf-detail-table th {
+	text-align: left;
+	font-weight: 600;
+	width: 40%;
+	color: #555;
+}
+
+/* Status Badges */
+.hf-status-badge {
+	display: inline-block;
+	padding: 2px 10px;
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+
+.hf-status-badge--active {
+	background: #dff0d8;
+	color: #3c763d;
+}
+
+.hf-status-badge--pending {
+	background: #fcf8e3;
+	color: #8a6d3b;
+}
+
+.hf-status-badge--expired {
+	background: #f2dede;
+	color: #a94442;
+}
+
+.hf-status-badge--transferred_away,
+.hf-status-badge--cancelled {
+	background: #e8e8e8;
+	color: #666;
+}
+
+/* Badges */
+.hf-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: 600;
+}
+
+.hf-badge--success {
+	background: #dff0d8;
+	color: #3c763d;
+}
+
+.hf-badge--muted {
+	background: #f0f0f0;
+	color: #999;
+}
+
+/* Toggle Switch */
+.hf-toggle {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 22px;
+}
+
+.hf-toggle input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.hf-toggle__slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	border-radius: 22px;
+	transition: 0.3s;
+}
+
+.hf-toggle__slider::before {
+	content: "";
+	position: absolute;
+	height: 16px;
+	width: 16px;
+	left: 3px;
+	bottom: 3px;
+	background-color: #fff;
+	border-radius: 50%;
+	transition: 0.3s;
+}
+
+.hf-toggle input:checked + .hf-toggle__slider {
+	background-color: #2271b1;
+}
+
+.hf-toggle input:checked + .hf-toggle__slider::before {
+	transform: translateX(18px);
+}
+
+/* DNS Value */
+.hf-dns-value {
+	max-width: 200px;
+	word-break: break-all;
+	font-size: 13px;
+}
+
+/* DNS Inline Form */
+.hf-dns-inline-form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.hf-dns-inline-form select {
+	min-width: 80px;
+}
+
+.hf-dns-inline-form .hf-dns-host,
+.hf-dns-inline-form .hf-dns-value-input {
+	width: 150px;
+}
+
+.hf-dns-inline-form .hf-dns-ttl {
+	width: 80px;
+}
+
+/* Nameservers Form */
+.hf-nameservers-form p {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.hf-nameservers-form label {
+	font-weight: 600;
+	min-width: 40px;
+}
+
+.hf-nameservers-form input {
+	flex: 1;
+}
+
+/* Frontend Notice */
+.hf-frontend-notice {
+	padding: 10px 15px;
+	border-radius: 4px;
+	margin-top: 10px;
+}
+
+.hf-frontend-notice--success {
+	background: #dff0d8;
+	color: #3c763d;
+}
+
+.hf-frontend-notice--error {
+	background: #f2dede;
+	color: #a94442;
+}
+
+/* EPP Result */
+.hf-epp-result {
+	margin-top: 10px;
+	padding: 10px 15px;
+	background: #f9f9f9;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+}
+
+/* Domain Search (Checkout) */
+.hf-domain-checkout {
+	margin-bottom: 20px;
+	padding: 20px;
+	background: #f9f9f9;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+}
+
+.hf-domain-checkout h3 {
+	margin-top: 0;
+}
+
+.hf-radio-label {
+	display: flex !important;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	padding: 5px 0;
+}
+
+.hf-domain-search-row {
+	display: flex;
+	gap: 8px;
+}
+
+.hf-domain-search-row input {
+	flex: 1;
+}
+
+/* Domain Search Results */
+.hf-domain-search-results {
+	margin-top: 15px;
+}
+
+.hf-domain-result {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 15px;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+	margin-bottom: 8px;
+	background: #fff;
+}
+
+.hf-domain-result--available {
+	border-color: #dff0d8;
+}
+
+.hf-domain-result--unavailable {
+	border-color: #f2dede;
+	opacity: 0.6;
+}
+
+.hf-domain-result--selected {
+	border-color: #2271b1;
+	background: #f0f6fc;
+}
+
+.hf-domain-result__name {
+	font-weight: 600;
+}
+
+.hf-domain-result__price {
+	color: #3c763d;
+	font-weight: 600;
+}
+
+.hf-domain-result__status {
+	font-size: 12px;
+	padding: 2px 8px;
+	border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+	.hf-dns-inline-form {
+		flex-direction: column;
+	}
+
+	.hf-dns-inline-form select,
+	.hf-dns-inline-form input {
+		width: 100%;
+	}
+
+	.hf-domain-search-row {
+		flex-direction: column;
+	}
+}
