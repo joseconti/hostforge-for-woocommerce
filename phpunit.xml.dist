@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<phpunit
+	bootstrap="tests/bootstrap.php"
+	backupGlobals="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	beStrictAboutTestsThatDoNotTestAnything="true"
+	beStrictAboutOutputDuringTests="true"
+>
+	<testsuites>
+		<testsuite name="unit">
+			<directory suffix="Test.php">tests/phpunit/unit</directory>
+		</testsuite>
+		<testsuite name="integration">
+			<directory suffix="Test.php">tests/phpunit/integration</directory>
+		</testsuite>
+		<testsuite name="security">
+			<directory suffix="Test.php">tests/phpunit/security</directory>
+		</testsuite>
+	</testsuites>
+
+	<coverage>
+		<include>
+			<directory suffix=".php">includes</directory>
+			<directory suffix=".php">modules</directory>
+		</include>
+		<exclude>
+			<directory suffix=".php">includes/libraries</directory>
+			<directory suffix=".php">tests</directory>
+		</exclude>
+	</coverage>
+
+	<php>
+		<env name="WP_PHPUNIT__TESTS_CONFIG" value="tests/wp-tests-config.php"/>
+		<const name="HOSTFORGE_TESTING" value="true"/>
+	</php>
+</phpunit>

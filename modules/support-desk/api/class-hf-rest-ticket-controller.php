@@ -25,7 +25,7 @@ class HF_REST_Ticket_Controller extends HF_REST_Controller {
 	 *
 	 * @var string
 	 */
-	protected string $rest_base = 'tickets';
+	protected $rest_base = 'tickets';
 
 	/**
 	 * Register routes.

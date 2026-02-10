@@ -57,7 +57,7 @@ class HF_Security_Admin {
 	 */
 	public function add_menu_pages(): void {
 		add_submenu_page(
-			'hostforge',
+			'hostforge-dashboard',
 			__( 'Security', 'hostforge' ),
 			__( 'Security', 'hostforge' ),
 			'manage_hostforge',

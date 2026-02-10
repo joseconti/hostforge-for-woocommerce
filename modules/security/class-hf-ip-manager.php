@@ -192,6 +192,16 @@ class HF_IP_Manager {
 
 		$table = $wpdb->prefix . 'hf_ip_blocks';
 
+		// Bail if the table doesn't exist yet (before activation).
+		static $table_exists = null;
+		if ( null === $table_exists ) {
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$table_exists = (bool) $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) );
+		}
+		if ( ! $table_exists ) {
+			return false;
+		}
+
 		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name.
 		$block = $wpdb->get_row(
 			$wpdb->prepare(

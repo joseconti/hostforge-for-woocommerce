@@ -108,7 +108,7 @@ class HF_Support_Desk_Module extends HF_Module {
 		flush_rewrite_rules();
 
 		// Schedule auto-close check daily.
-		if ( function_exists( 'as_has_scheduled_action' ) ) {
+		if ( function_exists( 'as_has_scheduled_action' ) && did_action( 'action_scheduler_init' ) ) {
 			if ( ! as_has_scheduled_action( 'hostforge_auto_close_tickets' ) ) {
 				as_schedule_recurring_action(
 					time() + 300,
@@ -339,6 +339,11 @@ class HF_Support_Desk_Module extends HF_Module {
 	 */
 	public function register_scheduled_actions(): void {
 		if ( ! function_exists( 'as_has_scheduled_action' ) ) {
+			return;
+		}
+
+		if ( ! did_action( 'action_scheduler_init' ) ) {
+			add_action( 'action_scheduler_init', array( $this, 'register_scheduled_actions' ) );
 			return;
 		}
 

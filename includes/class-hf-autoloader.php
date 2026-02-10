@@ -51,9 +51,14 @@ spl_autoload_register(
 					) . '/';
 				}
 
-				$file = HOSTFORGE_PLUGIN_DIR . 'modules/' . $module_name . '/' . $sub_path . hostforge_class_to_file( $class_name );
+				$base_dir = HOSTFORGE_PLUGIN_DIR . 'modules/' . $module_name . '/' . $sub_path;
+				$file     = $base_dir . hostforge_class_to_file( $class_name );
 
-				if ( file_exists( $file ) ) {
+				if ( ! file_exists( $file ) ) {
+					$file = hostforge_find_class_file( $base_dir, $class_name );
+				}
+
+				if ( $file && file_exists( $file ) ) {
 					require_once $file;
 				}
 			}
@@ -85,9 +90,14 @@ spl_autoload_register(
 			$sub_path = implode( '/', $mapped ) . '/';
 		}
 
-		$file = HOSTFORGE_PLUGIN_DIR . 'includes/' . $sub_path . hostforge_class_to_file( $class_name );
+		$base_dir = HOSTFORGE_PLUGIN_DIR . 'includes/' . $sub_path;
+		$file     = $base_dir . hostforge_class_to_file( $class_name );
 
-		if ( file_exists( $file ) ) {
+		if ( ! file_exists( $file ) ) {
+			$file = hostforge_find_class_file( $base_dir, $class_name );
+		}
+
+		if ( $file && file_exists( $file ) ) {
 			require_once $file;
 		}
 	}
@@ -128,4 +138,32 @@ function hostforge_class_to_file( string $class_name ): string {
 	$name = strtolower( str_replace( '_', '-', $name ) );
 
 	return $file_prefix . $name . '.php';
+}
+
+/**
+ * Find a class file by trying alternative prefixes.
+ *
+ * Handles classes whose names don't contain Abstract/Interface/Trait
+ * but whose files use those prefixes (e.g. HF_Module → abstract-hf-module.php).
+ *
+ * @param string $base_dir  The directory to search in.
+ * @param string $class_name The class name (without namespace).
+ * @return string|false The file path if found, false otherwise.
+ */
+function hostforge_find_class_file( string $base_dir, string $class_name ): string|false {
+	// Convert class name to kebab-case base (without prefix).
+	$name = (string) preg_replace( '/([a-z])([A-Z])/', '$1-$2', $class_name );
+	$name = strtolower( str_replace( '_', '-', $name ) );
+
+	// Try all possible prefixes.
+	$try_prefixes = array( 'class-', 'abstract-', 'interface-', 'trait-' );
+
+	foreach ( $try_prefixes as $prefix ) {
+		$candidate = $base_dir . $prefix . $name . '.php';
+		if ( file_exists( $candidate ) ) {
+			return $candidate;
+		}
+	}
+
+	return false;
 }

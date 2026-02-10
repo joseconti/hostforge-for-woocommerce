@@ -24,7 +24,7 @@ class HF_REST_Security_Controller extends HF_REST_Controller {
 	 *
 	 * @var string
 	 */
-	protected string $rest_base = 'security';
+	protected $rest_base = 'security';
 
 	/**
 	 * Register routes.
@@ -224,7 +224,7 @@ class HF_REST_Security_Controller extends HF_REST_Controller {
 		global $wpdb;
 		$table = $wpdb->prefix . 'hf_ip_blocks';
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name.
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$wpdb->query(
 			$wpdb->prepare(
 				"INSERT INTO {$table} (ip_address, block_type, reason, created_at)
@@ -235,6 +235,7 @@ class HF_REST_Security_Controller extends HF_REST_Controller {
 				current_time( 'mysql', true )
 			)
 		);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		return rest_ensure_response( array( 'success' => true ) );
 	}

@@ -396,7 +396,7 @@ Informes y gráficos con Chart.js.
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 8.11 | PHPCS zero errores | `PENDING` | WordPress-Extra ruleset |
+| 8.11 | PHPCS zero errores | `DONE` | WordPress-Extra ruleset — 0 errores, 38 warnings aceptables. Config: `.phpcs.xml.dist` |
 | 8.12 | Test: PHP 8.0, 8.1, 8.2, 8.3 | `PENDING` | Compatibilidad multi-versión |
 | 8.13 | Test: HPOS habilitado | `PENDING` | High Performance Order Storage |
 | 8.14 | Test: Checkout de bloques | `PENDING` | WooCommerce Blocks |
@@ -407,7 +407,7 @@ Informes y gráficos con Chart.js.
 
 | ID | Tarea | Estado | Notas |
 |----|-------|--------|-------|
-| 8.17 | PHPDoc completo | `PENDING` | Todas las clases y métodos |
+| 8.17 | PHPDoc completo | `DONE` | 93+ archivos PHP — 100% cobertura en clases, métodos, parámetros y retornos |
 | 8.18 | README.md + CHANGELOG.md | `DONE` | README.md completo + CHANGELOG.md v1.0.0 |
 | 8.19 | Documento de referencia de hooks | `DONE` | docs/hooks-reference.md — 46 actions + 125 filters = 171 hooks documentados |
 | 8.20 | Guía de desarrollo | `DONE` | docs/developer-guide.md — providers, registrars, adapters, hooks, templates, REST API |
@@ -427,8 +427,8 @@ Informes y gráficos con Chart.js.
 | 5 | Support Desk (Tickets + KB) | MEDIA | 23 | 23 | 100% |
 | 6 | Domain Manager | MEDIA | 18 | 18 | 100% |
 | 7 | Módulos Adicionales | NORMAL | 14 | 14 | 100% |
-| 8 | Testing, Seguridad y Polish | CRÍTICA | 22 | 17 | 77% |
-| **TOTAL** | | | **155** | **150** | **97%** |
+| 8 | Testing, Seguridad y Polish | CRÍTICA | 22 | 19 | 86% |
+| **TOTAL** | | | **155** | **152** | **98%** |
 
 ---
 

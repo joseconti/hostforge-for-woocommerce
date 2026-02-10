@@ -16,6 +16,7 @@
 				<element value="manage_hostforge_services"/>
 				<element value="manage_hostforge_tickets"/>
 				<element value="manage_hostforge_domains"/>
+				<element value="manage_hostforge_servers"/>
 				<element value="view_hostforge_reports"/>
 			</property>
 		</properties>

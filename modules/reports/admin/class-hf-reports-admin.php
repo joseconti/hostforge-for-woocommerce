@@ -51,7 +51,7 @@ class HF_Reports_Admin {
 	 */
 	public function add_menu_pages(): void {
 		add_submenu_page(
-			'hostforge',
+			'hostforge-dashboard',
 			__( 'Reports', 'hostforge' ),
 			__( 'Reports', 'hostforge' ),
 			'view_hostforge_reports',

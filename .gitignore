@@ -43,6 +43,12 @@ dist/
 tests/coverage/
 .phpunit.result.cache
 .phpunit.cache/
+tests/e2e/.auth/admin.json
+playwright-report/
+test-results/
+
+# wp-env
+.wp-env-home/
 
 # Logs
 *.log

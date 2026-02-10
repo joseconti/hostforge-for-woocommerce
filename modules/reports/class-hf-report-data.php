@@ -57,6 +57,7 @@ class HF_Report_Data {
 					$end_date . ' 23:59:59'
 				)
 			);
+			// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		} else {
 			$results = array();
 		}

@@ -1,0 +1,22 @@
+{
+	"core": "WordPress/WordPress#6.8",
+	"phpVersion": "8.2",
+	"plugins": [
+		".",
+		"https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip",
+		"https://downloads.wordpress.org/plugin/action-scheduler.latest-stable.zip"
+	],
+	"config": {
+		"WP_DEBUG": true,
+		"WP_DEBUG_LOG": true,
+		"SCRIPT_DEBUG": true,
+		"WP_ENVIRONMENT_TYPE": "local",
+		"HOSTFORGE_TESTING": true
+	},
+	"mappings": {
+		"wp-content/plugins/hostforge-for-woocommerce": "."
+	},
+	"lifecycleScripts": {
+		"afterStart": "wp-env run cli -- wp plugin activate woocommerce.latest-stable action-scheduler.latest-stable hostforge-for-woocommerce && wp-env run cli -- wp theme install storefront --activate || true"
+	}
+}

@@ -113,7 +113,7 @@ class HF_Security_Module extends HF_Module {
 		$this->create_tables();
 
 		// Schedule recurring cleanup tasks.
-		if ( function_exists( 'as_has_scheduled_action' ) ) {
+		if ( function_exists( 'as_has_scheduled_action' ) && did_action( 'action_scheduler_init' ) ) {
 			if ( ! as_has_scheduled_action( 'hostforge_cleanup_login_attempts' ) ) {
 				as_schedule_recurring_action(
 					time() + 300,
@@ -437,6 +437,11 @@ class HF_Security_Module extends HF_Module {
 	 */
 	public function register_scheduled_actions(): void {
 		if ( ! function_exists( 'as_has_scheduled_action' ) ) {
+			return;
+		}
+
+		if ( ! did_action( 'action_scheduler_init' ) ) {
+			add_action( 'action_scheduler_init', array( $this, 'register_scheduled_actions' ) );
 			return;
 		}
 

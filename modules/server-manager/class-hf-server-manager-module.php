@@ -96,7 +96,7 @@ class HF_Server_Manager_Module extends HF_Module {
 		flush_rewrite_rules();
 
 		// Schedule health check if not already scheduled.
-		if ( function_exists( 'as_has_scheduled_action' ) && ! as_has_scheduled_action( 'hostforge_server_health_check' ) ) {
+		if ( function_exists( 'as_has_scheduled_action' ) && did_action( 'action_scheduler_init' ) && ! as_has_scheduled_action( 'hostforge_server_health_check' ) ) {
 			as_schedule_recurring_action(
 				time(),
 				300, // 5 minutes.
@@ -222,6 +222,11 @@ class HF_Server_Manager_Module extends HF_Module {
 	 */
 	public function register_scheduled_actions(): void {
 		if ( ! function_exists( 'as_has_scheduled_action' ) ) {
+			return;
+		}
+
+		if ( ! did_action( 'action_scheduler_init' ) ) {
+			add_action( 'action_scheduler_init', array( $this, 'register_scheduled_actions' ) );
 			return;
 		}
 

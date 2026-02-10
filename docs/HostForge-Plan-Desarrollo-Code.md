@@ -671,13 +671,13 @@ For every PHP file verify:
 | 8.8 | Performance: no N+1, caching | `DONE` |
 | 8.9 | Performance: conditional assets | `DONE` |
 | 8.10 | Performance: DB indexes | `DONE` |
-| 8.11 | PHPCS zero errors | `PENDING` |
+| 8.11 | PHPCS zero errors | `DONE` |
 | 8.12 | Test: PHP 8.0-8.3 | `PENDING` |
 | 8.13 | Test: HPOS | `PENDING` |
 | 8.14 | Test: Block checkout | `PENDING` |
 | 8.15 | SUMO Subscriptions adapter (HF_SUMO_Adapter) | `DONE` |
 | 8.16 | Test: All 4 subscription adapters (WCS, YITH, Advanced Subs, SUMO) | `PENDING` |
-| 8.17 | PHPDoc complete | `PENDING` |
+| 8.17 | PHPDoc complete | `DONE` |
 | 8.18 | README.md + CHANGELOG.md | `DONE` |
 | 8.19 | Hooks reference document | `DONE` |
 | 8.20 | Developer guide | `DONE` |

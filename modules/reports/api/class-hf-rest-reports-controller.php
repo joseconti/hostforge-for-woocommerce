@@ -24,7 +24,7 @@ class HF_REST_Reports_Controller extends HF_REST_Controller {
 	 *
 	 * @var string
 	 */
-	protected string $rest_base = 'reports';
+	protected $rest_base = 'reports';
 
 	/**
 	 * Register routes.
